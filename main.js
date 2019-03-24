@@ -253,7 +253,7 @@ function renderProjects() {
                   <h5 class="blue-text "><i class="fas fa-chart-pie"></i> ${proj["theme"]}</h5>
                   <h3 class="card-title pt-2"><strong>${proj["title"]}</strong></h3>
                   <p>${proj["description"]}</p>
-                  <a class="btn blue-gradient" onClick="openLink('${proj["url"]}')" ><i class="fas fa-clone left"></i> View project</a>
+                  <a class="btn blue-gradient" ><i class="fas fa-clone left"></i> View project</a>
                 </div>
               </div>
             </div>
