@@ -151,9 +151,9 @@ var projects = [
   {
     title: "Unity + Photon Multiplayer",
     description: "Check out the implementation of a complete Cloud-based multiplayer with player synchronization, and Arena Creation.",
-    image: "https://github.com/rubencg195/rubencg195.github.io/raw/master/images/multplayer.jpg",
+    image: "https://raw.githubusercontent.com/rubencg195/rubencg195.github.io/master/images/multiplayer.png",
     theme: THEMES.GAMES,
-    url: "/pages/multiplayer"
+    url: "https://github.com/rubencg195/UnityPhotonMultiplayer"
   },
   {
     title: "Robotic Spider Design",
