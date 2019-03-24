@@ -149,6 +149,13 @@ var projects = [
     url: "https://github.com/rubencg195/WalkingSpider_OpenAI_PyBullet"
   },
   {
+    title: "Unity + Photon Multiplayer",
+    description: "Check out the implementation of a complete Cloud-based multiplayer with player synchronization, and Arena Creation.",
+    image: "./images/multiplayer.jpg",
+    theme: THEMES.GAMES,
+    url: "/pages/multiplayer"
+  },
+  {
     title: "Robotic Spider Design",
     description: "An assembly of a walking spider mechanism utilizing only two motors to move 4 legs and turn 360 degrees.",
     image: "https://github.com/rubencg195/RoboticSpiderDesign/raw/master/Demo/v2anim.png?raw=true",
