@@ -151,7 +151,7 @@ var projects = [
   {
     title: "Unity + Photon Multiplayer",
     description: "Check out the implementation of a complete Cloud-based multiplayer with player synchronization, and Arena Creation.",
-    image: "./images/multiplayer.jpg",
+    image: "https://github.com/rubencg195/rubencg195.github.io/raw/master/images/multplayer.jpg",
     theme: THEMES.GAMES,
     url: "/pages/multiplayer"
   },
