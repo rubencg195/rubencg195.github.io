@@ -140,7 +140,7 @@ var education = [
 ];
 
 lml = "LetMeListen is a mobile application designed to improve the quality of life of deaf people worldwide. By means of a speech recognition algorithm, the application allows the deaf person to understand what they are saying since the phone translates the spoken language and shows it to the user on the screen so that he can read it, to answer it is as simple as write a message on the screen and the phone will generate a synthetic voice through a voice synthesizer to allow you to have a bilateral conversation";
-var blog = [
+var blogs = [
   {
     title: "Reinforcement Learning Techniques to GameEnvironments",
     description: " In the following blog post, we will discuss the state-of-the-art algorithms that were able to master many ATARI and other platform games during their development.",
@@ -273,8 +273,9 @@ function renderProjects() {
 }
 function renderBlogPosts() {
   $(document).ready(function () {
-    Object.entries(blog).forEach(([key, proj]) => {
-      $("#blogContainer").append(`<!-- Image overlay card -->
+    console.log(blogs);
+    Object.entries(blogs).forEach(([key, proj]) => {
+      $("#blogContainer").append(`
           <div class="col-xs-12 col-sm-6 mb-4">
             <div class="card card-image mb-6"
               onClick="openLink('${proj["url"]}')" 
@@ -289,8 +290,7 @@ function renderBlogPosts() {
                 </div>
               </div>
             </div>
-          </div>
-            <!-- Image overlay card -->`);
+          </div>`);
     });
   });
 }
