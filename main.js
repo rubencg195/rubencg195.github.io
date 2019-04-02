@@ -118,14 +118,14 @@ var education = [
   },
   {
     title: "BSc. Mechatronics",
-    institution: "Memorial University",
+    institution: "Central American Technological University (UNITEC)",
     start: "2012",
     end: "2017",
     image: "./images/companies/unitec.jpg",
   },
   {
     title: "BSc. Computer Science",
-    institution: "Memorial University",
+    institution: "Central American Technological University (UNITEC)",
     start: "2014",
     end: "2017",
     image: "./images/companies/unitec.jpg",
@@ -336,6 +336,7 @@ function hideNav(){
   $('.button-collapse').sideNav('hide');
 }
 renderProjects();
+renderBlogPosts();
 renderAwards() ;
 renderExperience(experience, "#experienceContainer");
 renderExperience(education, "#educationContainer");
