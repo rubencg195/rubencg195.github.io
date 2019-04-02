@@ -1,0 +1,619 @@
+<html>
+<head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+span.cls_005{font-family:Arial,serif;font-size:12.1px;color:rgb(255,255,255);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_005{font-family:Arial,serif;font-size:12.1px;color:rgb(255,255,255);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_008{font-family:Tahoma,serif;font-size:23.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_008{font-family:Tahoma,serif;font-size:23.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_009{font-family:Tahoma,serif;font-size:24.5px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_009{font-family:Tahoma,serif;font-size:24.5px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_010{font-family:Tahoma,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_010{font-family:Tahoma,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_011{font-family:Arial,serif;font-size:7.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_011{font-family:Arial,serif;font-size:7.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_012{font-family:Arial,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_012{font-family:Arial,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_016{font-family:"Georgia Bold",serif;font-size:9.8px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_016{font-family:"Georgia Bold",serif;font-size:9.8px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_017{font-family:Arial,serif;font-size:9.8px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_017{font-family:Arial,serif;font-size:9.8px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_003{font-family:"Georgia",serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_003{font-family:"Georgia",serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_027{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_027{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_020{font-family:Tahoma,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_020{font-family:Tahoma,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_006{font-family:Arial,serif;font-size:12.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_006{font-family:Arial,serif;font-size:12.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_028{font-family:Tahoma,serif;font-size:9.7px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_028{font-family:Tahoma,serif;font-size:9.7px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_015{font-family:"Georgia Bold",serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_015{font-family:"Georgia Bold",serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_021{font-family:"Palatino Linotype Italic",serif;font-size:10.2px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_021{font-family:"Palatino Linotype Italic",serif;font-size:10.2px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_025{font-family:Arial,serif;font-size:5.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_025{font-family:Arial,serif;font-size:5.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_030{font-family:Arial,serif;font-size:8.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_030{font-family:Arial,serif;font-size:8.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_022{font-family:"Palatino Linotype Italic",serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_022{font-family:"Palatino Linotype Italic",serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_035{font-family:"Palatino Linotype Italic",serif;font-size:10.5px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_035{font-family:"Palatino Linotype Italic",serif;font-size:10.5px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_042{font-family:"Georgia",serif;font-size:9.7px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_042{font-family:"Georgia",serif;font-size:9.7px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_043{font-family:"Georgia",serif;font-size:9.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_043{font-family:"Georgia",serif;font-size:9.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_044{font-family:"Georgia",serif;font-size:9.5px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_044{font-family:"Georgia",serif;font-size:9.5px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_045{font-family:"Georgia",serif;font-size:9.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_045{font-family:"Georgia",serif;font-size:9.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_051{font-family:Arial,serif;font-size:7.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_051{font-family:Arial,serif;font-size:7.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_046{font-family:Arial,serif;font-size:6.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_046{font-family:Arial,serif;font-size:6.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_052{font-family:"MingLiU",serif;font-size:7.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_052{font-family:"MingLiU",serif;font-size:7.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_047{font-family:"MingLiU",serif;font-size:8.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_047{font-family:"MingLiU",serif;font-size:8.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_048{font-family:"Meiryo Italic",serif;font-size:5.9px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_048{font-family:"Meiryo Italic",serif;font-size:5.9px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_049{font-family:Arial,serif;font-size:8.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_049{font-family:Arial,serif;font-size:8.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_054{font-family:Arial,serif;font-size:7.4px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_054{font-family:Arial,serif;font-size:7.4px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_055{font-family:"MingLiU",serif;font-size:7.5px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_055{font-family:"MingLiU",serif;font-size:7.5px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_056{font-family:Arial,serif;font-size:7.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_056{font-family:Arial,serif;font-size:7.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_057{font-family:"MingLiU",serif;font-size:7.8px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_057{font-family:"MingLiU",serif;font-size:7.8px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_058{font-family:Arial,serif;font-size:7.8px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_058{font-family:Arial,serif;font-size:7.8px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_059{font-family:"MingLiU",serif;font-size:7.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_059{font-family:"MingLiU",serif;font-size:7.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_060{font-family:Arial,serif;font-size:7.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_060{font-family:Arial,serif;font-size:7.9px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_061{font-family:Arial,serif;font-size:7.3px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_061{font-family:Arial,serif;font-size:7.3px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_063{font-family:Arial,serif;font-size:6.7px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_063{font-family:Arial,serif;font-size:6.7px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_064{font-family:Arial,serif;font-size:6.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_064{font-family:Arial,serif;font-size:6.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_065{font-family:"Meiryo Italic",serif;font-size:5.5px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+div.cls_065{font-family:"Meiryo Italic",serif;font-size:5.5px;color:rgb(0,0,0);font-weight:normal;font-style:italic;text-decoration: none}
+span.cls_066{font-family:Arial,serif;font-size:7.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_066{font-family:Arial,serif;font-size:7.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_067{font-family:"MingLiU",serif;font-size:8.2px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_067{font-family:"MingLiU",serif;font-size:8.2px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+-->
+</style>
+<script type="text/javascript" src="wz_jsgraphics.js"></script>
+</head>
+<body>
+<div style="position:absolute;left:50%;margin-left:-306px;top:0px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="background1.jpg" width=612 height=792></div>
+<div style="position:absolute;left:60.60px;top:82.34px" class="cls_005"><span class="cls_005">RESEARCH ARTICLE</span></div>
+<div style="position:absolute;left:56.76px;top:124.28px" class="cls_008"><span class="cls_008">Reinforcement Learning Techniques to Game</span></div>
+<div style="position:absolute;left:56.76px;top:159.26px" class="cls_009"><span class="cls_009">Environments</span></div>
+<div style="position:absolute;left:56.76px;top:199.22px" class="cls_010"><span class="cls_010">Ruben Chevez</span><span class="cls_011"><sup>*</sup></span><span class="cls_012"> </span><span class="cls_010">and Kratika Naskulwar</span></div>
+<div style="position:absolute;left:304.97px;top:226.10px" class="cls_016"><span class="cls_016">a)</span><span class="cls_017"> </span><span class="cls_003">is the probability of transition to a state, given an</span></div>
+<div style="position:absolute;left:67.22px;top:229.46px" class="cls_027"><span class="cls_027">Abstract</span></div>
+<div style="position:absolute;left:304.97px;top:242.93px" class="cls_003"><span class="cls_003">action taken in state. [1, 2]</span></div>
+<div style="position:absolute;left:67.22px;top:249.29px" class="cls_020"><span class="cls_020">Games have been one of the methods of choice for</span></div>
+<div style="position:absolute;left:312.89px;top:259.73px" class="cls_003"><span class="cls_003">Exploration is the ability for an agent to transition</span></div>
+<div style="position:absolute;left:67.22px;top:266.09px" class="cls_020"><span class="cls_020">machine learning researchers to test their new</span></div>
+<div style="position:absolute;left:304.97px;top:276.29px" class="cls_003"><span class="cls_003">to new or unknown states of the environment with-</span></div>
+<div style="position:absolute;left:67.22px;top:282.77px" class="cls_020"><span class="cls_020">algorithms. It is characterized as being a controlled</span></div>
+<div style="position:absolute;left:304.97px;top:292.97px" class="cls_003"><span class="cls_003">out relying on previous experience. Exploitation is the</span></div>
+<div style="position:absolute;left:67.22px;top:299.57px" class="cls_020"><span class="cls_020">simulated environment with discrete or stochastic</span></div>
+<div style="position:absolute;left:304.97px;top:309.65px" class="cls_003"><span class="cls_003">ability for the agent to base its decision completely on</span></div>
+<div style="position:absolute;left:67.22px;top:316.25px" class="cls_020"><span class="cls_020">observations. Games are a set of simple to complex</span></div>
+<div style="position:absolute;left:304.97px;top:326.33px" class="cls_003"><span class="cls_003">experiences. [3] A balance between the two is neces-</span></div>
+<div style="position:absolute;left:67.22px;top:333.05px" class="cls_020"><span class="cls_020">tasks where different iterations of the algorithms</span></div>
+<div style="position:absolute;left:304.97px;top:343.01px" class="cls_003"><span class="cls_003">sary to start exploring the environment and after some</span></div>
+<div style="position:absolute;left:67.22px;top:349.85px" class="cls_020"><span class="cls_020">can be benchmarked against each other to</span></div>
+<div style="position:absolute;left:304.97px;top:359.69px" class="cls_003"><span class="cls_003">time, start relying on experience to choose the most re-</span></div>
+<div style="position:absolute;left:67.22px;top:366.53px" class="cls_020"><span class="cls_020">compare their learning abilities and flexibility</span></div>
+<div style="position:absolute;left:304.97px;top:376.25px" class="cls_003"><span class="cls_003">warding actions. This is often called the exploration vs</span></div>
+<div style="position:absolute;left:67.22px;top:383.33px" class="cls_020"><span class="cls_020">towards unexpected observations from the</span></div>
+<div style="position:absolute;left:304.97px;top:392.93px" class="cls_003"><span class="cls_003">exploitation trade-off. [4]</span></div>
+<div style="position:absolute;left:67.22px;top:400.01px" class="cls_020"><span class="cls_020">environment. In the following sections, we will</span></div>
+<div style="position:absolute;left:312.89px;top:409.87px" class="cls_003"><span class="cls_003">There are two main approaches to solve reinforce-</span></div>
+<div style="position:absolute;left:67.22px;top:416.83px" class="cls_020"><span class="cls_020">discuss the state-of-the-art algorithms that were</span></div>
+<div style="position:absolute;left:304.97px;top:426.67px" class="cls_003"><span class="cls_003">ment learning problems: Policy-Based, and Value-</span></div>
+<div style="position:absolute;left:67.22px;top:433.51px" class="cls_020"><span class="cls_020">able to master many ATARI and other platform</span></div>
+<div style="position:absolute;left:304.97px;top:443.23px" class="cls_003"><span class="cls_003">Based agents. [5]</span></div>
+<div style="position:absolute;left:67.22px;top:450.31px" class="cls_020"><span class="cls_020">games during their development.</span></div>
+<div style="position:absolute;left:67.22px;top:471.43px" class="cls_027"><span class="cls_027">Keywords: </span><span class="cls_020">machine learning; atari; artificial</span></div>
+<div style="position:absolute;left:304.97px;top:472.27px" class="cls_006"><span class="cls_006">Methods</span></div>
+<div style="position:absolute;left:67.22px;top:488.11px" class="cls_028"><span class="cls_028">intelligence; reinforcement learning; simulation</span></div>
+<div style="position:absolute;left:304.97px;top:491.11px" class="cls_003"><span class="cls_003">Christopher Watkins said that “Learning to act in</span></div>
+<div style="position:absolute;left:304.97px;top:507.79px" class="cls_003"><span class="cls_003">ways that are rewarded is a sign of intelligence.” [6]</span></div>
+<div style="position:absolute;left:304.97px;top:524.47px" class="cls_003"><span class="cls_003">Biological systems have inspired many revolutionary</span></div>
+<div style="position:absolute;left:56.76px;top:535.75px" class="cls_006"><span class="cls_006">Background</span></div>
+<div style="position:absolute;left:304.97px;top:541.03px" class="cls_003"><span class="cls_003">methods of cognitive science in the search of auto-</span></div>
+<div style="position:absolute;left:56.76px;top:555.91px" class="cls_003"><span class="cls_003">A Markov Decision Process (MDP) is often used to</span></div>
+<div style="position:absolute;left:304.97px;top:557.71px" class="cls_003"><span class="cls_003">matic problem-solving systems. The following rein-</span></div>
+<div style="position:absolute;left:56.76px;top:572.62px" class="cls_003"><span class="cls_003">describe a reinforcement learning problem when the</span></div>
+<div style="position:absolute;left:304.97px;top:574.42px" class="cls_003"><span class="cls_003">forcement learning techniques’ categories are inspired</span></div>
+<div style="position:absolute;left:56.76px;top:589.30px" class="cls_003"><span class="cls_003">environment is fully observable. An MDP is made up</span></div>
+<div style="position:absolute;left:304.97px;top:591.10px" class="cls_003"><span class="cls_003">by the OpenAI Docs. [7]</span></div>
+<div style="position:absolute;left:56.76px;top:605.98px" class="cls_003"><span class="cls_003">of a tuple </span><span class="cls_015">(S, A, R, T)</span><span class="cls_003">, where </span><span class="cls_015">S </span><span class="cls_003">is the state or ob-</span></div>
+<div style="position:absolute;left:304.97px;top:619.42px" class="cls_020"><span class="cls_020">Model-Free RL</span></div>
+<div style="position:absolute;left:56.76px;top:622.66px" class="cls_003"><span class="cls_003">servation. </span><span class="cls_015">A </span><span class="cls_003">is the set of actions that can be chosen,</span></div>
+<div style="position:absolute;left:304.97px;top:635.95px" class="cls_021"><span class="cls_021">Q-Learning</span></div>
+<div style="position:absolute;left:56.76px;top:639.34px" class="cls_015"><span class="cls_015">R(s, a) </span><span class="cls_003">is the reward function that returns the reward</span></div>
+<div style="position:absolute;left:304.97px;top:652.90px" class="cls_003"><span class="cls_003">Q-Learning is an alternative to model-based machine</span></div>
+<div style="position:absolute;left:56.76px;top:656.02px" class="cls_003"><span class="cls_003">for an action taken in the given state, s. </span><span class="cls_015">T(s’ — s,</span></div>
+<div style="position:absolute;left:304.85px;top:670.54px" class="cls_003"><span class="cls_003">learning algorithms, because it does not generate a</span></div>
+<div style="position:absolute;left:56.76px;top:679.90px" class="cls_025"><span class="cls_025"><sup>*</sup></span><span class="cls_011">Correspondence: <A HREF="mailto:rubencg@mun.ca">rubencg@mun.ca,</A>  ksnaskulwar@mun.ca</span></div>
+<div style="position:absolute;left:304.97px;top:687.10px" class="cls_003"><span class="cls_003">model to represent the environment. Representing the</span></div>
+<div style="position:absolute;left:56.76px;top:697.06px" class="cls_011"><span class="cls_011">Computer Science, Memorial University, 230 Elizabeth Ave, St. John’s,</span></div>
+<div style="position:absolute;left:304.97px;top:703.66px" class="cls_003"><span class="cls_003">environment can be computationally costly depend-</span></div>
+<div style="position:absolute;left:56.76px;top:709.54px" class="cls_011"><span class="cls_011">Newfoundland and Labrador, Canada. Tel.: 17097694877</span></div>
+<div style="position:absolute;left:304.97px;top:720.34px" class="cls_003"><span class="cls_003">ing on the complexity of the environment. Instead, the</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:802px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="background2.jpg" width=612 height=792></div>
+<div style="position:absolute;left:498.10px;top:30.72px" class="cls_030"><span class="cls_030">Page 2 of 6</span></div>
+<div style="position:absolute;left:56.76px;top:86.06px" class="cls_003"><span class="cls_003">agent computes Q-values, which mean the “quality”of</span></div>
+<div style="position:absolute;left:304.85px;top:86.06px" class="cls_003"><span class="cls_003">selects the action and simultaneously evaluates the ac-</span></div>
+<div style="position:absolute;left:56.76px;top:102.74px" class="cls_003"><span class="cls_003">an action taken on a given state, </span><span class="cls_015">s</span><span class="cls_003">. A policy can be de-</span></div>
+<div style="position:absolute;left:304.85px;top:102.74px" class="cls_003"><span class="cls_003">tion quality which is likely to cause the selection of</span></div>
+<div style="position:absolute;left:56.76px;top:119.42px" class="cls_003"><span class="cls_003">rived by choosing the actions with the highest Q-values</span></div>
+<div style="position:absolute;left:304.85px;top:119.42px" class="cls_003"><span class="cls_003">overestimated values. [15]</span></div>
+<div style="position:absolute;left:56.76px;top:136.10px" class="cls_003"><span class="cls_003">for the current state. [6]</span></div>
+<div style="position:absolute;left:64.70px;top:152.90px" class="cls_003"><span class="cls_003">The Q-values initialized randomly and then updated</span></div>
+<div style="position:absolute;left:304.85px;top:150.35px" class="cls_021"><span class="cls_021">Prioritized Experience Replay</span></div>
+<div style="position:absolute;left:56.76px;top:169.58px" class="cls_003"><span class="cls_003">based on rewards gained, executing different actions</span></div>
+<div style="position:absolute;left:304.85px;top:167.90px" class="cls_003"><span class="cls_003">Prioritized Experience Replay is a strategy that allows</span></div>
+<div style="position:absolute;left:56.76px;top:186.26px" class="cls_003"><span class="cls_003">using the Bellman Equation. Q-Learning uses tech-</span></div>
+<div style="position:absolute;left:304.85px;top:184.58px" class="cls_003"><span class="cls_003">past experiences to be recollected and utilized based on</span></div>
+<div style="position:absolute;left:56.76px;top:202.82px" class="cls_003"><span class="cls_003">niques to let the agent explore, such as the Exploration</span></div>
+<div style="position:absolute;left:304.85px;top:201.26px" class="cls_003"><span class="cls_003">their significance. Samples are uniformly transitioned</span></div>
+<div style="position:absolute;left:56.76px;top:219.50px" class="cls_003"><span class="cls_003">vs Exploitation Trade-off and the Discount Factor, to</span></div>
+<div style="position:absolute;left:304.85px;top:217.94px" class="cls_003"><span class="cls_003">from replay memory and in the same order as they are</span></div>
+<div style="position:absolute;left:56.76px;top:236.21px" class="cls_003"><span class="cls_003">give significance to the most recent actions. [8-10]</span></div>
+<div style="position:absolute;left:304.85px;top:234.62px" class="cls_003"><span class="cls_003">experienced in previous methods. Prioritizing experi-</span></div>
+<div style="position:absolute;left:304.85px;top:251.33px" class="cls_003"><span class="cls_003">ence makes the learning more efficient when used with</span></div>
+<div style="position:absolute;left:56.76px;top:263.54px" class="cls_021"><span class="cls_021">Deep-Q Learning</span></div>
+<div style="position:absolute;left:304.85px;top:268.01px" class="cls_003"><span class="cls_003">DQN.</span></div>
+<div style="position:absolute;left:56.76px;top:280.49px" class="cls_003"><span class="cls_003">Deep-Q Learning was introduced and patented by the</span></div>
+<div style="position:absolute;left:312.77px;top:285.53px" class="cls_003"><span class="cls_003">The issue of over-fitting caused when experiences are</span></div>
+<div style="position:absolute;left:56.76px;top:297.17px" class="cls_003"><span class="cls_003">team at DeepMind as an improvement to the previ-</span></div>
+<div style="position:absolute;left:304.85px;top:302.21px" class="cls_003"><span class="cls_003">prioritized with transition error is overcome by prior-</span></div>
+<div style="position:absolute;left:56.76px;top:313.85px" class="cls_003"><span class="cls_003">ous Q-Learning algorithm. Using Convolutionary Neu-</span></div>
+<div style="position:absolute;left:304.85px;top:318.89px" class="cls_003"><span class="cls_003">itizing experiences with stochastic prioritization. Bias</span></div>
+<div style="position:absolute;left:56.76px;top:330.53px" class="cls_003"><span class="cls_003">ral Networks as the environment’s model aproximator,</span></div>
+<div style="position:absolute;left:304.85px;top:335.57px" class="cls_003"><span class="cls_003">introduced towards high priority samples causes more</span></div>
+<div style="position:absolute;left:56.76px;top:347.21px" class="cls_003"><span class="cls_003">the algorithm is able to learn the best actions to take</span></div>
+<div style="position:absolute;left:304.85px;top:352.25px" class="cls_003"><span class="cls_003">chances of high priority samples to be chosen. Bias is</span></div>
+<div style="position:absolute;left:56.76px;top:363.89px" class="cls_003"><span class="cls_003">in complex environment more efficiently than the Q-</span></div>
+<div style="position:absolute;left:304.85px;top:368.93px" class="cls_003"><span class="cls_003">corrected by using Importance sampling weights (IS).</span></div>
+<div style="position:absolute;left:56.76px;top:380.57px" class="cls_003"><span class="cls_003">tables in Q-learning. [11, 12]</span></div>
+<div style="position:absolute;left:304.85px;top:385.49px" class="cls_003"><span class="cls_003">This algorithm performs better on 41 games out of 49</span></div>
+<div style="position:absolute;left:304.85px;top:402.17px" class="cls_003"><span class="cls_003">than DQN, accomplishing a new state-of-the-art. [16]</span></div>
+<div style="position:absolute;left:56.76px;top:407.95px" class="cls_022"><span class="cls_022">Dueling DQN</span></div>
+<div style="position:absolute;left:56.76px;top:424.87px" class="cls_003"><span class="cls_003">The Dueling Network is a model-free neural system de-</span></div>
+<div style="position:absolute;left:304.85px;top:433.51px" class="cls_020"><span class="cls_020">Policy Gradients</span></div>
+<div style="position:absolute;left:56.76px;top:441.55px" class="cls_003"><span class="cls_003">sign. The system comprises two streams that shows the</span></div>
+<div style="position:absolute;left:304.85px;top:450.64px" class="cls_021"><span class="cls_021">A3C</span></div>
+<div style="position:absolute;left:56.76px;top:458.23px" class="cls_003"><span class="cls_003">state value and advantage functions, sharing a single</span></div>
+<div style="position:absolute;left:304.85px;top:468.31px" class="cls_003"><span class="cls_003">A3C (Asynchronous advantage actor-critic) is a sim-</span></div>
+<div style="position:absolute;left:56.76px;top:474.91px" class="cls_003"><span class="cls_003">learning module. The two streams are joined to yield</span></div>
+<div style="position:absolute;left:304.85px;top:484.99px" class="cls_003"><span class="cls_003">ple deep reinforcement learning algorithm. The Asyn-</span></div>
+<div style="position:absolute;left:56.76px;top:491.59px" class="cls_003"><span class="cls_003">a single output as a Q function. The output consists</span></div>
+<div style="position:absolute;left:304.85px;top:501.67px" class="cls_003"><span class="cls_003">chronous gradient descent is used for the purpose of</span></div>
+<div style="position:absolute;left:56.76px;top:508.15px" class="cls_003"><span class="cls_003">of a set of Q values per action. [13]</span></div>
+<div style="position:absolute;left:304.85px;top:518.35px" class="cls_003"><span class="cls_003">optimization of deep neural network controllers. A3C</span></div>
+<div style="position:absolute;left:64.70px;top:525.07px" class="cls_003"><span class="cls_003">The  Dueling  network  separately estimates  state</span></div>
+<div style="position:absolute;left:304.85px;top:535.03px" class="cls_003"><span class="cls_003">controls the policy and value estimation function. The</span></div>
+<div style="position:absolute;left:56.76px;top:541.75px" class="cls_003"><span class="cls_003">value (scalar V) and advantages (A) for each action.</span></div>
+<div style="position:absolute;left:304.85px;top:551.71px" class="cls_003"><span class="cls_003">value function and the policy are updated whenever a</span></div>
+<div style="position:absolute;left:56.76px;top:558.43px" class="cls_003"><span class="cls_003">The state and advantage values are combined, thereby</span></div>
+<div style="position:absolute;left:304.85px;top:568.27px" class="cls_003"><span class="cls_003">final state has occurred. Of the different optimization</span></div>
+<div style="position:absolute;left:56.76px;top:575.14px" class="cls_003"><span class="cls_003">yielding the output as Q values for each action. [14]</span></div>
+<div style="position:absolute;left:304.85px;top:584.98px" class="cls_003"><span class="cls_003">algorithms, RMSProp, was found to be considerably</span></div>
+<div style="position:absolute;left:56.76px;top:602.50px" class="cls_022"><span class="cls_022">Double DQN</span></div>
+<div style="position:absolute;left:304.85px;top:601.66px" class="cls_003"><span class="cls_003">optimal than the other methods. A3C performance ex-</span></div>
+<div style="position:absolute;left:56.76px;top:619.30px" class="cls_003"><span class="cls_003">The Double DQN algorithm was introduced to miti-</span></div>
+<div style="position:absolute;left:304.85px;top:618.34px" class="cls_003"><span class="cls_003">ceeds the state-of-the-art algorithms on the Atari do-</span></div>
+<div style="position:absolute;left:56.76px;top:635.98px" class="cls_003"><span class="cls_003">gate the overestimation of Q-values in the basic DQN</span></div>
+<div style="position:absolute;left:304.85px;top:635.02px" class="cls_003"><span class="cls_003">main methods. It uses a single multi-core CPU other</span></div>
+<div style="position:absolute;left:56.76px;top:652.66px" class="cls_003"><span class="cls_003">algorithm to achieve better performance on several</span></div>
+<div style="position:absolute;left:304.85px;top:651.70px" class="cls_003"><span class="cls_003">than GPU for training half of the time. [17]</span></div>
+<div style="position:absolute;left:56.76px;top:669.34px" class="cls_003"><span class="cls_003">games. Overestimation can be an issue in training per-</span></div>
+<div style="position:absolute;left:312.77px;top:669.46px" class="cls_003"><span class="cls_003">Ryan Partridge explains the three As in A3C. The</span></div>
+<div style="position:absolute;left:56.76px;top:685.90px" class="cls_003"><span class="cls_003">formance and can sometimes cause less than optimal</span></div>
+<div style="position:absolute;left:304.85px;top:686.02px" class="cls_003"><span class="cls_003">first A, stands for actor. It is a set of actions and the</span></div>
+<div style="position:absolute;left:56.76px;top:702.58px" class="cls_003"><span class="cls_003">policies.</span></div>
+<div style="position:absolute;left:304.85px;top:702.70px" class="cls_003"><span class="cls_003">state value of the current agent is called the critic. The</span></div>
+<div style="position:absolute;left:56.76px;top:719.50px" class="cls_003"><span class="cls_003">In the standard DQN algorithm, the target network</span></div>
+<div style="position:absolute;left:304.85px;top:719.38px" class="cls_003"><span class="cls_003">second A, is asynchronous. A3C deals with multiple</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:1604px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="background3.jpg" width=612 height=792></div>
+<div style="position:absolute;left:498.10px;top:30.72px" class="cls_030"><span class="cls_030">Page 3 of 6</span></div>
+<div style="position:absolute;left:56.76px;top:86.06px" class="cls_003"><span class="cls_003">independent agents with their individual weights and</span></div>
+<div style="position:absolute;left:312.77px;top:86.06px" class="cls_003"><span class="cls_003">Nicolas Heess et al. developed a dispersed version of</span></div>
+<div style="position:absolute;left:56.76px;top:102.74px" class="cls_003"><span class="cls_003">lets the multiple agents interact in parallel. The last A,</span></div>
+<div style="position:absolute;left:304.85px;top:102.74px" class="cls_003"><span class="cls_003">Proximal Policy Optimization called DPPO to achieve</span></div>
+<div style="position:absolute;left:56.76px;top:119.42px" class="cls_003"><span class="cls_003">stands for advantage. It contains the value and policy</span></div>
+<div style="position:absolute;left:304.85px;top:119.42px" class="cls_003"><span class="cls_003">better execution in rich, simulated environments. Ex-</span></div>
+<div style="position:absolute;left:56.76px;top:136.10px" class="cls_003"><span class="cls_003">loss. The advantage equation is used to calculate the</span></div>
+<div style="position:absolute;left:304.85px;top:136.10px" class="cls_003"><span class="cls_003">periments show that it is effectively salable and allow</span></div>
+<div style="position:absolute;left:56.76px;top:152.78px" class="cls_003"><span class="cls_003">policy loss that improves the behavior of agent. [18]</span></div>
+<div style="position:absolute;left:304.85px;top:152.78px" class="cls_003"><span class="cls_003">strong policy optimization with less parameter tun-</span></div>
+<div style="position:absolute;left:304.85px;top:169.34px" class="cls_003"><span class="cls_003">ing. [22]</span></div>
+<div style="position:absolute;left:56.76px;top:190.86px" class="cls_035"><span class="cls_035">TRPO</span></div>
+<div style="position:absolute;left:304.85px;top:200.58px" class="cls_035"><span class="cls_035">ACKTR</span></div>
+<div style="position:absolute;left:56.76px;top:210.74px" class="cls_003"><span class="cls_003">Trust Region Policy Optimization (TRPO) is an iter-</span></div>
+<div style="position:absolute;left:304.85px;top:218.66px" class="cls_003"><span class="cls_003">The Actor Critic using the Kronecker-Factored Trust</span></div>
+<div style="position:absolute;left:56.76px;top:227.30px" class="cls_003"><span class="cls_003">ative policy gradient algorithm. This algorithm is vi-</span></div>
+<div style="position:absolute;left:304.85px;top:235.34px" class="cls_003"><span class="cls_003">Region (ACKTR) is  an  actor-critic  method  that</span></div>
+<div style="position:absolute;left:56.76px;top:244.01px" class="cls_003"><span class="cls_003">able for optimizing huge nonlinear policies. TRPO ad-</span></div>
+<div style="position:absolute;left:304.85px;top:252.05px" class="cls_003"><span class="cls_003">uses Kronecker-factored approximation curvature (K-</span></div>
+<div style="position:absolute;left:56.76px;top:260.69px" class="cls_003"><span class="cls_003">dresses the following issues of Policy Gradient Meth-</span></div>
+<div style="position:absolute;left:304.85px;top:268.73px" class="cls_003"><span class="cls_003">FAC). Kronecker-factored approximation is used to</span></div>
+<div style="position:absolute;left:56.76px;top:277.37px" class="cls_003"><span class="cls_003">ods; training may be ruined in case of a large pol-</span></div>
+<div style="position:absolute;left:304.85px;top:285.41px" class="cls_003"><span class="cls_003">optimize both actor and critic. Gradient’s co-variance</span></div>
+<div style="position:absolute;left:56.76px;top:294.05px" class="cls_003"><span class="cls_003">icy, convergence issue may arise due to the insensitive</span></div>
+<div style="position:absolute;left:304.85px;top:302.09px" class="cls_003"><span class="cls_003">matrix can be inverted effectively in the ACKTR algo-</span></div>
+<div style="position:absolute;left:56.76px;top:310.73px" class="cls_003"><span class="cls_003">learning rate, and mapping changes between param-</span></div>
+<div style="position:absolute;left:304.85px;top:318.65px" class="cls_003"><span class="cls_003">rithm. This algorithm optimizes the value function by</span></div>
+<div style="position:absolute;left:56.76px;top:327.41px" class="cls_003"><span class="cls_003">eter space, and policy is hard and will weaken the</span></div>
+<div style="position:absolute;left:304.85px;top:335.33px" class="cls_003"><span class="cls_003">using Gauss-Newton approximation. It generously in-</span></div>
+<div style="position:absolute;left:56.76px;top:343.97px" class="cls_003"><span class="cls_003">sample efficiency. TRPO has two variants of sampling</span></div>
+<div style="position:absolute;left:304.85px;top:352.01px" class="cls_003"><span class="cls_003">creases the agent’s performance and efficiency in Atari</span></div>
+<div style="position:absolute;left:56.76px;top:360.65px" class="cls_003"><span class="cls_003">schemes, the first is the single path, which is based on</span></div>
+<div style="position:absolute;left:304.85px;top:368.69px" class="cls_003"><span class="cls_003">environments. ACKTR was evaluated on both discrete</span></div>
+<div style="position:absolute;left:56.76px;top:377.33px" class="cls_003"><span class="cls_003">individual trajectories and is used for policy gradient</span></div>
+<div style="position:absolute;left:304.85px;top:385.37px" class="cls_003"><span class="cls_003">control tasks and continuous control tasks. This algo-</span></div>
+<div style="position:absolute;left:56.76px;top:394.01px" class="cls_003"><span class="cls_003">estimation. The second is the Vine method which is</span></div>
+<div style="position:absolute;left:304.85px;top:402.05px" class="cls_003"><span class="cls_003">rithm shows an improvement in sample efficiency by</span></div>
+<div style="position:absolute;left:56.76px;top:410.71px" class="cls_003"><span class="cls_003">mostly used in policy iteration methods. This method</span></div>
+<div style="position:absolute;left:304.85px;top:418.75px" class="cls_003"><span class="cls_003">2-3 times when compared with the first-order gradient</span></div>
+<div style="position:absolute;left:56.76px;top:427.39px" class="cls_003"><span class="cls_003">constructs a set to perform multiple actions on each</span></div>
+<div style="position:absolute;left:304.85px;top:435.43px" class="cls_003"><span class="cls_003">method(A2C). [23, 24]</span></div>
+<div style="position:absolute;left:56.76px;top:444.07px" class="cls_003"><span class="cls_003">state from the set. The Vine method performs better</span></div>
+<div style="position:absolute;left:56.76px;top:460.75px" class="cls_003"><span class="cls_003">than single path and efficiently estimates advantage</span></div>
+<div style="position:absolute;left:304.85px;top:467.35px" class="cls_020"><span class="cls_020">Deterministic Policy Gradients</span></div>
+<div style="position:absolute;left:56.76px;top:477.31px" class="cls_003"><span class="cls_003">values. [19, 20]</span></div>
+<div style="position:absolute;left:304.85px;top:484.60px" class="cls_021"><span class="cls_021">DPG</span></div>
+<div style="position:absolute;left:304.85px;top:502.27px" class="cls_003"><span class="cls_003">The Deterministic policy gradient (DPG) is an off-</span></div>
+<div style="position:absolute;left:56.76px;top:516.28px" class="cls_021"><span class="cls_021">PPO</span></div>
+<div style="position:absolute;left:304.85px;top:519.07px" class="cls_003"><span class="cls_003">policy actor-critic algorithm designed to be able to</span></div>
+<div style="position:absolute;left:56.76px;top:535.75px" class="cls_003"><span class="cls_003">The Proximal Policy Optimization (PPO) algorithm is</span></div>
+<div style="position:absolute;left:304.85px;top:535.75px" class="cls_003"><span class="cls_003">learn deterministic target policies from a policy of ex-</span></div>
+<div style="position:absolute;left:56.76px;top:552.43px" class="cls_003"><span class="cls_003">a policy gradient approach for reinforcement learning.</span></div>
+<div style="position:absolute;left:304.85px;top:552.43px" class="cls_003"><span class="cls_003">ploratory behavior. The policy gradient combines both</span></div>
+<div style="position:absolute;left:56.76px;top:569.11px" class="cls_003"><span class="cls_003">Unlike standard policy gradient methods, PPO allows</span></div>
+<div style="position:absolute;left:304.85px;top:569.11px" class="cls_003"><span class="cls_003">state and action in stochastic policy gradients, while</span></div>
+<div style="position:absolute;left:56.76px;top:585.82px" class="cls_003"><span class="cls_003">multiple gradient updates. PPO has the confidence</span></div>
+<div style="position:absolute;left:304.85px;top:585.70px" class="cls_003"><span class="cls_003">in deterministic policy gradients it combines with the</span></div>
+<div style="position:absolute;left:56.76px;top:602.50px" class="cls_003"><span class="cls_003">and reliability merits of trust region policy optimiza-</span></div>
+<div style="position:absolute;left:304.85px;top:602.38px" class="cls_003"><span class="cls_003">state. The DPG is first used to derive the off-policy al-</span></div>
+<div style="position:absolute;left:56.76px;top:619.18px" class="cls_003"><span class="cls_003">tion (TRPO), yet, is a lot easier to implement. Sam-</span></div>
+<div style="position:absolute;left:304.85px;top:619.06px" class="cls_003"><span class="cls_003">gorithm by using a differentiable function approxima-</span></div>
+<div style="position:absolute;left:56.76px;top:635.86px" class="cls_003"><span class="cls_003">pling the policy data and performing various epochs</span></div>
+<div style="position:absolute;left:304.85px;top:635.74px" class="cls_003"><span class="cls_003">tor. Then the action-value function is estimated. After</span></div>
+<div style="position:absolute;left:56.76px;top:652.42px" class="cls_003"><span class="cls_003">of optimization on the data sampled is altered to op-</span></div>
+<div style="position:absolute;left:304.85px;top:652.42px" class="cls_003"><span class="cls_003">that, the parameters of the policy are updated based</span></div>
+<div style="position:absolute;left:56.76px;top:669.10px" class="cls_003"><span class="cls_003">timize the policy. To evaluate PPO, the experiments</span></div>
+<div style="position:absolute;left:304.85px;top:669.10px" class="cls_003"><span class="cls_003">on the approximation of action-value gradient. Results</span></div>
+<div style="position:absolute;left:56.76px;top:685.78px" class="cls_003"><span class="cls_003">looked at the performance of different versions of the</span></div>
+<div style="position:absolute;left:304.85px;top:685.78px" class="cls_003"><span class="cls_003">of DPG show significant improvement over stochastic</span></div>
+<div style="position:absolute;left:56.76px;top:702.46px" class="cls_003"><span class="cls_003">surrogate objective, and as a result, clipped probabil-</span></div>
+<div style="position:absolute;left:304.85px;top:702.46px" class="cls_003"><span class="cls_003">policy gradients, especially in high dimensional space.</span></div>
+<div style="position:absolute;left:56.76px;top:719.14px" class="cls_003"><span class="cls_003">ity ratios perform the best. [21]</span></div>
+<div style="position:absolute;left:304.85px;top:719.02px" class="cls_003"><span class="cls_003">In some cases when the functionality to introduce noise</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:2406px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="background4.jpg" width=612 height=792></div>
+<div style="position:absolute;left:498.10px;top:30.72px" class="cls_030"><span class="cls_030">Page 4 of 6</span></div>
+<div style="position:absolute;left:56.76px;top:86.06px" class="cls_003"><span class="cls_003">in a controller is unavailable, DPG will still be appli-</span></div>
+<div style="position:absolute;left:304.85px;top:86.06px" class="cls_020"><span class="cls_020">Evolutionary Algorithms</span></div>
+<div style="position:absolute;left:56.76px;top:102.74px" class="cls_003"><span class="cls_003">cable unlike stochastic policy gradients. [25]</span></div>
+<div style="position:absolute;left:304.85px;top:111.62px" class="cls_003"><span class="cls_003">Evolutionary Strategies are algorithms inspired by</span></div>
+<div style="position:absolute;left:304.85px;top:128.18px" class="cls_003"><span class="cls_003">natural evolution in which at every generation, a popu-</span></div>
+<div style="position:absolute;left:56.76px;top:134.18px" class="cls_022"><span class="cls_022">DDPG</span></div>
+<div style="position:absolute;left:304.85px;top:144.86px" class="cls_003"><span class="cls_003">lation is mutated and its fitness is evaluated. The high-</span></div>
+<div style="position:absolute;left:56.76px;top:151.82px" class="cls_003"><span class="cls_003">DDPG (Deep Deterministic policy gradient) is an off-</span></div>
+<div style="position:absolute;left:304.85px;top:161.54px" class="cls_003"><span class="cls_003">est scoring candidates are selected and recombined to</span></div>
+<div style="position:absolute;left:56.76px;top:168.50px" class="cls_003"><span class="cls_003">policy, actor-critic, model-free algorithm that can be</span></div>
+<div style="position:absolute;left:304.85px;top:178.22px" class="cls_003"><span class="cls_003">form the next generation. This procedure is iterated</span></div>
+<div style="position:absolute;left:56.76px;top:185.18px" class="cls_003"><span class="cls_003">operated over continuous action spaces. This algorithm</span></div>
+<div style="position:absolute;left:304.85px;top:194.90px" class="cls_003"><span class="cls_003">until the objective is achieved or the maximum num-</span></div>
+<div style="position:absolute;left:56.76px;top:201.86px" class="cls_003"><span class="cls_003">is based on DPG and addresses the issue of dealing</span></div>
+<div style="position:absolute;left:304.85px;top:211.58px" class="cls_003"><span class="cls_003">ber of iterations is reached.</span></div>
+<div style="position:absolute;left:56.76px;top:218.54px" class="cls_003"><span class="cls_003">with high dimensional and continuous action spaces.</span></div>
+<div style="position:absolute;left:56.76px;top:235.22px" class="cls_003"><span class="cls_003">An important point of this algorithm is that it is sim-</span></div>
+<div style="position:absolute;left:312.77px;top:237.29px" class="cls_003"><span class="cls_003">Evolutionary Strategies are characterized for being</span></div>
+<div style="position:absolute;left:56.76px;top:251.93px" class="cls_003"><span class="cls_003">ple and requires a simple actor-critic structure and a</span></div>
+<div style="position:absolute;left:304.85px;top:253.97px" class="cls_003"><span class="cls_003">easy to parallelize, are more resilient to long delayed</span></div>
+<div style="position:absolute;left:56.76px;top:268.61px" class="cls_003"><span class="cls_003">learning algorithm with quite a few moving parts. This</span></div>
+<div style="position:absolute;left:304.85px;top:270.65px" class="cls_003"><span class="cls_003">rewards, and avoiding gradients calculations since the</span></div>
+<div style="position:absolute;left:56.76px;top:285.17px" class="cls_003"><span class="cls_003">makes it easy to execute and scale to numerous com-</span></div>
+<div style="position:absolute;left:304.85px;top:287.33px" class="cls_003"><span class="cls_003">only information needed is the scalar episode return</span></div>
+<div style="position:absolute;left:56.76px;top:301.85px" class="cls_003"><span class="cls_003">plex problems. Batch normalization is a deep learn-</span></div>
+<div style="position:absolute;left:304.85px;top:304.01px" class="cls_003"><span class="cls_003">and the random seed used to generate the perturba-</span></div>
+<div style="position:absolute;left:56.76px;top:318.53px" class="cls_003"><span class="cls_003">ing technique which was used to address the issue of</span></div>
+<div style="position:absolute;left:304.85px;top:320.69px" class="cls_003"><span class="cls_003">tions in the mutation. Since back-propagation is not</span></div>
+<div style="position:absolute;left:56.76px;top:335.21px" class="cls_003"><span class="cls_003">learning the model ineffectively when low dimensional</span></div>
+<div style="position:absolute;left:304.85px;top:337.25px" class="cls_003"><span class="cls_003">required, the computational power needed and mem-</span></div>
+<div style="position:absolute;left:56.76px;top:351.89px" class="cls_003"><span class="cls_003">feature vector observations are used for learning. [26]</span></div>
+<div style="position:absolute;left:304.85px;top:353.93px" class="cls_003"><span class="cls_003">ory is reduced by two-thirds. It is considered by the</span></div>
+<div style="position:absolute;left:56.76px;top:368.57px" class="cls_003"><span class="cls_003">The experiment’s problems were solved within 2.5 mil-</span></div>
+<div style="position:absolute;left:304.85px;top:370.61px" class="cls_003"><span class="cls_003">authors to have an advantage over policy gradient</span></div>
+<div style="position:absolute;left:56.76px;top:385.25px" class="cls_003"><span class="cls_003">lion steps, which is 20 steps less than those required</span></div>
+<div style="position:absolute;left:304.85px;top:387.29px" class="cls_003"><span class="cls_003">methods when the environment contains long episodes</span></div>
+<div style="position:absolute;left:56.76px;top:401.93px" class="cls_003"><span class="cls_003">for DQN. However,  one constraint of DDPG is that</span></div>
+<div style="position:absolute;left:304.85px;top:403.99px" class="cls_003"><span class="cls_003">with many time-steps. Policy gradient methods use</span></div>
+<div style="position:absolute;left:56.76px;top:418.51px" class="cls_003"><span class="cls_003">it requires a larger set of training data to learn the</span></div>
+<div style="position:absolute;left:304.85px;top:420.67px" class="cls_003"><span class="cls_003">discounting rewards to overcome this problem. [29]</span></div>
+<div style="position:absolute;left:56.76px;top:435.19px" class="cls_003"><span class="cls_003">algorithm. [27]</span></div>
+<div style="position:absolute;left:56.76px;top:467.35px" class="cls_020"><span class="cls_020">Combining Policy-Learning and Q-Learning</span></div>
+<div style="position:absolute;left:56.76px;top:484.60px" class="cls_021"><span class="cls_021">PGQL</span></div>
+<div style="position:absolute;left:304.85px;top:484.75px" class="cls_020"><span class="cls_020">Intrinsic Motivation</span></div>
+<div style="position:absolute;left:56.76px;top:502.27px" class="cls_003"><span class="cls_003">PGQL stands for ”Policy Gradient and Q-Learning”</span></div>
+<div style="position:absolute;left:304.85px;top:510.04px" class="cls_021"><span class="cls_021">Curiosity Driven Exploration</span></div>
+<div style="position:absolute;left:56.76px;top:519.07px" class="cls_003"><span class="cls_003">and is a data-efficient and stable algorithm that aims</span></div>
+<div style="position:absolute;left:56.76px;top:535.75px" class="cls_003"><span class="cls_003">to combine the best of both methods. This connection</span></div>
+<div style="position:absolute;left:304.85px;top:535.87px" class="cls_003"><span class="cls_003">Curiosity-driven exploration is a method created to</span></div>
+<div style="position:absolute;left:56.76px;top:552.43px" class="cls_003"><span class="cls_003">allows estimating Q-values from the action preferences</span></div>
+<div style="position:absolute;left:304.85px;top:552.55px" class="cls_003"><span class="cls_003">solve the sparse reward problem in reinforcement</span></div>
+<div style="position:absolute;left:56.76px;top:569.11px" class="cls_003"><span class="cls_003">of the policy to which the Q-Learning updates were ap-</span></div>
+<div style="position:absolute;left:304.85px;top:569.23px" class="cls_003"><span class="cls_003">learning. Curiosity serves as an intrinsic reward that</span></div>
+<div style="position:absolute;left:56.76px;top:585.70px" class="cls_003"><span class="cls_003">plied. The Bellman residual is said to be small when</span></div>
+<div style="position:absolute;left:304.85px;top:585.94px" class="cls_003"><span class="cls_003">lets the agent be motivated to explore and learn new</span></div>
+<div style="position:absolute;left:56.76px;top:602.38px" class="cls_003"><span class="cls_003">the penalty is small at a fixed point of a regularized</span></div>
+<div style="position:absolute;left:304.85px;top:602.62px" class="cls_003"><span class="cls_003">patterns. Deepak Pathak et al. states that ”We for-</span></div>
+<div style="position:absolute;left:56.76px;top:619.06px" class="cls_003"><span class="cls_003">policy gradient algorithm. PGQL introduces a hybrid</span></div>
+<div style="position:absolute;left:304.85px;top:619.30px" class="cls_003"><span class="cls_003">mulate curiosity as the error in an agent’s ability to</span></div>
+<div style="position:absolute;left:56.76px;top:635.74px" class="cls_003"><span class="cls_003">between policy gradients and Q-Learning by adding</span></div>
+<div style="position:absolute;left:304.85px;top:635.98px" class="cls_003"><span class="cls_003">predict the consequence of its own actions in a vi-</span></div>
+<div style="position:absolute;left:56.76px;top:652.42px" class="cls_003"><span class="cls_003">an auxiliary update where it explicitly attempts to re-</span></div>
+<div style="position:absolute;left:304.85px;top:652.54px" class="cls_003"><span class="cls_003">sual feature space learned by a self-supervised inverse</span></div>
+<div style="position:absolute;left:56.76px;top:669.10px" class="cls_003"><span class="cls_003">duce the Bellman residual as estimated by the pol-</span></div>
+<div style="position:absolute;left:304.85px;top:669.22px" class="cls_003"><span class="cls_003">dynamics model”. [30, 31] This method significantly</span></div>
+<div style="position:absolute;left:56.76px;top:685.78px" class="cls_003"><span class="cls_003">icy. The authors observed data efficiency and stability</span></div>
+<div style="position:absolute;left:304.85px;top:685.90px" class="cls_003"><span class="cls_003">outperformed the state-of-the-art baseline algorithms</span></div>
+<div style="position:absolute;left:56.76px;top:702.46px" class="cls_003"><span class="cls_003">compared to both A3C and Q-Learning during testing</span></div>
+<div style="position:absolute;left:304.85px;top:702.58px" class="cls_003"><span class="cls_003">such as A3C and PPO, in the absence or sparse reward</span></div>
+<div style="position:absolute;left:56.76px;top:719.02px" class="cls_003"><span class="cls_003">in the OpenAI Gym environments. [28]</span></div>
+<div style="position:absolute;left:304.85px;top:719.26px" class="cls_003"><span class="cls_003">environments. [32, 33]</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:3208px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="background5.jpg" width=612 height=792></div>
+<div style="position:absolute;left:498.10px;top:30.72px" class="cls_030"><span class="cls_030">Page 5 of 6</span></div>
+<div style="position:absolute;left:56.76px;top:86.06px" class="cls_020"><span class="cls_020">Model-Based RL — Model is Learned</span></div>
+<div style="position:absolute;left:304.85px;top:86.06px" class="cls_003"><span class="cls_003">master not only Go but Chess and Shogi, all of which</span></div>
+<div style="position:absolute;left:56.76px;top:103.19px" class="cls_021"><span class="cls_021">I2A</span></div>
+<div style="position:absolute;left:304.85px;top:102.74px" class="cls_003"><span class="cls_003">are complex in nature & require strategic reasoning.</span></div>
+<div style="position:absolute;left:56.76px;top:120.74px" class="cls_003"><span class="cls_003">The  team  DeepMind  developed  the  Imagination-</span></div>
+<div style="position:absolute;left:304.85px;top:119.42px" class="cls_003"><span class="cls_003">AlphaZero defeated all the state-of-the-art algorithms</span></div>
+<div style="position:absolute;left:56.76px;top:137.42px" class="cls_003"><span class="cls_003">Augmented Agents (I2As) and the authors claim that</span></div>
+<div style="position:absolute;left:304.85px;top:136.10px" class="cls_003"><span class="cls_003">meant for each specific game by learning to play from</span></div>
+<div style="position:absolute;left:56.76px;top:154.10px" class="cls_003"><span class="cls_003">agents that have a model of the world usually per-</span></div>
+<div style="position:absolute;left:304.85px;top:152.78px" class="cls_003"><span class="cls_003">scratch. It taught itself how to play by using Convo-</span></div>
+<div style="position:absolute;left:56.76px;top:170.78px" class="cls_003"><span class="cls_003">form better than agents who do not. The model is not</span></div>
+<div style="position:absolute;left:304.85px;top:169.34px" class="cls_003"><span class="cls_003">lutional Networks, Monte Carlo Tree search for next</span></div>
+<div style="position:absolute;left:56.76px;top:187.46px" class="cls_003"><span class="cls_003">always available so the model is built, even though</span></div>
+<div style="position:absolute;left:304.85px;top:186.02px" class="cls_003"><span class="cls_003">state simulations, and was tuned using Bayesian opti-</span></div>
+<div style="position:absolute;left:56.76px;top:204.14px" class="cls_003"><span class="cls_003">it is imperfect because is learned, but ultimately, it</span></div>
+<div style="position:absolute;left:304.85px;top:202.70px" class="cls_003"><span class="cls_003">mization to find the best hyper-parameters. [40, 41]</span></div>
+<div style="position:absolute;left:56.76px;top:220.82px" class="cls_003"><span class="cls_003">is used to plan the next action. The final policy can</span></div>
+<div style="position:absolute;left:56.76px;top:237.41px" class="cls_003"><span class="cls_003">be achieved by two different paths in the architec-</span></div>
+<div style="position:absolute;left:304.85px;top:235.37px" class="cls_006"><span class="cls_006">Conclusion</span></div>
+<div style="position:absolute;left:56.76px;top:254.09px" class="cls_003"><span class="cls_003">ture of the algorithm. The first path is through a</span></div>
+<div style="position:absolute;left:304.85px;top:255.05px" class="cls_003"><span class="cls_003">The purpose of this review was to view the trends in re-</span></div>
+<div style="position:absolute;left:56.76px;top:270.77px" class="cls_003"><span class="cls_003">model-free approach and the second a model-based</span></div>
+<div style="position:absolute;left:304.85px;top:272.00px" class="cls_042"><span class="cls_042">inforcement learning techniques targeted to solve game</span></div>
+<div style="position:absolute;left:56.76px;top:287.45px" class="cls_003"><span class="cls_003">approach which tries to predict or imagine the next</span></div>
+<div style="position:absolute;left:304.85px;top:288.41px" class="cls_003"><span class="cls_003">environments. Within the past few years, we have seen</span></div>
+<div style="position:absolute;left:56.76px;top:304.13px" class="cls_003"><span class="cls_003">state. Both results are taken by the final component</span></div>
+<div style="position:absolute;left:304.85px;top:305.09px" class="cls_003"><span class="cls_003">how many of these techniques have evolved, improved</span></div>
+<div style="position:absolute;left:56.76px;top:320.81px" class="cls_003"><span class="cls_003">of the I2A which is the policy module and outputs the</span></div>
+<div style="position:absolute;left:304.85px;top:322.04px" class="cls_042"><span class="cls_042">over its predecessors, and achieved higher performance</span></div>
+<div style="position:absolute;left:56.76px;top:337.49px" class="cls_042"><span class="cls_042">imagination-augmen</span><span class="cls_043">ted</span><span class="cls_003"> </span><span class="cls_042">policy</span><span class="cls_003">. </span><span class="cls_043">S</span><span class="cls_044">é</span><span class="cls_043">b</span><span class="cls_042">astien</span><span class="cls_003"> </span><span class="cls_043">Racani</span><span class="cls_045">ère</span><span class="cls_003"> et</span></div>
+<div style="position:absolute;left:304.85px;top:338.45px" class="cls_003"><span class="cls_003">in its specific task to solve. These techniques can be</span></div>
+<div style="position:absolute;left:56.76px;top:354.17px" class="cls_003"><span class="cls_003">al. stated that ”I2As can thus be thought of as aug-</span></div>
+<div style="position:absolute;left:304.85px;top:355.01px" class="cls_003"><span class="cls_003">mainly categorized into two categories, model based</span></div>
+<div style="position:absolute;left:56.76px;top:370.73px" class="cls_003"><span class="cls_003">menting model-free agents by providing additional in-</span></div>
+<div style="position:absolute;left:304.85px;top:371.69px" class="cls_003"><span class="cls_003">and model free. Another categorization could be policy</span></div>
+<div style="position:absolute;left:56.76px;top:387.41px" class="cls_003"><span class="cls_003">formation from model-based planning, and as having</span></div>
+<div style="position:absolute;left:304.85px;top:388.37px" class="cls_003"><span class="cls_003">based, value based, and policy-value based. Among the</span></div>
+<div style="position:absolute;left:56.76px;top:404.11px" class="cls_003"><span class="cls_003">strictly more expensive power than the underlying</span></div>
+<div style="position:absolute;left:304.85px;top:405.07px" class="cls_003"><span class="cls_003">most popular algorithms are PPO, A3C, and TRPO</span></div>
+<div style="position:absolute;left:56.76px;top:420.79px" class="cls_003"><span class="cls_003">model-free agent.” [34]</span></div>
+<div style="position:absolute;left:304.85px;top:421.75px" class="cls_003"><span class="cls_003">considered as the state-of-the-art and Deep-Q Learn-</span></div>
+<div style="position:absolute;left:304.85px;top:438.43px" class="cls_003"><span class="cls_003">ing as a route for beginners starting to learn the con-</span></div>
+<div style="position:absolute;left:56.76px;top:452.59px" class="cls_020"><span class="cls_020">Model-Based RL — Model is Given</span></div>
+<div style="position:absolute;left:304.85px;top:455.11px" class="cls_003"><span class="cls_003">cepts of reinforcement learning. But as the No Free</span></div>
+<div style="position:absolute;left:56.76px;top:469.72px" class="cls_021"><span class="cls_021">AlphaGo</span></div>
+<div style="position:absolute;left:304.85px;top:471.67px" class="cls_003"><span class="cls_003">Lunch theorem states, there will be no algorithm that</span></div>
+<div style="position:absolute;left:56.76px;top:487.27px" class="cls_003"><span class="cls_003">AlphaGo is the first computer program to defeat a pro-</span></div>
+<div style="position:absolute;left:304.85px;top:488.35px" class="cls_003"><span class="cls_003">will master all of the rest in the different conditions or</span></div>
+<div style="position:absolute;left:56.76px;top:503.95px" class="cls_003"><span class="cls_003">fessional human Go player and the first program to de-</span></div>
+<div style="position:absolute;left:304.85px;top:505.03px" class="cls_003"><span class="cls_003">types of problems to solve. [42] Each technique has its</span></div>
+<div style="position:absolute;left:56.76px;top:520.63px" class="cls_003"><span class="cls_003">feat a Go world champion. AlphaGo competed against</span></div>
+<div style="position:absolute;left:304.85px;top:521.71px" class="cls_003"><span class="cls_003">own domain, their own downsides, and advantages.</span></div>
+<div style="position:absolute;left:56.76px;top:537.31px" class="cls_003"><span class="cls_003">the European Champion, Mr. Fan Hui, on October</span></div>
+<div style="position:absolute;left:56.76px;top:553.99px" class="cls_003"><span class="cls_003">2015, and Mr. Lee Sedol, who is the winner of 18 world</span></div>
+<div style="position:absolute;left:304.85px;top:559.51px" class="cls_051"><span class="cls_051">References</span></div>
+<div style="position:absolute;left:56.76px;top:570.67px" class="cls_003"><span class="cls_003">titles March 2016, and won both matches. On January</span></div>
+<div style="position:absolute;left:308.57px;top:572.11px" class="cls_046"><span class="cls_046">1. </span><span class="cls_011"> Richard B. A Markovian Decision Process. Indiana Univ Math J.</span></div>
+<div style="position:absolute;left:319.25px;top:584.74px" class="cls_011"><span class="cls_011">1957;6:679-684.</span></div>
+<div style="position:absolute;left:56.76px;top:587.38px" class="cls_003"><span class="cls_003">2017, AlphaGo’s upgraded version was disguised as the</span></div>
+<div style="position:absolute;left:308.57px;top:597.22px" class="cls_046"><span class="cls_046">2. </span><span class="cls_011"> Szepesvari C. Algorithms for Reinforcement Learning. In: Publishers</span></div>
+<div style="position:absolute;left:56.76px;top:604.06px" class="cls_003"><span class="cls_003">online player ”Master”, achieving 60 consecutive wins</span></div>
+<div style="position:absolute;left:319.25px;top:609.58px" class="cls_011"><span class="cls_011">MC, editor. Algorithms for Reinforcement Learning; 2009. p. 1-98.</span></div>
+<div style="position:absolute;left:56.76px;top:620.62px" class="cls_003"><span class="cls_003">against professional players. On December 2017, Deep-</span></div>
+<div style="position:absolute;left:319.25px;top:621.94px" class="cls_011"><span class="cls_011">Draft of the lecture published in the Synthesis Lectures on Artificial</span></div>
+<div style="position:absolute;left:319.25px;top:633.84px" class="cls_011"><span class="cls_011">Intelligence and Machine Learning. Available from: </span><A HREF="https:/">https:</A> </span></div>
+<div style="position:absolute;left:56.76px;top:637.30px" class="cls_003"><span class="cls_003">Mind introduced AlphaZero, the improved version of</span></div>
+<div style="position:absolute;left:319.25px;top:646.50px" class="cls_047"><span class="cls_047">//sites.ualberta.ca/</span><span class="cls_048">∼</span><span class="cls_047">szepesva/papers/RLAlgsInMDPs.pdf</span><span class="cls_049">.</span></div>
+<div style="position:absolute;left:56.76px;top:653.98px" class="cls_003"><span class="cls_003">its predecessor. [35-39]</span></div>
+<div style="position:absolute;left:308.57px;top:658.51px" class="cls_046"><span class="cls_046">3. </span><span class="cls_011"> Wang H, Zariphopoulou </span><span class="cls_054">T, </span><span class="cls_011">Zhou XY. Exploration </span><span class="cls_054">versus </span><span class="cls_011">exploitation</span></div>
+<div style="position:absolute;left:319.25px;top:670.87px" class="cls_011"><span class="cls_011">in reinforcement learning: </span><span class="cls_054">a </span><span class="cls_011">stochastic control approach; 2019.</span></div>
+<div style="position:absolute;left:319.25px;top:683.16px" class="cls_011"><span class="cls_011">Available from: </span><span class="cls_055">https://arxiv.org/pdf/1812.01552.pdf</span><span class="cls_054">.</span></div>
+<div style="position:absolute;left:56.76px;top:685.27px" class="cls_021"><span class="cls_021">AlphaZero</span></div>
+<div style="position:absolute;left:308.57px;top:695.74px" class="cls_046"><span class="cls_046">4. </span><span class="cls_011"> Sutton RS, Barto AG. Reinforcement Learning: An Introduction. In:</span></div>
+<div style="position:absolute;left:56.76px;top:702.82px" class="cls_003"><span class="cls_003">AlphaZero is an improved version of the previous Al-</span></div>
+<div style="position:absolute;left:319.25px;top:708.10px" class="cls_011"><span class="cls_011">Reinforcement Learning: An Introduction. Cambridge, Massachusetts</span></div>
+<div style="position:absolute;left:56.76px;top:719.50px" class="cls_003"><span class="cls_003">phaGo. This algorithm is characterized for its ability to</span></div>
+<div style="position:absolute;left:319.25px;top:720.70px" class="cls_011"><span class="cls_011">London, England: The MIT Press; 2017. p. 19.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:4010px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="background6.jpg" width=612 height=792></div>
+<div style="position:absolute;left:498.10px;top:30.72px" class="cls_030"><span class="cls_030">Page 6 of 6</span></div>
+<div style="position:absolute;left:60.48px;top:89.08px" class="cls_046"><span class="cls_046">5.</span></div>
+<div style="position:absolute;left:71.18px;top:88.81px" class="cls_056"><span class="cls_056">Cheung D. A brief introduction to reinforcement learning; 2018.</span></div>
+<div style="position:absolute;left:304.85px;top:89.32px" class="cls_046"><span class="cls_046">23.</span></div>
+<div style="position:absolute;left:319.25px;top:89.18px" class="cls_011"><span class="cls_011">Wu Y, Mansimov E, Liao S, Grosse R, Ba J. Scalable trust-region</span></div>
+<div style="position:absolute;left:71.18px;top:101.08px" class="cls_054"><span class="cls_054">Available   from: </span><span class="cls_055">  <A HREF="https://medium.freecodecamp.org/a-brief-/">https://medium.freecodecamp.org/a-brief-</A> </span></div>
+<div style="position:absolute;left:319.25px;top:101.66px" class="cls_011"><span class="cls_011">method for deep reinforcement learning using Kronecker-factored</span></div>
+<div style="position:absolute;left:71.18px;top:113.68px" class="cls_055"><span class="cls_055">introduction-to-reinforcement-learning-7799af5840db</span><span class="cls_054">.</span></div>
+<div style="position:absolute;left:319.25px;top:114.26px" class="cls_011"><span class="cls_011">approximation; 2017.</span></div>
+<div style="position:absolute;left:60.48px;top:126.88px" class="cls_046"><span class="cls_046">6.</span></div>
+<div style="position:absolute;left:71.18px;top:126.35px" class="cls_056"><span class="cls_056">Watkins </span><span class="cls_054">C. </span><span class="cls_056">Learning from Delayed Rewards; 1989. Q-Learning.</span></div>
+<div style="position:absolute;left:304.85px;top:126.88px" class="cls_046"><span class="cls_046">24.</span></div>
+<div style="position:absolute;left:319.25px;top:126.74px" class="cls_011"><span class="cls_011">Martens J, Grosse R. Optimizing Neural Networks with</span></div>
+<div style="position:absolute;left:71.18px;top:138.40px" class="cls_056"><span class="cls_056">Available from: </span><A HREF="http://www.academia.edu/download/50360235/">http://www.academia.edu/download/50360235/</A> </span></div>
+<div style="position:absolute;left:319.25px;top:139.34px" class="cls_011"><span class="cls_011">Kronecker-factored Approximate Curvature;.</span></div>
+<div style="position:absolute;left:71.18px;top:151.15px" class="cls_057"><span class="cls_057">Learning from delayed rewards 20161116-28282-v2pwvq.pdf</span><span class="cls_058">.</span></div>
+<div style="position:absolute;left:304.85px;top:151.96px" class="cls_046"><span class="cls_046">25.</span></div>
+<div style="position:absolute;left:319.25px;top:151.82px" class="cls_011"><span class="cls_011">Silver D, Lever G, Heess N, Degris T, Wierstra D, Riedmiller M.</span></div>
+<div style="position:absolute;left:60.48px;top:163.12px" class="cls_046"><span class="cls_046">7.</span></div>
+<div style="position:absolute;left:71.18px;top:162.08px" class="cls_056"><span class="cls_056">OpenAI. Key Papers in Deep RL; 2018. Available from: </span><A HREF="https://">https://</A> </span></div>
+<div style="position:absolute;left:319.25px;top:164.42px" class="cls_011"><span class="cls_011">Deterministic Policy Gradient Algorithms; 2014.</span></div>
+<div style="position:absolute;left:71.18px;top:173.72px" class="cls_059"><span class="cls_059">spinningup.openai.com/en/latest/spinningup/keypapers.html</span><span class="cls_060">.</span></div>
+<div style="position:absolute;left:304.85px;top:177.04px" class="cls_046"><span class="cls_046">26.</span></div>
+<div style="position:absolute;left:319.25px;top:176.90px" class="cls_011"><span class="cls_011">Ioffe S, Szegedy C. Batch normalization: Accelerating deep network</span></div>
+<div style="position:absolute;left:60.48px;top:186.76px" class="cls_046"><span class="cls_046">8.</span></div>
+<div style="position:absolute;left:71.18px;top:186.49px" class="cls_056"><span class="cls_056">BELLMAN R. THE THEORY OF DYNAMIC PROGRAMMING; 1954.</span></div>
+<div style="position:absolute;left:319.25px;top:189.50px" class="cls_011"><span class="cls_011">training by reducing internal covariate shift.;.</span></div>
+<div style="position:absolute;left:71.18px;top:198.16px" class="cls_056"><span class="cls_056">Available from: </span><A HREF="https:/">https:</A> </span></div>
+<div style="position:absolute;left:304.85px;top:202.24px" class="cls_046"><span class="cls_046">27.</span></div>
+<div style="position:absolute;left:319.25px;top:202.10px" class="cls_011"><span class="cls_011">Lillicrap TP, Hunt JJ, Pritzel A, Heess N, Erez T, Tassa Y, et al..</span></div>
+<div style="position:absolute;left:71.18px;top:210.70px" class="cls_047"><span class="cls_047">//projecteuclid.org/download/pdf 1/euclid.bams/1183519147</span><span class="cls_049">.</span></div>
+<div style="position:absolute;left:319.25px;top:214.58px" class="cls_011"><span class="cls_011">CONTINUOUS CONTROL WITH DEEP REINFORCEMENT</span></div>
+<div style="position:absolute;left:60.48px;top:223.36px" class="cls_046"><span class="cls_046">9.</span></div>
+<div style="position:absolute;left:71.18px;top:223.22px" class="cls_011"><span class="cls_011">Greaves J. Understanding RL: The Bellman Equations; 2019.</span></div>
+<div style="position:absolute;left:319.25px;top:227.18px" class="cls_011"><span class="cls_011">LEARNING; 2016.</span></div>
+<div style="position:absolute;left:71.18px;top:235.57px" class="cls_056"><span class="cls_056">Step-by-step derivation, explanation, and demystification of the most</span></div>
+<div style="position:absolute;left:304.85px;top:239.83px" class="cls_046"><span class="cls_046">28.</span></div>
+<div style="position:absolute;left:319.25px;top:239.69px" class="cls_011"><span class="cls_011">O’Donoghue B, Munos R, Kavukcuoglu K, Mnih V. COMBINING</span></div>
+<div style="position:absolute;left:71.18px;top:248.07px" class="cls_061"><span class="cls_061">important equations in reinforcement learning. Available from:</span></div>
+<div style="position:absolute;left:319.25px;top:252.29px" class="cls_011"><span class="cls_011">POLICY GRADIENT AND Q-LEARNING; 2017.</span></div>
+<div style="position:absolute;left:71.18px;top:260.47px" class="cls_055"><span class="cls_055"> </span><A HREF="https://joshgreaves.com/reinforcement-learning/">https://joshgreaves.com/reinforcement-learning/</A> understanding-rl-the-</div>
+<div style="position:absolute;left:304.85px;top:264.91px" class="cls_046"><span class="cls_046">29.</span></div>
+<div style="position:absolute;left:319.25px;top:264.77px" class="cls_011"><span class="cls_011">Salimans T, Ho J, Chen X, Sidor S, Sutskever I. Evolution Strategies</span></div>
+<div style="position:absolute;left:71.18px;top:273.07px" class="cls_055"><span class="cls_055">bellman-equations/</span><span class="cls_054">.</span></div>
+<div style="position:absolute;left:319.25px;top:277.37px" class="cls_011"><span class="cls_011">as a Scalable Alternative to Reinforcement Learning; 2017.</span></div>
+<div style="position:absolute;left:56.76px;top:286.15px" class="cls_046"><span class="cls_046">10.</span></div>
+<div style="position:absolute;left:71.18px;top:284.23px" class="cls_011"><span class="cls_011">Ma</span><span class="cls_061">rtin</span><span class="cls_011"> </span><span class="cls_061">M,</span><span class="cls_011"> Universitat </span><span class="cls_046">p</span><span class="cls_061">olit</span><span class="cls_063">ècnica</span><span class="cls_011"> </span><span class="cls_064">de</span><span class="cls_011"> </span><span class="cls_046">Cataluny</span><span class="cls_063">a.</span><span class="cls_011"> </span><span class="cls_046">Reinforcement</span></div>
+<div style="position:absolute;left:304.85px;top:289.99px" class="cls_046"><span class="cls_046">30.</span></div>
+<div style="position:absolute;left:319.25px;top:289.85px" class="cls_011"><span class="cls_011">Pathak D, Agrawal P, Efros AA, Darrell T. Curiosity-driven</span></div>
+<div style="position:absolute;left:71.18px;top:297.74px" class="cls_011"><span class="cls_011">Learning Searching for optimal policies </span><span class="cls_054">I: </span><span class="cls_011">Bellman equations </span><span class="cls_054">and</span></div>
+<div style="position:absolute;left:319.25px;top:302.45px" class="cls_011"><span class="cls_011">Exploration by Self-supervised Prediction. In: ICML; 2017. .</span></div>
+<div style="position:absolute;left:71.18px;top:310.37px" class="cls_011"><span class="cls_011">optimal policies; 2011. Available from</span><A HREF="http://www.cs.upc.edu/">:</A> </div>
+<div style="position:absolute;left:304.85px;top:315.07px" class="cls_046"><span class="cls_046">31.</span></div>
+<div style="position:absolute;left:319.25px;top:314.93px" class="cls_011"><span class="cls_011">Blajer JAGW, Mariusz K. The Inverse Simulation Study of Aircraft</span></div>
+<div style="position:absolute;left:71.18px;top:323.47px" class="cls_055"><span class="cls_055">http://www.cs.upc.edu/</span><span class="cls_065">∼</span><span class="cls_055">mmartin/Ag4-4x.pdf</span><span class="cls_054">.</span></div>
+<div style="position:absolute;left:319.25px;top:327.53px" class="cls_011"><span class="cls_011">Flight Path Reconstruction. Transport. 2002;XVII(3):103-107.</span></div>
+<div style="position:absolute;left:56.76px;top:336.55px" class="cls_046"><span class="cls_046">11.</span></div>
+<div style="position:absolute;left:71.18px;top:336.41px" class="cls_011"><span class="cls_011">Mnih V, Kavukcuoglu K, Silver D, Graves A, Antonoglou I, Wierstra</span></div>
+<div style="position:absolute;left:304.85px;top:340.15px" class="cls_046"><span class="cls_046">32.</span></div>
+<div style="position:absolute;left:319.25px;top:340.01px" class="cls_011"><span class="cls_011">Hill A, Raffin A, Ernestus M, Traore R, Dhariwal P, Hesse C, et al..</span></div>
+<div style="position:absolute;left:71.18px;top:348.39px" class="cls_061"><span class="cls_061">D, et al.. Playing Atari with Deep Reinforcement Learning; 2013.</span></div>
+<div style="position:absolute;left:319.25px;top:352.61px" class="cls_011"><span class="cls_011">Stable Baselines; 2018.</span></div>
+<div style="position:absolute;left:71.18px;top:360.67px" class="cls_061"><span class="cls_061">Available from: </span><A HREF="https://deepmind.com/research/publications/">https://deepmind.com/research/publications/</A> </span></div>
+<div style="position:absolute;left:304.85px;top:365.23px" class="cls_046"><span class="cls_046">33.</span></div>
+<div style="position:absolute;left:319.25px;top:365.09px" class="cls_011"><span class="cls_011">Dhariwal P, Hesse C, Klimov O, Nichol A, Plappert M, Radford A,</span></div>
+<div style="position:absolute;left:71.18px;top:373.21px" class="cls_052"><span class="cls_052">playing-atari-deep-reinforcement-learning/</span><span class="cls_066">.</span></div>
+<div style="position:absolute;left:319.25px;top:377.69px" class="cls_011"><span class="cls_011">et al.. OpenAI Baselines; 2017.</span></div>
+<div style="position:absolute;left:56.76px;top:386.47px" class="cls_046"><span class="cls_046">12.</span></div>
+<div style="position:absolute;left:71.18px;top:386.33px" class="cls_011"><span class="cls_011">Mnih V, Kavukcuoglu K, Silver D. Human-level control through deep</span></div>
+<div style="position:absolute;left:304.85px;top:390.31px" class="cls_046"><span class="cls_046">34.</span></div>
+<div style="position:absolute;left:319.25px;top:388.39px" class="cls_063"><span class="cls_063">Racani</span><span class="cls_064">ère</span><span class="cls_011"> </span><span class="cls_063">S,</span><span class="cls_011"> </span><span class="cls_056">W</span><span class="cls_064">eb</span><span class="cls_063">er</span><span class="cls_011"> </span><span class="cls_054">T,</span><span class="cls_011"> </span><span class="cls_063">Reicher</span><span class="cls_011"> DP</span><span class="cls_056">,</span><span class="cls_011"> et al.. </span><span class="cls_046">Imagination-Augmented</span></div>
+<div style="position:absolute;left:71.18px;top:399.05px" class="cls_011"><span class="cls_011">reinforcement learning. Nature. 2015;5018:1-13.</span></div>
+<div style="position:absolute;left:319.25px;top:402.53px" class="cls_011"><span class="cls_011">Agents for Deep Reinforcement Learning; 2018. Available from:</span></div>
+<div style="position:absolute;left:56.76px;top:411.69px" class="cls_046"><span class="cls_046">13.</span></div>
+<div style="position:absolute;left:71.18px;top:411.55px" class="cls_011"><span class="cls_011">Wang Z, Schaul T, Hessel M, van Hasselt H, Lanctot M, de Freitas N.</span></div>
+<div style="position:absolute;left:319.25px;top:414.45px" class="cls_055"><span class="cls_055">https://arxiv.org/pdf/1707.06203.pdf</span><span class="cls_054">.</span></div>
+<div style="position:absolute;left:71.18px;top:424.15px" class="cls_011"><span class="cls_011">Dueling Network Architectures for Deep Reinforcement Learning; 2016.</span></div>
+<div style="position:absolute;left:304.85px;top:427.05px" class="cls_046"><span class="cls_046">35.</span></div>
+<div style="position:absolute;left:319.25px;top:426.91px" class="cls_011"><span class="cls_011">Silver D, Schrittwieser J, Simonyan K, Antonoglou I, Huang A, Guez</span></div>
+<div style="position:absolute;left:56.76px;top:436.65px" class="cls_046"><span class="cls_046">14.</span></div>
+<div style="position:absolute;left:71.18px;top:436.51px" class="cls_011"><span class="cls_011">Dueling DQN to play Cartpole;. Available from:</span></div>
+<div style="position:absolute;left:319.25px;top:439.15px" class="cls_011"><span class="cls_011">A, et al. Mastering the game of Go without human knowledge.</span></div>
+<div style="position:absolute;left:71.18px;top:447.54px" class="cls_067"><span class="cls_067"> </span><A HREF="https://subscription.packtpub.com/book/">https://subscription.packtpub.com/book/</A> </div>
+<div style="position:absolute;left:319.25px;top:451.87px" class="cls_011"><span class="cls_011">Nature. 2017 October;550:354.</span></div>
+<div style="position:absolute;left:71.18px;top:459.73px" class="cls_059"><span class="cls_059">big data and business intelligence/9781788621755/10/</span></div>
+<div style="position:absolute;left:304.85px;top:464.37px" class="cls_046"><span class="cls_046">36.</span></div>
+<div style="position:absolute;left:319.25px;top:464.23px" class="cls_011"><span class="cls_011">DeepMind. AlphaGo vs AlphaGo: self play games;. Available from:</span></div>
+<div style="position:absolute;left:71.18px;top:471.37px" class="cls_059"><span class="cls_059">ch10lvl1sec57/dueling-dqn-to-play-cartpole</span><span class="cls_060">.</span></div>
+<div style="position:absolute;left:319.25px;top:475.57px" class="cls_059"><span class="cls_059"> </span><A HREF="https://deepmind.com/research/alphago/alphago-vs-alphago-/">https://deepmind.com/research/alphago/alphago-vs-alphago-</A> </div>
+<div style="position:absolute;left:56.76px;top:484.41px" class="cls_046"><span class="cls_046">15.</span></div>
+<div style="position:absolute;left:71.18px;top:484.27px" class="cls_011"><span class="cls_011">van Hasselt H, Guez A, Silver D. Deep Reinforcement Learning with</span></div>
+<div style="position:absolute;left:319.25px;top:487.21px" class="cls_059"><span class="cls_059">self-play-games/</span><span class="cls_060">.</span></div>
+<div style="position:absolute;left:71.18px;top:496.99px" class="cls_011"><span class="cls_011">Double Q-learning; 2015.</span></div>
+<div style="position:absolute;left:304.85px;top:500.25px" class="cls_046"><span class="cls_046">37.</span></div>
+<div style="position:absolute;left:319.25px;top:500.11px" class="cls_011"><span class="cls_011">DeepMind. Innovations of AlphaGo;. Available from:</span></div>
+<div style="position:absolute;left:56.76px;top:509.61px" class="cls_046"><span class="cls_046">16.</span></div>
+<div style="position:absolute;left:71.18px;top:509.47px" class="cls_011"><span class="cls_011">Schaul T, Quan J, Antonoglou I, Silver D. PRIORITIZED</span></div>
+<div style="position:absolute;left:319.25px;top:511.23px" class="cls_047"><span class="cls_047">https://deepmind.com/blog/innovations-alphago/</span><span class="cls_049">.</span></div>
+<div style="position:absolute;left:71.18px;top:522.07px" class="cls_011"><span class="cls_011">EXPERIENCE REPLAY; 2016.</span></div>
+<div style="position:absolute;left:304.85px;top:524.73px" class="cls_046"><span class="cls_046">38.</span></div>
+<div style="position:absolute;left:319.25px;top:524.20px" class="cls_011"><span class="cls_011">DeepMind. Exploring the mysteries of </span><span class="cls_054">Go with </span><span class="cls_011">AlphaGo </span><span class="cls_054">and </span><span class="cls_011">China’s</span></div>
+<div style="position:absolute;left:56.76px;top:534.69px" class="cls_046"><span class="cls_046">17.</span></div>
+<div style="position:absolute;left:71.18px;top:534.55px" class="cls_011"><span class="cls_011">Mnih V, Badia AP, Mirza M, Graves A, Harley T, Lillicrap TP, et al..</span></div>
+<div style="position:absolute;left:319.25px;top:536.49px" class="cls_011"><span class="cls_011">top players;. Available from: </span><A HREF="https://deepmind.com/blog/exploring-/">https://deepmind.com/blog/exploring-</A> </span></div>
+<div style="position:absolute;left:71.18px;top:547.15px" class="cls_011"><span class="cls_011">Asynchronous Methods for Deep Reinforcement Learning; 2016.</span></div>
+<div style="position:absolute;left:319.25px;top:550.41px" class="cls_055"><span class="cls_055">mysteries-alphago/</span><span class="cls_054">.</span></div>
+<div style="position:absolute;left:56.76px;top:559.65px" class="cls_046"><span class="cls_046">18.</span></div>
+<div style="position:absolute;left:71.18px;top:559.51px" class="cls_011"><span class="cls_011">Asynchronous Advantage Actor Critic (A3C);. Available from:</span></div>
+<div style="position:absolute;left:304.85px;top:563.13px" class="cls_046"><span class="cls_046">39.</span></div>
+<div style="position:absolute;left:319.25px;top:562.99px" class="cls_011"><span class="cls_011">AlphaGo;. Available from:</span></div>
+<div style="position:absolute;left:71.18px;top:570.64px" class="cls_047"><span class="cls_047"> </span><A HREF="https://github.com/achronus/machine-learning-101/wiki/">https://github.com/Achronus/Machine-Learning-101/wiki/</A> </div>
+<div style="position:absolute;left:319.25px;top:573.90px" class="cls_047"><span class="cls_047">https://deepmind.com/research/alphago/</span><span class="cls_049">.</span></div>
+<div style="position:absolute;left:71.18px;top:582.52px" class="cls_059"><span class="cls_059">Asynchronous-Advantage-Actor-Critic-(A3C)#actor-critic</span><span class="cls_060">.</span></div>
+<div style="position:absolute;left:304.85px;top:587.40px" class="cls_046"><span class="cls_046">40.</span></div>
+<div style="position:absolute;left:319.25px;top:587.26px" class="cls_011"><span class="cls_011">David S, Thomas H, Julian S, Ioannis A, Matthew L, Arthur G, et al.</span></div>
+<div style="position:absolute;left:56.76px;top:595.56px" class="cls_046"><span class="cls_046">19.</span></div>
+<div style="position:absolute;left:71.18px;top:595.42px" class="cls_011"><span class="cls_011">RL— Trust Region Policy Optimization (TRPO) Explained;. Available</span></div>
+<div style="position:absolute;left:319.25px;top:599.86px" class="cls_011"><span class="cls_011">Mastering Chess and Shogi by Self-Play with a General Reinforcement</span></div>
+<div style="position:absolute;left:71.18px;top:606.99px" class="cls_058"><span class="cls_058">from: </span><A HREF="https://medium.com/%40jonathan">https://medium.com/@jonathan</A> hui/rl-trust-region-</span></div>
+<div style="position:absolute;left:319.25px;top:612.46px" class="cls_011"><span class="cls_011">Learning Algorithm. CoRR. 2017;abs/1712.01815.</span></div>
+<div style="position:absolute;left:71.18px;top:618.51px" class="cls_057"><span class="cls_057">policy-optimization-trpo-explained-a6ee04eeeee9</span><span class="cls_058">.</span></div>
+<div style="position:absolute;left:304.85px;top:625.08px" class="cls_046"><span class="cls_046">41.</span></div>
+<div style="position:absolute;left:319.25px;top:624.55px" class="cls_011"><span class="cls_011">DeepMind. AlphaZero: Shedding new </span><span class="cls_054">light </span><span class="cls_011">on the grand games of</span></div>
+<div style="position:absolute;left:56.76px;top:631.56px" class="cls_046"><span class="cls_046">20.</span></div>
+<div style="position:absolute;left:71.18px;top:631.42px" class="cls_011"><span class="cls_011">Schulman J, Levine S, Moritz P, Jordan M, Abbeel P, University of</span></div>
+<div style="position:absolute;left:319.25px;top:637.30px" class="cls_011"><span class="cls_011">chess, shogi and Go;. Available from:</span></div>
+<div style="position:absolute;left:71.18px;top:644.02px" class="cls_011"><span class="cls_011">California, Berkeley, Department of Electrical Engineering and</span></div>
+<div style="position:absolute;left:319.25px;top:649.08px" class="cls_055"><span class="cls_055"> </span><A HREF="https://deepmind.com/blog/alphazero-shedding-new-light-/">https://deepmind.com/blog/alphazero-shedding-new-light-</A> </div>
+<div style="position:absolute;left:71.18px;top:656.62px" class="cls_011"><span class="cls_011">Computer Sciences. Trust Region Policy Optimization; 2017.</span></div>
+<div style="position:absolute;left:319.25px;top:661.84px" class="cls_059"><span class="cls_059">grand-games-chess-shogi-and-go/</span><span class="cls_060">.</span></div>
+<div style="position:absolute;left:56.76px;top:669.24px" class="cls_046"><span class="cls_046">21.</span></div>
+<div style="position:absolute;left:71.18px;top:669.10px" class="cls_011"><span class="cls_011">Schulman J, Wolski F, Dhariwal P, Radford A, Klimov O. Proximal</span></div>
+<div style="position:absolute;left:304.85px;top:674.16px" class="cls_046"><span class="cls_046">42.</span></div>
+<div style="position:absolute;left:319.25px;top:673.89px" class="cls_056"><span class="cls_056">Wolpert DH, Macready WG. No Free Lunch Theorems for</span></div>
+<div style="position:absolute;left:71.18px;top:681.70px" class="cls_011"><span class="cls_011">Policy Optimization Algorithms; 2017.</span></div>
+<div style="position:absolute;left:319.25px;top:686.24px" class="cls_056"><span class="cls_056">Optimization; 1997. Available from:</span></div>
+<div style="position:absolute;left:56.76px;top:694.31px" class="cls_046"><span class="cls_046">22.</span></div>
+<div style="position:absolute;left:71.18px;top:694.18px" class="cls_011"><span class="cls_011">Heess N, TB D, Sriram S, Lemmon J, Merel J, Wayne G, et al..</span></div>
+<div style="position:absolute;left:319.25px;top:698.10px" class="cls_052"><span class="cls_052">https://ti.arc.nasa.gov/m/proftle/dhw/papers/78.pdf</span><span class="cls_066">.</span></div>
+<div style="position:absolute;left:71.18px;top:706.78px" class="cls_011"><span class="cls_011">Emergence of Locomotion Behaviours in Rich Environments; 2017.</span></div>
+</div>
+
+</body>
+</html>
