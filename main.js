@@ -140,6 +140,15 @@ var education = [
 ];
 
 lml = "LetMeListen is a mobile application designed to improve the quality of life of deaf people worldwide. By means of a speech recognition algorithm, the application allows the deaf person to understand what they are saying since the phone translates the spoken language and shows it to the user on the screen so that he can read it, to answer it is as simple as write a message on the screen and the phone will generate a synthetic voice through a voice synthesizer to allow you to have a bilateral conversation";
+var blog = [
+  {
+    title: "Reinforcement Learning Techniques to GameEnvironments",
+    description: " In the following blog post, we will discuss the state-of-the-art algorithms that were able to master many ATARI and other platform games during their development.",
+    image: "https://raw.githubusercontent.com/rubencg195/rubencg195.github.io/master/blog/Reinforcement_Learning_Techniques/Reinforcement_learning_diagram.png",
+    theme: THEMES.ML,
+    url: "https://rubencg195.github.io/blog/Reinforcement_Learning_Techniques/"
+  }
+]
 var projects = [
   {
     title: "Learning How to Walk From Scratch",
@@ -243,6 +252,29 @@ function renderProjects() {
   $(document).ready(function () {
     Object.entries(projects).forEach(([key, proj]) => {
       $("#portfolioContainer").append(`<!-- Image overlay card -->
+          <div class="col-xs-12 col-sm-6 mb-4">
+            <div class="card card-image mb-6"
+              onClick="openLink('${proj["url"]}')" 
+              style="background-image: url(${proj["image"]});">
+              <!-- Content -->
+              <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                <div>
+                  <h5 class="blue-text "><i class="fas fa-chart-pie"></i> ${proj["theme"]}</h5>
+                  <h3 class="card-title pt-2"><strong>${proj["title"]}</strong></h3>
+                  <p>${proj["description"]}</p>
+                  <a class="btn blue-gradient" ><i class="fas fa-clone left"></i> View project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- Image overlay card -->`);
+    });
+  });
+}
+function renderBlogPosts() {
+  $(document).ready(function () {
+    Object.entries(blog).forEach(([key, proj]) => {
+      $("#blogContainer").append(`<!-- Image overlay card -->
           <div class="col-xs-12 col-sm-6 mb-4">
             <div class="card card-image mb-6"
               onClick="openLink('${proj["url"]}')" 
