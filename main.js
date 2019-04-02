@@ -174,7 +174,7 @@ var projects = [
   {
     title: "Promotech: A universal tool for promoter detection in bacterial DNA sequences",
     description: "Detecting promoter sequences is a must for bioinformatic researchers since they play a central role in gene expression. Many attempts have been made, but the problem has not been addressed satisfactorily. Must of the tools available focus in a single bacterium; or a set of sigma (σ) factors. It is important to highlight as well, there is no general bioinformatics method for promoter detection yet. Promotech was made to address this problem, offering a machine-learning-based classifier trained to generate a model that generalize and detect promoters in a wide range of bacteria.         ",
-    image: "http://1.bp.blogspot.com/-DhdCne24Ep4/Uk_mXBfYFvI/AAAAAAAAAC8/lNu015sYxmM/w1200-h630-p-k-no-nu/3D-DNA-Wallpaper-HD.jpg",
+    image: "./images/background/3D-DNA-Wallpaper-HD.jpg",
     theme: THEMES.BIO,
     url: "https://github.com/rubencg195/DNAPromoterRecognition",
   },
