@@ -255,7 +255,7 @@ function renderProjects() {
           <div class="col-xs-12 col-sm-6 mb-4">
             <div class="card card-image mb-6"
               onClick="openLink('${proj["url"]}')" 
-              style="background-image: url(${proj["image"]});">
+              style="background-image: url('${proj["image"]}');">
               <!-- Content -->
               <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                 <div>
@@ -279,7 +279,7 @@ function renderBlogPosts() {
           <div class="col-xs-12 col-sm-6 mb-4">
             <div class="card card-image mb-6"
               onClick="openLink('${proj["url"]}')" 
-              style="background-image: url(${proj["image"]});">
+              style="background-image: url('${proj["image"]}');">
               <!-- Content -->
               <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                 <div>
