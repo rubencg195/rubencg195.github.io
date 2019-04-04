@@ -151,6 +151,13 @@ var blogs = [
 ]
 var projects = [
   {
+    title: "Realtime Face Detection Using Tensorflow.js",
+    description: "Check out the implementation of a real-time face-detector client-side (In the Browser) using Tensorflow.js. ",
+    image: "https://github.com/rubencg195/face_detection_tensorflowjs_face_api/raw/master/face.png",
+    theme: THEMES.ML,
+    url: "https://github.com/rubencg195/face_detection_tensorflowjs_face_api"
+  },
+  {
     title: "Learning How to Walk From Scratch",
     description: "Check out the implementation of a custom OpenAI Environment with a spider agent which learns how to walk from scratch using the PPO algorithm.",
     image: "https://github.com/rubencg195/WalkingSpider_OpenAI_PyBullet/raw/master/images/PyBullet.png",
