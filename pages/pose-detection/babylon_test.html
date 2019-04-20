@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>Babylon - Getting Started</title>
+    <!-- Link to the last version of BabylonJS -->
+    <script src="https://preview.babylonjs.com/babylon.js"></script>
+    <!-- Link to the last version of BabylonJS loaders to enable loading filetypes such as .gltf -->
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <!-- Link to pep.js to ensure pointer events work consistently in all browsers -->
+    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
+
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+</head>
+
+<body>
+    <h1>Bones</h1>
+    <select id="selectObj" onchange="moveBone()">
+        <option value="" selected disabled hidden>Choose here</option>
+    </select>
+    <canvas id="renderCanvas" style="width: 100%;"></canvas>
+
+    <script>
+        var skeletonsContainer = null;
+        var mesh = null;
+        var originalPos = null;
+        var engine = null;
+        var canvas = null;
+        var testPosWidth =  1078;
+        var testPosHeigth = 1105;
+        var testPose = JSON.parse('[{"score":0.999281108379364,"part":"nose","position":{"x":527.0821818488492,"y":244.36689555316892}},{"score":0.9992807507514954,"part":"leftEye","position":{"x":549.6420883661765,"y":219.31667271885303}},{"score":0.9985756874084473,"part":"rightEye","position":{"x":504.0329719415591,"y":220.39230927633582}},{"score":0.9734774827957153,"part":"leftEar","position":{"x":580.7549103181012,"y":238.9019329526009}},{"score":0.8534235954284668,"part":"rightEar","position":{"x":478.0189645436889,"y":231.39363833086207}},{"score":0.9209240674972534,"part":"leftShoulder","position":{"x":621.445323865951,"y":359.5328496530515}},{"score":0.9095295071601868,"part":"rightShoulder","position":{"x":430.76436866461904,"y":355.6733600021502}},{"score":0.8848628401756287,"part":"leftElbow","position":{"x":797.2983401847287,"y":257.6284597554338}},{"score":0.8198176622390747,"part":"rightElbow","position":{"x":270.9021449026893,"y":255.58610226692412}},{"score":0.5830729007720947,"part":"leftWrist","position":{"x":790.203471661502,"y":83.67530014318064}},{"score":0.6830629110336304,"part":"rightWrist","position":{"x":246.778038919971,"y":94.59066922948995}},{"score":0.795782208442688,"part":"leftHip","position":{"x":619.9911977529971,"y":677.9089884626757}},{"score":0.6898073554039001,"part":"rightHip","position":{"x":465.49648576164606,"y":693.8590253077516}},{"score":0.520266056060791,"part":"leftKnee","position":{"x":862.6004630715711,"y":771.8964451781106}},{"score":0.6110744476318359,"part":"rightKnee","position":{"x":208.4065325859539,"y":766.4853448430333}},{"score":0.8120326995849609,"part":"leftAnkle","position":{"x":933.3550075197132,"y":1026.157337713679}},{"score":0.8203750848770142,"part":"rightAnkle","position":{"x":149.65157637782605,"y":1026.1098795199614}}]');
+        console.log("testPose", testPose);
+
+        $(document).ready(function () {
+            console.log("ready!");
+            // console.log();
+            [...Array(58).keys()].map((boneId) => $('#selectObj').append(`<option value="${boneId}">${boneId}</option>`));
+
+            //https://raw.githubusercontent.com/BabylonJS/Website/master/Scenes/Dude/Dude.babylon
+            // Get the canvas DOM element
+            canvas = document.getElementById('renderCanvas');
+            // Load the 3D engine
+            engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+            // CreateScene function that creates and return the scene
+            // call the createScene function
+            var scene = createScene();
+            // run the render loop
+            engine.runRenderLoop(function () {
+                scene.render();
+            });
+            // the canvas/window resize event handler
+            window.addEventListener('resize', function () {
+                engine.resize();
+            });
+        });
+        function createScene() {
+            // Create a basic BJS Scene object
+            var scene = new BABYLON.Scene(engine);
+            // Create a FreeCamera, and set its position to {x: 0, y: 5, z: -10}
+            var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 40, 120), scene);
+            // Target the camera to scene origin
+            camera.setTarget(new BABYLON.Vector3(0, 40, 0));
+            // Attach the camera to the canvas
+            camera.attachControl(canvas, false);
+            // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
+            var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
+            // Create a built-in "sphere" shape; its constructor takes 6 params: name, segment, diameter, scene, updatable, sideOrientation
+            // var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene, false, BABYLON.Mesh.FRONTSIDE);
+            // Move the sphere upward 1/2 of its height
+            // sphere.position.y = 1;
+            // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
+            var ground = BABYLON.Mesh.CreateGround('ground1', 50, 50, 2, scene, false);
+            // Return the created scene
+            BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/BabylonJS/Website/master/Scenes/Dude/", "Dude.babylon", scene, function (newMeshes, particleSystems, skeletons) {
+                var dude = newMeshes[0];
+                var mesh = newMeshes[0];
+
+                dude.rotation.y = 0;
+                dude.position = new BABYLON.Vector3(0, 0, 0);
+
+                /*
+                0 - main
+                
+                4 - femur
+                5 - spine
+                6 - chest 
+                7 - neck
+
+                13 - left arm
+                14 - left elbow
+                15 - left hand
+
+                32 - right arm
+                33 - right elbow
+                34 - right hand
+
+                50 - left arm
+                51 - left elbow
+                52 - left hand
+
+                54 - left arm
+                55 - left elbow
+                56 - left hand
+
+                */
+                const bone = skeletons[0].bones[0];
+                skeletonsContainer = skeletons[0];
+                // skeletons[0].bones.map((bone) => console.log(bone));
+                // bone.translate(new BABYLON.Vector3(5, 0, 5)); // y z -x
+                // scene.beginAnimation(skeletons[0], 0, 100, true, 1.0);
+                originalPos = [...Array(58).keys()].map((boneId) => skeletonsContainer.bones[boneId].getPosition(BABYLON.Space.WORLD, mesh));
+                console.log(originalPos[7]);
+            });
+
+            return scene;
+        }
+
+        function moveBone() {
+            // console.log();
+            console.log(originalPos[7]);
+            // [...Array(58).keys()].map((boneId, i) => skeletonsContainer.bones[boneId].setPosition(
+            //     new BABYLON.Vector3(
+            //         originalPos[i].x,
+            //         originalPos[i].y,
+            //         originalPos[i].z
+            //     ), BABYLON.Space.WORLD, mesh));
+
+            skeletonsContainer.bones[7].setPosition(
+                new BABYLON.Vector3(
+                    originalPos[7].x,
+                    originalPos[7].y,
+                    originalPos[7].z
+                ), BABYLON.Space.WORLD, mesh);
+            // console.log("OnChange",skeletonsContainer);
+
+            var boneId = document.getElementById("selectObj").value;
+            // console.log(skeletonsContainer.bones[boneId].getPosition(BABYLON.Space.WORLD, mesh));
+            // skeletonsContainer.bones[boneId].translate(5, 0, 0 , BABYLON.Space.WORLD, mesh);
+            skeletonsContainer.bones[boneId].setPosition(new BABYLON.Vector3(0, 0, 0), BABYLON.Space.WORLD, mesh);
+        }
+
+       
+    </script>
+</body>
+
+</html>
