@@ -151,8 +151,15 @@ var blogs = [
 ]
 var projects = [
   {
+    title: "Realtime Pose Detection Using Tensorflow.js",
+    description: "Check out the implementation of a real-time Pose-detector client-side (In the Browser) using Tensorflow.js. ",
+    image: "https://raw.githubusercontent.com/rubencg195/pose_detection_tensorflowjs_posenet/master/demo1.png",
+    theme: THEMES.ML,
+    url: "https://github.com/rubencg195/pose_detection_tensorflowjs_posenet"
+  },
+  {
     title: "Realtime Face Detection Using Tensorflow.js",
-    description: "Check out the implementation of a real-time face-detector client-side (In the Browser) using Tensorflow.js. ",
+    description: "Check out the implementation of a real-time Face-detector client-side (In the Browser) using Tensorflow.js. ",
     image: "https://github.com/rubencg195/face_detection_tensorflowjs_face_api/raw/master/face.png",
     theme: THEMES.ML,
     url: "https://github.com/rubencg195/face_detection_tensorflowjs_face_api"
