@@ -151,14 +151,21 @@ var blogs = [
 ]
 var projects = [
   {
-    title: "Realtime Pose Detection Using Tensorflow.js",
+    title: "Realtime Style Transfer Using TensorflowJS and ML5.js",
+    description: "Check out the implementation of a real-time style transfer client-side (In the Browser) using Tensorflow.js and ML5.js. ",
+    image: "https://raw.githubusercontent.com/rubencg195/style_transfer_tensorflowjs_ml5/master/udnie.jpg",
+    theme: THEMES.ML,
+    url: "https://github.com/rubencg195/style_transfer_tensorflowjs_ml5"
+  },
+  {
+    title: "Realtime Pose Detection Using TensorflowJS",
     description: "Check out the implementation of a real-time Pose-detector client-side (In the Browser) using Tensorflow.js. ",
     image: "https://raw.githubusercontent.com/rubencg195/pose_detection_tensorflowjs_posenet/master/demo1.png",
     theme: THEMES.ML,
     url: "https://github.com/rubencg195/pose_detection_tensorflowjs_posenet"
   },
   {
-    title: "Realtime Face Detection Using Tensorflow.js",
+    title: "Realtime Face Detection Using TensorflowJS",
     description: "Check out the implementation of a real-time Face-detector client-side (In the Browser) using Tensorflow.js. ",
     image: "https://github.com/rubencg195/face_detection_tensorflowjs_face_api/raw/master/face.png",
     theme: THEMES.ML,
