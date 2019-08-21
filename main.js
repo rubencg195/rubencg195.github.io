@@ -52,6 +52,119 @@ var awards = [
   },
   
 ]
+var gallery = [
+  {
+    title: "Memorial University of Newfoundland and Labrador Scholarship",
+    date:  "2018",
+    image: "./images/awards/grant.png",
+    description: "",
+    url: "https://twitter.com/humans_MUNBIOL/status/1070670920048672768"
+  },
+  {
+    title: "Yo Emprendo Award",
+    date:  "2017",
+    image: "./images/awards/yoemprendo.jpg",
+    description: "",
+    url: "https://www.facebook.com/yoemprendohn/photos/a.523490914452484/1164781213656781/?type=3&theater"
+  },
+  {
+    title: "EmprendeTN",
+    date:  "2017",
+    image: "./images/awards/emprendetn.jpg",
+    description: "The Northern Triangle Youth Entrepreneurship Conference “#EmprendeTN” (StartUp Norther Triangle) launched on Friday, September 22, 2017. The two-day workshop hosted 93 young entrepreneurs of El Salvador, Honduras and Guatemala. Participants had the opportunity to share experiences, learn the best practices of successful entrepreneurs, and get information on digital marketing, leadership, networking and finance.",
+    url: "https://sv.usembassy.gov/el-salvador-welcomes-entrepreneurs-northern-triangle-countries-conference-emprendetn/"
+  },
+  {
+    title: "Technological Innovation Award",
+    date:  "2016",
+    image: "./images/awards/pit.jpg",
+    description: "",
+    url: "https://hondurasisgreat.org/premio-innovadores-tecnologicos/"
+  },
+  {
+    title: "Drone Challenge",
+    date:  "2016",
+    image: "./images/awards/drone.jpeg",
+    description: "Nine students from the Unitec San Pedro Sula campus will be looking for the first places in the first edition of the Drone Challenge that will take place in Tegucigalpa.",
+    url: "https://www.laprensa.hn/honduras/1004811-410/sampedranos-buscan-imponerse-en-el-primer-drone-challenge"
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (1).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (2).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (3).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (4).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (5).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (6).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (7).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (8).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (9).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (10).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (11).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (12).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (13).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (14).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (15).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (16).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (17).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (18).jpg",
+  },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (19).jpg",
+  },
+]
 var experience = [
   {
     title: "Study and Stay NL Coordinator",
@@ -346,6 +459,19 @@ function renderAwards() {
     });
   });
 }
+function renderGallery() {
+  $(document).ready(function () {
+    Object.entries(gallery).forEach(([key, picture]) => {
+      $("#galleryContainer").append(` 
+        <figure class="col-md-6">
+          <a href="${picture['url']}" data-size="1600x1067">
+            <img src="${picture['image']}" class="img-fluid">
+          </a>
+        </figure>
+      `);
+    });
+  });
+}
 
 function openLink(url) {
   window.open(url);
@@ -356,8 +482,13 @@ function downloadResume() {
 function hideNav(){
   $('.button-collapse').sideNav('hide');
 }
+function init(){
+  $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+}
 renderProjects();
 renderBlogPosts();
 renderAwards() ;
+renderGallery();
 renderExperience(experience, "#experienceContainer");
 renderExperience(education, "#educationContainer");
+init();
