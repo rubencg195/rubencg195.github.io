@@ -164,6 +164,10 @@ var gallery = [
     title: "", date:  "", description: "", url: "#",
     image: "./images/gallery/gallery (19).jpg",
   },
+  {
+    title: "", date:  "", description: "", url: "#",
+    image: "./images/gallery/gallery (20).jpg",
+  },
 ]
 var experience = [
   {
