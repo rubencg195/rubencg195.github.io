@@ -300,12 +300,12 @@ const ProjectDetail = () => {
                 <div className="flex items-center gap-1 xs:gap-2">
                   <span className="text-xl xs:text-2xl">⭐</span>
                   <span className="font-semibold text-sm xs:text-base">{project.stargazers_count}</span>
-                  <span className="text-surface-500 dark:text-surface-400 text-sm xs:text-base">stars</span>
+                  <span className="text-slate-600 dark:text-surface-400 text-sm xs:text-base">stars</span>
                 </div>
                 <div className="flex items-center gap-1 xs:gap-2">
                   <span className="text-xl xs:text-2xl">🍴</span>
                   <span className="font-semibold text-sm xs:text-base">{project.forks_count}</span>
-                  <span className="text-surface-500 dark:text-surface-400 text-sm xs:text-base">forks</span>
+                  <span className="text-slate-600 dark:text-surface-400 text-sm xs:text-base">forks</span>
                 </div>
                 {project.language && (
                   <div className="flex items-center gap-1 xs:gap-2">
@@ -315,7 +315,7 @@ const ProjectDetail = () => {
                 )}
                 <div className="flex items-center gap-1 xs:gap-2 w-full xs:w-auto justify-center xs:justify-start">
                   <span className="text-xl xs:text-2xl">📅</span>
-                  <span className="text-surface-500 dark:text-surface-400 text-sm xs:text-base">
+                  <span className="text-slate-600 dark:text-surface-400 text-sm xs:text-base">
                     Updated {new Date(project.updated_at).toLocaleDateString()}
                   </span>
                 </div>

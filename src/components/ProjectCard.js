@@ -32,7 +32,7 @@ const ProjectCard = ({ project, gradient, icon, index = 0 }) => {
           </p>
 
           {/* Project Stats */}
-          <div className="flex items-center gap-4 mb-6 text-sm text-surface-500 dark:text-surface-400">
+          <div className="flex items-center gap-4 mb-6 text-sm text-slate-600 dark:text-surface-400">
             <div className="flex items-center gap-1">
               <span className="text-warning-500">⭐</span>
               <span>{project.stargazers_count}</span>
@@ -68,7 +68,7 @@ const ProjectCard = ({ project, gradient, icon, index = 0 }) => {
             </span>
             
             {/* Last Updated */}
-            <span className="text-xs text-surface-400 dark:text-surface-500">
+            <span className="text-xs text-slate-500 dark:text-surface-500">
               Updated {new Date(project.updated_at).toLocaleDateString()}
             </span>
           </div>

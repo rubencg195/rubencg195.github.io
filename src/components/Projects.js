@@ -183,7 +183,7 @@ const Projects = () => {
                   </p>
 
                   {/* Project Stats */}
-                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-surface-500 dark:text-surface-400">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-slate-600 dark:text-surface-400">
                     <div className="flex items-center gap-1">
                       <span className="text-warning-500">⭐</span>
                       <span>{project.stargazers_count}</span>
@@ -222,7 +222,7 @@ const Projects = () => {
                     </span>
                     
                     {/* Last Updated - Hidden on mobile */}
-                    <span className="hidden sm:block text-xs text-surface-400 dark:text-surface-500">
+                    <span className="hidden sm:block text-xs text-slate-500 dark:text-surface-500">
                       Updated {new Date(project.updated_at).toLocaleDateString()}
                     </span>
                   </div>

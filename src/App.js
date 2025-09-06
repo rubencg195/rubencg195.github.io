@@ -255,7 +255,7 @@ function App() {
                         href="#about"
                         className="group flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300"
                       >
-                        <span className="text-xs sm:text-sm text-surface-500 dark:text-surface-400 font-medium">
+                        <span className="text-xs sm:text-sm text-slate-600 dark:text-surface-400 font-medium">
                           Scroll to explore
                         </span>
                         <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-surface-400 dark:border-surface-500 rounded-full flex justify-center">
