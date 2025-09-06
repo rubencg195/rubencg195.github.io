@@ -66,14 +66,16 @@ export const PERSONAL_INFO = {
   name: 'Ruben Chevez',
   title: 'Director | Machine Learning Operations at Nasdaq Verafin',
   email: 'rubencg195@hotmail.com',
+  phone: '+1 (709) 764-7777',
   linkedin: 'https://linkedin.com/in/rubenchevez',
   github: 'https://github.com/rubencg195',
   location: 'St. John\'s, Newfoundland, Canada',
-  bio: 'Visionary and results-driven technology leader with deep expertise in Machine Learning Operations (MLOps), cloud infrastructure, and scalable ML systems. Proven track record in designing, deploying, and managing ML pipelines from experimentation to production.',
+  bio: 'Visionary and results-driven technology leader with deep expertise in Machine Learning Operations (MLOps), cloud infrastructure, and scalable ML systems. Proven track record in designing, deploying, and managing ML pipelines from experimentation to production. Adept at leading cross-functional teams, aligning engineering efforts with business strategy, and fostering a culture of innovation, reliability, and continuous improvement. Experienced in regulatory-grade financial technologies, fraud detection, and ML model governance.',
   skills: [
     'Python', 'Java', 'C++', 'JavaScript', 'Scala', 'React', 'Node.js', 'Spring Boot',
-    'AWS', 'Databricks', 'SageMaker', 'Bedrock', 'DataZone', 'EMR', 'Athena', 'Redshift',
-    'Docker', 'Jenkins', 'Terraform', 'MLOps', 'DevOps', 'CI/CD', 'Microservices'
+    'AWS', 'Databricks', 'SageMaker', 'Bedrock', 'DataZone', 'EMR', 'Athena', 'Redshift', 'Firehose', 'ECR', 'ECS', 'S3', 'DynamoDB', 'RDS', 'Lambda', 'Step Functions', 'SQS', 'DMS', 'VPC',
+    'Docker', 'Jenkins', 'Terraform', 'Git', 'MLOps', 'DevOps', 'CI/CD', 'Microservices', 'Agile', 'Scrum', 'TDD',
+    'Technical Strategy', 'Project Management', 'Hiring', 'Mentorship', 'Performance Reviews', 'Fraud Detection', 'Financial Technology', 'Regulatory Compliance', 'Model Deployment', 'Data Engineering', 'ETL', 'Spark', 'Model Registry', 'Model Governance'
   ]
 };
 
@@ -87,10 +89,12 @@ export const EXPERIENCE_FALLBACK = [
     description: 'Spearheaded the strategic development of the company\'s first MLOps infrastructure, enabling seamless model deployment and monitoring.',
     technologies: ['Python', 'AWS SageMaker', 'Jenkins', 'GitHub', 'Athena', 'Model Registry'],
     achievements: [
-      'Led a team of six developers and one co-op student to enhance ML system reliability',
-      'Developed and deployed state-of-the-art ML model for Check Fraud detection',
-      'Improved data pipeline efficiency by 60% and reduced operational costs by 85%',
-      'Established robust evaluation pipeline for open source models'
+      'Spearheaded the strategic development of the company\'s first MLOps infrastructure, enabling seamless model deployment and monitoring',
+      'Led a team of six developers and one co-op student to enhance ML system reliability, reduce latency, and ensure regulatory compliance',
+      'Automated deployment using GitHub templates integrated with Jenkins CI/CD pipelines and a UI Hub for tracking and deployment via AWS SageMaker Model Registry',
+      'Developed and deployed a state-of-the-art ML model for Check Fraud detection, integrating it into production systems',
+      'Improved data pipeline efficiency by 60% and reduced operational costs by 85% through optimization of Athena queries and data lake structures',
+      'Established a robust evaluation pipeline for open source models used in research and production'
     ]
   },
   {
@@ -101,9 +105,10 @@ export const EXPERIENCE_FALLBACK = [
     description: 'Built the foundation for the company\'s first MLOps-dedicated team; evaluated cloud vendors including AWS SageMaker and Databricks.',
     technologies: ['EMR', 'Spark', 'Athena', 'AWS SageMaker', 'Databricks', 'Python'],
     achievements: [
-      'Designed EMR-based data collection pipelines leveraging Spark and Athena',
-      'Maintained production-grade ML models detecting over $300K in fraudulent transactions annually',
-      'Onboarded and mentored 30+ developers on ML infrastructure tools'
+      'Built the foundation for the company\'s first MLOps-dedicated team; evaluated cloud vendors including AWS SageMaker and Databricks',
+      'Designed EMR-based data collection pipelines leveraging Spark and Athena for high-throughput model training',
+      'Maintained production-grade ML models responsible for detecting over $300K in fraudulent transactions annually',
+      'Onboarded and mentored 30+ developers on ML infrastructure tools, enhancing organizational ML maturity'
     ]
   },
   {
