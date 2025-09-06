@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruben Chevez - Portfolio</title>
+    <script>
+        // Store the current path and redirect to the main app
+        sessionStorage.setItem('redirectPath', window.location.pathname);
+        window.location.replace('/');
+    </script>
+</head>
+<body>
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #0c0a09, #1c1917, #0c0a09);
+        color: white;
+        text-align: center;
+    ">
+        <div>
+            <h1 style="font-size: 2rem; margin-bottom: 1rem;">Redirecting...</h1>
+            <p>Taking you to the main portfolio page.</p>
+        </div>
+    </div>
+</body>
+</html>
