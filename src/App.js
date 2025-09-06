@@ -172,8 +172,8 @@ function App() {
                     </h2>
 
                     {/* Description */}
-                    <p className="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-400 leading-relaxed mb-8 sm:mb-12 animate-fade-in px-2" style={{animationDelay: '0.9s'}}>
-                      {PERSONAL_INFO.bio}
+                    <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-400 leading-relaxed mb-8 sm:mb-12 animate-fade-in px-2 text-center" style={{animationDelay: '0.9s'}}>
+                      Visionary MLOps leader with 8+ years building scalable ML systems at scale. Expert in cloud infrastructure, fraud detection, and leading cross-functional teams. Proven track record delivering production ML pipelines and driving technical strategy at Nasdaq Verafin.
                     </p>
 
                     {/* Tech Stack Pills - FAANG Ready Skills */}
