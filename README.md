@@ -273,8 +273,56 @@ This approach differs from the typical gh-pages branch deployment:
 - [ ] **Commit Source Changes**: `git add . && git commit -m "Update portfolio"`
 - [ ] **Push Source to GitHub**: `git push origin master`
 - [ ] **Deploy Built Files**: `npm run deploy`
-- [ ] **Configure GitHub Pages**: Set source to "Deploy from a branch" → "master" → "/ (root)"
+- [ ] **Configure GitHub Pages**: Follow the GitHub Pages setup below
 - [ ] **Verify**: Check live site functionality at https://rubencg195.github.io
+
+### GitHub Pages Configuration (One-Time Setup)
+
+After your first deployment, configure GitHub Pages in your repository settings:
+
+#### **Step-by-Step GitHub Pages Setup:**
+
+1. **Navigate to Repository Settings**
+   - Go to your GitHub repository: `https://github.com/rubencg195/rubencg195.github.io`
+   - Click the "Settings" tab (far right in the repository navigation)
+   - Scroll down to "Pages" in the left sidebar
+
+2. **Configure Build and Deployment**
+   - **Source**: Select "Deploy from a branch"
+     - This tells GitHub to serve your site from files in a branch
+     - ✅ **Correct choice** for our master branch deployment strategy
+   
+3. **Select Branch and Folder**
+   - **Branch**: Select "master" from the dropdown
+     - ✅ **Why**: Our `npm run deploy` pushes build files to the master branch
+     - ❌ **Not**: Don't select "gh-pages" (we're not using that branch)
+   
+   - **Folder**: Select "/ (root)" from the dropdown  
+     - ✅ **Why**: Build files are placed at the root level of master branch
+     - ❌ **Not**: Don't select "/docs" (build files aren't in a docs folder)
+
+4. **Save Configuration**
+   - Click the "Save" button
+   - GitHub will show: "Your site is ready to be published at https://rubencg195.github.io"
+
+5. **Wait for Deployment**
+   - GitHub Pages takes 1-10 minutes to build and deploy
+   - You'll see a green checkmark when ready
+   - Visit https://rubencg195.github.io to verify
+
+#### **Configuration Summary:**
+```
+Source: Deploy from a branch
+Branch: master
+Folder: / (root)
+```
+
+#### **Why This Configuration?**
+
+- **Deploy from a branch**: We're serving static files from the master branch
+- **master branch**: Our deployment script pushes build files here
+- **/ (root) folder**: Build files (index.html, static/, etc.) are at the branch root
+- **Result**: GitHub Pages serves your React app from https://rubencg195.github.io
 
 ### Custom Domain (Optional)
 
@@ -319,9 +367,23 @@ npm install
 
 **Deployment Issues**:
 ```bash
-# Ensure GitHub Pages is enabled in repository settings
-# Check GitHub Pages source is set to 'gh-pages' branch
+# Clear cache and redeploy
+npm run deploy
+
+# Check GitHub Pages configuration
+# Ensure: Source = "Deploy from a branch", Branch = "master", Folder = "/ (root)"
 ```
+
+**GitHub Pages Not Loading**:
+- ✅ **Check**: Repository Settings → Pages → Configuration matches above
+- ✅ **Wait**: GitHub Pages can take 1-10 minutes to update
+- ✅ **Verify**: Master branch contains build files (index.html, static/, etc.)
+- ✅ **Clear**: Browser cache and try incognito/private mode
+
+**404 Error on Deployed Site**:
+- ✅ **Check**: Homepage field in package.json matches your GitHub Pages URL
+- ✅ **Verify**: Build files are at root level of master branch
+- ✅ **Confirm**: GitHub Pages is serving from master branch / (root)
 
 ## 🛠️ Technologies Used
 
