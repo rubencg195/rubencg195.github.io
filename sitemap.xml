@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
         
-  <!-- Main Portfolio Page - Highest Priority for Recruiters -->
+  <!-- Main Portfolio Page - Highest Priority for FAANG Recruiters -->
   <url>
     <loc>https://rubencg195.github.io/</loc>
     <lastmod>2024-03-15T00:00:00+00:00</lastmod>
@@ -10,8 +10,8 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://rubencg195.github.io/images/profile/profile.jpeg</image:loc>
-      <image:caption>Ruben Chevez - Director MLOps, Full-Stack Developer</image:caption>
-      <image:title>Ruben Chevez Professional Photo</image:title>
+      <image:caption>Ruben Chevez - Director MLOps at Nasdaq | FAANG-Ready | Senior/Staff/Principal Engineer | 8+ Years Experience</image:caption>
+      <image:title>Ruben Chevez - MLOps Director & Technical Leader</image:title>
     </image:image>
   </url>
   
