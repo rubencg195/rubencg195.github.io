@@ -7,7 +7,7 @@ import HeroSection from './HeroSection';
 import Section from './Section';
 import SectionHeader from './SectionHeader';
 import { PrimaryButton, ActionButton } from './Button';
-import { ArrowLeftIcon, GitHubIcon, WarningIcon } from './UnicodeIcons';
+import { ArrowLeftIcon, WarningIcon } from './UnicodeIcons';
 import { REPOSITORIES } from '../constants';
 import { fetchReadmeWithImages } from '../utils/githubUtils';
 

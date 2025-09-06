@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchLinkedInProfile } from '../utils/githubUtils';
-import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, LINKEDIN_PROFILE_URL } from '../constants';
+import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, LINKEDIN_PROFILE_URL, ENABLE_LINKEDIN_PARSING } from '../constants';
 import Timeline from './Timeline';
 
 const ExperienceEducation = () => {
@@ -12,6 +12,12 @@ const ExperienceEducation = () => {
 
   useEffect(() => {
     const loadData = async () => {
+      // Only attempt LinkedIn parsing if explicitly enabled
+      if (!ENABLE_LINKEDIN_PARSING) {
+        console.log('LinkedIn parsing disabled - using fallback data');
+        return;
+      }
+
       try {
         const linkedInData = await fetchLinkedInProfile(LINKEDIN_PROFILE_URL);
         // Only update if we actually got valid data with content
@@ -38,14 +44,14 @@ const ExperienceEducation = () => {
       <Timeline 
         data={data.experience}
         title="Professional Experience"
-        description="Building innovative solutions and leading technical initiatives across diverse industries"
+        description="Leading Machine Learning Operations and technical initiatives in regulatory-grade financial technologies at Nasdaq Verafin"
       />
       
       {/* Education Timeline */}
       <Timeline 
         data={data.education}
         title="Education & Certifications"
-        description="Continuous learning and professional development in cutting-edge technologies"
+        description="Advanced degrees in Computer Science and Machine Learning, with specialized training from top international institutions"
       />
     </div>
   );

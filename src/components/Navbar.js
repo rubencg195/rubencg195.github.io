@@ -18,11 +18,11 @@ const Navbar = ({
         <div className="font-bold text-xl flex items-center text-surface-900 dark:text-white">
           <img 
             src="images/profile/profile.jpeg" 
-            alt="Ruben Chávez" 
+            alt="Ruben Chevez" 
             className="mr-3 w-10 h-10 rounded-full object-cover shadow-material-2"
           />
           <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-            Ruben Chávez
+            Ruben Chevez
           </span>
         </div>
 

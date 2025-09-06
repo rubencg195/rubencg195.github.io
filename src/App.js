@@ -24,13 +24,15 @@ const Home = () => {
         title={<>
           Hi, I'm{' '}
           <span className="bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-600 bg-clip-text text-transparent animate-pulse">
-            Ruben Chávez
+            Ruben Chevez
           </span>
         </>}
         description={<>
-          Full Stack Developer passionate about creating{' '}
-          <span className="font-semibold text-primary-700 dark:text-primary-400">amazing web experiences</span>{' '}
-          with AWS and modern technologies
+          Director of Machine Learning Operations at{' '}
+          <span className="font-semibold text-primary-700 dark:text-primary-400">Nasdaq Verafin</span>{' '}
+          • Visionary technology leader specializing in{' '}
+          <span className="font-semibold text-primary-700 dark:text-primary-400">MLOps, cloud infrastructure,</span>{' '}
+          and scalable ML systems
         </>}
         primaryButton={
           <PrimaryButton href="#projects" icon="→">
@@ -50,11 +52,12 @@ const Home = () => {
         <SectionHeader 
           title="About Me"
           description={<>
-            I'm a passionate developer with experience in{' '}
-            <span className="font-semibold text-primary-700 dark:text-primary-400">modern web technologies</span>,{' '}
-            <span className="font-semibold text-primary-700 dark:text-primary-400">AWS cloud services</span>, and{' '}
-            <span className="font-semibold text-primary-700 dark:text-primary-400">infrastructure as code</span>. 
-            I love building scalable applications and solving complex problems with serverless architectures.
+            Visionary and results-driven technology leader with deep expertise in{' '}
+            <span className="font-semibold text-primary-700 dark:text-primary-400">Machine Learning Operations (MLOps)</span>,{' '}
+            <span className="font-semibold text-primary-700 dark:text-primary-400">cloud infrastructure</span>, and{' '}
+            <span className="font-semibold text-primary-700 dark:text-primary-400">scalable ML systems</span>. 
+            Proven track record in designing, deploying, and managing ML pipelines from experimentation to production.
+            Experienced in regulatory-grade financial technologies, fraud detection, and ML model governance.
           </>
           }
         />
@@ -85,25 +88,23 @@ const Home = () => {
       <Section id="contact" background="gradient">
         <SectionHeader 
           title="Get In Touch"
-          description="I'm always interested in new opportunities and exciting projects. Let's build something amazing together!"
+          description="Let's connect to discuss Machine Learning Operations, technical leadership opportunities, or collaboration on innovative ML projects."
           descriptionClassName="max-w-2xl mx-auto mb-12"
         />
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up">
           <PrimaryButton 
-            href="mailto:rubencg195@gmail.com" 
+            href="mailto:rubencg195@hotmail.com" 
             icon="📧" 
             iconPosition="left"
           >
-            Send me an email
+            rubencg195@hotmail.com
           </PrimaryButton>
           <SecondaryButton 
-            href="https://linkedin.com/in/rubenchevez" 
-            target="_blank"
-            rel="noopener noreferrer"
-            icon="💼" 
+            href="tel:+17097647777" 
+            icon="📞" 
             iconPosition="left"
           >
-            LinkedIn Profile
+            +1 (709) 764-7777
           </SecondaryButton>
         </div>
       </Section>
@@ -114,25 +115,28 @@ const Home = () => {
           <div className="text-center">
             <div className="mb-6">
               <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                Ruben Chávez
+                Ruben Chevez
               </span>
             </div>
             <p className="text-surface-600 dark:text-surface-400 mb-6">
-              Full Stack Developer • AWS Certified • Problem Solver
+              Director, Machine Learning Operations • Nasdaq Verafin • MLOps Expert
             </p>
             <div className="flex justify-center space-x-6 mb-8">
-              <a href="mailto:rubencg195@gmail.com" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+              <a href="mailto:rubencg195@hotmail.com" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
                 <span className="text-2xl">📧</span>
               </a>
               <a href="https://linkedin.com/in/rubenchevez" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
                 <span className="text-2xl">💼</span>
+              </a>
+              <a href="tel:+17097647777" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+                <span className="text-2xl">📞</span>
               </a>
               <a href="https://github.com/rubencg195" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
                 <span className="text-2xl">🐙</span>
               </a>
             </div>
             <p className="text-surface-500 dark:text-surface-400 text-sm">
-              &copy; 2024 Ruben Chávez. Crafted with ❤️ and ☕
+              &copy; 2024 Ruben Chevez. Crafted with ❤️ and ☕
             </p>
           </div>
         </div>

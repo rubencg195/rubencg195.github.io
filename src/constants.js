@@ -30,44 +30,57 @@ export const GITHUB_API = {
 // LinkedIn profile (hardcoded as requested)
 export const LINKEDIN_PROFILE_URL = 'https://www.linkedin.com/in/rubenchevez/';
 
-// Fallback resume data when LinkedIn blocks client-side fetches
+// LinkedIn parsing disabled by default - set to true to enable parsing
+export const ENABLE_LINKEDIN_PARSING = false;
+
+// Professional experience data from resume
 export const EXPERIENCE_FALLBACK = [
   {
-    title: 'Senior Full Stack Developer',
-    company: 'Independent Consulting',
-    period: '2022 – Present'
+    title: 'Director | Machine Learning Operations',
+    company: 'Nasdaq Verafin',
+    period: 'Sep 2024 – Present'
   },
   {
-    title: 'AWS Solutions Architect',
-    company: 'Tech Startup',
-    period: '2020 – 2022'
+    title: 'Senior Software Developer & Acting Team Lead | ML Pipeline',
+    company: 'Nasdaq Verafin',
+    period: 'Feb 2023 – Sep 2024'
   },
   {
-    title: 'Software Engineer',
-    company: 'Enterprise Company',
-    period: '2018 – 2020'
+    title: 'Data Scientist',
+    company: 'Verafin',
+    period: 'Jan 2023 – Feb 2023'
   },
   {
-    title: 'Junior Developer',
-    company: 'Development Agency',
-    period: '2017 – 2018'
+    title: 'Software Developer',
+    company: 'Verafin',
+    period: 'Oct 2020 – Dec 2022'
+  },
+  {
+    title: 'Intern',
+    company: 'Verafin',
+    period: 'Jan 2020 – May 2020'
   }
 ];
 
 export const EDUCATION_FALLBACK = [
   {
-    title: 'AWS Certified Solutions Architect',
-    institution: 'Professional Certification',
-    year: '2021'
+    title: 'M.Sc. in Computer Science',
+    institution: 'Memorial University, Newfoundland, Canada',
+    year: '2020'
   },
   {
-    title: 'B.S. in Computer Science',
-    institution: 'Computer Science University',
-    year: '2014 – 2018'
+    title: 'B.Sc. in Mechatronics Engineering',
+    institution: 'Universidad Tecnológica Centroamericana (UNITEC), Honduras',
+    year: '2018'
   },
   {
-    title: 'Advanced Web Development',
-    institution: 'React & Node.js Specialization',
-    year: '2019'
+    title: 'Certificate in Machine Learning and Big Data Analysis',
+    institution: 'National Tsing Hua University, Taiwan',
+    year: '2017'
+  },
+  {
+    title: 'Fellow of the School of Graduate Studies',
+    institution: 'Memorial University, Newfoundland, Canada',
+    year: '2020'
   }
 ];

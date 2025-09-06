@@ -146,4 +146,5 @@ export const ActionButton = ({
   );
 };
 
-export default { PrimaryButton, SecondaryButton, ActionButton };
+const ButtonComponents = { PrimaryButton, SecondaryButton, ActionButton };
+export default ButtonComponents;
