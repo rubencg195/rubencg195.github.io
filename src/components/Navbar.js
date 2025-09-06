@@ -206,28 +206,30 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
           mobileMenuOpen 
-            ? 'max-h-96 opacity-100 mt-4 pt-4 border-t border-surface-200/20 dark:border-surface-700/20' 
+            ? 'max-h-96 opacity-100 mt-4' 
             : 'max-h-0 opacity-0'
         }`}>
-          <div className="grid grid-cols-2 gap-2">
-            {navItems.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
-                  activeSection === item.id
-                    ? 'bg-primary-500/20 text-primary-600 dark:text-primary-400 shadow-material-1'
-                    : 'hover:bg-surface-200/20 dark:hover:bg-surface-700/20 text-surface-700 dark:text-surface-300'
-                }`}
-                style={{
-                  animationDelay: mobileMenuOpen ? `${index * 0.1}s` : '0s',
-                  animation: mobileMenuOpen ? 'fadeInUp 0.3s ease-out forwards' : 'none'
-                }}
-              >
-                <span className="text-lg">{item.icon}</span>
-                <span className="text-sm">{item.label}</span>
-              </button>
-            ))}
+          <div className="bg-surface-50/95 dark:bg-surface-900/95 backdrop-blur-xl rounded-2xl p-4 mx-2 shadow-material-3 border border-surface-200/30 dark:border-surface-700/30">
+            <div className="grid grid-cols-2 gap-3">
+              {navItems.map((item, index) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${
+                    activeSection === item.id
+                      ? 'bg-primary-500/20 text-primary-600 dark:text-primary-400 shadow-material-2'
+                      : 'bg-white/50 dark:bg-surface-800/50 hover:bg-primary-50 dark:hover:bg-surface-700 text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400'
+                  }`}
+                  style={{
+                    animationDelay: mobileMenuOpen ? `${index * 0.1}s` : '0s',
+                    animation: mobileMenuOpen ? 'fadeInUp 0.3s ease-out forwards' : 'none'
+                  }}
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span className="text-sm font-semibold">{item.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
