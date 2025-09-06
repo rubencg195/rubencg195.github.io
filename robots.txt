@@ -1,6 +1,31 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
+# Robots.txt for Ruben Chevez Portfolio
+# Optimized for recruiter discovery
 
-# Sitemap
+User-agent: *
+Allow: /
+
+# Priority pages for recruiters
+Allow: /static/
+Allow: /images/
+Allow: /project/
+
+# Block unnecessary files
+Disallow: /build/
+Disallow: *.map$
+Disallow: /src/
+
+# Sitemap location
 Sitemap: https://rubencg195.github.io/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Special instructions for job/recruitment bots
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: TwitterBot
+Allow: /
