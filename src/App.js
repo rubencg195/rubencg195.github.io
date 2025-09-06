@@ -160,7 +160,7 @@ function App() {
                   <div className="max-w-6xl mx-auto text-center relative z-10">
 
                     {/* Name */}
-                    <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold animate-fade-in mb-4 sm:mb-6 mt-16 leading-tight" style={{animationDelay: '0.3s'}}>
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold animate-fade-in mb-4 sm:mb-6 mt-16 leading-tight" style={{animationDelay: '0.3s'}}>
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 hover:scale-105 transition-transform duration-300 inline-block">
                         {PERSONAL_INFO.name}
                       </span>
