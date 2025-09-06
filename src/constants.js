@@ -66,7 +66,6 @@ export const PERSONAL_INFO = {
   name: 'Ruben Chevez',
   title: 'Director | Machine Learning Operations at Nasdaq Verafin',
   email: 'rubencg195@hotmail.com',
-  phone: '+1 (709) 764-7777',
   linkedin: 'https://linkedin.com/in/rubenchevez',
   github: 'https://github.com/rubencg195',
   location: 'St. John\'s, Newfoundland, Canada',

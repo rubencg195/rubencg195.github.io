@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './index.css';
 
 // Import components
@@ -108,6 +108,23 @@ const SectionHeader = ({ title, icon, description, delay = '0s' }) => {
   );
 };
 
+// Component to handle redirects from 404 page
+const RedirectHandler = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if there's a stored redirect path from 404.html
+    const redirectPath = sessionStorage.getItem('redirectPath');
+    if (redirectPath) {
+      // Clear the stored path and navigate to it
+      sessionStorage.removeItem('redirectPath');
+      navigate(redirectPath);
+    }
+  }, [navigate]);
+
+  return null;
+};
+
 function App() {
   const [mode, setMode] = useState('dark'); // Default to dark theme
 
@@ -130,6 +147,7 @@ function App() {
           : 'bg-gradient-to-br from-surface-50 via-white to-surface-100'
       }`}>
         <Router>
+          <RedirectHandler />
           <Routes>
             <Route path="/project/:id" element={<ProjectDetail />} />
             <Route path="/" element={
@@ -261,6 +279,17 @@ function App() {
                   </div>
                 </footer>
               </>
+            } />
+            <Route path="*" element={
+              <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                  <h1 className="text-4xl font-bold text-surface-900 dark:text-white mb-4">404</h1>
+                  <p className="text-surface-600 dark:text-surface-400 mb-8">Page not found</p>
+                  <a href="/" className="bg-primary-500 text-white px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors">
+                    Go Home
+                  </a>
+                </div>
+              </div>
             } />
           </Routes>
         </Router>
