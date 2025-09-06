@@ -125,7 +125,7 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item, index) => (
               <button
                 key={item.id}
@@ -181,7 +181,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg glass-effect hover:shadow-material-2 transition-all duration-300 hover:scale-110"
+            className="lg:hidden p-2 rounded-lg glass-effect hover:shadow-material-2 transition-all duration-300 hover:scale-110"
             aria-label="Toggle mobile menu"
           >
             <div className="relative w-6 h-6 flex items-center justify-center">
@@ -204,7 +204,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
           mobileMenuOpen 
             ? 'max-h-96 opacity-100 mt-4' 
             : 'max-h-0 opacity-0'
