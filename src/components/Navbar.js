@@ -1,122 +1,203 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useTheme } from '../contexts/ThemeContext';
+import { PERSONAL_INFO } from '../constants';
 
-const Navbar = ({ 
-  mode, 
-  toggleTheme, 
-  showBackButton = false, 
-  showGitHubLink = false, 
-  gitHubUrl = '', 
-  className = '' 
-}) => {
+const Navbar = () => {
+  const { mode, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
-  // Enhanced scroll detection for dynamic navbar effects
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsScrolled(scrollTop > 20);
+      const isScrolled = window.scrollY > 50;
+      setScrolled(isScrolled);
+
+      // Update active section based on scroll position
+      const sections = ['home', 'about', 'projects', 'experience', 'education', 'contact'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (current) {
+        setActiveSection(current);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle hash navigation on page load
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      const sectionId = location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
+  const scrollToSection = (sectionId) => {
+    if (location.pathname !== '/') {
+      // If we're on a project detail page, navigate to home first
+      navigate(`/#${sectionId}`);
+      return;
+    }
+    
+    // If we're on the home page, scroll to the section
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleHomeClick = () => {
+    if (location.pathname === '/') {
+      // If we're on the home page, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // If we're on a different page (like project detail), navigate to home
+      navigate('/');
+    }
+  };
+
+  const navItems = [
+    { id: 'home', label: 'Home', icon: '🏠' },
+    { id: 'about', label: 'About', icon: '👨‍💻' },
+    { id: 'projects', label: 'Projects', icon: '🚀' },
+    { id: 'experience', label: 'Experience', icon: '💼' },
+    { id: 'education', label: 'Education', icon: '🎓' },
+    { id: 'contact', label: 'Contact', icon: '📬' }
+  ];
+
   return (
-    <nav 
-      className={`sticky top-0 z-50 transition-all duration-700 ease-out ${
-        isScrolled 
-          ? 'bg-white/90 backdrop-blur-xl shadow-material-4 dark:bg-surface-900/90 dark:shadow-material-5' 
-          : 'bg-white/95 backdrop-blur-sm shadow-material-2 dark:bg-surface-900/95 dark:shadow-material-3'
-      } ${
-        isHovered 
-          ? 'shadow-material-5 dark:shadow-material-5 transform scale-[1.02]' 
-          : ''
-      } ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={{
-        backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'blur(8px) saturate(120%)',
-        borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.18)' : '1px solid rgba(255,255,255,0.1)'
-      }}
-    >
-      <div className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-500 ${
-        isScrolled ? 'h-14' : 'h-16'
-      }`}>
-        {/* Logo/Brand */}
-        <div className="font-bold text-xl flex items-center text-surface-900 dark:text-white group cursor-pointer" onClick={() => navigate('/')}>
-          <div className="relative mr-3 animate-fade-in" style={{animationDelay: '0.1s', animationFillMode: 'both'}}>
-            <img 
-              src="/images/profile/profile.jpeg" 
-              alt="Ruben Chevez" 
-              className={`rounded-full object-cover shadow-material-2 group-hover:shadow-material-3 transition-all duration-300 group-hover:scale-110 ${
-                isScrolled ? 'w-8 h-8' : 'w-10 h-10'
-              }`}
-            />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled 
+        ? 'glass-effect shadow-material-3 backdrop-blur-xl' 
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo/Profile Section */}
+          <div 
+            className="flex items-center space-x-4 animate-fade-in cursor-pointer"
+            onClick={handleHomeClick}
+          >
+            <div className="relative group">
+              <img
+                src="/images/profile/profile.jpeg"
+                alt={PERSONAL_INFO.name}
+                className="w-12 h-12 rounded-full ring-2 ring-primary-500 ring-offset-2 ring-offset-transparent transition-all duration-300 group-hover:ring-4 group-hover:ring-primary-400 object-cover"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              {/* Fallback avatar */}
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center text-white font-bold text-lg hidden">
+                {PERSONAL_INFO.name.split(' ').map(n => n[0]).join('')}
+              </div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+            </div>
+            <div className="hidden sm:block">
+              <h1 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 hover:scale-105 transition-transform duration-300">
+                {PERSONAL_INFO.name}
+              </h1>
+              <p className="text-sm text-surface-600 dark:text-surface-400">
+                Full-Stack Developer
+              </p>
+            </div>
           </div>
-          <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent transition-all duration-300 animate-fade-in" style={{animationDelay: '0.2s', animationFillMode: 'both'}}>
-            Ruben Chevez
-          </span>
-        </div>
 
-        {/* Navigation Links with enhanced animations */}
-        <div className="flex items-center gap-8 text-sm font-medium">
-          {/* Conditional Back Button */}
-          {showBackButton && (
-            <button 
-              onClick={() => navigate('/')}
-              className="text-surface-600 hover:text-primary-700 dark:text-surface-300 dark:hover:text-primary-400 transition-all duration-300 relative group animate-fade-in"
-              style={{animationDelay: '0.3s', animationFillMode: 'both'}}
-            >
-              ← Back to Portfolio
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 group-hover:w-full transition-all duration-300"></span>
-            </button>
-          )}
-
-          {/* Conditional GitHub Link */}
-          {showGitHubLink && gitHubUrl && (
-            <a 
-              href={gitHubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-surface-600 hover:text-primary-700 dark:!text-surface-300 dark:hover:!text-primary-400 transition-all duration-300 relative group animate-fade-in"
-              style={{animationDelay: '0.4s', animationFillMode: 'both'}}
-            >
-              🐙 View on GitHub
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 group-hover:w-full transition-all duration-300"></span>
-            </a>
-          )}
-
-          {/* Main Navigation Links */}
-          {!showBackButton && (
-            <>
-              <a href="#about" className="text-surface-600 hover:text-primary-700 dark:text-surface-300 dark:hover:text-primary-400 transition-all duration-300 relative group px-3 py-2 animate-fade-in" style={{animationDelay: '0.3s', animationFillMode: 'both'}}>
-                About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#projects" className="text-surface-600 hover:text-primary-700 dark:text-surface-300 dark:hover:text-primary-400 transition-all duration-300 relative group px-3 py-2 animate-fade-in" style={{animationDelay: '0.4s', animationFillMode: 'both'}}>
-                Projects
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#contact" className="text-surface-600 hover:text-primary-700 dark:text-surface-300 dark:hover:text-primary-400 transition-all duration-300 relative group px-3 py-2 animate-fade-in" style={{animationDelay: '0.5s', animationFillMode: 'both'}}>
-                Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 group-hover:w-full transition-all duration-300"></span>
-              </a>
-            </>
-          )}
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center space-x-1">
+            {navItems.map((item, index) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`group relative px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 animate-fade-in ${
+                  activeSection === item.id
+                    ? 'text-primary-600 dark:text-primary-400'
+                    : 'text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400'
+                }`}
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <span className="flex items-center gap-2">
+                  <span className="text-lg group-hover:animate-bounce">{item.icon}</span>
+                  {item.label}
+                </span>
+                
+                {/* Active indicator */}
+                <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full transition-all duration-300 ${
+                  activeSection === item.id ? 'w-8' : 'w-0 group-hover:w-6'
+                }`}></div>
+                
+                {/* Hover effect */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+            ))}
+          </div>
 
           {/* Theme Toggle */}
-          <button 
-            onClick={toggleTheme} 
-            className={`inline-flex items-center justify-center rounded-full bg-surface-100 dark:bg-surface-800 hover:bg-surface-200 dark:hover:bg-surface-700 shadow-material-1 hover:shadow-material-2 transition-all duration-300 text-lg hover:scale-110 animate-fade-in ${
-              isScrolled ? 'w-8 h-8 text-base' : 'w-10 h-10'
-            }`}
-            style={{animationDelay: '0.6s', animationFillMode: 'both'}}
+          <button
+            onClick={toggleTheme}
+            className="group p-3 rounded-xl glass-effect hover:shadow-material-2 transition-all duration-300 hover:scale-110 animate-fade-in flex items-center justify-center"
+            style={{animationDelay: '0.5s'}}
+            aria-label="Toggle theme"
           >
-            {mode === 'light' ? '🌙' : '☀️'}
+            <div className="relative w-6 h-6 flex items-center justify-center">
+              <span className={`absolute text-2xl transition-all duration-500 group-hover:animate-spin ${
+                mode === 'dark' 
+                  ? 'opacity-100 rotate-0' 
+                  : 'opacity-0 rotate-180'
+              }`}>
+                🌙
+              </span>
+              <span className={`absolute text-2xl transition-all duration-500 group-hover:animate-spin ${
+                mode === 'light' 
+                  ? 'opacity-100 rotate-0' 
+                  : 'opacity-0 -rotate-180'
+              }`}>
+                ☀️
+              </span>
+            </div>
           </button>
+
+          {/* Mobile Menu Button */}
+          <button className="md:hidden p-2 rounded-lg glass-effect">
+            <span className="text-2xl">☰</span>
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden mt-4 pt-4 border-t border-surface-200/20 dark:border-surface-700/20">
+          <div className="grid grid-cols-2 gap-2">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeSection === item.id
+                    ? 'bg-primary-500/20 text-primary-600 dark:text-primary-400'
+                    : 'hover:bg-surface-200/20 dark:hover:bg-surface-700/20'
+                }`}
+              >
+                <span className="text-lg">{item.icon}</span>
+                <span className="text-sm">{item.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </nav>

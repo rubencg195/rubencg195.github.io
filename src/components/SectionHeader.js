@@ -1,15 +1,15 @@
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const SectionHeader = ({ 
-  title, 
-  description, 
+const SectionHeader = ({
+  title,
+  description,
   icon = '',
   className = '',
   titleClassName = '',
-  descriptionClassName = '' 
+  descriptionClassName = ''
 }) => {
-  const [ref, isVisible] = useScrollAnimation(0.3, '100px', true);
+  const [ref, isVisible] = useScrollAnimation(0.3, '100px', true); // enableFadeOut = true
 
   return (
     <div ref={ref} className={`text-center mb-16 ${className}`}>

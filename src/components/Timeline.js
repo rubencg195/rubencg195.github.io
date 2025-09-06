@@ -1,5 +1,4 @@
 import React from 'react';
-import Section from './Section';
 import SectionHeader from './SectionHeader';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -147,28 +146,33 @@ const MobileTimelineCard = ({ title, subtitle, footnote, index = 0 }) => (
   </div>
 );
 
-const Timeline = ({ data, title, description }) => {
+const Timeline = ({ data, title, description, icon }) => {
   // Safety check for data
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
-      <Section background="grey">
-        <SectionHeader 
-          title={title}
-          description={description}
-        />
-        <div className="text-center text-surface-600 dark:text-surface-400">
-          <p>No data available</p>
+      <div className="py-16 px-6 bg-surface-100/50 dark:bg-surface-800/50">
+        <div className="max-w-6xl mx-auto">
+          <SectionHeader 
+            title={title}
+            description={description}
+            icon={icon}
+          />
+          <div className="text-center text-surface-600 dark:text-surface-400">
+            <p>No data available</p>
+          </div>
         </div>
-      </Section>
+      </div>
     );
   }
 
   return (
-    <Section background="grey">
-      <SectionHeader 
-        title={title}
-        description={description}
-      />
+    <div className="py-16 px-6 bg-surface-100/50 dark:bg-surface-800/50">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader 
+          title={title}
+          description={description}
+          icon={icon}
+        />
 
         <div className="relative max-w-4xl mx-auto">
           {/* Desktop Timeline Line - Center */}
@@ -180,7 +184,8 @@ const Timeline = ({ data, title, description }) => {
           {/* Timeline Items */}
           <TimelineItems data={data} />
         </div>
-    </Section>
+      </div>
+    </div>
   );
 };
 

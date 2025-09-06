@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+
+# Sitemap
+Sitemap: https://rubencg195.github.io/sitemap.xml

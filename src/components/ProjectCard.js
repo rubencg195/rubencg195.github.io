@@ -1,105 +1,88 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { GitHubIcon, ArrowRightIcon } from './UnicodeIcons';
+import { Link } from 'react-router-dom';
 
-const ProjectCard = ({ project }) => {
-  const navigate = useNavigate();
-
-  const handleCardClick = () => {
-    navigate(`/project/${project.id}`);
-  };
-
-  const handleMouseEnter = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
-  };
+const ProjectCard = ({ project, gradient, icon, index = 0 }) => {
+  if (!project) return null;
 
   return (
-    <div 
-      onClick={handleCardClick} 
-      onMouseEnter={handleMouseEnter}
-      className="group cursor-pointer rounded-3xl bg-white dark:bg-surface-900 shadow-material-2 hover:shadow-material-4 transition-all duration-300 overflow-hidden transform hover:scale-105 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 animate-fade-in relative"
-      style={{
-        transformStyle: 'preserve-3d',
-        perspective: '1000px'
-      }}
+    <Link
+      to={`/project/${project.id}`}
+      className="group block animate-fade-in hover:scale-105 transition-all duration-300"
+      style={{animationDelay: `${0.2 + index * 0.1}s`}}
     >
-      {/* Header with gradient and icon */}
-      <div className="relative h-48 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 flex items-center justify-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-secondary-600/20"></div>
+      <div className="glass-effect rounded-3xl p-8 h-full shadow-material-2 hover:shadow-material-4 transition-all duration-500 relative overflow-hidden">
         
-        {/* Background element */}
-        <div className="absolute top-4 right-4 opacity-30">
-          <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center">
-            <span className="text-3xl">⚡</span>
-          </div>
-        </div>
+        {/* Hover Glow Effect */}
+        <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
         
-        {/* Main icon */}
-        <div className="relative text-center z-10 transform group-hover:scale-110 transition-transform duration-300">
-          <div className="text-5xl mb-3">
-            <GitHubIcon />
+        {/* Project Icon */}
+        <div className="relative z-10">
+          <div className={`w-16 h-16 bg-gradient-to-r ${gradient} rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:animate-bounce shadow-material-2`}>
+            {icon}
           </div>
-          <div className="text-sm font-medium opacity-90 uppercase tracking-wider">
-            GitHub Repository
-          </div>
-        </div>
-        
-        {/* Simple floating particles */}
-        <div className="absolute top-8 left-8 w-2 h-2 bg-white/30 rounded-full animate-float"></div>
-        <div className="absolute bottom-12 left-12 w-3 h-3 bg-white/20 rounded-full animate-float"></div>
-        <div className="absolute top-16 right-20 w-1.5 h-1.5 bg-white/40 rounded-full animate-float"></div>
-      </div>
 
-      {/* Content */}
-      <div className="p-8">
-        <h3 className="text-xl font-bold text-surface-900 dark:text-white mb-3 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300">
-          {project.name}
-        </h3>
-        <p className="text-surface-600 dark:text-surface-300 mb-6 leading-relaxed line-clamp-3">
-          {project.description}
-        </p>
+          {/* Project Title */}
+          <h3 className="text-2xl font-bold text-surface-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary-500 group-hover:to-secondary-500 transition-all duration-300">
+            {project.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+          </h3>
 
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.technologies.map((tech, index) => (
-            <span 
-              key={index} 
-              className="px-3 py-1.5 rounded-full text-xs font-medium bg-gradient-to-r from-primary-50 to-secondary-50 text-primary-700 dark:from-primary-900/30 dark:to-secondary-900/30 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/50 hover:scale-105 transition-transform duration-300"
-            >
-              {tech}
+          {/* Project Description */}
+          <p className="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 line-clamp-3">
+            {project.description || 'No description available'}
+          </p>
+
+          {/* Project Stats */}
+          <div className="flex items-center gap-4 mb-6 text-sm text-surface-500 dark:text-surface-400">
+            <div className="flex items-center gap-1">
+              <span className="text-warning-500">⭐</span>
+              <span>{project.stargazers_count}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="text-secondary-500">🍴</span>
+              <span>{project.forks_count}</span>
+            </div>
+            {project.language && (
+              <div className="flex items-center gap-1">
+                <span className="text-primary-500">💻</span>
+                <span>{project.language}</span>
+              </div>
+            )}
+          </div>
+
+          {/* Technology Tags */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.topics?.slice(0, 3).map((topic, topicIndex) => (
+              <span
+                key={topicIndex}
+                className="px-3 py-1 bg-surface-200/50 dark:bg-surface-700/50 rounded-full text-xs font-medium text-surface-700 dark:text-surface-300 backdrop-blur-sm"
+              >
+                {topic}
+              </span>
+            ))}
+          </div>
+
+          {/* View Project Button */}
+          <div className="flex items-center justify-between">
+            <span className="text-primary-600 dark:text-primary-400 font-semibold group-hover:text-secondary-500 transition-colors duration-300">
+              View Project →
             </span>
-          ))}
-        </div>
-
-        {/* Actions */}
-        <div className="flex items-center justify-between pt-4 border-t border-surface-100 dark:border-surface-800">
-          <a 
-            href={project.url} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            onClick={(e) => e.stopPropagation()} 
-            className="inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors duration-300 hover:scale-105"
-          >
-            <span className="mr-2">🔗</span>
-            View on GitHub
-            <span className="ml-1">↗</span>
-          </a>
-          
-          <div className="flex items-center text-surface-400 dark:text-surface-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-            <span className="text-sm font-medium mr-2">Explore</span>
-            <span className="transform group-hover:translate-x-1 transition-transform duration-300">
-              <ArrowRightIcon />
+            
+            {/* Last Updated */}
+            <span className="text-xs text-surface-400 dark:text-surface-500">
+              Updated {new Date(project.updated_at).toLocaleDateString()}
             </span>
           </div>
+
+          {/* Progress Bar Animation */}
+          <div className={`w-full h-1 bg-gradient-to-r ${gradient} rounded-full mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+          <div className={`w-8 h-8 bg-gradient-to-r ${gradient} rounded-full animate-pulse-soft`}></div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

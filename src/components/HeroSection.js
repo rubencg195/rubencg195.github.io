@@ -1,84 +1,162 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { PERSONAL_INFO } from '../constants';
 
-const HeroSection = ({ 
-  title, 
-  subtitle, 
-  description, 
-  primaryButton, 
-  secondaryButton, 
-  technologies = [],
-  className = '' 
-}) => {
+const HeroSection = () => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const fullText = PERSONAL_INFO.title;
+
+  useEffect(() => {
+    if (currentIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + fullText[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, fullText]);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className={`relative bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-surface-900 dark:via-surface-800 dark:to-surface-900 overflow-hidden ${className}`}>
-      {/* Static gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-600/5 to-secondary-600/5 dark:from-primary-400/10 dark:to-secondary-400/10"></div>
-      
-      {/* Simple floating shapes */}
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-primary-200/30 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-secondary-200/30 rounded-full blur-xl animate-float"></div>
-        <div className="absolute top-1/3 right-20 w-16 h-16 bg-primary-300/20 rounded-full blur-lg animate-float"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto py-16 px-6 lg:py-24">
-        <div className="text-center">
-          {/* Title */}
-          <div className="mb-8 animate-fade-in" style={{animationDelay: '0.2s', animationFillMode: 'both'}}>
-            <h1 className="text-4xl font-bold text-surface-900 dark:text-white sm:text-5xl lg:text-6xl leading-tight">
-              {title}
-            </h1>
-            {subtitle && (
-              <span className="bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-600 bg-clip-text text-transparent">
-                {subtitle}
-              </span>
-            )}
-            <div className="mt-4 w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto rounded-full"></div>
+        {/* Floating Geometric Shapes */}
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className={`absolute opacity-10 animate-float`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: `${8 + i * 2}s`
+            }}
+          >
+            <div className={`w-${16 + i * 8} h-${16 + i * 8} bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full blur-sm`}></div>
           </div>
-
-          {/* Description */}
-          {description && (
-            <div className="mt-8 max-w-4xl mx-auto animate-fade-in" style={{animationDelay: '0.6s', animationFillMode: 'both'}}>
-              <p className="text-lg text-surface-700 dark:text-surface-300 sm:text-xl lg:text-2xl leading-relaxed font-light">
-                {description}
-              </p>
-            </div>
-          )}
-
-          {/* Technologies */}
-          {technologies.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-3 mb-8 mt-8 animate-fade-in" style={{animationDelay: '1.0s', animationFillMode: 'both'}}>
-              {technologies.map((tech, index) => (
-                <span 
-                  key={index}
-                  className="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-50 to-secondary-50 text-primary-700 dark:from-primary-900/30 dark:to-secondary-900/30 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/50 shadow-material-1 hover:shadow-material-3 hover:scale-105 transition-all duration-300"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Buttons */}
-          {(primaryButton || secondaryButton) && (
-            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{animationDelay: '1.4s', animationFillMode: 'both'}}>
-              {primaryButton}
-              {secondaryButton}
-            </div>
-          )}
-
-          {/* Scroll Indicator */}
-          <div className="mt-16 animate-fade-in" style={{animationDelay: '1.8s', animationFillMode: 'both'}}>
-            <div className="mx-auto w-6 h-10 border-2 border-primary-300 dark:border-primary-600 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-primary-600 rounded-full mt-2 animate-bounce"></div>
-            </div>
-            <p className="text-xs text-surface-500 dark:text-surface-400 mt-2">
-              Scroll to explore
-            </p>
+        ))}
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="grid grid-cols-12 gap-4 h-full">
+            {[...Array(144)].map((_, i) => (
+              <div key={i} className="border border-primary-500/20"></div>
+            ))}
           </div>
         </div>
       </div>
 
+      <div className="max-w-6xl mx-auto text-center relative z-10">
+        {/* Main Content */}
+        <div className="space-y-8">
+          {/* Greeting */}
+          <div className="animate-fade-in">
+            <span className="inline-block px-6 py-3 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-full text-primary-600 dark:text-primary-400 font-semibold backdrop-blur-sm border border-primary-500/30">
+              👋 Hello, I'm
+            </span>
+          </div>
+
+          {/* Name */}
+          <h1 className="text-6xl md:text-8xl font-bold animate-fade-in" style={{animationDelay: '0.3s'}}>
+            <span className="text-transparent bg-clip-text bg-gradient-google hover:scale-105 transition-transform duration-300 inline-block">
+              {PERSONAL_INFO.name}
+            </span>
+          </h1>
+
+          {/* Animated Title */}
+          <div className="h-20 flex items-center justify-center animate-fade-in" style={{animationDelay: '0.6s'}}>
+            <h2 className="text-2xl md:text-4xl font-semibold text-surface-700 dark:text-surface-300">
+              <span className="border-r-2 border-primary-500 pr-2 animate-pulse">
+                {displayedText}
+              </span>
+            </h2>
+          </div>
+
+          {/* Description */}
+          <p className="max-w-3xl mx-auto text-xl text-surface-600 dark:text-surface-400 leading-relaxed animate-fade-in" style={{animationDelay: '0.9s'}}>
+            Passionate about creating scalable, high-performance applications that solve real-world problems. 
+            Specialized in modern web technologies and cloud architecture.
+          </p>
+
+          {/* Tech Stack Pills */}
+          <div className="flex flex-wrap justify-center gap-3 animate-fade-in" style={{animationDelay: '1.2s'}}>
+            {PERSONAL_INFO.skills.slice(0, 6).map((skill, index) => (
+              <span
+                key={skill}
+                className="px-4 py-2 glass-effect rounded-full text-sm font-medium text-surface-700 dark:text-surface-300 hover:scale-110 transition-transform duration-300 cursor-default"
+                style={{animationDelay: `${1.2 + index * 0.1}s`}}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style={{animationDelay: '1.5s'}}>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="group bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-4 rounded-2xl font-semibold shadow-material-3 hover:shadow-material-4 transition-all duration-300 hover:scale-105 flex items-center gap-3"
+            >
+              <span className="text-xl group-hover:animate-bounce">🚀</span>
+              View My Work
+              <div className="w-0 group-hover:w-4 h-0.5 bg-white rounded-full transition-all duration-300"></div>
+            </button>
+            
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="group glass-effect text-surface-900 dark:text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-300 hover:scale-105 flex items-center gap-3"
+            >
+              <span className="text-xl group-hover:animate-bounce">💬</span>
+              Let's Talk
+              <div className="w-0 group-hover:w-4 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full transition-all duration-300"></div>
+            </button>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="animate-fade-in" style={{animationDelay: '1.8s'}}>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="group flex flex-col items-center gap-2 mt-16 hover:scale-110 transition-transform duration-300"
+            >
+              <span className="text-sm text-surface-500 dark:text-surface-400 font-medium">
+                Scroll to explore
+              </span>
+              <div className="w-6 h-10 border-2 border-surface-400 dark:border-surface-500 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-gradient-to-b from-primary-500 to-secondary-500 rounded-full mt-2 animate-bounce"></div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: '2s'}}>
+          {[
+            { number: '8+', label: 'Years Experience', icon: '⏱️' },
+            { number: '50+', label: 'Projects Completed', icon: '🎯' },
+            { number: '99.9%', label: 'Uptime Achieved', icon: '📊' }
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="glass-effect rounded-2xl p-6 hover:shadow-material-3 transition-all duration-300 hover:scale-105 group"
+            >
+              <div className="text-3xl mb-2 group-hover:animate-bounce">{stat.icon}</div>
+              <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-1">
+                {stat.number}
+              </div>
+              <div className="text-sm text-surface-600 dark:text-surface-400">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

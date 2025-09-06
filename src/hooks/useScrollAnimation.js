@@ -6,7 +6,7 @@ export const useScrollAnimation = (threshold = 0.1, rootMargin = '50px', enableF
 
   useEffect(() => {
     const currentRef = ref.current;
-    
+
     if (!currentRef) return;
 
     const observer = new IntersectionObserver(
