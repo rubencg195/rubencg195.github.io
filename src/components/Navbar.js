@@ -210,12 +210,12 @@ const Navbar = () => {
             : 'max-h-0 opacity-0'
         }`}>
           <div className="bg-surface-50/95 dark:bg-surface-900/95 backdrop-blur-xl rounded-2xl p-4 mx-2 shadow-material-3 border border-surface-200/30 dark:border-surface-700/30">
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
               {navItems.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${
+                  className={`flex items-center gap-2 xs:gap-3 px-3 xs:px-4 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 w-full ${
                     activeSection === item.id
                       ? 'bg-primary-500/20 text-primary-600 dark:text-primary-400 shadow-material-2'
                       : 'bg-white/50 dark:bg-surface-800/50 hover:bg-primary-50 dark:hover:bg-surface-700 text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400'
@@ -225,8 +225,8 @@ const Navbar = () => {
                     animation: mobileMenuOpen ? 'fadeInUp 0.3s ease-out forwards' : 'none'
                   }}
                 >
-                  <span className="text-lg">{item.icon}</span>
-                  <span className="text-sm font-semibold">{item.label}</span>
+                  <span className="text-lg xs:text-xl">{item.icon}</span>
+                  <span className="text-sm xs:text-base font-semibold">{item.label}</span>
                 </button>
               ))}
             </div>
