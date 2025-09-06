@@ -86,7 +86,7 @@ const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
     <div className={`absolute top-4 ${isLeft ? '-right-8 translate-x-full' : '-left-8 -translate-x-full'} w-8 h-0.5 bg-gradient-to-r ${isLeft ? 'from-primary-300 to-transparent' : 'from-transparent to-primary-300'} dark:${isLeft ? 'from-primary-600 to-transparent' : 'from-transparent to-primary-600'}`}></div>
     
     {/* Card */}
-    <div className="bg-white dark:bg-surface-900 p-3 sm:p-4 rounded-xl shadow-material-2 hover:shadow-material-3 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-105">
+    <div className="bg-slate-50 dark:bg-surface-900 p-3 sm:p-4 rounded-xl shadow-material-2 hover:shadow-material-3 border border-slate-200 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-105">
       {/* Period Badge */}
       {footnote && (
         <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 dark:from-primary-900/30 dark:to-secondary-900/30 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/50 mb-2 hover:scale-105 transition-transform duration-300 ${isLeft ? '' : ''}`}>

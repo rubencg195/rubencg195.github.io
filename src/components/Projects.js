@@ -159,7 +159,7 @@ const Projects = () => {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              <div className={`glass-effect rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full transition-all duration-500 hover:shadow-material-4 hover:scale-105 relative overflow-hidden ${
+              <div className={`bg-slate-50 dark:bg-surface-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full transition-all duration-500 hover:shadow-material-4 hover:scale-105 relative overflow-hidden border border-slate-100 dark:border-surface-700 ${
                 hoveredProject === project.id ? 'shadow-material-4' : 'shadow-material-2'
               }`}>
                 
@@ -206,7 +206,7 @@ const Projects = () => {
                     {project.topics?.slice(0, 3).map((topic, topicIndex) => (
                       <span
                         key={topicIndex}
-                        className={`px-2 py-1 sm:px-3 bg-surface-200/50 dark:bg-surface-700/50 rounded-full text-xs font-medium text-surface-700 dark:text-surface-300 backdrop-blur-sm ${
+                        className={`px-2 py-1 sm:px-3 bg-slate-200 dark:bg-surface-700/50 rounded-full text-xs font-medium text-slate-700 dark:text-surface-300 backdrop-blur-sm ${
                           topicIndex >= 2 ? 'hidden sm:inline-block' : ''
                         }`}
                       >

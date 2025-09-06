@@ -10,7 +10,7 @@ const ProjectCard = ({ project, gradient, icon, index = 0 }) => {
       className="group block animate-fade-in hover:scale-105 transition-all duration-300"
       style={{animationDelay: `${0.2 + index * 0.1}s`}}
     >
-      <div className="glass-effect rounded-3xl p-8 h-full shadow-material-2 hover:shadow-material-4 transition-all duration-500 relative overflow-hidden">
+      <div className="bg-slate-50 dark:bg-surface-800 rounded-3xl p-8 h-full shadow-material-2 hover:shadow-material-4 transition-all duration-500 relative overflow-hidden border border-slate-100 dark:border-surface-700">
         
         {/* Hover Glow Effect */}
         <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
@@ -54,7 +54,7 @@ const ProjectCard = ({ project, gradient, icon, index = 0 }) => {
             {project.topics?.slice(0, 3).map((topic, topicIndex) => (
               <span
                 key={topicIndex}
-                className="px-3 py-1 bg-surface-200/50 dark:bg-surface-700/50 rounded-full text-xs font-medium text-surface-700 dark:text-surface-300 backdrop-blur-sm"
+                className="px-3 py-1 bg-slate-200 dark:bg-surface-700/50 rounded-full text-xs font-medium text-slate-700 dark:text-surface-300 backdrop-blur-sm"
               >
                 {topic}
               </span>

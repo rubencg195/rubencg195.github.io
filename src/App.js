@@ -32,7 +32,7 @@ const AboutCards = () => {
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`bg-surface-50 dark:bg-surface-800 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-700 ease-out hover:scale-105 active:scale-95 ${
+          className={`bg-slate-50 dark:bg-surface-800 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-700 ease-out hover:scale-105 active:scale-95 border border-slate-100 dark:border-surface-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{
@@ -70,7 +70,7 @@ const ContactButtons = () => {
         href={PERSONAL_INFO.linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        className={`group bg-surface-50 dark:bg-surface-800 text-surface-900 dark:text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-700 ease-out hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 border border-surface-200 dark:border-surface-700 w-full sm:w-auto justify-center ${
+        className={`group bg-slate-100 dark:bg-surface-800 text-slate-700 dark:text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-700 ease-out hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 border border-slate-200 dark:border-surface-700 w-full sm:w-auto justify-center hover:bg-slate-200 dark:hover:bg-surface-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{transitionDelay: isVisible ? '0.3s' : '0s'}}
@@ -241,7 +241,7 @@ function App() {
                       
                       <a
                         href="#contact"
-                        className="group bg-surface-100/80 dark:bg-surface-800/80 text-surface-900 dark:text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 backdrop-blur-sm border border-surface-200/50 dark:border-surface-700/50 w-full sm:w-auto justify-center"
+                        className="group bg-slate-100 dark:bg-surface-800/80 text-slate-700 dark:text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 backdrop-blur-sm border border-slate-200 dark:border-surface-700/50 w-full sm:w-auto justify-center hover:bg-slate-200 dark:hover:bg-surface-700"
                       >
                         <span className="text-lg sm:text-xl group-hover:animate-bounce">💬</span>
                         <span className="text-sm sm:text-base">Let's Talk</span>
