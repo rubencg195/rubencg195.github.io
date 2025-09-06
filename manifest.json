@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Ruben Chevez",
+  "name": "Ruben Chevez - Full-Stack Developer Portfolio",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#4285f4",
+  "background_color": "#0f172a",
+  "description": "Professional portfolio showcasing full-stack development expertise and cloud solutions"
 }
