@@ -88,3 +88,68 @@ export const fetchReadmeWithImages = async (owner, repo) => {
     throw error;
   }
 };
+
+/**
+ * Fetch and parse LinkedIn profile using public content readers.
+ * Note: Direct HTML scraping from LinkedIn is blocked by CORS/auth.
+ * We use Jina AI Reader as a universal web content reader endpoint.
+ */
+export const fetchLinkedInProfile = async (profileUrl) => {
+  try {
+    // Attempt to use alternative reader that may not block
+    const encoded = encodeURIComponent(profileUrl);
+    const endpoints = [
+      `https://r.jina.ai/${encoded}`,
+      `https://r.jina.ai/http://r.jina.ai/${encoded}`,
+    ];
+    let text = '';
+    for (const url of endpoints) {
+      try {
+        const resp = await fetch(url);
+        if (resp.ok) { text = await resp.text(); break; }
+      } catch (_) { /* try next */ }
+    }
+    if (!text) throw new Error('LinkedIn fetch failed: all endpoints blocked');
+
+    // Very simple heuristic parser: extract Experience and Education sections
+    const experience = [];
+    const education = [];
+
+    const expRegex = /(Experience|Experiencia)[\s\S]*?(Education|Educación|Licenses|Licencias)/i;
+    const eduRegex = /(Education|Educación)[\s\S]*/i;
+
+    const expMatch = text.match(expRegex);
+    const eduMatch = text.match(eduRegex);
+
+    if (expMatch) {
+      const expBlock = expMatch[0];
+      const roleRegex = /(\n|^)\s*([A-Z][^\n]+)\s*\n\s*([A-Z][^\n]+)\s*\n\s*([A-Za-z]{3,}.*?\d{4}.*?)(\n|$)/g;
+      let m;
+      while ((m = roleRegex.exec(expBlock)) !== null) {
+        experience.push({
+          title: m[2]?.trim(),
+          company: m[3]?.trim(),
+          period: m[4]?.trim(),
+        });
+      }
+    }
+
+    if (eduMatch) {
+      const eduBlock = eduMatch[0];
+      const eduItem = /(\n|^)\s*([A-Z][^\n]+)\s*\n\s*([A-Z][^\n]+)\s*\n\s*(\d{4}.*?\d{4}|\d{4}.*?Present|Presente)?/g;
+      let m;
+      while ((m = eduItem.exec(eduBlock)) !== null) {
+        education.push({
+          school: m[2]?.trim(),
+          degree: m[3]?.trim(),
+          period: (m[4] || '').trim(),
+        });
+      }
+    }
+
+    return { experience, education, raw: text };
+  } catch (e) {
+    console.error('Error fetching LinkedIn profile:', e);
+    return { experience: [], education: [], raw: '' };
+  }
+};

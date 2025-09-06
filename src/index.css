@@ -2,78 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom CSS Variables for consistent theming */
+:root {
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Base styles */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Custom styles for markdown content */
 .prose {
-  @apply text-gray-700;
+  color: inherit;
 }
 
-.prose h1 {
-  @apply text-3xl font-bold text-gray-900 mb-6;
-}
+.prose h1 { font-weight: 700; margin-bottom: 1.5rem; color: inherit; }
 
-.prose h2 {
-  @apply text-2xl font-bold text-gray-900 mb-4 mt-8;
-}
+.prose h2 { font-weight: 700; margin: 2rem 0 1rem; color: inherit; }
 
-.prose h3 {
-  @apply text-xl font-semibold text-gray-900 mb-3 mt-6;
-}
+.prose h3 { font-weight: 600; margin: 1.5rem 0 0.75rem; color: inherit; }
 
-.prose h4 {
-  @apply text-lg font-semibold text-gray-900 mb-2 mt-4;
-}
+.prose h4 { font-weight: 600; margin: 1rem 0 0.5rem; color: inherit; }
 
-.prose p {
-  @apply mb-4 leading-relaxed;
-}
+.prose p { margin-bottom: 1rem; line-height: 1.7; color: inherit; }
 
-.prose ul {
-  @apply mb-4 pl-6;
-}
+.prose strong { color: inherit; }
 
-.prose ol {
-  @apply mb-4 pl-6;
-}
+.prose em { color: inherit; }
 
-.prose li {
-  @apply mb-2;
-}
+.prose ul { margin-bottom: 1rem; padding-left: 1.5rem; color: inherit; }
 
-.prose code {
-  @apply bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono;
-}
+.prose ol { margin-bottom: 1rem; padding-left: 1.5rem; color: inherit; }
 
-.prose pre {
-  @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
-}
+.prose li { margin-bottom: 0.5rem; color: inherit; }
 
-.prose pre code {
-  @apply bg-transparent text-gray-100 p-0;
-}
+.prose code { background: rgba(0,0,0,0.06); color: inherit; padding: 0.125rem 0.375rem; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.875rem; }
 
-.prose blockquote {
-  @apply border-l-4 border-blue-500 pl-4 italic text-gray-600 mb-4;
-}
+.prose pre { background: #0b0b0b; color: #f3f3f3; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
 
-.prose a {
-  @apply text-blue-600 hover:text-blue-800 underline;
-}
+.prose pre code { background: transparent; color: inherit; padding: 0; }
 
-.prose table {
-  @apply w-full border-collapse border border-gray-300 mb-4;
-}
+.prose blockquote { border-left: 4px solid #1976d2; padding-left: 1rem; font-style: italic; opacity: 0.8; margin-bottom: 1rem; }
 
-.prose th {
-  @apply border border-gray-300 bg-gray-100 px-4 py-2 text-left font-semibold;
-}
+.prose a { color: #1976d2; text-decoration: underline; }
 
-.prose td {
-  @apply border border-gray-300 px-4 py-2;
-}
+.prose table { width: 100%; border-collapse: collapse; border: 1px solid rgba(0,0,0,0.12); margin-bottom: 1rem; }
 
-.prose img {
-  @apply max-w-full h-auto rounded-lg shadow-md mb-4;
-}
+.prose th { border: 1px solid rgba(0,0,0,0.12); background: rgba(0,0,0,0.04); padding: 0.5rem 1rem; text-align: left; font-weight: 600; }
+
+.prose td { border: 1px solid rgba(0,0,0,0.12); padding: 0.5rem 1rem; }
+
+.prose img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 1rem; }
 
 /* Line clamp utility for project descriptions */
 .line-clamp-3 {

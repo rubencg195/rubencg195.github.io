@@ -1,113 +1,139 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HomeIcon, UserIcon, CodeIcon, EnvelopeIcon } from './components/UnicodeIcons';
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import Section from './components/Section';
+import SectionHeader from './components/SectionHeader';
+import { PrimaryButton, SecondaryButton } from './components/Button';
 import ProjectDetail from './components/ProjectDetail';
 import Projects from './components/Projects';
+import ExperienceEducation from './components/ExperienceEducation';
 
 // Home page component
 const Home = () => {
+  const { mode, toggleTheme } = useTheme();
+  
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <HomeIcon className="text-xl mr-2" />
-              <h1 className="text-xl font-bold text-gray-900">Portfolio</h1>
-            </div>
-            <div className="flex items-center space-x-8">
-              <a href="#about" className="text-gray-600 hover:text-gray-900 flex items-center">
-                <UserIcon className="mr-1" />
-                About
-              </a>
-              <a href="#projects" className="text-gray-600 hover:text-gray-900 flex items-center">
-                <CodeIcon className="mr-1" />
-                Projects
-              </a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900 flex items-center">
-                <EnvelopeIcon className="mr-1" />
-                Contact
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-surface-50 dark:bg-surface-900">
+      {/* Navbar */}
+      <Navbar mode={mode} toggleTheme={toggleTheme} />
 
       {/* Hero Section */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
-              Hi, I'm <span className="text-blue-600">Ruben Chávez</span>
-            </h1>
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Full Stack Developer passionate about creating amazing web experiences with AWS and modern technologies
-            </p>
-            <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-              <div className="rounded-md shadow">
-                <a
-                  href="#projects"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
-                >
-                  View My Work
-                </a>
-              </div>
-              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                <a
-                  href="#contact"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
-                >
-                  Get In Touch
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection 
+        title={<>
+          Hi, I'm{' '}
+          <span className="bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-600 bg-clip-text text-transparent animate-pulse">
+            Ruben Chávez
+          </span>
+        </>}
+        description={<>
+          Full Stack Developer passionate about creating{' '}
+          <span className="font-semibold text-primary-700 dark:text-primary-400">amazing web experiences</span>{' '}
+          with AWS and modern technologies
+        </>}
+        primaryButton={
+          <PrimaryButton href="#projects" icon="→">
+            View My Work
+          </PrimaryButton>
+        }
+        secondaryButton={
+          <SecondaryButton href="#contact" icon="✉️">
+            Get In Touch
+          </SecondaryButton>
+        }
+        className="py-24 lg:py-32"
+      />
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900">About Me</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-              I'm a passionate developer with experience in modern web technologies, AWS cloud services, and infrastructure as code. 
-              I love building scalable applications and solving complex problems with serverless architectures.
-            </p>
+      <Section id="about" background="white">
+        <SectionHeader 
+          title="About Me"
+          description={<>
+            I'm a passionate developer with experience in{' '}
+            <span className="font-semibold text-primary-700 dark:text-primary-400">modern web technologies</span>,{' '}
+            <span className="font-semibold text-primary-700 dark:text-primary-400">AWS cloud services</span>, and{' '}
+            <span className="font-semibold text-primary-700 dark:text-primary-400">infrastructure as code</span>. 
+            I love building scalable applications and solving complex problems with serverless architectures.
+          </>
+          }
+        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide-up">
+          <div className="bg-surface-50 dark:bg-surface-800 p-6 rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="text-4xl mb-4">🚀</div>
+            <h3 className="text-lg font-semibold text-surface-900 dark:text-white mb-2">Performance</h3>
+            <p className="text-surface-600 dark:text-surface-300">Optimized solutions that scale</p>
+          </div>
+          <div className="bg-surface-50 dark:bg-surface-800 p-6 rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="text-4xl mb-4">☁️</div>
+            <h3 className="text-lg font-semibold text-surface-900 dark:text-white mb-2">Cloud Native</h3>
+            <p className="text-surface-600 dark:text-surface-300">AWS serverless architectures</p>
+          </div>
+          <div className="bg-surface-50 dark:bg-surface-800 p-6 rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="text-4xl mb-4">💡</div>
+            <h3 className="text-lg font-semibold text-surface-900 dark:text-white mb-2">Innovation</h3>
+            <p className="text-surface-600 dark:text-surface-300">Cutting-edge solutions</p>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Projects Section */}
       <Projects />
+      <ExperienceEducation />
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900">Get In Touch</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-              I'm always interested in new opportunities and exciting projects.
-            </p>
-            <div className="mt-8">
-              <a
-                href="mailto:rubencg195@gmail.com"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-              >
-                <EnvelopeIcon className="mr-2" />
-                Send me an email
-              </a>
-            </div>
-          </div>
+      <Section id="contact" background="gradient">
+        <SectionHeader 
+          title="Get In Touch"
+          description="I'm always interested in new opportunities and exciting projects. Let's build something amazing together!"
+          descriptionClassName="max-w-2xl mx-auto mb-12"
+        />
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up">
+          <PrimaryButton 
+            href="mailto:rubencg195@gmail.com" 
+            icon="📧" 
+            iconPosition="left"
+          >
+            Send me an email
+          </PrimaryButton>
+          <SecondaryButton 
+            href="https://linkedin.com/in/rubenchevez" 
+            target="_blank"
+            rel="noopener noreferrer"
+            icon="💼" 
+            iconPosition="left"
+          >
+            LinkedIn Profile
+          </SecondaryButton>
         </div>
-      </section>
+      </Section>
 
       {/* Footer */}
-      <footer className="bg-white">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-white dark:bg-surface-900 border-t border-surface-200 dark:border-surface-700">
+        <div className="max-w-7xl mx-auto py-12 px-6">
           <div className="text-center">
-            <p className="text-gray-500">&copy; 2024 Ruben Chávez. All rights reserved.</p>
+            <div className="mb-6">
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+                Ruben Chávez
+              </span>
+            </div>
+            <p className="text-surface-600 dark:text-surface-400 mb-6">
+              Full Stack Developer • AWS Certified • Problem Solver
+            </p>
+            <div className="flex justify-center space-x-6 mb-8">
+              <a href="mailto:rubencg195@gmail.com" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+                <span className="text-2xl">📧</span>
+              </a>
+              <a href="https://linkedin.com/in/rubenchevez" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+                <span className="text-2xl">💼</span>
+              </a>
+              <a href="https://github.com/rubencg195" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+                <span className="text-2xl">🐙</span>
+              </a>
+            </div>
+            <p className="text-surface-500 dark:text-surface-400 text-sm">
+              &copy; 2024 Ruben Chávez. Crafted with ❤️ and ☕
+            </p>
           </div>
         </div>
       </footer>
@@ -117,12 +143,14 @@ const Home = () => {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/project/:projectId" element={<ProjectDetail />} />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/project/:projectId" element={<ProjectDetail />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
