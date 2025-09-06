@@ -176,12 +176,63 @@ function App() {
                       {PERSONAL_INFO.bio}
                     </p>
 
-                    {/* Tech Stack Pills */}
+                    {/* Tech Stack Pills - FAANG Ready Skills */}
                     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 animate-fade-in px-4" style={{animationDelay: '1.2s'}}>
-                      {PERSONAL_INFO.skills.slice(0, 6).map((skill, index) => (
+                      {/* Core Languages */}
+                      {['Python', 'Java', 'C++', 'JavaScript', 'Scala'].map((skill, index) => (
                         <span
                           key={skill}
-                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-surface-100/80 dark:bg-surface-800/80 rounded-full text-xs sm:text-sm font-medium text-surface-700 dark:text-surface-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-surface-200/50 dark:border-surface-700/50"
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-500/20 to-blue-600/20 dark:from-blue-400/20 dark:to-blue-500/20 rounded-full text-xs sm:text-sm font-medium text-blue-700 dark:text-blue-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      
+                      {/* Cloud & AWS */}
+                      {['AWS', 'SageMaker', 'Bedrock', 'Databricks', 'Terraform'].map((skill, index) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-orange-500/20 to-orange-600/20 dark:from-orange-400/20 dark:to-orange-500/20 rounded-full text-xs sm:text-sm font-medium text-orange-700 dark:text-orange-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-orange-200/50 dark:border-orange-700/50"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      
+                      {/* MLOps & DevOps */}
+                      {['MLOps', 'DevOps', 'Docker', 'Jenkins', 'CI/CD'].map((skill, index) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-green-500/20 to-green-600/20 dark:from-green-400/20 dark:to-green-500/20 rounded-full text-xs sm:text-sm font-medium text-green-700 dark:text-green-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-green-200/50 dark:border-green-700/50"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      
+                      {/* Frameworks & Tools */}
+                      {['React', 'Node.js', 'Spring Boot', 'Git', 'Microservices'].map((skill, index) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-500/20 to-purple-600/20 dark:from-purple-400/20 dark:to-purple-500/20 rounded-full text-xs sm:text-sm font-medium text-purple-700 dark:text-purple-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-purple-200/50 dark:border-purple-700/50"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      
+                      {/* Additional AWS Services */}
+                      {['S3', 'Lambda', 'ECS', 'DynamoDB', 'RDS'].map((skill, index) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 dark:from-yellow-400/20 dark:to-yellow-500/20 rounded-full text-xs sm:text-sm font-medium text-yellow-700 dark:text-yellow-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-yellow-200/50 dark:border-yellow-700/50"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      
+                      {/* Leadership & Practices */}
+                      {['Agile/Scrum', 'TDD', 'Technical Strategy', 'Project Management'].map((skill, index) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 rounded-full text-xs sm:text-sm font-medium text-red-700 dark:text-red-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-red-200/50 dark:border-red-700/50"
                         >
                           {skill}
                         </span>
