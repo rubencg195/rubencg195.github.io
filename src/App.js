@@ -219,7 +219,7 @@ function App() {
                       ))}
                       
                       {/* Leadership & Practices */}
-                      {['Technical Strategy', 'Project Management', 'TDD'].map((skill, index) => (
+                      {['Technical Strategy', 'Project Management'].map((skill, index) => (
                         <span
                           key={skill}
                           className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 rounded-full text-xs sm:text-sm font-medium text-red-700 dark:text-red-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-red-200/50 dark:border-red-700/50"
