@@ -182,7 +182,7 @@ const ProjectDetail = () => {
     }`}>
       {/* Navbar - Matching Home Page Style */}
       <nav className="glass-effect shadow-material-3 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 xs:px-6 py-3 xs:py-4">
           <div className="flex items-center justify-between">
             {/* Logo/Profile Section */}
             <div 
@@ -216,14 +216,15 @@ const ProjectDetail = () => {
             </div>
 
             {/* Navigation Actions */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 xs:space-x-4">
               <Link
                 to="/"
-                className="group relative px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400"
+                className="group relative px-2 xs:px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400"
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-1 xs:gap-2">
                   <span className="text-lg group-hover:animate-bounce">←</span>
-                  Back to Portfolio
+                  <span className="hidden xs:inline">Back to Portfolio</span>
+                  <span className="xs:hidden">Back</span>
                 </span>
                 
                 {/* Hover effect */}
@@ -234,11 +235,12 @@ const ProjectDetail = () => {
                 href={project.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400"
+                className="group relative px-2 xs:px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400"
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-1 xs:gap-2">
                   <span className="text-lg group-hover:animate-bounce">🐙</span>
-                  View on GitHub
+                  <span className="hidden xs:inline">View on GitHub</span>
+                  <span className="xs:hidden">GitHub</span>
                 </span>
                 
                 {/* Hover effect */}
@@ -274,46 +276,46 @@ const ProjectDetail = () => {
       </nav>
 
       {/* Project Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-4 xs:px-6 py-8 xs:py-12">
         {/* Project Header */}
-        <div className="glass-effect rounded-3xl p-12 shadow-material-3 mb-8 animate-fade-in">
-          <div className="flex items-start gap-6">
-            <div className={`w-20 h-20 bg-gradient-to-r ${getProjectGradient()} rounded-3xl flex items-center justify-center text-4xl shadow-material-2 animate-bounce-in`}>
+        <div className="glass-effect rounded-2xl xs:rounded-3xl p-4 xs:p-8 sm:p-12 shadow-material-3 mb-6 xs:mb-8 animate-fade-in">
+          <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4 xs:gap-6">
+            <div className={`w-16 h-16 xs:w-20 xs:h-20 bg-gradient-to-r ${getProjectGradient()} rounded-2xl xs:rounded-3xl flex items-center justify-center text-3xl xs:text-4xl shadow-material-2 animate-bounce-in flex-shrink-0`}>
               {getProjectIcon(project.name)}
             </div>
             
-            <div className="flex-1">
-              <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-4 animate-fade-in" style={{animationDelay: '0.2s'}}>
+            <div className="flex-1 text-center xs:text-left">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-3 xs:mb-4 animate-fade-in" style={{animationDelay: '0.2s'}}>
                 {project.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
               </h1>
               
               {project.description && (
-                <p className="text-xl text-surface-600 dark:text-surface-300 leading-relaxed mb-6 animate-fade-in" style={{animationDelay: '0.4s'}}>
+                <p className="text-lg xs:text-xl text-surface-600 dark:text-surface-300 leading-relaxed mb-4 xs:mb-6 animate-fade-in" style={{animationDelay: '0.4s'}}>
                   {project.description}
                 </p>
               )}
 
               {/* Project Stats */}
-              <div className="flex flex-wrap gap-6 mb-6 animate-fade-in" style={{animationDelay: '0.6s'}}>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">⭐</span>
-                  <span className="font-semibold">{project.stargazers_count}</span>
-                  <span className="text-surface-500 dark:text-surface-400">stars</span>
+              <div className="flex flex-wrap justify-center xs:justify-start gap-3 xs:gap-6 mb-4 xs:mb-6 animate-fade-in" style={{animationDelay: '0.6s'}}>
+                <div className="flex items-center gap-1 xs:gap-2">
+                  <span className="text-xl xs:text-2xl">⭐</span>
+                  <span className="font-semibold text-sm xs:text-base">{project.stargazers_count}</span>
+                  <span className="text-surface-500 dark:text-surface-400 text-sm xs:text-base">stars</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">🍴</span>
-                  <span className="font-semibold">{project.forks_count}</span>
-                  <span className="text-surface-500 dark:text-surface-400">forks</span>
+                <div className="flex items-center gap-1 xs:gap-2">
+                  <span className="text-xl xs:text-2xl">🍴</span>
+                  <span className="font-semibold text-sm xs:text-base">{project.forks_count}</span>
+                  <span className="text-surface-500 dark:text-surface-400 text-sm xs:text-base">forks</span>
                 </div>
                 {project.language && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl">💻</span>
-                    <span className="font-semibold">{project.language}</span>
+                  <div className="flex items-center gap-1 xs:gap-2">
+                    <span className="text-xl xs:text-2xl">💻</span>
+                    <span className="font-semibold text-sm xs:text-base">{project.language}</span>
                   </div>
                 )}
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">📅</span>
-                  <span className="text-surface-500 dark:text-surface-400">
+                <div className="flex items-center gap-1 xs:gap-2 w-full xs:w-auto justify-center xs:justify-start">
+                  <span className="text-xl xs:text-2xl">📅</span>
+                  <span className="text-surface-500 dark:text-surface-400 text-sm xs:text-base">
                     Updated {new Date(project.updated_at).toLocaleDateString()}
                   </span>
                 </div>
@@ -321,11 +323,11 @@ const ProjectDetail = () => {
 
               {/* Technology Tags */}
               {project.topics && project.topics.length > 0 && (
-                <div className="flex flex-wrap gap-2 animate-fade-in" style={{animationDelay: '0.8s'}}>
+                <div className="flex flex-wrap justify-center xs:justify-start gap-2 animate-fade-in" style={{animationDelay: '0.8s'}}>
                   {project.topics.map((topic, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-full text-sm font-medium text-primary-600 dark:text-primary-400 border border-primary-500/30 hover:scale-110 transition-transform duration-300"
+                      className="px-2 xs:px-3 py-1 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-full text-xs xs:text-sm font-medium text-primary-600 dark:text-primary-400 border border-primary-500/30 hover:scale-110 transition-transform duration-300"
                     >
                       {topic}
                     </span>
@@ -337,8 +339,8 @@ const ProjectDetail = () => {
         </div>
 
         {/* README Content */}
-        <div className="glass-effect rounded-3xl shadow-material-3 overflow-hidden animate-fade-in" style={{animationDelay: '1s'}}>
-          <div className="p-8">
+        <div className="glass-effect rounded-2xl xs:rounded-3xl shadow-material-3 overflow-hidden animate-fade-in" style={{animationDelay: '1s'}}>
+          <div className="p-4 xs:p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-secondary-500 to-accent-500 mb-6 flex items-center gap-3">
               <span className="text-3xl">📖</span>
               Project Documentation
@@ -363,15 +365,15 @@ const ProjectDetail = () => {
         </div>
 
         {/* Related Actions */}
-        <div className="mt-8 text-center animate-fade-in" style={{animationDelay: '1.2s'}}>
-          <div className="glass-effect rounded-3xl p-8 max-w-2xl mx-auto">
+        <div className="mt-6 xs:mt-8 text-center animate-fade-in" style={{animationDelay: '1.2s'}}>
+          <div className="glass-effect rounded-2xl xs:rounded-3xl p-4 xs:p-6 sm:p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-500 to-warning-500 mb-4">
               Interested in this project?
             </h3>
             <p className="text-surface-600 dark:text-surface-300 mb-6">
               Check out the live demo, explore the code, or get in touch to discuss similar projects.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
               <a
                 href={project.html_url}
                 target="_blank"
