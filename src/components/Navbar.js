@@ -9,6 +9,7 @@ const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,6 +50,9 @@ const Navbar = () => {
   }, [location]);
 
   const scrollToSection = (sectionId) => {
+    // Close mobile menu when navigating
+    setMobileMenuOpen(false);
+    
     if (location.pathname !== '/') {
       // If we're on a project detail page, navigate to home first
       navigate(`/#${sectionId}`);
@@ -175,23 +179,50 @@ const Navbar = () => {
           </button>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 rounded-lg glass-effect">
-            <span className="text-2xl">☰</span>
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg glass-effect hover:shadow-material-2 transition-all duration-300 hover:scale-110"
+            aria-label="Toggle mobile menu"
+          >
+            <div className="relative w-6 h-6 flex items-center justify-center">
+              <span className={`absolute text-xl transition-all duration-300 ${
+                mobileMenuOpen 
+                  ? 'opacity-0 rotate-90' 
+                  : 'opacity-100 rotate-0'
+              }`}>
+                ☰
+              </span>
+              <span className={`absolute text-xl transition-all duration-300 ${
+                mobileMenuOpen 
+                  ? 'opacity-100 rotate-0' 
+                  : 'opacity-0 -rotate-90'
+              }`}>
+                ✕
+              </span>
+            </div>
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden mt-4 pt-4 border-t border-surface-200/20 dark:border-surface-700/20">
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ${
+          mobileMenuOpen 
+            ? 'max-h-96 opacity-100 mt-4 pt-4 border-t border-surface-200/20 dark:border-surface-700/20' 
+            : 'max-h-0 opacity-0'
+        }`}>
           <div className="grid grid-cols-2 gap-2">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
                   activeSection === item.id
-                    ? 'bg-primary-500/20 text-primary-600 dark:text-primary-400'
-                    : 'hover:bg-surface-200/20 dark:hover:bg-surface-700/20'
+                    ? 'bg-primary-500/20 text-primary-600 dark:text-primary-400 shadow-material-1'
+                    : 'hover:bg-surface-200/20 dark:hover:bg-surface-700/20 text-surface-700 dark:text-surface-300'
                 }`}
+                style={{
+                  animationDelay: mobileMenuOpen ? `${index * 0.1}s` : '0s',
+                  animation: mobileMenuOpen ? 'fadeInUp 0.3s ease-out forwards' : 'none'
+                }}
               >
                 <span className="text-lg">{item.icon}</span>
                 <span className="text-sm">{item.label}</span>

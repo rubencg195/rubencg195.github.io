@@ -7,7 +7,7 @@ const TimelineItems = ({ data }) => {
   const [ref, isVisible] = useScrollAnimation(0.2, '50px', true);
 
   return (
-    <div ref={ref} className="space-y-6 md:-space-y-6">
+    <div ref={ref} className="space-y-4 sm:space-y-6 md:-space-y-6">
       {data.slice(0, 6).map((item, idx) => (
         <div 
           key={idx} 
@@ -20,10 +20,10 @@ const TimelineItems = ({ data }) => {
           }}
         >
           {/* Mobile Layout */}
-          <div className="md:hidden flex items-start pl-16 relative z-10" style={{marginTop: `${idx * 8}px`}}>
+          <div className="md:hidden flex items-start pl-12 sm:pl-16 relative z-10" style={{marginTop: `${idx * 6}px`}}>
             {/* Mobile Timeline Circle */}
-            <div className="absolute left-6 top-2 transform -translate-x-1/2 flex items-center justify-center">
-              <div className="w-4 h-4 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full border-2 border-white dark:border-surface-900 shadow-material-1 z-10">
+            <div className="absolute left-4 sm:left-6 top-2 transform -translate-x-1/2 flex items-center justify-center">
+              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full border-2 border-white dark:border-surface-900 shadow-material-1 z-10">
               </div>
             </div>
             
@@ -86,7 +86,7 @@ const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
     <div className={`absolute top-4 ${isLeft ? '-right-8 translate-x-full' : '-left-8 -translate-x-full'} w-8 h-0.5 bg-gradient-to-r ${isLeft ? 'from-primary-300 to-transparent' : 'from-transparent to-primary-300'} dark:${isLeft ? 'from-primary-600 to-transparent' : 'from-transparent to-primary-600'}`}></div>
     
     {/* Card */}
-    <div className="bg-white dark:bg-surface-900 p-3 rounded-xl shadow-material-2 hover:shadow-material-3 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-105">
+    <div className="bg-white dark:bg-surface-900 p-3 sm:p-4 rounded-xl shadow-material-2 hover:shadow-material-3 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-105">
       {/* Period Badge */}
       {footnote && (
         <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 dark:from-primary-900/30 dark:to-secondary-900/30 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/50 mb-2 hover:scale-105 transition-transform duration-300 ${isLeft ? '' : ''}`}>
@@ -96,16 +96,16 @@ const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
       )}
       
       {/* Title */}
-      <h4 className={`font-bold text-lg text-surface-900 dark:text-white mb-1 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300 ${isLeft ? 'text-right' : 'text-left'}`}>
+      <h4 className={`font-bold text-base sm:text-lg text-surface-900 dark:text-white mb-1 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300 ${isLeft ? 'text-right' : 'text-left'} leading-tight`}>
         {title}
       </h4>
       
       {/* Subtitle */}
       {subtitle && (
-        <div className={`flex items-center text-surface-600 dark:text-surface-300 font-medium ${isLeft ? 'justify-end' : 'justify-start'}`}>
-          {!isLeft && <span className="mr-2">🏢</span>}
+        <div className={`flex items-center text-sm sm:text-base text-surface-600 dark:text-surface-300 font-medium ${isLeft ? 'justify-end' : 'justify-start'}`}>
+          {!isLeft && <span className="mr-1.5 sm:mr-2">🏢</span>}
           {subtitle}
-          {isLeft && <span className="ml-2">🏢</span>}
+          {isLeft && <span className="ml-1.5 sm:ml-2">🏢</span>}
         </div>
       )}
       
@@ -118,28 +118,28 @@ const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
 const MobileTimelineCard = ({ title, subtitle, footnote, index = 0 }) => (
   <div className="group relative">
     {/* Connection Line to Timeline */}
-    <div className="absolute top-2 -left-16 w-8 h-0.5 bg-gradient-to-r from-primary-300 to-transparent dark:from-primary-600 dark:to-transparent"></div>
+    <div className="absolute top-2 -left-12 sm:-left-16 w-6 sm:w-8 h-0.5 bg-gradient-to-r from-primary-300 to-transparent dark:from-primary-600 dark:to-transparent"></div>
     
     {/* Card */}
-    <div className="bg-white dark:bg-surface-900 p-3 rounded-xl shadow-material-2 hover:shadow-material-3 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-105">
+    <div className="bg-white dark:bg-surface-900 p-3 sm:p-4 rounded-xl shadow-material-2 hover:shadow-material-3 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-105 active:scale-95">
       {/* Period Badge */}
       {footnote && (
-        <div className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 dark:from-primary-900/30 dark:to-secondary-900/30 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/50 mb-2 hover:scale-105 transition-transform duration-300">
-          <span className="mr-1.5">📅</span>
-          {footnote}
+        <div className="inline-flex items-center px-2 sm:px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 dark:from-primary-900/30 dark:to-secondary-900/30 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/50 mb-2 hover:scale-105 transition-transform duration-300">
+          <span className="mr-1 sm:mr-1.5">📅</span>
+          <span className="text-xs">{footnote}</span>
         </div>
       )}
       
       {/* Title */}
-      <h4 className="font-bold text-base text-surface-900 dark:text-white mb-1.5 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300">
+      <h4 className="font-bold text-sm sm:text-base text-surface-900 dark:text-white mb-1 sm:mb-1.5 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300 leading-tight">
         {title}
       </h4>
       
       {/* Subtitle */}
       {subtitle && (
-        <div className="flex items-center text-surface-600 dark:text-surface-300 font-medium text-sm">
-          <span className="mr-1.5">🏢</span>
-          {subtitle}
+        <div className="flex items-center text-surface-600 dark:text-surface-300 font-medium text-xs sm:text-sm">
+          <span className="mr-1 sm:mr-1.5">🏢</span>
+          <span className="truncate">{subtitle}</span>
         </div>
       )}
     </div>
@@ -150,7 +150,7 @@ const Timeline = ({ data, title, description, icon }) => {
   // Safety check for data
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
-      <div className="py-16 px-6 bg-surface-100/50 dark:bg-surface-800/50">
+      <div className="py-12 sm:py-16 px-4 sm:px-6 bg-surface-100/50 dark:bg-surface-800/50">
         <div className="max-w-6xl mx-auto">
           <SectionHeader 
             title={title}
@@ -158,7 +158,7 @@ const Timeline = ({ data, title, description, icon }) => {
             icon={icon}
           />
           <div className="text-center text-surface-600 dark:text-surface-400">
-            <p>No data available</p>
+            <p className="text-sm sm:text-base">No data available</p>
           </div>
         </div>
       </div>
@@ -166,7 +166,7 @@ const Timeline = ({ data, title, description, icon }) => {
   }
 
   return (
-    <div className="py-16 px-6 bg-surface-100/50 dark:bg-surface-800/50">
+    <div className="py-12 sm:py-16 px-4 sm:px-6 bg-surface-100/50 dark:bg-surface-800/50">
       <div className="max-w-6xl mx-auto">
         <SectionHeader 
           title={title}
@@ -179,7 +179,7 @@ const Timeline = ({ data, title, description, icon }) => {
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary-200 via-primary-300 to-secondary-300 dark:from-primary-800 dark:via-primary-700 dark:to-secondary-700 h-full rounded-full"></div>
           
           {/* Mobile Timeline Line - Left side */}
-          <div className="md:hidden absolute left-6 w-1 bg-gradient-to-b from-primary-200 via-primary-300 to-secondary-300 dark:from-primary-800 dark:via-primary-700 dark:to-secondary-700 h-full rounded-full"></div>
+          <div className="md:hidden absolute left-4 sm:left-6 w-0.5 sm:w-1 bg-gradient-to-b from-primary-200 via-primary-300 to-secondary-300 dark:from-primary-800 dark:via-primary-700 dark:to-secondary-700 h-full rounded-full"></div>
           
           {/* Timeline Items */}
           <TimelineItems data={data} />
