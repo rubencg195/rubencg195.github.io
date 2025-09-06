@@ -88,7 +88,7 @@ const Home = () => {
       <Section id="contact" background="gradient">
         <SectionHeader 
           title="Get In Touch"
-          description="Let's connect to discuss Machine Learning Operations, technical leadership opportunities, or collaboration on innovative ML projects."
+          description="Connect with me on LinkedIn to discuss Machine Learning Operations, technical leadership opportunities, or collaboration on innovative ML projects."
           descriptionClassName="max-w-2xl mx-auto mb-12"
         />
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up">
@@ -97,14 +97,16 @@ const Home = () => {
             icon="📧" 
             iconPosition="left"
           >
-            rubencg195@hotmail.com
+            Send Email
           </PrimaryButton>
           <SecondaryButton 
-            href="tel:+17097647777" 
-            icon="📞" 
+            href="https://linkedin.com/in/rubenchevez" 
+            target="_blank"
+            rel="noopener noreferrer"
+            icon="💼" 
             iconPosition="left"
           >
-            +1 (709) 764-7777
+            Connect on LinkedIn
           </SecondaryButton>
         </div>
       </Section>
@@ -127,9 +129,6 @@ const Home = () => {
               </a>
               <a href="https://linkedin.com/in/rubenchevez" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
                 <span className="text-2xl">💼</span>
-              </a>
-              <a href="tel:+17097647777" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
-                <span className="text-2xl">📞</span>
               </a>
               <a href="https://github.com/rubencg195" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
                 <span className="text-2xl">🐙</span>

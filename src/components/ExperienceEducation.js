@@ -14,7 +14,6 @@ const ExperienceEducation = () => {
     const loadData = async () => {
       // Only attempt LinkedIn parsing if explicitly enabled
       if (!ENABLE_LINKEDIN_PARSING) {
-        console.log('LinkedIn parsing disabled - using fallback data');
         return;
       }
 

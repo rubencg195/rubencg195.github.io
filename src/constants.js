@@ -1,6 +1,24 @@
 // GitHub repositories to display in the portfolio
 export const REPOSITORIES = [
   {
+    id: 'aws-mcp-databases-bedrock-unstructured-vector-db',
+    name: 'AWS Bedrock Vector Database with Knowledge Bases',
+    description: 'Complete MLOps infrastructure for unstructured data retrieval using AWS Bedrock Knowledge Bases, RDS PostgreSQL with pgvector, and Claude 3.7 for intelligent document processing and RAG applications',
+    url: 'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
+    owner: 'rubencg195',
+    repo: 'aws-mcp-databases-bedrock-unstructured-vector-db',
+    technologies: ['AWS Bedrock', 'Claude 3.7', 'PostgreSQL', 'pgvector', 'Knowledge Bases', 'OpenTofu', 'Lambda', 'S3', 'RDS']
+  },
+  {
+    id: 'aws-bedrock-agents-structured-db',
+    name: 'AWS Bedrock Agents with Structured Data',
+    description: 'Intelligent data retrieval system using AWS Bedrock Agents and Claude 3.7 for querying structured databases through Athena, enabling natural language interactions with SQL data',
+    url: 'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
+    owner: 'rubencg195',
+    repo: 'aws-bedrock-agents-structured-db',
+    technologies: ['AWS Bedrock', 'Claude 3.7', 'Athena', 'Bedrock Agents', 'SQL', 'OpenTofu', 'Structured Data', 'NLP']
+  },
+  {
     id: 'aws-backend-frontend-behind-cognito-auth-cloudfront',
     name: 'AWS Backend/Frontend + Cognito Auth',
     description: 'Demonstrate how to protect a backend and frontend on AWS behind Cognito authentication',
