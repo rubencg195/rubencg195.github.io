@@ -1,0 +1,47 @@
+# The humans responsible & technology colophon
+
+/* TEAM */
+Developer, MLOps Director: Ruben Chevez
+Contact: rubencg195@hotmail.com
+LinkedIn: linkedin.com/in/rubenchevez
+GitHub: github.com/rubencg195
+Location: St. John's, Newfoundland, Canada
+
+/* THANKS */
+Nasdaq Verafin for providing amazing ML infrastructure challenges
+Memorial University for excellent computer science education
+Open source community for incredible tools and libraries
+
+/* SITE INFORMATION */
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: React 18, TailwindCSS, React Router
+Tools: Webpack, Babel, PostCSS
+Backend: Node.js, Express, AWS
+Cloud: AWS (SageMaker, Lambda, ECS, RDS, S3, CloudFront)
+ML/AI: Python, Databricks, MLOps pipelines
+Version Control: Git, GitHub
+Deployment: GitHub Pages
+SEO: JSON-LD, OpenGraph, Schema.org
+Performance: Lighthouse optimized
+Accessibility: WCAG 2.1 AA compliant
+
+/* AVAILABLE FOR */
+Senior Full-Stack Developer positions
+MLOps Engineering leadership roles  
+Technical Lead/Engineering Manager roles
+AWS Solutions Architect positions
+Remote work opportunities
+Canada/US based companies
+
+/* EXPERTISE */
+- 8+ years software development experience
+- Team leadership and mentoring (6+ direct reports)
+- MLOps infrastructure and pipeline development
+- Full-stack web application development
+- Cloud architecture and DevOps
+- Python, JavaScript, Java, C++
+- React, Node.js, Spring Boot
+- AWS services and architecture
+- Machine learning model deployment
+- CI/CD and automation
+- Database design and optimization

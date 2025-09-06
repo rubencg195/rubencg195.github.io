@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        
+  <!-- Main Portfolio Page - Highest Priority for Recruiters -->
+  <url>
+    <loc>https://rubencg195.github.io/</loc>
+    <lastmod>2024-03-15T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://rubencg195.github.io/images/profile/profile.jpeg</image:loc>
+      <image:caption>Ruben Chevez - Director MLOps, Full-Stack Developer</image:caption>
+      <image:title>Ruben Chevez Professional Photo</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Project Detail Pages -->
+  <url>
+    <loc>https://rubencg195.github.io/project/aws-mcp-databases-bedrock-unstructured-vector-db</loc>
+    <lastmod>2024-03-05T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubencg195.github.io/project/aws-bedrock-agents-structured-db</loc>
+    <lastmod>2024-03-12T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubencg195.github.io/project/aws-backend-frontend-behind-cognito-auth-cloudfront</loc>
+    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubencg195.github.io/project/aws-website-hosting-user-auth-cognito</loc>
+    <lastmod>2024-02-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Section Deep Links for Better Indexing -->
+  <url>
+    <loc>https://rubencg195.github.io/#about</loc>
+    <lastmod>2024-03-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubencg195.github.io/#projects</loc>
+    <lastmod>2024-03-15T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubencg195.github.io/#experience</loc>
+    <lastmod>2024-03-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubencg195.github.io/#education</loc>
+    <lastmod>2024-03-15T00:00:00+00:00</lastmod>
+    <changefreq>rarely</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubencg195.github.io/#contact</loc>
+    <lastmod>2024-03-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>

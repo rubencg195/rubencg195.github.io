@@ -24,7 +24,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden" itemScope itemType="https://schema.org/Person">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating Geometric Shapes - Reduced for mobile performance */}
@@ -64,7 +64,7 @@ const HeroSection = () => {
           </div>
 
           {/* Name */}
-          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold animate-fade-in leading-tight" style={{animationDelay: '0.3s'}}>
+          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold animate-fade-in leading-tight" style={{animationDelay: '0.3s'}} itemProp="name">
             <span className="text-transparent bg-clip-text bg-gradient-google hover:scale-105 transition-transform duration-300 inline-block">
               {PERSONAL_INFO.name}
             </span>
@@ -72,7 +72,7 @@ const HeroSection = () => {
 
           {/* Animated Title */}
           <div className="h-16 sm:h-20 flex items-center justify-center animate-fade-in" style={{animationDelay: '0.6s'}}>
-            <h2 className="text-lg sm:text-2xl lg:text-4xl font-semibold text-surface-700 dark:text-surface-300 px-2">
+            <h2 className="text-lg sm:text-2xl lg:text-4xl font-semibold text-surface-700 dark:text-surface-300 px-2" itemProp="jobTitle">
               <span className="border-r-2 border-primary-500 pr-2 animate-pulse">
                 {displayedText}
               </span>
@@ -80,26 +80,52 @@ const HeroSection = () => {
           </div>
 
           {/* Description */}
-          <p className="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-400 leading-relaxed animate-fade-in px-2" style={{animationDelay: '0.9s'}}>
-            Passionate about creating scalable, high-performance applications that solve real-world problems. 
-            Specialized in modern web technologies and cloud architecture.
+          <p className="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-400 leading-relaxed animate-fade-in px-2" style={{animationDelay: '0.9s'}} itemProp="description">
+            <strong>8+ years of leadership experience</strong> in MLOps and full-stack development. Expert in <em>building and scaling ML pipelines</em>, 
+            leading engineering teams, and architecting cloud solutions that drive business impact. 
+            Currently directing ML operations at <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Nasdaq</span></span>, 
+            <strong>open to senior leadership opportunities</strong> in tech companies.
           </p>
 
-          {/* Tech Stack Pills */}
+          {/* Tech Stack Pills - Enhanced for Recruiters */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 animate-fade-in px-2" style={{animationDelay: '1.2s'}}>
-            {PERSONAL_INFO.skills.slice(0, 6).map((skill, index) => (
+            {/* Core Leadership & Technical Skills */}
+            {[
+              '👨‍💼 Team Leadership',
+              '🤖 MLOps',
+              '☁️ AWS',
+              '🐍 Python',
+              '⚛️ React',
+              '📊 8+ Years Exp'
+            ].map((skill, index) => (
               <span
                 key={skill}
                 className="px-3 py-1.5 sm:px-4 sm:py-2 glass-effect rounded-full text-xs sm:text-sm font-medium text-surface-700 dark:text-surface-300 hover:scale-110 transition-transform duration-300 cursor-default"
                 style={{animationDelay: `${1.2 + index * 0.1}s`}}
+                itemProp="knowsAbout"
               >
                 {skill}
               </span>
             ))}
           </div>
+          
+          {/* Availability Banner for Recruiters */}
+          <div className="animate-fade-in max-w-2xl mx-auto" style={{animationDelay: '1.4s'}}>
+            <div className="glass-effect rounded-2xl p-4 border-2 border-primary-500/30 bg-gradient-to-r from-primary-500/10 to-secondary-500/10">
+              <p className="text-sm sm:text-base font-semibold text-primary-600 dark:text-primary-400 mb-2">
+                🎯 <strong>Open to New Opportunities</strong>
+              </p>
+              <p className="text-xs sm:text-sm text-surface-600 dark:text-surface-400">
+                Seeking <strong>Senior/Director</strong> roles in <em>MLOps, Engineering Leadership, or Full-Stack Architecture</em> • 
+                Remote-first or <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                  <span itemProp="addressLocality">Canada</span>/<span itemProp="addressCountry">US</span>
+                </span> locations preferred
+              </p>
+            </div>
+          </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center animate-fade-in px-4" style={{animationDelay: '1.5s'}}>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center animate-fade-in px-4" style={{animationDelay: '1.6s'}}>
             <button
               onClick={() => scrollToSection('projects')}
               className="group bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-2xl font-semibold shadow-material-3 hover:shadow-material-4 transition-all duration-300 hover:scale-105 flex items-center gap-3 w-full sm:w-auto justify-center"
@@ -135,16 +161,18 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-20 animate-fade-in px-4" style={{animationDelay: '2s'}}>
+        {/* Stats Cards - Enhanced for Recruiters */}
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-20 animate-fade-in px-4" style={{animationDelay: '2.2s'}}>
           {[
-            { number: '8+', label: 'Years Experience', icon: '⏱️' },
-            { number: '50+', label: 'Projects Completed', icon: '🎯' },
-            { number: '99.9%', label: 'Uptime Achieved', icon: '📊' }
+            { number: '8+', label: 'Years Leading Teams', icon: '👨‍💼', schema: 'experienceRequirements' },
+            { number: '$300K+', label: 'Fraud Prevented Annually', icon: '🛡️' },
+            { number: '30+', label: 'Developers Mentored', icon: '🎓' },
+            { number: '6', label: 'Team Members Led', icon: '👥' }
           ].map((stat, index) => (
             <div
               key={index}
               className="glass-effect rounded-2xl p-4 sm:p-6 hover:shadow-material-3 transition-all duration-300 hover:scale-105 group"
+              {...(stat.schema && { itemProp: stat.schema })}
             >
               <div className="text-2xl sm:text-3xl mb-2 group-hover:animate-bounce">{stat.icon}</div>
               <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-1">

@@ -1,0 +1,13 @@
+# Security Contact Information for Ruben Chevez Portfolio
+
+Contact: mailto:rubencg195@hotmail.com
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://linkedin.com/in/rubenchevez
+Preferred-Languages: en, es
+Policy: https://rubencg195.github.io
+
+# Professional Contact Information
+# For recruitment and collaboration inquiries:
+# LinkedIn: https://linkedin.com/in/rubenchevez
+# GitHub: https://github.com/rubencg195
+# Portfolio: https://rubencg195.github.io
