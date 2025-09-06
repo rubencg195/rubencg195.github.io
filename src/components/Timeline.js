@@ -102,7 +102,7 @@ const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
       
       {/* Subtitle */}
       {subtitle && (
-        <div className={`flex items-center text-sm sm:text-base text-surface-600 dark:text-surface-300 font-medium ${isLeft ? 'justify-end' : 'justify-start'}`}>
+        <div className={`flex items-center text-sm sm:text-base text-slate-900 dark:text-surface-300 font-medium ${isLeft ? 'justify-end' : 'justify-start'}`}>
           {!isLeft && <span className="mr-1.5 sm:mr-2">🏢</span>}
           {subtitle}
           {isLeft && <span className="ml-1.5 sm:ml-2">🏢</span>}
@@ -137,7 +137,7 @@ const MobileTimelineCard = ({ title, subtitle, footnote, index = 0 }) => (
       
       {/* Subtitle */}
       {subtitle && (
-        <div className="flex items-center text-surface-600 dark:text-surface-300 font-medium text-xs sm:text-sm">
+        <div className="flex items-center text-slate-900 dark:text-surface-300 font-medium text-xs sm:text-sm">
           <span className="mr-1 sm:mr-1.5">🏢</span>
           <span className="truncate">{subtitle}</span>
         </div>

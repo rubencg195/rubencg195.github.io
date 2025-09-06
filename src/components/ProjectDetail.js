@@ -290,7 +290,7 @@ const ProjectDetail = () => {
               </h1>
               
               {project.description && (
-                <p className="text-lg xs:text-xl text-surface-600 dark:text-surface-300 leading-relaxed mb-4 xs:mb-6 animate-fade-in" style={{animationDelay: '0.4s'}}>
+                <p className="text-lg xs:text-xl text-slate-900 dark:text-surface-300 leading-relaxed mb-4 xs:mb-6 animate-fade-in" style={{animationDelay: '0.4s'}}>
                   {project.description}
                 </p>
               )}
@@ -370,7 +370,7 @@ const ProjectDetail = () => {
             <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-500 to-warning-500 mb-4">
               Interested in this project?
             </h3>
-            <p className="text-surface-600 dark:text-surface-300 mb-6">
+            <p className="text-slate-900 dark:text-surface-300 mb-6">
               Check out the live demo, explore the code, or get in touch to discuss similar projects.
             </p>
             <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">

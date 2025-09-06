@@ -43,7 +43,7 @@ const AboutCards = () => {
           <h3 className="text-base sm:text-lg font-semibold text-surface-900 dark:text-white mb-2 leading-tight">
             {card.title}
           </h3>
-          <p className="text-sm sm:text-base text-surface-600 dark:text-surface-300 leading-relaxed">{card.description}</p>
+          <p className="text-sm sm:text-base text-slate-900 dark:text-surface-300 leading-relaxed">{card.description}</p>
         </div>
       ))}
     </div>
@@ -172,7 +172,7 @@ function App() {
                     </h2>
 
                     {/* Description */}
-                    <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-400 leading-relaxed mb-8 sm:mb-12 animate-fade-in px-2 text-center" style={{animationDelay: '0.9s'}}>
+                    <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-slate-900 dark:text-surface-400 leading-relaxed mb-8 sm:mb-12 animate-fade-in px-2 text-center" style={{animationDelay: '0.9s'}}>
                       Visionary MLOps leader with 8+ years building scalable ML systems at scale. Expert in cloud infrastructure, fraud detection, and leading cross-functional teams. Proven track record delivering production ML pipelines and driving technical strategy at Nasdaq Verafin.
                     </p>
 
@@ -314,7 +314,7 @@ function App() {
                 {/* Footer */}
                 <footer className="py-8 sm:py-12 px-4 sm:px-6 border-t border-surface-200 dark:border-surface-700">
                   <div className="max-w-6xl mx-auto text-center">
-                    <p className="text-sm sm:text-base text-surface-600 dark:text-surface-400">
+                    <p className="text-sm sm:text-base text-slate-900 dark:text-surface-400">
                       © 2024 {PERSONAL_INFO.name}
                     </p>
                   </div>

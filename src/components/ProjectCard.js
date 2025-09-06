@@ -27,7 +27,7 @@ const ProjectCard = ({ project, gradient, icon, index = 0 }) => {
           </h3>
 
           {/* Project Description */}
-          <p className="text-surface-600 dark:text-surface-300 leading-relaxed mb-6 line-clamp-3">
+          <p className="text-slate-900 dark:text-surface-300 leading-relaxed mb-6 line-clamp-3">
             {project.description || 'No description available'}
           </p>
 

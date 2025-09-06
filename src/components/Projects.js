@@ -142,7 +142,7 @@ const Projects = () => {
           </h2>
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full mb-6 sm:mb-8 animate-scale-in" 
                style={{animationDelay: '0.3s'}}></div>
-          <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-300 leading-relaxed animate-fade-in px-2"
+          <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-slate-900 dark:text-surface-300 leading-relaxed animate-fade-in px-2"
              style={{animationDelay: '0.5s'}}>
             A showcase of my recent work featuring modern web applications, cloud solutions, and AI-powered systems.
           </p>
@@ -178,7 +178,7 @@ const Projects = () => {
                   </h3>
 
                   {/* Project Description */}
-                  <p className="text-sm sm:text-base text-surface-600 dark:text-surface-300 leading-relaxed mb-4 sm:mb-6 line-clamp-3">
+                  <p className="text-sm sm:text-base text-slate-900 dark:text-surface-300 leading-relaxed mb-4 sm:mb-6 line-clamp-3">
                     {project.description || 'No description available'}
                   </p>
 
@@ -251,7 +251,7 @@ const Projects = () => {
             <h3 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-3 sm:mb-4">
               Want to see more?
             </h3>
-            <p className="text-sm sm:text-base text-surface-600 dark:text-surface-300 mb-4 sm:mb-6 px-2">
+            <p className="text-sm sm:text-base text-slate-900 dark:text-surface-300 mb-4 sm:mb-6 px-2">
               Check out my GitHub profile for additional projects and open-source contributions.
             </p>
             <a
