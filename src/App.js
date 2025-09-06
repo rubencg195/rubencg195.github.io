@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
+import { useScrollAnimation } from './hooks/useScrollAnimation';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import Section from './components/Section';
@@ -9,6 +10,75 @@ import { PrimaryButton, SecondaryButton } from './components/Button';
 import ProjectDetail from './components/ProjectDetail';
 import Projects from './components/Projects';
 import ExperienceEducation from './components/ExperienceEducation';
+
+// Scroll-animated About Cards component
+const AboutCards = () => {
+  const [ref, isVisible] = useScrollAnimation(0.2, '50px', true);
+
+  const cards = [
+    { icon: '🚀', title: 'Performance', description: 'Optimized solutions that scale', delay: '0.1s' },
+    { icon: '☁️', title: 'Cloud Native', description: 'AWS serverless architectures', delay: '0.3s' },
+    { icon: '💡', title: 'Innovation', description: 'Cutting-edge solutions', delay: '0.5s' }
+  ];
+
+  return (
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {cards.map((card, index) => (
+        <div 
+          key={index}
+          className={`bg-surface-50 dark:bg-surface-800 p-6 rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-700 ease-out transform hover:scale-105 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} 
+          style={{
+            transitionDelay: isVisible ? card.delay : '0s'
+          }}
+        >
+          <div className="text-4xl mb-4">{card.icon}</div>
+          <h3 className="text-lg font-semibold text-surface-900 dark:text-white mb-2 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300">
+            {card.title}
+          </h3>
+          <p className="text-surface-600 dark:text-surface-300">{card.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Scroll-animated Contact Buttons component
+const ContactButtons = () => {
+  const [ref, isVisible] = useScrollAnimation(0.2, '50px', true);
+
+  return (
+    <div ref={ref} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+      <div className={`transition-all duration-700 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`} style={{transitionDelay: isVisible ? '0.1s' : '0s'}}>
+        <PrimaryButton 
+          href="mailto:rubencg195@hotmail.com" 
+          icon="📧" 
+          iconPosition="left"
+          className="hover:scale-105"
+        >
+          Send Email
+        </PrimaryButton>
+      </div>
+      <div className={`transition-all duration-700 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`} style={{transitionDelay: isVisible ? '0.3s' : '0s'}}>
+        <SecondaryButton 
+          href="https://linkedin.com/in/rubenchevez" 
+          target="_blank"
+          rel="noopener noreferrer"
+          icon="💼" 
+          iconPosition="left"
+          className="hover:scale-105"
+        >
+          Connect on LinkedIn
+        </SecondaryButton>
+      </div>
+    </div>
+  );
+};
 
 // Home page component
 const Home = () => {
@@ -61,23 +131,7 @@ const Home = () => {
           </>
           }
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide-up">
-          <div className="bg-surface-50 dark:bg-surface-800 p-6 rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-300 transform hover:-translate-y-1">
-            <div className="text-4xl mb-4">🚀</div>
-            <h3 className="text-lg font-semibold text-surface-900 dark:text-white mb-2">Performance</h3>
-            <p className="text-surface-600 dark:text-surface-300">Optimized solutions that scale</p>
-          </div>
-          <div className="bg-surface-50 dark:bg-surface-800 p-6 rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-300 transform hover:-translate-y-1">
-            <div className="text-4xl mb-4">☁️</div>
-            <h3 className="text-lg font-semibold text-surface-900 dark:text-white mb-2">Cloud Native</h3>
-            <p className="text-surface-600 dark:text-surface-300">AWS serverless architectures</p>
-          </div>
-          <div className="bg-surface-50 dark:bg-surface-800 p-6 rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-300 transform hover:-translate-y-1">
-            <div className="text-4xl mb-4">💡</div>
-            <h3 className="text-lg font-semibold text-surface-900 dark:text-white mb-2">Innovation</h3>
-            <p className="text-surface-600 dark:text-surface-300">Cutting-edge solutions</p>
-          </div>
-        </div>
+        <AboutCards />
       </Section>
 
       {/* Projects Section */}
@@ -91,50 +145,33 @@ const Home = () => {
           description="Connect with me on LinkedIn to discuss Machine Learning Operations, technical leadership opportunities, or collaboration on innovative ML projects."
           descriptionClassName="max-w-2xl mx-auto mb-12"
         />
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up">
-          <PrimaryButton 
-            href="mailto:rubencg195@hotmail.com" 
-            icon="📧" 
-            iconPosition="left"
-          >
-            Send Email
-          </PrimaryButton>
-          <SecondaryButton 
-            href="https://linkedin.com/in/rubenchevez" 
-            target="_blank"
-            rel="noopener noreferrer"
-            icon="💼" 
-            iconPosition="left"
-          >
-            Connect on LinkedIn
-          </SecondaryButton>
-        </div>
+        <ContactButtons />
       </Section>
 
       {/* Footer */}
       <footer className="bg-white dark:bg-surface-900 border-t border-surface-200 dark:border-surface-700">
         <div className="max-w-7xl mx-auto py-12 px-6">
           <div className="text-center">
-            <div className="mb-6">
+            <div className="mb-6 animate-fade-in" style={{animationDelay: '0.2s', animationFillMode: 'both'}}>
               <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
                 Ruben Chevez
               </span>
             </div>
-            <p className="text-surface-600 dark:text-surface-400 mb-6">
+            <p className="text-surface-600 dark:text-surface-400 mb-6 animate-fade-in" style={{animationDelay: '0.4s', animationFillMode: 'both'}}>
               Director, Machine Learning Operations • Nasdaq Verafin • MLOps Expert
             </p>
             <div className="flex justify-center space-x-6 mb-8">
-              <a href="mailto:rubencg195@hotmail.com" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+              <a href="mailto:rubencg195@hotmail.com" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-all duration-300 hover:scale-125 animate-fade-in" style={{animationDelay: '0.6s', animationFillMode: 'both'}}>
                 <span className="text-2xl">📧</span>
               </a>
-              <a href="https://linkedin.com/in/rubenchevez" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+              <a href="https://linkedin.com/in/rubenchevez" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-all duration-300 hover:scale-125 animate-fade-in" style={{animationDelay: '0.8s', animationFillMode: 'both'}}>
                 <span className="text-2xl">💼</span>
               </a>
-              <a href="https://github.com/rubencg195" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors duration-200">
+              <a href="https://github.com/rubencg195" target="_blank" rel="noopener noreferrer" className="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-all duration-300 hover:scale-125 animate-fade-in" style={{animationDelay: '1.0s', animationFillMode: 'both'}}>
                 <span className="text-2xl">🐙</span>
               </a>
             </div>
-            <p className="text-surface-500 dark:text-surface-400 text-sm">
+            <p className="text-surface-500 dark:text-surface-400 text-sm animate-fade-in" style={{animationDelay: '1.2s', animationFillMode: 'both'}}>
               &copy; 2024 Ruben Chevez. Crafted with ❤️ and ☕
             </p>
           </div>
