@@ -236,9 +236,9 @@ Test in major browsers:
 
 ## 🚀 Deployment
 
-### Deploy to GitHub Pages
+### Deploy to GitHub Pages (Master Branch)
 
-The portfolio is configured for automatic GitHub Pages deployment:
+The portfolio is configured to deploy directly from the master branch:
 
 ```bash
 npm run deploy
@@ -246,15 +246,35 @@ npm run deploy
 
 This command:
 1. Builds the production version (`npm run build`)
-2. Deploys to GitHub Pages (`gh-pages -d build`)
-3. Updates your live site at `https://yourusername.github.io`
+2. Pushes build files to master branch (`gh-pages -d build -b master`)
+3. Updates your live site at `https://rubencg195.github.io`
+
+**Note**: This deployment strategy pushes the built files directly to the master branch, replacing the source code temporarily during deployment.
+
+### Master Branch Deployment Strategy
+
+This approach differs from the typical gh-pages branch deployment:
+
+**Advantages:**
+- ✅ Simple GitHub Pages configuration (master branch / root)
+- ✅ No need for separate gh-pages branch
+- ✅ Direct deployment to main branch
+
+**How it works:**
+1. Your source code exists locally and in commits
+2. `npm run deploy` builds and pushes only build files to master
+3. GitHub Pages serves from master branch root
+4. Source code is preserved in git history
+
+**Important**: Always commit your source code changes before deploying, as the deploy command will overwrite the master branch with build files.
 
 ### Deployment Checklist
 
-- [ ] **Commit Changes**: `git add . && git commit -m "Update portfolio"`
-- [ ] **Push to GitHub**: `git push origin master`
-- [ ] **Deploy**: `npm run deploy`
-- [ ] **Verify**: Check live site functionality
+- [ ] **Commit Source Changes**: `git add . && git commit -m "Update portfolio"`
+- [ ] **Push Source to GitHub**: `git push origin master`
+- [ ] **Deploy Built Files**: `npm run deploy`
+- [ ] **Configure GitHub Pages**: Set source to "Deploy from a branch" → "master" → "/ (root)"
+- [ ] **Verify**: Check live site functionality at https://rubencg195.github.io
 
 ### Custom Domain (Optional)
 
