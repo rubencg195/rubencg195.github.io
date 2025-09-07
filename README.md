@@ -1,4 +1,4 @@
-# Ruben Chevez - Professional MLOps Portfolio
+f# Ruben Chevez - Professional MLOps Portfolio
 
 A modern, professional portfolio website showcasing Machine Learning Operations expertise, built with React, Tailwind CSS, and Material Design principles.
 
@@ -236,9 +236,9 @@ Test in major browsers:
 
 ## 🚀 Deployment
 
-### Deploy to GitHub Pages (Master Branch)
+### Deploy to GitHub Pages (gh Branch)
 
-The portfolio is configured to deploy directly from the master branch:
+The portfolio is configured to deploy directly from the gh-pages branch:
 
 ```bash
 npm run deploy
@@ -246,27 +246,10 @@ npm run deploy
 
 This command:
 1. Builds the production version (`npm run build`)
-2. Pushes build files to master branch (`gh-pages -d build -b master`)
+2. Pushes build files to gh-pages branch (`gh-pages -d build -b gh-pages`)
 3. Updates your live site at `https://rubencg195.github.io`
 
-**Note**: This deployment strategy pushes the built files directly to the master branch, replacing the source code temporarily during deployment.
-
-### Master Branch Deployment Strategy
-
-This approach differs from the typical gh-pages branch deployment:
-
-**Advantages:**
-- ✅ Simple GitHub Pages configuration (master branch / root)
-- ✅ No need for separate gh-pages branch
-- ✅ Direct deployment to main branch
-
-**How it works:**
-1. Your source code exists locally and in commits
-2. `npm run deploy` builds and pushes only build files to master
-3. GitHub Pages serves from master branch root
-4. Source code is preserved in git history
-
-**Important**: Always commit your source code changes before deploying, as the deploy command will overwrite the master branch with build files.
+**Note**: This deployment strategy pushes the built files directly to the gh-pages branch, to avoid deleting all files from the master branch.
 
 ### Deployment Checklist
 
@@ -290,15 +273,15 @@ After your first deployment, configure GitHub Pages in your repository settings:
 2. **Configure Build and Deployment**
    - **Source**: Select "Deploy from a branch"
      - This tells GitHub to serve your site from files in a branch
-     - ✅ **Correct choice** for our master branch deployment strategy
+     - ✅ **Correct choice** for our gh-page branch deployment strategy
    
 3. **Select Branch and Folder**
-   - **Branch**: Select "master" from the dropdown
-     - ✅ **Why**: Our `npm run deploy` pushes build files to the master branch
+   - **Branch**: Select "gh-page" from the dropdown
+     - ✅ **Why**: Our `npm run deploy` pushes build files to the gh-pages branch
      - ❌ **Not**: Don't select "gh-pages" (we're not using that branch)
    
    - **Folder**: Select "/ (root)" from the dropdown  
-     - ✅ **Why**: Build files are placed at the root level of master branch
+     - ✅ **Why**: Build files are placed at the root level of gh-pages branch
      - ❌ **Not**: Don't select "/docs" (build files aren't in a docs folder)
 
 4. **Save Configuration**
@@ -313,14 +296,14 @@ After your first deployment, configure GitHub Pages in your repository settings:
 #### **Configuration Summary:**
 ```
 Source: Deploy from a branch
-Branch: master
+Branch: gh-pages
 Folder: / (root)
 ```
 
 #### **Why This Configuration?**
 
-- **Deploy from a branch**: We're serving static files from the master branch
-- **master branch**: Our deployment script pushes build files here
+- **Deploy from a branch**: We're serving static files from the gh-pages branch
+- **gh-pages branch**: Our deployment script pushes build files here
 - **/ (root) folder**: Build files (index.html, static/, etc.) are at the branch root
 - **Result**: GitHub Pages serves your React app from https://rubencg195.github.io
 
@@ -371,19 +354,19 @@ npm install
 npm run deploy
 
 # Check GitHub Pages configuration
-# Ensure: Source = "Deploy from a branch", Branch = "master", Folder = "/ (root)"
+# Ensure: Source = "Deploy from a branch", Branch = "gh-pages", Folder = "/ (root)"
 ```
 
 **GitHub Pages Not Loading**:
 - ✅ **Check**: Repository Settings → Pages → Configuration matches above
 - ✅ **Wait**: GitHub Pages can take 1-10 minutes to update
-- ✅ **Verify**: Master branch contains build files (index.html, static/, etc.)
+- ✅ **Verify**: gh-pages branch contains build files (index.html, static/, etc.)
 - ✅ **Clear**: Browser cache and try incognito/private mode
 
 **404 Error on Deployed Site**:
 - ✅ **Check**: Homepage field in package.json matches your GitHub Pages URL
-- ✅ **Verify**: Build files are at root level of master branch
-- ✅ **Confirm**: GitHub Pages is serving from master branch / (root)
+- ✅ **Verify**: Build files are at root level of gh-pages branch
+- ✅ **Confirm**: GitHub Pages is serving from gh-pages branch / (root)
 
 ## 🛠️ Technologies Used
 
@@ -415,7 +398,8 @@ npm run deploy
 
 ### Version Control
 
-- **Main Branch**: `master` (production-ready code)
+- **Development Branch**: `master` (development code)
+- **Production Branch**: `gh-pages` (production-ready code)
 - **Feature Branches**: Use for major updates
 - **Commit Messages**: Follow conventional commit format
 
