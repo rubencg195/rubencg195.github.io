@@ -1,4 +1,4 @@
-f# Ruben Chevez - Professional MLOps Portfolio
+# Ruben Chevez - Professional MLOps Portfolio
 
 A modern, professional portfolio website showcasing Machine Learning Operations expertise, built with React, Tailwind CSS, and Material Design principles.
 
