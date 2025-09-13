@@ -309,8 +309,12 @@ const ProjectDetail = () => {
                 </div>
                 {project.language && (
                   <div className="flex items-center gap-1 xs:gap-2">
-                    <span className="text-xl xs:text-2xl">💻</span>
-                    <span className="font-semibold text-sm xs:text-base">{project.language}</span>
+                    <span className="text-xl xs:text-2xl mr-1">💻</span>
+                    {project.language.map((lang, langIndex) => (
+                      <span key={langIndex} className="px-2 py-0.5 text-xs bg-gradient-to-r from-primary-500/20 to-secondary-500/20 text-primary-700 dark:text-primary-300 rounded-full font-medium backdrop-blur-sm border border-primary-500/30">
+                        {lang}
+                      </span>
+                    ))}
                   </div>
                 )}
                 <div className="flex items-center gap-1 xs:gap-2 w-full xs:w-auto justify-center xs:justify-start">

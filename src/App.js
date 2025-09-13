@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Projects from './components/Projects';
 import ProjectDetail from './components/ProjectDetail';
 import Timeline from './components/Timeline';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 // Import constants
 import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO } from './constants';
@@ -334,6 +335,7 @@ function App() {
             } />
           </Routes>
         </Router>
+        <ScrollToTopButton />
     </div>
     </ThemeProvider>
   );

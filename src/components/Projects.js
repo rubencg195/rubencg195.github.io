@@ -183,7 +183,7 @@ const Projects = () => {
                   </p>
 
                   {/* Project Stats */}
-                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-slate-600 dark:text-surface-400">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-slate-600 dark:text-surface-400 flex-wrap">
                     <div className="flex items-center gap-1">
                       <span className="text-warning-500">⭐</span>
                       <span>{project.stargazers_count}</span>
@@ -194,20 +194,23 @@ const Projects = () => {
                     </div>
                     {project.language && (
                       <div className="flex items-center gap-1">
-                        <span className="text-primary-500">💻</span>
-                        <span className="hidden sm:inline">{project.language}</span>
-                        <span className="sm:hidden">{project.language.slice(0, 3)}</span>
+                        <span className="text-primary-500 mr-1">💻</span>
+                        {project.language.map((lang, langIndex) => (
+                          <span key={langIndex} className="px-2 py-0.5 text-xs bg-gradient-to-r from-primary-500/20 to-secondary-500/20 text-primary-700 dark:text-primary-300 rounded-full font-medium backdrop-blur-sm border border-primary-500/30">
+                            {lang}
+                          </span>
+                        ))}
                       </div>
                     )}
                   </div>
 
                   {/* Technology Tags */}
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                    {project.topics?.slice(0, 3).map((topic, topicIndex) => (
+                    {project.topics?.slice(0, 10).map((topic, topicIndex) => (
                       <span
                         key={topicIndex}
                         className={`px-2 py-1 sm:px-3 bg-slate-200 dark:bg-surface-700/50 rounded-full text-xs font-medium text-slate-700 dark:text-surface-300 backdrop-blur-sm ${
-                          topicIndex >= 2 ? 'hidden sm:inline-block' : ''
+                          topicIndex >= 5 ? 'hidden md:inline-block' : ''
                         }`}
                       >
                         {topic}
