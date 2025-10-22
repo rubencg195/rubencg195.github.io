@@ -208,6 +208,56 @@ theme: {
 </Section>
 ```
 
+### Enhanced Markdown Viewer
+
+The portfolio uses an enhanced markdown viewer with the following features:
+
+#### Packages Used
+- **react-markdown** - Core markdown rendering component
+- **remark-gfm** - GitHub Flavored Markdown support (tables, strikethrough, task lists)
+- **rehype-raw** - HTML support in markdown
+- **rehype-sanitize** - Security sanitization for HTML content
+
+#### Features Enabled
+✅ **GitHub Flavored Markdown (GFM)**
+- Tables with hover effects and responsive overflow
+- Strikethrough text (~~deleted text~~)
+- Task lists with checkboxes
+- Autolinks
+- Footnotes
+
+✅ **Custom Styled Components**
+- Gradient headings with proper hierarchy
+- Inline code with badges
+- Block code with syntax containers
+- Links that auto-open in new tab
+- Lazy-loaded images with rounded corners and shadows
+- Blockquotes with accent borders
+- Lists with improved spacing
+
+✅ **Security & Accessibility**
+- XSS protection via `rehype-sanitize`
+- External links with `rel="noopener noreferrer"`
+- Dark mode support for all elements
+- Screen reader accessibility
+
+#### Customizing Markdown Components
+
+To customize markdown rendering, edit the `components` prop in `src/components/ProjectDetail.js`:
+
+```javascript
+<ReactMarkdown
+  remarkPlugins={[remarkGfm]}
+  rehypePlugins={[rehypeRaw, rehypeSanitize]}
+  components={{
+    h1: ({node, ...props}) => <h1 className="your-custom-classes" {...props} />,
+    // ... customize other elements
+  }}
+>
+  {readme}
+</ReactMarkdown>
+```
+
 ## 🧪 Testing
 
 ### Local Development
@@ -374,7 +424,10 @@ npm run deploy
 - **Tailwind CSS 3** - Utility-first CSS framework
 - **Material Design** - Google's design system
 - **React Router** - Client-side routing
-- **React Markdown** - Markdown rendering
+- **React Markdown** - Markdown rendering with plugins
+  - **remark-gfm** - GitHub Flavored Markdown support
+  - **rehype-raw** - HTML in markdown support
+  - **rehype-sanitize** - Security sanitization
 - **GitHub API** - Dynamic project loading
 - **GitHub Pages** - Static site hosting
 - **gh-pages** - Deployment automation

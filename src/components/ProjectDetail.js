@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
 import { fetchReadmeWithImages } from '../utils/githubUtils';
 import { useTheme } from '../contexts/ThemeContext';
 import { PERSONAL_INFO, PROJECTS_FALLBACK } from '../constants';
@@ -359,7 +362,97 @@ const ProjectDetail = () => {
             ) : (
               <div className="prose prose-lg max-w-none text-surface-900 dark:text-surface-100 dark:prose-invert">
                 <ReactMarkdown
-                  className="prose-headings:text-surface-900 dark:prose-headings:text-white prose-p:text-surface-700 dark:prose-p:text-surface-300 prose-strong:text-surface-900 dark:prose-strong:text-white prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-pre:bg-surface-100 dark:prose-pre:bg-surface-800"
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                  components={{
+                    // Custom heading components with better styling
+                    // eslint-disable-next-line jsx-a11y/heading-has-content
+                    h1: ({node, ...props}) => <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-6 mt-8" {...props} />,
+                    // eslint-disable-next-line jsx-a11y/heading-has-content
+                    h2: ({node, ...props}) => <h2 className="text-3xl font-bold text-surface-900 dark:text-white mb-4 mt-8 border-b border-surface-200 dark:border-surface-700 pb-2" {...props} />,
+                    // eslint-disable-next-line jsx-a11y/heading-has-content
+                    h3: ({node, ...props}) => <h3 className="text-2xl font-semibold text-surface-900 dark:text-white mb-3 mt-6" {...props} />,
+                    // eslint-disable-next-line jsx-a11y/heading-has-content
+                    h4: ({node, ...props}) => <h4 className="text-xl font-semibold text-surface-900 dark:text-white mb-2 mt-4" {...props} />,
+                    // eslint-disable-next-line jsx-a11y/heading-has-content
+                    h5: ({node, ...props}) => <h5 className="text-lg font-semibold text-surface-900 dark:text-white mb-2 mt-4" {...props} />,
+                    // eslint-disable-next-line jsx-a11y/heading-has-content
+                    h6: ({node, ...props}) => <h6 className="text-base font-semibold text-surface-900 dark:text-white mb-2 mt-4" {...props} />,
+                    
+                    // Paragraph with better spacing
+                    p: ({node, ...props}) => <p className="text-surface-700 dark:text-surface-300 mb-4 leading-relaxed" {...props} />,
+                    
+                    // Links with hover effects
+                    // eslint-disable-next-line jsx-a11y/anchor-has-content
+                    a: ({node, ...props}) => (
+                      <a 
+                        className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline hover:no-underline transition-colors duration-200 font-medium" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        {...props} 
+                      />
+                    ),
+                    
+                    // Code blocks with better styling
+                    code: ({node, inline, className, children, ...props}) => {
+                      return inline ? (
+                        <code className="px-1.5 py-0.5 bg-surface-100 dark:bg-surface-800 text-primary-600 dark:text-primary-400 rounded text-sm font-mono border border-surface-200 dark:border-surface-700" {...props}>
+                          {children}
+                        </code>
+                      ) : (
+                        <code className={`${className} block p-4 bg-surface-100 dark:bg-surface-800 rounded-lg overflow-x-auto text-sm font-mono border border-surface-200 dark:border-surface-700`} {...props}>
+                          {children}
+                        </code>
+                      )
+                    },
+                    
+                    // Pre blocks
+                    pre: ({node, ...props}) => <pre className="bg-surface-100 dark:bg-surface-800 rounded-lg p-4 overflow-x-auto mb-4 border border-surface-200 dark:border-surface-700" {...props} />,
+                    
+                    // Lists with better spacing
+                    ul: ({node, ...props}) => <ul className="list-disc list-inside mb-4 space-y-2 text-surface-700 dark:text-surface-300" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-4 space-y-2 text-surface-700 dark:text-surface-300" {...props} />,
+                    li: ({node, ...props}) => <li className="ml-4" {...props} />,
+                    
+                    // Blockquotes
+                    blockquote: ({node, ...props}) => (
+                      <blockquote className="border-l-4 border-primary-500 pl-4 py-2 my-4 italic bg-surface-50 dark:bg-surface-800/50 rounded-r-lg" {...props} />
+                    ),
+                    
+                    // Tables (GFM)
+                    table: ({node, ...props}) => (
+                      <div className="overflow-x-auto mb-4">
+                        <table className="min-w-full divide-y divide-surface-200 dark:divide-surface-700 border border-surface-200 dark:border-surface-700 rounded-lg" {...props} />
+                      </div>
+                    ),
+                    thead: ({node, ...props}) => <thead className="bg-surface-100 dark:bg-surface-800" {...props} />,
+                    tbody: ({node, ...props}) => <tbody className="divide-y divide-surface-200 dark:divide-surface-700" {...props} />,
+                    tr: ({node, ...props}) => <tr className="hover:bg-surface-50 dark:hover:bg-surface-800/50 transition-colors" {...props} />,
+                    th: ({node, ...props}) => <th className="px-4 py-2 text-left text-sm font-semibold text-surface-900 dark:text-white" {...props} />,
+                    td: ({node, ...props}) => <td className="px-4 py-2 text-sm text-surface-700 dark:text-surface-300" {...props} />,
+                    
+                    // Images with better styling
+                    // eslint-disable-next-line jsx-a11y/alt-text
+                    img: ({node, ...props}) => (
+                      <img 
+                        className="rounded-lg shadow-material-2 my-4 max-w-full h-auto" 
+                        loading="lazy"
+                        {...props} 
+                      />
+                    ),
+                    
+                    // Horizontal rule
+                    hr: ({node, ...props}) => <hr className="my-8 border-surface-200 dark:border-surface-700" {...props} />,
+                    
+                    // Strong/Bold
+                    strong: ({node, ...props}) => <strong className="font-bold text-surface-900 dark:text-white" {...props} />,
+                    
+                    // Emphasis/Italic
+                    em: ({node, ...props}) => <em className="italic text-surface-800 dark:text-surface-200" {...props} />,
+                    
+                    // Strikethrough (GFM)
+                    del: ({node, ...props}) => <del className="line-through text-surface-500 dark:text-surface-500" {...props} />,
+                  }}
                 >
                   {readme}
                 </ReactMarkdown>
