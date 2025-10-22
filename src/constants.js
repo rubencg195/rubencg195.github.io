@@ -14,6 +14,17 @@ export const GITHUB_REPOS = [
 // Fallback project data for when GitHub API is unavailable
 export const PROJECTS_FALLBACK = [
   {
+    id: 'aws-nvidia-dgl-gnn-xgboost',
+    name: 'AWS NVIDIA DGL GNN XGBoost - Fraud Detection Pipeline',
+    description: 'Production-grade ML infrastructure leveraging NVIDIA GPU containers with Graph Neural Networks (cuGraph, DGL) and XGBoost for IEEE fraud detection. Comprehensive OpenTofu automation for SageMaker training jobs, ECR registry management, and end-to-end MLOps pipeline with wrapper scripts and training snapshots.',
+    html_url: 'https://github.com/rubencg195/aws-nvidia-dgl-gnn-xgboost',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['Python', 'Terraform', 'Shell', 'Jupyter Notebook'],
+    topics: ['aws', 'sagemaker', 'nvidia', 'gpu', 'gnn', 'xgboost', 'fraud-detection', 'opentofu', 'terraform', 'ml-infrastructure', 'docker', 'ecr', 'mlops', 'graph-neural-networks', 'cuGraph', 'dgl', 'ieee-dataset'],
+    updated_at: '2025-10-22T00:00:00Z'
+  },
+  {
     id: 'gitlab-sagemaker-cicd-for-ml-training-and-hosting',
     name: 'GitLab SageMaker CI/CD for ML Training and Hosting',
     description: 'Comprehensive MLOps solution for automated machine learning workflows with GitLab CI/CD, AWS SageMaker training jobs, artifact management, and monitoring.',
