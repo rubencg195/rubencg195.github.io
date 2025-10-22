@@ -3,7 +3,6 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import rehypeSanitize from 'rehype-sanitize';
 import { fetchReadmeWithImages } from '../utils/githubUtils';
 import { useTheme } from '../contexts/ThemeContext';
 import { PERSONAL_INFO, PROJECTS_FALLBACK } from '../constants';
@@ -363,7 +362,7 @@ const ProjectDetail = () => {
               <div className="prose prose-lg max-w-none text-surface-900 dark:text-surface-100 dark:prose-invert">
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
-                  rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                  rehypePlugins={[rehypeRaw]}
                   components={{
                     // Custom heading components with better styling
                     // eslint-disable-next-line jsx-a11y/heading-has-content
