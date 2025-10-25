@@ -4,6 +4,7 @@ export const ENABLE_GITHUB_API = false; // Disable GitHub API calls due to rate 
 
 // GitHub repository URLs
 export const GITHUB_REPOS = [
+  'https://github.com/rubencg195/aws-langchain-web-and-database-search',
   'https://github.com/rubencg195/gitLab-sagemaker-cicd-for-ml-training-and-hosting',
   'https://github.com/rubencg195/aws-backend-frontend-behind-cognito-auth-cloudfront',
   'https://github.com/rubencg195/aws-website-hosting-user-auth-cognito',
@@ -13,6 +14,17 @@ export const GITHUB_REPOS = [
 
 // Fallback project data for when GitHub API is unavailable
 export const PROJECTS_FALLBACK = [
+  {
+    id: 'aws-langchain-web-and-database-search',
+    name: 'AWS LangChain Web and Database Search with Bedrock',
+    description: 'A production-ready serverless application that combines web search and database retrieval with AI-powered summarization using AWS Bedrock Claude Haiku and LangChain. The application is deployed on AWS ECS Fargate using OpenTofu/Terraform.',
+    html_url: 'https://github.com/rubencg195/aws-langchain-web-and-database-search',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['Python', 'Terraform', 'HCL'],
+    topics: ['aws', 'bedrock', 'claude', 'langchain', 'ecs-fargate', 'opentofu', 'terraform', 'dynamodb', 'serverless', 'ai', 'web-search', 'database-retrieval', 'mlops'],
+    updated_at: '2025-10-25T00:00:00Z'
+  },
   {
     id: 'aws-nvidia-dgl-gnn-xgboost',
     name: 'AWS NVIDIA DGL GNN XGBoost - Fraud Detection Pipeline',
