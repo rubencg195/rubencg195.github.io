@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrubencg195_portfolio=self.webpackChunkrubencg195_portfolio||[]).push([[724],{5724:(e,r,c)=>{c.d(r,{createPieServices:()=>o.f});var o=c(6947);c(2916)}}]);
