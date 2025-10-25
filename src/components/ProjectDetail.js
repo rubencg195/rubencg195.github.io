@@ -1,11 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import mermaid from 'mermaid';
 import { fetchReadmeWithImages } from '../utils/githubUtils';
 import { useTheme } from '../contexts/ThemeContext';
 import { PERSONAL_INFO, PROJECTS_FALLBACK } from '../constants';
+
+// Mermaid Component
+const MermaidDiagram = ({ chart, mode }) => {
+  const ref = useRef(null);
+  const [svg, setSvg] = useState('');
+
+  useEffect(() => {
+    // Initialize mermaid with theme based on mode
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: mode === 'dark' ? 'dark' : 'default',
+      securityLevel: 'loose',
+      fontFamily: 'Inter, system-ui, sans-serif',
+      themeVariables: {
+        primaryColor: mode === 'dark' ? '#3b82f6' : '#2563eb',
+        primaryTextColor: mode === 'dark' ? '#e5e7eb' : '#1f2937',
+        primaryBorderColor: mode === 'dark' ? '#60a5fa' : '#3b82f6',
+        lineColor: mode === 'dark' ? '#6b7280' : '#9ca3af',
+        secondaryColor: mode === 'dark' ? '#8b5cf6' : '#7c3aed',
+        tertiaryColor: mode === 'dark' ? '#ec4899' : '#db2777',
+        background: mode === 'dark' ? '#1f2937' : '#ffffff',
+        mainBkg: mode === 'dark' ? '#1f2937' : '#ffffff',
+        secondBkg: mode === 'dark' ? '#374151' : '#f3f4f6',
+        textColor: mode === 'dark' ? '#e5e7eb' : '#1f2937',
+        border1: mode === 'dark' ? '#4b5563' : '#d1d5db',
+        border2: mode === 'dark' ? '#6b7280' : '#9ca3af',
+      },
+    });
+
+    // Generate unique ID for this diagram
+    const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+
+    // Render the diagram
+    const renderDiagram = async () => {
+      try {
+        const { svg: renderedSvg } = await mermaid.render(id, chart);
+        setSvg(renderedSvg);
+      } catch (error) {
+        console.error('Mermaid rendering error:', error);
+        // Fallback to showing the raw code if rendering fails
+        setSvg(`<pre class="text-red-500 dark:text-red-400">Error rendering diagram: ${error.message}</pre>`);
+      }
+    };
+
+    renderDiagram();
+  }, [chart, mode]);
+
+  return (
+    <div 
+      ref={ref}
+      className="mermaid-diagram my-6 p-4 bg-white dark:bg-surface-800 rounded-lg border border-surface-200 dark:border-surface-700 overflow-x-auto"
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+};
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -392,8 +448,16 @@ const ProjectDetail = () => {
                       />
                     ),
                     
-                    // Code blocks with better styling
+                    // Code blocks with better styling and Mermaid support
                     code: ({node, inline, className, children, ...props}) => {
+                      const match = /language-(\w+)/.exec(className || '');
+                      const language = match ? match[1] : '';
+                      
+                      // Check if it's a mermaid diagram
+                      if (!inline && language === 'mermaid') {
+                        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} mode={mode} />;
+                      }
+                      
                       return inline ? (
                         <code className="px-1.5 py-0.5 bg-surface-100 dark:bg-surface-800 text-primary-600 dark:text-primary-400 rounded text-sm font-mono border border-surface-200 dark:border-surface-700" {...props}>
                           {children}
@@ -405,8 +469,15 @@ const ProjectDetail = () => {
                       )
                     },
                     
-                    // Pre blocks
-                    pre: ({node, ...props}) => <pre className="bg-surface-100 dark:bg-surface-800 rounded-lg p-4 overflow-x-auto mb-4 border border-surface-200 dark:border-surface-700" {...props} />,
+                    // Pre blocks - Skip styling for mermaid diagrams
+                    pre: ({node, children, ...props}) => {
+                      // Check if this pre contains a mermaid diagram
+                      const childElement = React.Children.toArray(children)[0];
+                      if (childElement?.props?.className?.includes('language-mermaid')) {
+                        return <>{children}</>;
+                      }
+                      return <pre className="bg-surface-100 dark:bg-surface-800 rounded-lg p-4 overflow-x-auto mb-4 border border-surface-200 dark:border-surface-700" {...props}>{children}</pre>;
+                    },
                     
                     // Lists with better spacing
                     ul: ({node, ...props}) => <ul className="list-disc list-inside mb-4 space-y-2 text-surface-700 dark:text-surface-300" {...props} />,

@@ -216,6 +216,7 @@ The portfolio uses an enhanced markdown viewer with the following features:
 - **react-markdown** - Core markdown rendering component (safe by default)
 - **remark-gfm** - GitHub Flavored Markdown support (tables, strikethrough, task lists)
 - **rehype-raw** - HTML support in markdown
+- **mermaid** - Diagram and flowchart rendering
 
 #### Features Enabled
 ✅ **GitHub Flavored Markdown (GFM)**
@@ -233,6 +234,13 @@ The portfolio uses an enhanced markdown viewer with the following features:
 - Lazy-loaded images with rounded corners and shadows
 - Blockquotes with accent borders
 - Lists with improved spacing
+
+✅ **Mermaid Diagrams**
+- Automatic rendering of Mermaid diagrams from code blocks
+- Dark mode support for diagrams (theme switches automatically)
+- Supports all Mermaid diagram types (flowcharts, sequence diagrams, gantt charts, etc.)
+- Responsive diagram rendering with overflow scrolling
+- Error handling with fallback to error message
 
 ✅ **Security & Accessibility**
 - XSS protection (react-markdown is safe by default, no dangerouslySetInnerHTML)
@@ -426,6 +434,7 @@ npm run deploy
 - **React Markdown** - Markdown rendering with plugins (safe by default)
   - **remark-gfm** - GitHub Flavored Markdown support
   - **rehype-raw** - HTML in markdown support
+- **Mermaid** - Diagram and flowchart rendering
 - **GitHub API** - Dynamic project loading
 - **GitHub Pages** - Static site hosting
 - **gh-pages** - Deployment automation
