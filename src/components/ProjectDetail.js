@@ -438,8 +438,8 @@ const ProjectDetail = () => {
                     p: ({node, ...props}) => <p className="text-surface-700 dark:text-surface-300 mb-4 leading-relaxed" {...props} />,
                     
                     // Links with hover effects
-                    // eslint-disable-next-line jsx-a11y/anchor-has-content
                     a: ({node, ...props}) => (
+                      // eslint-disable-next-line jsx-a11y/anchor-has-content
                       <a 
                         className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline hover:no-underline transition-colors duration-200 font-medium" 
                         target="_blank"
@@ -502,8 +502,8 @@ const ProjectDetail = () => {
                     td: ({node, ...props}) => <td className="px-4 py-2 text-sm text-surface-700 dark:text-surface-300" {...props} />,
                     
                     // Images with better styling
-                    // eslint-disable-next-line jsx-a11y/alt-text
                     img: ({node, ...props}) => (
+                      // eslint-disable-next-line jsx-a11y/alt-text
                       <img 
                         className="rounded-lg shadow-material-2 my-4 max-w-full h-auto" 
                         loading="lazy"
