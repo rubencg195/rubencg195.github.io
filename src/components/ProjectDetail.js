@@ -339,7 +339,11 @@ const ProjectDetail = () => {
         <div className="glass-effect rounded-2xl xs:rounded-3xl p-4 xs:p-8 sm:p-12 shadow-material-3 mb-6 xs:mb-8 animate-fade-in">
           <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4 xs:gap-6">
             <div className={`w-16 h-16 xs:w-20 xs:h-20 bg-gradient-to-r ${getProjectGradient()} rounded-2xl xs:rounded-3xl flex items-center justify-center text-3xl xs:text-4xl shadow-material-2 animate-bounce-in flex-shrink-0`}>
-              {getProjectIcon(project.name)}
+              {project.icon ? (
+                <span className="text-3xl xs:text-4xl">{project.icon}</span>
+              ) : (
+                getProjectIcon(project.name)
+              )}
             </div>
             
             <div className="flex-1 text-center xs:text-left">

@@ -169,7 +169,7 @@ const Projects = () => {
                 {/* Project Icon */}
                 <div className="relative z-10">
                   <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${getProjectGradient(index)} rounded-xl sm:rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-4 sm:mb-6 group-hover:animate-bounce shadow-material-2`}>
-                    {getProjectIcon(project.name)}
+                    {project.icon || getProjectIcon(project.name)}
                   </div>
 
                   {/* Project Title */}

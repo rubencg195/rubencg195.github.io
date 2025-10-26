@@ -25,7 +25,8 @@ export const PROJECTS_FALLBACK = [
     forks_count: 0,
     language: ['Python', 'Terraform', 'HCL'],
     topics: ['aws', 'bedrock', 'claude', 'langchain', 'ecs-fargate', 'opentofu', 'terraform', 'dynamodb', 'serverless', 'ai', 'web-search', 'database-retrieval', 'mlops'],
-    updated_at: '2025-10-25T00:00:00Z'
+    updated_at: '2025-10-25T00:00:00Z',
+    icon: '🧠'
   },
   {
     id: 'aws-nvidia-dgl-gnn-xgboost',
@@ -36,7 +37,8 @@ export const PROJECTS_FALLBACK = [
     forks_count: 0,
     language: ['Python', 'Terraform', 'Shell', 'Jupyter Notebook'],
     topics: ['aws', 'sagemaker', 'nvidia', 'gpu', 'gnn', 'xgboost', 'fraud-detection', 'opentofu', 'terraform', 'ml-infrastructure', 'docker', 'ecr', 'mlops', 'graph-neural-networks', 'cuGraph', 'dgl', 'ieee-dataset'],
-    updated_at: '2025-10-22T00:00:00Z'
+    updated_at: '2025-10-22T00:00:00Z',
+    icon: '🧠'
   },
   {
     id: 'gitlab-sagemaker-cicd-for-ml-training-and-hosting',
@@ -47,7 +49,8 @@ export const PROJECTS_FALLBACK = [
     forks_count: 0,
     language: ['Python', 'Terraform'],
     topics: ['aws', 'sagemaker', 'gitlab-ci', 'mlops', 'cicd', 'terraform', 'python/terraform', 'shell', 'hcl', 'machine-learning', 'devops'],
-    updated_at: '2025-09-01T00:00:00Z'
+    updated_at: '2025-09-01T00:00:00Z',
+    icon: '🧠'
   },
   {
     id: 'aws-mcp-databases-bedrock-unstructured-vector-db',
@@ -58,7 +61,8 @@ export const PROJECTS_FALLBACK = [
     forks_count: 7,
     language: ['Python', 'Terraform'],
     topics: ['aws', 'bedrock', 'claude', 'postgresql', 'pgvector', 'knowledge-bases', 'terraform', 'lambda', 's3', 'rds'],
-    updated_at: '2024-03-05T09:15:00Z'
+    updated_at: '2024-03-05T09:15:00Z',
+    icon: '🧠'
   },
   {
     id: 'aws-bedrock-agents-structured-db',
@@ -69,7 +73,8 @@ export const PROJECTS_FALLBACK = [
     forks_count: 5,
     language: ['Python', 'Terraform'],
     topics: ['aws', 'bedrock', 'claude', 'athena', 'bedrock-agents', 'sql', 'terraform', 'structured-data', 'nlp'],
-    updated_at: '2024-03-12T16:45:00Z'
+    updated_at: '2024-03-12T16:45:00Z',
+    icon: '🧠'
   },
   {
     id: 'aws-backend-frontend-behind-cognito-auth-cloudfront',
@@ -80,7 +85,8 @@ export const PROJECTS_FALLBACK = [
     forks_count: 3,
     language: ['Tailwind', 'Javascript', 'HTML', 'Terraform'],
     topics: ['aws', 'cognito', 'cloudfront', 'lambda', 'react', 'tailwind', 'javascript', 'html', 'terraform'],
-    updated_at: '2024-01-15T10:30:00Z'
+    updated_at: '2024-01-15T10:30:00Z',
+    icon: '☁️'
   },
   {
     id: 'aws-website-hosting-user-auth-cognito',
@@ -91,18 +97,20 @@ export const PROJECTS_FALLBACK = [
     forks_count: 2,
     language: ['Tailwind', 'Javascript', 'HTML', 'Terraform'],
     topics: ['aws', 'cognito', 's3', 'cloudfront', 'react', 'elastic-bean', 'amplify', 'tailwind', 'javascript', 'html', 'terraform'],
-    updated_at: '2024-02-10T14:20:00Z'
+    updated_at: '2024-02-10T14:20:00Z',
+    icon: '☁️'
   },
   {
     id: 'walking-spider-openai-pybullet',
     name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
     description: 'Train a simulated 4-legged spider robot to walk using reinforcement learning (PPO). Uses PyBullet for physics simulation and OpenAI Gym for the RL environment.',
     html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
-    stargazers_count: 0,
-    forks_count: 0,
+    stargazers_count: 15,
+    forks_count: 5,
     language: ['Python'],
     topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
-    updated_at: '2025-10-26T00:00:00Z'
+    updated_at: '2025-10-26T00:00:00Z',
+    icon: '🕷️'
   }
 ];
 
