@@ -5,11 +5,13 @@ export const ENABLE_GITHUB_API = false; // Disable GitHub API calls due to rate 
 // GitHub repository URLs
 export const GITHUB_REPOS = [
   'https://github.com/rubencg195/aws-langchain-web-and-database-search',
+  'https://github.com/rubencg195/aws-nvidia-dgl-gnn-xgboost',
   'https://github.com/rubencg195/gitLab-sagemaker-cicd-for-ml-training-and-hosting',
   'https://github.com/rubencg195/aws-backend-frontend-behind-cognito-auth-cloudfront',
   'https://github.com/rubencg195/aws-website-hosting-user-auth-cognito',
   'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
-  'https://github.com/rubencg195/aws-bedrock-agents-structured-db'
+  'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
+  'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym'
 ];
 
 // Fallback project data for when GitHub API is unavailable
