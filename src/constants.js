@@ -90,6 +90,17 @@ export const PROJECTS_FALLBACK = [
     language: ['Tailwind', 'Javascript', 'HTML', 'Terraform'],
     topics: ['aws', 'cognito', 's3', 'cloudfront', 'react', 'elastic-bean', 'amplify', 'tailwind', 'javascript', 'html', 'terraform'],
     updated_at: '2024-02-10T14:20:00Z'
+  },
+  {
+    id: 'walking-spider-openai-pybullet',
+    name: 'RL Training for Quadruped Robot Locomotion',
+    description: 'Train a simulated 8-legged spider robot to walk using reinforcement learning (PPO). Uses PyBullet for physics simulation and OpenAI Gym for the RL environment.',
+    html_url: 'https://github.com/rubencg195/WalkingSpider_OpenAI_PyBullet',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['Python'],
+    topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
+    updated_at: '2025-10-26T00:00:00Z'
   }
 ];
 
