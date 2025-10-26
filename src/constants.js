@@ -95,7 +95,7 @@ export const PROJECTS_FALLBACK = [
     id: 'walking-spider-openai-pybullet',
     name: 'RL Training for Quadruped Robot Locomotion',
     description: 'Train a simulated 8-legged spider robot to walk using reinforcement learning (PPO). Uses PyBullet for physics simulation and OpenAI Gym for the RL environment.',
-    html_url: 'https://github.com/rubencg195/WalkingSpider_OpenAI_PyBullet',
+    html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
     stargazers_count: 0,
     forks_count: 0,
     language: ['Python'],
