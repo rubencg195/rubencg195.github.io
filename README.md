@@ -293,76 +293,81 @@ Test in major browsers:
 
 ## 🚀 Deployment
 
-### Deploy to GitHub Pages (gh Branch)
+### Branch Strategy
 
-The portfolio is configured to deploy directly from the gh-pages branch:
+This project uses a **two-branch deployment strategy**:
+
+1. **`master` branch**: Contains all source code (React components, constants.js, etc.)
+2. **`gh-pages` branch**: Contains the production build files (index.html, static assets, etc.)
+
+GitHub Pages serves the live site from the `gh-pages` branch.
+
+### Deploy to GitHub Pages
+
+**Complete Deployment Process:**
 
 ```bash
+# Step 1: Make changes to source code (in src/ directory)
+git add .
+git commit -m "Your changes"
+
+# Step 2: Push source code to master branch
+git push origin master
+
+# Step 3: Build and deploy production files to gh-pages
 npm run deploy
 ```
 
-This command:
+**What `npm run deploy` does:**
 1. Builds the production version (`npm run build`)
-2. Pushes build files to gh-pages branch (`gh-pages -d build -b gh-pages`)
-3. Updates your live site at `https://rubencg195.github.io`
+2. Pushes built files to `gh-pages` branch (`gh-pages -d build -b gh-pages`)
+3. GitHub Pages automatically serves from `gh-pages` branch
+4. Live site updates at `https://rubencg195.github.io`
 
-**Note**: This deployment strategy pushes the built files directly to the gh-pages branch, to avoid deleting all files from the master branch.
+**Note**: Source code stays on `master`, production builds go to `gh-pages`. This prevents deleting source files during deployment.
 
 ### Deployment Checklist
 
-- [ ] **Commit Source Changes**: `git add . && git commit -m "Update portfolio"`
-- [ ] **Push Source to GitHub**: `git push origin master`
-- [ ] **Deploy Built Files**: `npm run deploy`
-- [ ] **Configure GitHub Pages**: Follow the GitHub Pages setup below
-- [ ] **Verify**: Check live site functionality at https://rubencg195.github.io
+- [ ] **Make Changes**: Edit files in `src/`, `public/`, or `constants.js`
+- [ ] **Commit & Push Source**: `git add . && git commit -m "message" && git push origin master`
+- [ ] **Deploy Production Build**: `npm run deploy`
+- [ ] **Verify**: Check live site at https://rubencg195.github.io (may take 1-2 minutes)
 
 ### GitHub Pages Configuration (One-Time Setup)
 
 After your first deployment, configure GitHub Pages in your repository settings:
 
-#### **Step-by-Step GitHub Pages Setup:**
+#### **Step-by-Step Setup:**
 
 1. **Navigate to Repository Settings**
-   - Go to your GitHub repository: `https://github.com/rubencg195/rubencg195.github.io`
-   - Click the "Settings" tab (far right in the repository navigation)
-   - Scroll down to "Pages" in the left sidebar
+   - Go to: `https://github.com/rubencg195/rubencg195.github.io/settings/pages`
+   - Or: Settings tab → "Pages" in left sidebar
 
-2. **Configure Build and Deployment**
+2. **Configure Source**
    - **Source**: Select "Deploy from a branch"
-     - This tells GitHub to serve your site from files in a branch
-     - ✅ **Correct choice** for our gh-page branch deployment strategy
-   
+
 3. **Select Branch and Folder**
-   - **Branch**: Select "gh-page" from the dropdown
-     - ✅ **Why**: Our `npm run deploy` pushes build files to the gh-pages branch
-     - ❌ **Not**: Don't select "gh-pages" (we're not using that branch)
-   
-   - **Folder**: Select "/ (root)" from the dropdown  
-     - ✅ **Why**: Build files are placed at the root level of gh-pages branch
-     - ❌ **Not**: Don't select "/docs" (build files aren't in a docs folder)
+   - **Branch**: Select `gh-pages` (this is where your production builds go)
+   - **Folder**: Select `/ (root)` (build files are at the root level)
 
-4. **Save Configuration**
-   - Click the "Save" button
-   - GitHub will show: "Your site is ready to be published at https://rubencg195.github.io"
-
-5. **Wait for Deployment**
-   - GitHub Pages takes 1-10 minutes to build and deploy
-   - You'll see a green checkmark when ready
-   - Visit https://rubencg195.github.io to verify
+4. **Save**
+   - Click "Save" button
+   - GitHub shows: "Your site is ready to be published at https://rubencg195.github.io"
 
 #### **Configuration Summary:**
 ```
-Source: Deploy from a branch
-Branch: gh-pages
-Folder: / (root)
+Source:  Deploy from a branch
+Branch:  gh-pages
+Folder:  / (root)
 ```
 
 #### **Why This Configuration?**
 
-- **Deploy from a branch**: We're serving static files from the gh-pages branch
-- **gh-pages branch**: Our deployment script pushes build files here
-- **/ (root) folder**: Build files (index.html, static/, etc.) are at the branch root
-- **Result**: GitHub Pages serves your React app from https://rubencg195.github.io
+- **`master` branch**: Your source code (React components, etc.)
+- **`gh-pages` branch**: Production build files (served by GitHub Pages)
+- **Deploy from a branch**: GitHub Pages serves static files from a branch
+- **`/ (root)` folder**: Build files (index.html, static/, etc.) are at branch root
+- **Result**: Your React app is live at https://rubencg195.github.io
 
 ### Custom Domain (Optional)
 
