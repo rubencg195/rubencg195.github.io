@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './index.css';
 
 // Import components
@@ -14,6 +14,9 @@ import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO } from './consta
 
 // Import hooks
 import { useScrollAnimation } from './hooks/useScrollAnimation';
+
+// Import Firebase Analytics
+import { logPageView } from './utils/firebaseConfig';
 
 // Theme Context
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -128,6 +131,11 @@ const RedirectHandler = () => {
 
 function App() {
   const [mode, setMode] = useState('dark'); // Default to dark theme
+  const location = useLocation();
+
+  useEffect(() => {
+    logPageView(location.pathname);
+  }, [location]);
 
   const toggleTheme = () => {
     const newMode = mode === 'light' ? 'dark' : 'light';

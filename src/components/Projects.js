@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchRepoInfo } from '../utils/githubUtils';
 import { GITHUB_REPOS, PROJECTS_FALLBACK, ENABLE_GITHUB_API } from '../constants';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { logProjectClick } from '../utils/firebaseConfig';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -158,6 +159,7 @@ const Projects = () => {
               style={{animationDelay: `${0.7 + index * 0.2}s`}}
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
+              onClick={() => logProjectClick(project.name)}
             >
               <div className={`bg-slate-50 dark:bg-surface-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full transition-all duration-500 hover:shadow-material-4 hover:scale-105 relative overflow-hidden border border-slate-100 dark:border-surface-700 ${
                 hoveredProject === project.id ? 'shadow-material-4' : 'shadow-material-2'
