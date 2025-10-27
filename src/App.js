@@ -150,8 +150,8 @@ const AppContent = ({ mode, toggleTheme }) => {
       {/* Redirect Handler */}
       <RedirectHandler />
       
-      {/* Navigation */}
-      <Navbar />
+      {/* Navigation - Only show on non-project pages */}
+      {!location.pathname.startsWith('/project/') && <Navbar />}
       
       {/* Routes */}
       <Routes>

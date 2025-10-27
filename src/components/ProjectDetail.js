@@ -336,7 +336,7 @@ const ProjectDetail = () => {
       {/* Project Content */}
       <div className="max-w-4xl mx-auto px-4 xs:px-6 py-8 xs:py-12">
         {/* Project Header */}
-        <div className="glass-effect rounded-2xl xs:rounded-3xl p-4 xs:p-8 sm:p-12 shadow-material-3 mb-6 xs:mb-8 animate-fade-in">
+        <div className="glass-effect rounded-2xl xs:rounded-3xl p-4 xs:p-8 sm:p-12 shadow-material-3 mb-6 xs:mb-8 animate-fade-in pt-20 sm:pt-24">
           <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4 xs:gap-6">
             <div className={`w-16 h-16 xs:w-20 xs:h-20 bg-gradient-to-r ${getProjectGradient()} rounded-2xl xs:rounded-3xl flex items-center justify-center text-3xl xs:text-4xl shadow-material-2 animate-bounce-in flex-shrink-0`}>
               {project.icon ? (
