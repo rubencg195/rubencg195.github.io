@@ -430,6 +430,210 @@ npm run deploy
 - ✅ **Verify**: Build files are at root level of gh-pages branch
 - ✅ **Confirm**: GitHub Pages is serving from gh-pages branch / (root)
 
+## 📊 Firebase Analytics Integration
+
+### Overview
+
+Firebase Analytics provides real-time and historical insights into how users interact with your portfolio. This integration tracks:
+
+- **Page Views**: When users navigate to different sections
+- **Project Clicks**: When users click on portfolio projects
+- **External Links**: When users click external links (GitHub, LinkedIn, etc.)
+- **Custom Events**: Any other interactions you want to track
+
+### Setup Instructions
+
+#### Step 1: Create a Firebase Project
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Click **"Add project"**
+3. Enter a project name (e.g., `portfolio-analytics`)
+4. Follow the setup wizard and click "Create project"
+
+#### Step 2: Register a Web App
+
+1. In Firebase Console, click the **Web icon** (</>) to add a web app
+2. Enter an app nickname (e.g., `Portfolio`)
+3. Click **"Register app"**
+4. Copy the Firebase config object
+
+#### Step 3: Enable Google Analytics
+
+1. Go to **Project Settings** (gear icon)
+2. Click the **"Integrations"** tab
+3. Click **"Enable Google Analytics"**
+4. Select your Google Analytics account (or create a new one)
+5. Click **"Enable"**
+
+#### Step 4: Configure Environment Variables
+
+1. Create a `.env.local` file in the project root
+2. Add your Firebase credentials:
+
+```
+REACT_APP_FIREBASE_API_KEY=your_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+REACT_APP_FIREBASE_APP_ID=your_app_id
+REACT_APP_FIREBASE_MEASUREMENT_ID=G-your_measurement_id
+REACT_APP_ENABLE_ANALYTICS=true
+```
+
+To find these values, go to Firebase Console → Project Settings → Your apps → Click your web app → Copy the firebaseConfig object
+
+#### Step 5: Restart Development Server
+
+```bash
+npm start
+```
+
+### Available Tracking Functions
+
+#### `logPageView(pageName, pagePath)`
+
+Logs when a user navigates to a new page. **Tracked automatically in App.js**
+
+```javascript
+import { logPageView } from './utils/firebaseConfig';
+
+logPageView('Home', '/');
+logPageView('Project Detail', '/project/aws-langchain');
+```
+
+#### `logProjectClick(projectId, projectName)`
+
+Logs when a user clicks on a project card. **Tracked automatically in Projects.js**
+
+```javascript
+import { logProjectClick } from './utils/firebaseConfig';
+
+logProjectClick('aws-langchain', 'AWS LangChain Project');
+```
+
+#### `logExternalLink(linkUrl, linkType)`
+
+Logs when a user clicks an external link.
+
+```javascript
+import { logExternalLink } from './utils/firebaseConfig';
+
+logExternalLink('https://github.com/rubencg195', 'github');
+logExternalLink('https://linkedin.com/in/rubenchevez', 'linkedin');
+```
+
+#### `logCustomEvent(eventName, eventParams)`
+
+Logs a custom event with any parameters.
+
+```javascript
+import { logCustomEvent } from './utils/firebaseConfig';
+
+logCustomEvent('download_resume', {
+  timestamp: new Date().toISOString()
+});
+```
+
+### Viewing Analytics
+
+1. Go to Firebase Console
+2. Click **"Analytics"** in the left sidebar
+3. Click **"Real-time"** to see live user activity
+4. Click **"All events"** to view all tracked events with counts
+
+### Debugging Firebase Analytics
+
+#### Quick Start: Browser Console Debugging
+
+Open your browser DevTools (**F12** or **Ctrl+Shift+I**) and run:
+
+```javascript
+// Check Firebase status
+window.firebaseDebug.checkStatus()
+
+// Test a custom event
+window.firebaseDebug.testEvent('my_test_event')
+
+// Test page view
+window.firebaseDebug.testPageView()
+
+// Test with custom data
+window.firebaseDebug.testEvent('checkout', { items: 3, total: 99.99 })
+```
+
+#### Enable Firebase Debug Tools
+
+By default, debug tools are **disabled**. To enable them:
+
+1. Open `src/constants.js`
+2. Set `ENABLE_FIREBASE_DEBUG = true`
+3. Restart dev server: `npm start`
+4. Debug tools will appear in browser console as `window.firebaseDebug`
+
+#### Debugging Checklist
+
+✅ **If Analytics is Working:**
+- [ ] Console shows "Firebase Debug Tools Available!"
+- [ ] `checkStatus()` shows all fields with ✅
+- [ ] Test events appear in Firebase Console Real-time dashboard
+- [ ] Project clicks are logged when you click project cards
+- [ ] Page views logged when navigating between sections
+
+❌ **If Analytics is NOT Working:**
+
+**Problem: "Analytics: null or undefined"**
+- Solution: Check `.env.local` exists in project root with all Firebase credentials set
+- Solution: Set `REACT_APP_ENABLE_ANALYTICS=true`
+- Solution: Restart dev server
+
+**Problem: "FIREBASE_MEASUREMENT_ID is required"**
+- Solution: Go to Firebase Console → Project Settings → Click your Web app
+- Solution: Copy the `measurementId` value
+- Solution: Add to `.env.local`: `REACT_APP_FIREBASE_MEASUREMENT_ID=G-XXXXX`
+
+**Problem: "Error initializing analytics"**
+- Solution: Open console: `window.firebaseDebug.checkStatus()`
+- Solution: Verify credentials are correct
+- Solution: Check Firebase project has Analytics enabled
+
+**Problem: Events logged but not showing in Firebase Console**
+- Solution: Events can take 5-10 minutes to appear initially
+- Solution: Go to **Analytics → All events** not just Real-time
+- Solution: Verify Google Analytics is enabled in Firebase Console
+- Solution: Try clearing browser cache and refreshing
+
+#### Troubleshooting Matrix
+
+| Problem | Cause | Solution |
+|---------|-------|----------|
+| "Not Initialized" | No credentials | Create `.env.local` with Firebase config |
+| "MEASUREMENT_ID required" | Missing ID | Add `REACT_APP_FIREBASE_MEASUREMENT_ID` |
+| Events not appearing | Network blocked | Check firewall/CORS settings |
+| Events delayed 10+ min | Normal behavior | Analytics batches events |
+| Only seeing session_start | Other events disabled | Enable in Firebase Console |
+
+### Firebase Console Navigation
+
+**Real-time Dashboard:**
+```
+Firebase Console → Your Project → Analytics → Real-time
+```
+See live user activity as it happens
+
+**All Events View:**
+```
+Firebase Console → Your Project → Analytics → All events
+```
+See all events with counts
+
+### Useful Resources
+
+- [Firebase Analytics Documentation](https://firebase.google.com/docs/analytics)
+- [Google Analytics Help Center](https://support.google.com/analytics)
+- [Firebase Console](https://console.firebase.google.com)
+- [Firebase Pricing](https://firebase.google.com/pricing)
+
 ## 🛠️ Technologies Used
 
 - **React 19** - Modern JavaScript library
