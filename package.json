@@ -24,7 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b gh-pages"
+    "deploy": "npm run deploy:github && npm run deploy:firebase",
+    "deploy:github": "gh-pages -d build -b gh-pages",
+    "deploy:firebase": "firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +48,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
+    "firebase-tools": "^13.0.0",
     "gh-pages": "^4.0.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"

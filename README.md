@@ -293,45 +293,156 @@ Test in major browsers:
 
 ## 🚀 Deployment
 
-### Branch Strategy
+### Dual Hosting Strategy: Firebase + GitHub Pages
 
-This project uses a **two-branch deployment strategy**:
+This project supports **dual hosting** for maximum redundancy and flexibility:
 
-1. **`master` branch**: Contains all source code (React components, constants.js, etc.)
-2. **`gh-pages` branch**: Contains the production build files (index.html, static assets, etc.)
+1. **Firebase Hosting**: Primary CDN with global distribution
+2. **GitHub Pages**: Backup hosting directly from GitHub repository
 
-GitHub Pages serves the live site from the `gh-pages` branch.
+#### Architecture Overview
 
-### Deploy to GitHub Pages
+```mermaid
+graph TB
+    subgraph Source["Source Code"]
+        Master["master branch<br/>(React components, configs)"]
+    end
+    
+    subgraph Build["Build Process"]
+        Build_Step["npm run build<br/>(React build to /build)"]
+    end
+    
+    subgraph Deployment["Deployment"]
+        GitHub["npm run deploy:github<br/>(gh-pages → gh-pages branch)"]
+        Firebase["npm run deploy:firebase<br/>(firebase deploy)"]
+    end
+    
+    subgraph Hosting["Production Hosting"]
+        GHP["GitHub Pages<br/>rubencg195.github.io"]
+        FBH["Firebase Hosting<br/>YOUR_PROJECT.web.app"]
+    end
+    
+    Master --> Build_Step
+    Build_Step --> GitHub
+    Build_Step --> Firebase
+    GitHub --> GHP
+    Firebase --> FBH
+```
 
-**Complete Deployment Process:**
+### Firebase Hosting Setup (One-Time)
+
+#### Step 1: Create Firebase Project
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Click **"Add project"** and follow the setup wizard
+3. Select your preferred region
+4. Enable Google Analytics (optional but recommended)
+
+#### Step 2: Create Web App
+
+1. In Firebase Console, click the **Web icon** (**</>**)
+2. Enter your app name (e.g., `portfolio`)
+3. Click **"Register app"**
+4. Copy your Firebase config details
+
+#### Step 3: Install Firebase Tools Locally
 
 ```bash
-# Step 1: Make changes to source code (in src/ directory)
+npm install firebase-tools -g
+```
+
+Then authenticate:
+
+```bash
+firebase login
+```
+
+This will open a browser for authentication. Follow the prompts.
+
+#### Step 4: Initialize Firebase in Project
+
+```bash
+firebase init hosting
+```
+
+**When prompted:**
+- **What do you want to use as your public directory?** → `build`
+- **Configure as single-page app?** → `Yes`
+- **Set up automatic builds and deploys with GitHub?** → `No` (we handle this with npm scripts)
+- **File build/index.html already exists. Overwrite?** → `No`
+
+This creates/updates:
+- `.firebaserc` - Your Firebase project configuration
+- `firebase.json` - Hosting rules and settings
+
+#### Step 5: Update Firebase Configuration Files
+
+**`.firebaserc`** - Replace `YOUR_FIREBASE_PROJECT_ID` with your actual project ID:
+
+```json
+{
+  "projects": {
+    "default": "your-firebase-project-id"
+  },
+  "targets": {},
+  "etags": {}
+}
+```
+
+**`firebase.json`** - Already configured with:
+- Public directory: `build/`
+- Single-page app rewrites
+- Cache headers for optimal performance
+- Security headers
+
+### Deployment Scripts
+
+#### Available Deployment Commands
+
+```bash
+# Build only (no deployment)
+npm run build
+
+# Deploy to both Firebase AND GitHub Pages
+npm run deploy
+
+# Deploy to GitHub Pages only
+npm run deploy:github
+
+# Deploy to Firebase only
+npm run deploy:firebase
+```
+
+#### Complete Deployment Workflow
+
+```bash
+# Step 1: Make changes to source code
 git add .
 git commit -m "Your changes"
 
 # Step 2: Push source code to master branch
 git push origin master
 
-# Step 3: Build and deploy production files to gh-pages
+# Step 3: Build and deploy to BOTH Firebase and GitHub Pages
 npm run deploy
 ```
 
-**What `npm run deploy` does:**
-1. Builds the production version (`npm run build`)
-2. Pushes built files to `gh-pages` branch (`gh-pages -d build -b gh-pages`)
-3. GitHub Pages automatically serves from `gh-pages` branch
-4. Live site updates at `https://rubencg195.github.io`
-
-**Note**: Source code stays on `master`, production builds go to `gh-pages`. This prevents deleting source files during deployment.
+**What happens:**
+1. `npm run build` - Creates optimized production build in `/build`
+2. `npm run deploy:github` - Pushes build to `gh-pages` branch (GitHub Pages)
+3. `npm run deploy:firebase` - Deploys build to Firebase Hosting
+4. Both sites update within 1-2 minutes
 
 ### Deployment Checklist
 
-- [ ] **Make Changes**: Edit files in `src/`, `public/`, or `constants.js`
-- [ ] **Commit & Push Source**: `git add . && git commit -m "message" && git push origin master`
-- [ ] **Deploy Production Build**: `npm run deploy`
-- [ ] **Verify**: Check live site at https://rubencg195.github.io (may take 1-2 minutes)
+- [ ] **Install Dependencies**: `npm install`
+- [ ] **Firebase Setup**: `firebase login` and `firebase init hosting`
+- [ ] **Update `.firebaserc`**: Replace `YOUR_FIREBASE_PROJECT_ID` with your project ID
+- [ ] **Make Changes**: Edit source code in `src/`, `public/`, or `constants.js`
+- [ ] **Commit & Push**: `git add . && git commit -m "message" && git push origin master`
+- [ ] **Deploy**: `npm run deploy`
+- [ ] **Verify GitHub Pages**: https://rubencg195.github.io
+- [ ] **Verify Firebase**: https://your-project-id.web.app
 
 ### GitHub Pages Configuration (One-Time Setup)
 

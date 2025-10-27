@@ -25,3 +25,7 @@ package-lock.json
 
 # Old website content (temporarily stored for reference)
 /old/
+
+# Firebase
+.firebase/
+.env.firebase
