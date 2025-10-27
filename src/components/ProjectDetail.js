@@ -484,9 +484,18 @@ const ProjectDetail = () => {
                     },
                     
                     // Lists with better spacing
-                    ul: ({node, ...props}) => <ul className="list-disc list-inside mb-4 space-y-2 text-surface-700 dark:text-surface-300" {...props} />,
-                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-4 space-y-2 text-surface-700 dark:text-surface-300" {...props} />,
-                    li: ({node, ...props}) => <li className="ml-4" {...props} />,
+                    ul: ({node, ...props}) => {
+                      const { ordered, depth, ...restProps } = props;
+                      return <ul className="list-disc list-inside mb-4 space-y-2 text-surface-700 dark:text-surface-300" {...restProps} />;
+                    },
+                    ol: ({node, ...props}) => {
+                      const { ordered, depth, ...restProps } = props;
+                      return <ol className="list-decimal list-inside mb-4 space-y-2 text-surface-700 dark:text-surface-300" {...restProps} />;
+                    },
+                    li: ({node, ...props}) => {
+                      const { ordered, depth, ...restProps } = props;
+                      return <li className="ml-4" {...restProps} />;
+                    },
                     
                     // Blockquotes
                     blockquote: ({node, ...props}) => (
@@ -494,16 +503,34 @@ const ProjectDetail = () => {
                     ),
                     
                     // Tables (GFM)
-                    table: ({node, ...props}) => (
-                      <div className="overflow-x-auto mb-4">
-                        <table className="min-w-full divide-y divide-surface-200 dark:divide-surface-700 border border-surface-200 dark:border-surface-700 rounded-lg" {...props} />
-                      </div>
-                    ),
-                    thead: ({node, ...props}) => <thead className="bg-surface-100 dark:bg-surface-800" {...props} />,
-                    tbody: ({node, ...props}) => <tbody className="divide-y divide-surface-200 dark:divide-surface-700" {...props} />,
-                    tr: ({node, ...props}) => <tr className="hover:bg-surface-50 dark:hover:bg-surface-800/50 transition-colors" {...props} />,
-                    th: ({node, ...props}) => <th className="px-4 py-2 text-left text-sm font-semibold text-surface-900 dark:text-white" {...props} />,
-                    td: ({node, ...props}) => <td className="px-4 py-2 text-sm text-surface-700 dark:text-surface-300" {...props} />,
+                    table: ({node, ...props}) => {
+                      const { isHeader, ...restProps } = props;
+                      return (
+                        <div className="overflow-x-auto mb-4">
+                          <table className="min-w-full divide-y divide-surface-200 dark:divide-surface-700 border border-surface-200 dark:border-surface-700 rounded-lg" {...restProps} />
+                        </div>
+                      );
+                    },
+                    thead: ({node, ...props}) => {
+                      const { isHeader, ...restProps } = props;
+                      return <thead className="bg-surface-100 dark:bg-surface-800" {...restProps} />;
+                    },
+                    tbody: ({node, ...props}) => {
+                      const { isHeader, ...restProps } = props;
+                      return <tbody className="divide-y divide-surface-200 dark:divide-surface-700" {...restProps} />;
+                    },
+                    tr: ({node, ...props}) => {
+                      const { isHeader, ...restProps } = props;
+                      return <tr className="hover:bg-surface-50 dark:hover:bg-surface-800/50 transition-colors" {...restProps} />;
+                    },
+                    th: ({node, ...props}) => {
+                      const { isHeader, ...restProps } = props;
+                      return <th className="px-4 py-2 text-left text-sm font-semibold text-surface-900 dark:text-white" {...restProps} />;
+                    },
+                    td: ({node, ...props}) => {
+                      const { isHeader, ...restProps } = props;
+                      return <td className="px-4 py-2 text-sm text-surface-700 dark:text-surface-300" {...restProps} />;
+                    },
                     
                     // Images with better styling
                     img: ({node, ...props}) => (

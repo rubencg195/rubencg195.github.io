@@ -1,6 +1,7 @@
 // Configuration constants
 export const ENABLE_LINKEDIN_PARSING = false; // Disable LinkedIn parsing by default
 export const ENABLE_GITHUB_API = false; // Disable GitHub API calls due to rate limiting
+export const ENABLE_FIREBASE_DEBUG = false; // Enable Firebase debugging tools in console
 
 // GitHub repository URLs
 export const GITHUB_REPOS = [
