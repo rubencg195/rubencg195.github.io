@@ -44,7 +44,9 @@ const Projects = () => {
           return {
             ...repoInfo,
             repoUrl,
-            id: repoName  // Use repository name as ID for URL routing
+            id: repoName,  // Use repository name as ID for URL routing
+            // Normalize language to array (GitHub API returns a string, fallback uses array)
+            language: repoInfo.language ? [repoInfo.language] : []
           };
         });
 
@@ -200,7 +202,7 @@ const Projects = () => {
                       <span className="text-secondary-500">🍴</span>
                       <span>{project.forks_count}</span>
                     </div>
-                    {project.language && (
+                    {project.language && Array.isArray(project.language) && (
                       <div className="flex items-center gap-1">
                         <span className="text-primary-500 mr-1">💻</span>
                         {project.language.map((lang, langIndex) => (
