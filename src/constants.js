@@ -20,7 +20,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-langchain-web-and-database-search',
     name: 'AWS LangChain Web and Database Search with Bedrock',
-    description: 'Web search + RAG with Bedrock',
+    description: 'Serverless application combining web search and database retrieval with AWS Bedrock, Claude Haiku, and LangChain for AI-powered summarization. Deployed on AWS ECS Fargate using OpenTofu.',
     html_url: 'https://github.com/rubencg195/aws-langchain-web-and-database-search',
     stargazers_count: 0,
     forks_count: 0,
@@ -32,7 +32,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-nvidia-dgl-gnn-xgboost',
     name: 'AWS NVIDIA DGL GNN XGBoost - Fraud Detection Pipeline',
-    description: 'ML fraud detection with GNNs',
+    description: 'Production ML infrastructure with NVIDIA GPU containers, Graph Neural Networks, and XGBoost for fraud detection. Features OpenTofu automation for SageMaker, ECR management, and MLOps pipeline.',
     html_url: 'https://github.com/rubencg195/aws-nvidia-dgl-gnn-xgboost',
     stargazers_count: 0,
     forks_count: 0,
@@ -44,7 +44,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'gitLab-sagemaker-cicd-for-ml-training-and-hosting',
     name: 'GitLab SageMaker CI/CD for ML Training and Hosting',
-    description: 'Automated ML workflows with GitLab CI/CD',
+    description: 'Comprehensive MLOps solution for automated machine learning workflows using GitLab CI/CD, AWS SageMaker, artifact management, and monitoring.',
     html_url: 'https://github.com/rubencg195/gitLab-sagemaker-cicd-for-ml-training-and-hosting',
     stargazers_count: 0,
     forks_count: 0,
@@ -56,7 +56,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-backend-frontend-behind-cognito-auth-cloudfront',
     name: 'AWS Backend/Frontend + Cognito Auth',
-    description: 'Protected AWS backend & frontend',
+    description: 'Demonstrates securing AWS backend and frontend applications behind Cognito authentication with CloudFront distribution.',
     html_url: 'https://github.com/rubencg195/aws-backend-frontend-behind-cognito-auth-cloudfront',
     stargazers_count: 12,
     forks_count: 3,
@@ -68,7 +68,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-website-hosting-user-auth-cognito',
     name: 'AWS Hosting Comparison + Cognito Auth',
-    description: 'Amplify vs S3+CloudFront hosting',
+    description: 'Comparison of AWS hosting options (Amplify vs S3+CloudFront vs Elastic Beanstalk) with Cognito user authentication integration.',
     html_url: 'https://github.com/rubencg195/aws-website-hosting-user-auth-cognito',
     stargazers_count: 8,
     forks_count: 2,
@@ -80,7 +80,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-mcp-databases-bedrock-unstructured-vector-db',
     name: 'AWS Bedrock Vector Database with Knowledge Bases',
-    description: 'RAG with pgvector & Knowledge Bases',
+    description: 'MLOps infrastructure for unstructured data retrieval using AWS Bedrock Knowledge Bases, RDS PostgreSQL with pgvector, and Claude for intelligent document processing and RAG applications.',
     html_url: 'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
     stargazers_count: 25,
     forks_count: 7,
@@ -92,7 +92,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-bedrock-agents-structured-db',
     name: 'AWS Bedrock Agents with Structured Data',
-    description: 'Natural language SQL queries',
+    description: 'Natural language SQL query system using AWS Bedrock Agents and Claude 3.7 for querying structured databases through Athena.',
     html_url: 'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
     stargazers_count: 18,
     forks_count: 5,
@@ -104,7 +104,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'rl-training-quadruped-robot-pybullet-openai-gym',
     name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
-    description: 'Reinforce learning for robot walking',
+    description: 'Reinforcement learning implementation training a 4-legged robot to walk using PPO algorithm, PyBullet physics simulation, and OpenAI Gym environment.',
     html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
     stargazers_count: 15,
     forks_count: 5,
