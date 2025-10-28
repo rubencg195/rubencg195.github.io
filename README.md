@@ -351,15 +351,17 @@ graph TB
 npm install firebase-tools -g
 ```
 
-Then authenticate:
+Then authenticate using **Git Bash** (Windows native terminal, not WSL):
 
 ```bash
 firebase login
 ```
 
-This will open a browser for authentication. Follow the prompts.
+**Important**: Run `firebase login` in **Git Bash**, not WSL or PowerShell. This opens a browser for authentication. Follow the prompts.
 
 #### Step 4: Initialize Firebase in Project
+
+In WSL or Git Bash:
 
 ```bash
 firebase init hosting
@@ -403,18 +405,16 @@ This creates/updates:
 # Build only (no deployment)
 npm run build
 
-# Deploy to both Firebase AND GitHub Pages
+# Deploy to GitHub Pages (includes build)
 npm run deploy
 
-# Deploy to GitHub Pages only
-npm run deploy:github
-
-# Deploy to Firebase only
-npm run deploy:firebase
+# Deploy to Firebase Hosting (includes build, run in Git Bash after firebase login)
+npm run deployFirebase
 ```
 
 #### Complete Deployment Workflow
 
+**For GitHub Pages:**
 ```bash
 # Step 1: Make changes to source code
 git add .
@@ -423,24 +423,38 @@ git commit -m "Your changes"
 # Step 2: Push source code to master branch
 git push origin master
 
-# Step 3: Build and deploy to BOTH Firebase and GitHub Pages
+# Step 3: Build and deploy to GitHub Pages
 npm run deploy
 ```
 
+**For Firebase Hosting:**
+```bash
+# Step 1: Make changes to source code
+git add .
+git commit -m "Your changes"
+
+# Step 2: Push source code to master branch
+git push origin master
+
+# Step 3: Build and deploy to Firebase (run in Git Bash)
+npm run deployFirebase
+```
+
 **What happens:**
-1. `npm run build` - Creates optimized production build in `/build`
-2. `npm run deploy:github` - Pushes build to `gh-pages` branch (GitHub Pages)
-3. `npm run deploy:firebase` - Deploys build to Firebase Hosting
+1. `npm run build` (implicit) - Creates optimized production build in `/build`
+2. `npm run deploy` - Pushes build to `gh-pages` branch (GitHub Pages)
+3. `npm run deployFirebase` - Deploys build to Firebase Hosting (via Git Bash)
 4. Both sites update within 1-2 minutes
 
 ### Deployment Checklist
 
 - [ ] **Install Dependencies**: `npm install`
-- [ ] **Firebase Setup**: `firebase login` and `firebase init hosting`
+- [ ] **Firebase Setup** (in Git Bash): `firebase login` and `firebase init hosting`
 - [ ] **Update `.firebaserc`**: Replace `YOUR_FIREBASE_PROJECT_ID` with your project ID
 - [ ] **Make Changes**: Edit source code in `src/`, `public/`, or `constants.js`
 - [ ] **Commit & Push**: `git add . && git commit -m "message" && git push origin master`
-- [ ] **Deploy**: `npm run deploy`
+- [ ] **Deploy to GitHub Pages**: `npm run deploy`
+- [ ] **Deploy to Firebase** (in Git Bash): `npm run deployFirebase`
 - [ ] **Verify GitHub Pages**: https://rubencg195.github.io
 - [ ] **Verify Firebase**: https://your-project-id.web.app
 
