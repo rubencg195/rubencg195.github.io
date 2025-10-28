@@ -1,6 +1,6 @@
 // Configuration constants
 export const ENABLE_LINKEDIN_PARSING = false; // Disable LinkedIn parsing by default
-export const ENABLE_GITHUB_API = true; // Enable GitHub API to fetch live project data from repositories
+export const ENABLE_GITHUB_API = false; // Disable GitHub API - descriptions not yet in GitHub repos
 export const ENABLE_FIREBASE_DEBUG = false; // Enable Firebase debugging tools in console
 
 // GitHub repository URLs
@@ -20,7 +20,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-langchain-web-and-database-search',
     name: 'AWS LangChain Web and Database Search with Bedrock',
-    description: 'A production-ready serverless application that combines web search and database retrieval with AI-powered summarization using AWS Bedrock Claude Haiku and LangChain. The application is deployed on AWS ECS Fargate using OpenTofu/Terraform.',
+    description: 'Web search + RAG with Bedrock',
     html_url: 'https://github.com/rubencg195/aws-langchain-web-and-database-search',
     stargazers_count: 0,
     forks_count: 0,
@@ -32,7 +32,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-nvidia-dgl-gnn-xgboost',
     name: 'AWS NVIDIA DGL GNN XGBoost - Fraud Detection Pipeline',
-    description: 'Production-grade ML infrastructure leveraging NVIDIA GPU containers with Graph Neural Networks (cuGraph, DGL) and XGBoost for IEEE fraud detection. Comprehensive OpenTofu automation for SageMaker training jobs, ECR registry management, and end-to-end MLOps pipeline with wrapper scripts and training snapshots.',
+    description: 'ML fraud detection with GNNs',
     html_url: 'https://github.com/rubencg195/aws-nvidia-dgl-gnn-xgboost',
     stargazers_count: 0,
     forks_count: 0,
@@ -44,7 +44,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'gitLab-sagemaker-cicd-for-ml-training-and-hosting',
     name: 'GitLab SageMaker CI/CD for ML Training and Hosting',
-    description: 'Comprehensive MLOps solution for automated machine learning workflows with GitLab CI/CD, AWS SageMaker training jobs, artifact management, and monitoring.',
+    description: 'Automated ML workflows with GitLab CI/CD',
     html_url: 'https://github.com/rubencg195/gitLab-sagemaker-cicd-for-ml-training-and-hosting',
     stargazers_count: 0,
     forks_count: 0,
@@ -56,7 +56,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-backend-frontend-behind-cognito-auth-cloudfront',
     name: 'AWS Backend/Frontend + Cognito Auth',
-    description: 'Demonstrate how to protect a backend and frontend on AWS behind Cognito authentication',
+    description: 'Protected AWS backend & frontend',
     html_url: 'https://github.com/rubencg195/aws-backend-frontend-behind-cognito-auth-cloudfront',
     stargazers_count: 12,
     forks_count: 3,
@@ -68,7 +68,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-website-hosting-user-auth-cognito',
     name: 'AWS Hosting Comparison + Cognito Auth',
-    description: 'Amplify vs S3+CloudFront vs Elastic Beanstalk',
+    description: 'Amplify vs S3+CloudFront hosting',
     html_url: 'https://github.com/rubencg195/aws-website-hosting-user-auth-cognito',
     stargazers_count: 8,
     forks_count: 2,
@@ -80,7 +80,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-mcp-databases-bedrock-unstructured-vector-db',
     name: 'AWS Bedrock Vector Database with Knowledge Bases',
-    description: 'Complete MLOps infrastructure for unstructured data retrieval using AWS Bedrock Knowledge Bases, RDS PostgreSQL with pgvector, and Claude 3.7 for intelligent document processing and RAG applications',
+    description: 'RAG with pgvector & Knowledge Bases',
     html_url: 'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
     stargazers_count: 25,
     forks_count: 7,
@@ -92,7 +92,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'aws-bedrock-agents-structured-db',
     name: 'AWS Bedrock Agents with Structured Data',
-    description: 'Intelligent data retrieval system using AWS Bedrock Agents and Claude 3.7 for querying structured databases through Athena, enabling natural language interactions with SQL data',
+    description: 'Natural language SQL queries',
     html_url: 'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
     stargazers_count: 18,
     forks_count: 5,
@@ -104,7 +104,7 @@ export const PROJECTS_FALLBACK = [
   {
     id: 'rl-training-quadruped-robot-pybullet-openai-gym',
     name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
-    description: 'Train a simulated 4-legged spider robot to walk using reinforcement learning (PPO). Uses PyBullet for physics simulation and OpenAI Gym for the RL environment.',
+    description: 'Reinforce learning for robot walking',
     html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
     stargazers_count: 15,
     forks_count: 5,
