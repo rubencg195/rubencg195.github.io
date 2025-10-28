@@ -15,7 +15,7 @@
     "redirects": [
       {
         "source": "/resume",
-        "destination": "https://example.com/resume.pdf",
+        "destination": "https://rubenchevez.com/resume.pdf",
         "type": 301
       }
     ],
