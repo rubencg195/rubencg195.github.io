@@ -35,11 +35,17 @@ const Projects = () => {
       try {
         const projectPromises = GITHUB_REPOS.map(async (repoUrl) => {
           const repoInfo = await fetchRepoInfo(repoUrl);
-          return repoInfo ? {
+          if (!repoInfo) return null;
+          
+          // Extract repository name from URL for consistent ID
+          const match = repoUrl.match(/github\.com\/[^/]+\/([^/]+)/);
+          const repoName = match ? match[1] : repoInfo.name;
+          
+          return {
             ...repoInfo,
             repoUrl,
-            id: repoInfo.id || repoInfo.name
-          } : null;
+            id: repoName  // Use repository name as ID for URL routing
+          };
         });
 
         const projectResults = await Promise.all(projectPromises);

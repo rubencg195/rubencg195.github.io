@@ -79,11 +79,10 @@ const ProjectDetail = () => {
   useEffect(() => {
     const loadProject = async () => {
       try {
-        // First try to find project in fallback data (for when GitHub API is unavailable)
+        // First try to find project in fallback data by repository name
         const fallbackProject = PROJECTS_FALLBACK.find(p => p.id === id);
         
         if (fallbackProject) {
-          console.log('Using fallback project data for:', id);
           setProject(fallbackProject);
           
           // Try to load README from GitHub
@@ -94,8 +93,8 @@ const ProjectDetail = () => {
             console.log('README not available for fallback project');
             setReadme('# ' + fallbackProject.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + '\n\n' + fallbackProject.description + '\n\nVisit the [GitHub repository](' + fallbackProject.html_url + ') for more details.');
           }
-        } else {
-          // Try GitHub API for numeric IDs
+        } else if (/^\d+$/.test(id)) {
+          // Try GitHub API for numeric IDs (repository IDs)
           const response = await fetch(`https://api.github.com/repositories/${id}`);
           if (response.ok) {
             const projectData = await response.json();

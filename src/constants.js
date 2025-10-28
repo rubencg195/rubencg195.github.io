@@ -1,6 +1,6 @@
 // Configuration constants
 export const ENABLE_LINKEDIN_PARSING = false; // Disable LinkedIn parsing by default
-export const ENABLE_GITHUB_API = false; // Disable GitHub API calls due to rate limiting
+export const ENABLE_GITHUB_API = true; // Enable GitHub API to fetch live project data from repositories
 export const ENABLE_FIREBASE_DEBUG = false; // Enable Firebase debugging tools in console
 
 // GitHub repository URLs
@@ -42,7 +42,7 @@ export const PROJECTS_FALLBACK = [
     icon: '🧠'
   },
   {
-    id: 'gitlab-sagemaker-cicd-for-ml-training-and-hosting',
+    id: 'gitLab-sagemaker-cicd-for-ml-training-and-hosting',
     name: 'GitLab SageMaker CI/CD for ML Training and Hosting',
     description: 'Comprehensive MLOps solution for automated machine learning workflows with GitLab CI/CD, AWS SageMaker training jobs, artifact management, and monitoring.',
     html_url: 'https://github.com/rubencg195/gitLab-sagemaker-cicd-for-ml-training-and-hosting',
@@ -51,30 +51,6 @@ export const PROJECTS_FALLBACK = [
     language: ['Python', 'Terraform'],
     topics: ['aws', 'sagemaker', 'gitlab-ci', 'mlops', 'cicd', 'terraform', 'python/terraform', 'shell', 'hcl', 'machine-learning', 'devops'],
     updated_at: '2025-09-01T00:00:00Z',
-    icon: '🧠'
-  },
-  {
-    id: 'aws-mcp-databases-bedrock-unstructured-vector-db',
-    name: 'AWS Bedrock Vector Database with Knowledge Bases',
-    description: 'Complete MLOps infrastructure for unstructured data retrieval using AWS Bedrock Knowledge Bases, RDS PostgreSQL with pgvector, and Claude 3.7 for intelligent document processing and RAG applications',
-    html_url: 'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
-    stargazers_count: 25,
-    forks_count: 7,
-    language: ['Python', 'Terraform'],
-    topics: ['aws', 'bedrock', 'claude', 'postgresql', 'pgvector', 'knowledge-bases', 'terraform', 'lambda', 's3', 'rds'],
-    updated_at: '2024-03-05T09:15:00Z',
-    icon: '🧠'
-  },
-  {
-    id: 'aws-bedrock-agents-structured-db',
-    name: 'AWS Bedrock Agents with Structured Data',
-    description: 'Intelligent data retrieval system using AWS Bedrock Agents and Claude 3.7 for querying structured databases through Athena, enabling natural language interactions with SQL data',
-    html_url: 'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
-    stargazers_count: 18,
-    forks_count: 5,
-    language: ['Python', 'Terraform'],
-    topics: ['aws', 'bedrock', 'claude', 'athena', 'bedrock-agents', 'sql', 'terraform', 'structured-data', 'nlp'],
-    updated_at: '2024-03-12T16:45:00Z',
     icon: '🧠'
   },
   {
@@ -102,7 +78,31 @@ export const PROJECTS_FALLBACK = [
     icon: '☁️'
   },
   {
-    id: 'walking-spider-openai-pybullet',
+    id: 'aws-mcp-databases-bedrock-unstructured-vector-db',
+    name: 'AWS Bedrock Vector Database with Knowledge Bases',
+    description: 'Complete MLOps infrastructure for unstructured data retrieval using AWS Bedrock Knowledge Bases, RDS PostgreSQL with pgvector, and Claude 3.7 for intelligent document processing and RAG applications',
+    html_url: 'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
+    stargazers_count: 25,
+    forks_count: 7,
+    language: ['Python', 'Terraform'],
+    topics: ['aws', 'bedrock', 'claude', 'postgresql', 'pgvector', 'knowledge-bases', 'terraform', 'lambda', 's3', 'rds'],
+    updated_at: '2024-03-05T09:15:00Z',
+    icon: '🧠'
+  },
+  {
+    id: 'aws-bedrock-agents-structured-db',
+    name: 'AWS Bedrock Agents with Structured Data',
+    description: 'Intelligent data retrieval system using AWS Bedrock Agents and Claude 3.7 for querying structured databases through Athena, enabling natural language interactions with SQL data',
+    html_url: 'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
+    stargazers_count: 18,
+    forks_count: 5,
+    language: ['Python', 'Terraform'],
+    topics: ['aws', 'bedrock', 'claude', 'athena', 'bedrock-agents', 'sql', 'terraform', 'structured-data', 'nlp'],
+    updated_at: '2024-03-12T16:45:00Z',
+    icon: '🧠'
+  },
+  {
+    id: 'rl-training-quadruped-robot-pybullet-openai-gym',
     name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
     description: 'Train a simulated 4-legged spider robot to walk using reinforcement learning (PPO). Uses PyBullet for physics simulation and OpenAI Gym for the RL environment.',
     html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
