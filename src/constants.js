@@ -13,7 +13,8 @@ export const GITHUB_REPOS = [
   'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
   'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
   'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
-  'https://github.com/rubencg195/aws-pybullet-environment'
+  'https://github.com/rubencg195/aws-pybullet-environment',
+  'https://github.com/rubencg195/pybullet-robot-dog'
 ];
 
 // Fallback project data for when GitHub API is unavailable
@@ -125,6 +126,18 @@ export const PROJECTS_FALLBACK = [
     topics: ['aws', 'pybullet', 'opentofu', 'packer', 'gpu', 'nvidia', 'nice-dcv', 'ec2', 'simulation', 'ubuntu', 'infrastructure-as-code', 'robotics'],
     updated_at: '2026-05-09T00:00:00Z',
     icon: '🖥️'
+  },
+  {
+    id: 'pybullet-robot-dog',
+    name: 'PyBullet Robot Dog (SpotMicro-style Quadruped)',
+    description: 'SpotMicro-style quadruped in PyBullet. V0 is a single leg on a test stand: joint sliders, foot path tracing, closed-form FK/IK, GIF/PNG capture, and shell scripts—stepping toward a full four-legged sim and hardware bridge.',
+    html_url: 'https://github.com/rubencg195/pybullet-robot-dog',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['Python'],
+    topics: ['pybullet', 'robotics', 'quadruped', 'simulation', 'kinematics', 'inverse-kinematics', 'urdf', 'spotmicro', 'legged-robots'],
+    updated_at: '2026-05-10T00:00:00Z',
+    icon: '🐕'
   }
 ];
 
