@@ -29,3 +29,10 @@ package-lock.json
 # Firebase
 .firebase/
 .env.firebase
+
+# Local Node version manager (per-machine)
+/.nvm/
+
+# Terraform local state (do not commit)
+*.tfstate
+*.tfstate.*

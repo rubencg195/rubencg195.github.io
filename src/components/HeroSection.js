@@ -81,9 +81,9 @@ const HeroSection = () => {
 
           {/* Description */}
           <p className="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-400 leading-relaxed animate-fade-in px-2" style={{animationDelay: '0.9s'}} itemProp="description">
-            <strong>8+ years of leadership experience</strong> in MLOps and full-stack development. Expert in <em>building and scaling ML pipelines</em>, 
-            leading engineering teams, and architecting cloud solutions that drive business impact. 
-            Currently directing ML operations at <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Nasdaq</span></span>, 
+            <strong>8+ years of leadership experience</strong> building new products from scratch and scaling engineering teams. Proven ability to take ambiguous problem spaces and deliver <em>production-grade platforms</em> — 
+            from founding MLOps infrastructure to creating a new KYC fraud product. 
+            Currently directing Onboarding Threat Intelligence at <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Nasdaq</span></span> Verafin, 
             <strong>open to senior leadership opportunities</strong> in tech companies.
           </p>
 

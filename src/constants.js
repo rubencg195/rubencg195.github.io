@@ -12,7 +12,8 @@ export const GITHUB_REPOS = [
   'https://github.com/rubencg195/aws-website-hosting-user-auth-cognito',
   'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
   'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
-  'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym'
+  'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
+  'https://github.com/rubencg195/aws-pybullet-environment'
 ];
 
 // Fallback project data for when GitHub API is unavailable
@@ -112,6 +113,18 @@ export const PROJECTS_FALLBACK = [
     topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
     updated_at: '2025-10-26T00:00:00Z',
     icon: '🕷️'
+  },
+  {
+    id: 'aws-pybullet-environment',
+    name: 'Remote GPU Workstation for PyBullet Simulation on AWS',
+    description: 'Remote GPU workstation on AWS for PyBullet robotics simulation. Packer bakes NVIDIA drivers, GNOME desktop, VS Code, NICE DCV, and PyBullet into a golden AMI; OpenTofu deploys a g5.xlarge EC2 instance you connect to via browser — no local GPU required.',
+    html_url: 'https://github.com/rubencg195/aws-pybullet-environment',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['Shell', 'HCL', 'Python'],
+    topics: ['aws', 'pybullet', 'opentofu', 'packer', 'gpu', 'nvidia', 'nice-dcv', 'ec2', 'simulation', 'ubuntu', 'infrastructure-as-code', 'robotics'],
+    updated_at: '2026-05-09T00:00:00Z',
+    icon: '🖥️'
   }
 ];
 
@@ -121,12 +134,12 @@ export const LINKEDIN_PROFILE_URL = 'https://www.linkedin.com/in/rubenchevez/';
 // Personal Information
 export const PERSONAL_INFO = {
   name: 'Ruben Chevez',
-  title: 'Director | Machine Learning Operations at Nasdaq Verafin',
+  title: 'Director | Onboarding Threat Intelligence at Nasdaq Verafin',
   email: 'rubencg195@hotmail.com',
   linkedin: 'https://linkedin.com/in/rubenchevez',
   github: 'https://github.com/rubencg195',
   location: 'St. John\'s, Newfoundland, Canada',
-  bio: 'Visionary and results-driven technology leader with deep expertise in Machine Learning Operations (MLOps), cloud infrastructure, and scalable ML systems. Proven track record in designing, deploying, and managing ML pipelines from experimentation to production. Adept at leading cross-functional teams, aligning engineering efforts with business strategy, and fostering a culture of innovation, reliability, and continuous improvement. Experienced in regulatory-grade financial technologies, fraud detection, and ML model governance.',
+  bio: 'Visionary and results-driven technology leader with a track record of building new products from the ground up. Currently leading the creation of a new Onboarding Threat Intelligence product for KYC fraud detection at Nasdaq Verafin, after previously founding and scaling the company\'s first MLOps infrastructure from scratch. Deep expertise in product development, cloud infrastructure, ML systems, and cross-functional team leadership. Adept at taking ambiguous problem spaces and turning them into production-grade platforms — from initial architecture through delivery. Experienced in regulatory-grade financial technologies, fraud detection, and ML model governance.',
   skills: [
     'Python', 'Java', 'C++', 'JavaScript', 'Scala', 'React', 'Node.js', 'Spring Boot',
     'AWS', 'Databricks', 'SageMaker', 'Bedrock', 'DataZone', 'EMR', 'Athena', 'Redshift', 'Firehose', 'ECR', 'ECS', 'S3', 'DynamoDB', 'RDS', 'Lambda', 'Step Functions', 'SQS', 'DMS', 'VPC',
@@ -138,9 +151,24 @@ export const PERSONAL_INFO = {
 // Experience fallback data
 export const EXPERIENCE_FALLBACK = [
   {
-    title: 'Director | Machine Learning Operations',
+    title: 'Director | Onboarding Threat Intelligence',
     company: 'Nasdaq Verafin',
-    period: 'Sep 2024 - Present',
+    period: 'Mar 2026 - Present',
+    location: 'St. John\'s, Newfoundland, Canada',
+    description: 'Hand-picked to build a new product from scratch for KYC fraud detection, applying the same zero-to-one product development approach that made the MLOps initiative successful.',
+    technologies: ['Python', 'AWS', 'Machine Learning', 'KYC', 'Fraud Detection', 'Product Development'],
+    achievements: [
+      'Selected to create a brand-new Onboarding Threat Intelligence product for KYC fraud detection, defining the vision, architecture, and roadmap from the ground up',
+      'Applying proven zero-to-one product development expertise — previously built the company\'s entire MLOps infrastructure from scratch',
+      'Leading cross-functional collaboration to identify KYC fraud patterns and translate them into production-grade detection capabilities',
+      'Designing scalable cloud architecture and ML-driven analytics to support regulatory-grade onboarding threat detection'
+    ]
+  },
+  {
+    title: 'Director | Machine Learning Infrastructure and Deployment',
+    subtitle_note: '(previously called Machine Learning Operations)',
+    company: 'Nasdaq Verafin',
+    period: 'Sep 2024 - Mar 2026',
     location: 'St. John\'s, Newfoundland, Canada',
     description: 'Spearheaded the strategic development of the company\'s first MLOps infrastructure, enabling seamless model deployment and monitoring.',
     technologies: ['Python', 'AWS SageMaker', 'Jenkins', 'GitHub', 'Athena', 'Model Registry'],

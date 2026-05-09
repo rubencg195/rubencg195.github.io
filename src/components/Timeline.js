@@ -32,6 +32,7 @@ const TimelineItems = ({ data }) => {
               <MobileTimelineCard 
                 title={item.title} 
                 subtitle={item.company || item.institution} 
+                subtitleNote={item.subtitle_note}
                 footnote={item.period || item.year}
                 index={idx}
               />
@@ -47,6 +48,7 @@ const TimelineItems = ({ data }) => {
                   <TimelineCard 
                     title={item.title} 
                     subtitle={item.company || item.institution} 
+                    subtitleNote={item.subtitle_note}
                     footnote={item.period || item.year}
                     isLeft={true}
                     index={idx}
@@ -66,6 +68,7 @@ const TimelineItems = ({ data }) => {
                   <TimelineCard 
                     title={item.title} 
                     subtitle={item.company || item.institution} 
+                    subtitleNote={item.subtitle_note}
                     footnote={item.period || item.year}
                     isLeft={false}
                     index={idx}
@@ -80,7 +83,7 @@ const TimelineItems = ({ data }) => {
   );
 };
 
-const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
+const TimelineCard = ({ title, subtitle, subtitleNote, footnote, isLeft, index = 0 }) => (
   <div className={`group relative ${isLeft ? 'text-right' : 'text-left'}`}>
     {/* Connection Line to Center */}
     <div className={`absolute top-4 ${isLeft ? '-right-8 translate-x-full' : '-left-8 -translate-x-full'} w-8 h-0.5 bg-gradient-to-r ${isLeft ? 'from-primary-300 to-transparent' : 'from-transparent to-primary-300'} dark:${isLeft ? 'from-primary-600 to-transparent' : 'from-transparent to-primary-600'}`}></div>
@@ -99,6 +102,13 @@ const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
       <h4 className={`font-bold text-base sm:text-lg text-surface-900 dark:text-white mb-1 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300 ${isLeft ? 'text-right' : 'text-left'} leading-tight`}>
         {title}
       </h4>
+
+      {/* Subtitle Note */}
+      {subtitleNote && (
+        <p className={`text-xs italic text-slate-500 dark:text-surface-500 mb-1 ${isLeft ? 'text-right' : 'text-left'}`}>
+          {subtitleNote}
+        </p>
+      )}
       
       {/* Subtitle */}
       {subtitle && (
@@ -115,7 +125,7 @@ const TimelineCard = ({ title, subtitle, footnote, isLeft, index = 0 }) => (
   </div>
 );
 
-const MobileTimelineCard = ({ title, subtitle, footnote, index = 0 }) => (
+const MobileTimelineCard = ({ title, subtitle, subtitleNote, footnote, index = 0 }) => (
   <div className="group relative">
     {/* Connection Line to Timeline */}
     <div className="absolute top-2 -left-12 sm:-left-16 w-6 sm:w-8 h-0.5 bg-gradient-to-r from-primary-300 to-transparent dark:from-primary-600 dark:to-transparent"></div>
@@ -134,6 +144,13 @@ const MobileTimelineCard = ({ title, subtitle, footnote, index = 0 }) => (
       <h4 className="font-bold text-sm sm:text-base text-surface-900 dark:text-white mb-1 sm:mb-1.5 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors duration-300 leading-tight">
         {title}
       </h4>
+
+      {/* Subtitle Note */}
+      {subtitleNote && (
+        <p className="text-xs italic text-slate-500 dark:text-surface-500 mb-1">
+          {subtitleNote}
+        </p>
+      )}
       
       {/* Subtitle */}
       {subtitle && (

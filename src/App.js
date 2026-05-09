@@ -176,7 +176,7 @@ const AppContent = ({ mode, toggleTheme }) => {
 
                 {/* Description */}
                 <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-slate-900 dark:text-surface-400 leading-relaxed mb-8 sm:mb-12 animate-fade-in px-2 text-center" style={{animationDelay: '0.9s'}}>
-                  Visionary MLOps leader with 8+ years building scalable ML systems at scale. Expert in cloud infrastructure, fraud detection, and leading cross-functional teams. Proven track record delivering production ML pipelines and driving technical strategy at Nasdaq Verafin.
+                  Product-minded engineering leader with 8+ years building new products and scalable systems from scratch. Currently creating a new Onboarding Threat Intelligence product for KYC fraud at Nasdaq Verafin, after founding the company's first MLOps infrastructure. Expert in cloud architecture, fraud detection, and leading cross-functional teams.
                 </p>
 
                 {/* Tech Stack Pills - FAANG Ready Skills */}
