@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrubencg195_portfolio=self.webpackChunkrubencg195_portfolio||[]).push([[901],{3901:(e,r,c)=>{c.d(r,{createInfoServices:()=>o.v});var o=c(5315);c(2916)}}]);

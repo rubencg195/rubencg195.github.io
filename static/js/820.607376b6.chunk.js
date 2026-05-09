@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrubencg195_portfolio=self.webpackChunkrubencg195_portfolio||[]).push([[820],{820:(e,r,c)=>{c.d(r,{createTreemapServices:()=>o.d});var o=c(1168);c(2916)}}]);
