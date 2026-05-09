@@ -5,32 +5,61 @@ export const ENABLE_FIREBASE_DEBUG = false; // Enable Firebase debugging tools i
 
 // GitHub repository URLs
 export const GITHUB_REPOS = [
-  'https://github.com/rubencg195/aws-langchain-web-and-database-search',
+  // RL & simulation
+  'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
+  'https://github.com/rubencg195/pybullet-robot-dog',
+  'https://github.com/rubencg195/aws-pybullet-environment',
+  // NVIDIA
   'https://github.com/rubencg195/aws-nvidia-dgl-gnn-xgboost',
+  // Everything else
+  'https://github.com/rubencg195/aws-langchain-web-and-database-search',
   'https://github.com/rubencg195/gitLab-sagemaker-cicd-for-ml-training-and-hosting',
   'https://github.com/rubencg195/aws-backend-frontend-behind-cognito-auth-cloudfront',
   'https://github.com/rubencg195/aws-website-hosting-user-auth-cognito',
   'https://github.com/rubencg195/aws-mcp-databases-bedrock-unstructured-vector-db',
-  'https://github.com/rubencg195/aws-bedrock-agents-structured-db',
-  'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
-  'https://github.com/rubencg195/aws-pybullet-environment',
-  'https://github.com/rubencg195/pybullet-robot-dog'
+  'https://github.com/rubencg195/aws-bedrock-agents-structured-db'
 ];
 
 // Fallback project data for when GitHub API is unavailable
 export const PROJECTS_FALLBACK = [
+  // RL & simulation
   {
-    id: 'aws-langchain-web-and-database-search',
-    name: 'AWS LangChain Web and Database Search with Bedrock',
-    description: 'Serverless application combining web search and database retrieval with AWS Bedrock, Claude Haiku, and LangChain for AI-powered summarization. Deployed on AWS ECS Fargate using OpenTofu.',
-    html_url: 'https://github.com/rubencg195/aws-langchain-web-and-database-search',
+    id: 'rl-training-quadruped-robot-pybullet-openai-gym',
+    name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
+    description: 'Reinforcement learning implementation training a 4-legged robot to walk using PPO algorithm, PyBullet physics simulation, and OpenAI Gym environment.',
+    html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
+    stargazers_count: 15,
+    forks_count: 5,
+    language: ['Python'],
+    topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
+    updated_at: '2025-10-26T00:00:00Z',
+    icon: '🕷️'
+  },
+  {
+    id: 'pybullet-robot-dog',
+    name: 'PyBullet Robot Dog (SpotMicro-style Quadruped)',
+    description: 'SpotMicro-style quadruped in PyBullet. V0 is a single leg on a test stand: joint sliders, foot path tracing, closed-form FK/IK, GIF/PNG capture, and shell scripts—stepping toward a full four-legged sim and hardware bridge.',
+    html_url: 'https://github.com/rubencg195/pybullet-robot-dog',
     stargazers_count: 0,
     forks_count: 0,
-    language: ['Python', 'Terraform', 'HCL'],
-    topics: ['aws', 'bedrock', 'claude', 'langchain', 'ecs-fargate', 'opentofu', 'terraform', 'dynamodb', 'serverless', 'ai', 'web-search', 'database-retrieval', 'mlops'],
-    updated_at: '2025-10-25T00:00:00Z',
-    icon: '🧠'
+    language: ['Python'],
+    topics: ['pybullet', 'robotics', 'quadruped', 'simulation', 'kinematics', 'inverse-kinematics', 'urdf', 'spotmicro', 'legged-robots'],
+    updated_at: '2026-05-10T00:00:00Z',
+    icon: '🐕'
   },
+  {
+    id: 'aws-pybullet-environment',
+    name: 'Remote GPU Workstation for PyBullet Simulation on AWS',
+    description: 'Remote GPU workstation on AWS for PyBullet robotics simulation. Packer bakes NVIDIA drivers, GNOME desktop, VS Code, NICE DCV, and PyBullet into a golden AMI; OpenTofu deploys a g5.xlarge EC2 instance you connect to via browser — no local GPU required.',
+    html_url: 'https://github.com/rubencg195/aws-pybullet-environment',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['Shell', 'HCL', 'Python'],
+    topics: ['aws', 'pybullet', 'opentofu', 'packer', 'gpu', 'nvidia', 'nice-dcv', 'ec2', 'simulation', 'ubuntu', 'infrastructure-as-code', 'robotics'],
+    updated_at: '2026-05-09T00:00:00Z',
+    icon: '🖥️'
+  },
+  // NVIDIA
   {
     id: 'aws-nvidia-dgl-gnn-xgboost',
     name: 'AWS NVIDIA DGL GNN XGBoost - Fraud Detection Pipeline',
@@ -41,6 +70,19 @@ export const PROJECTS_FALLBACK = [
     language: ['Python', 'Terraform', 'Shell', 'Jupyter Notebook'],
     topics: ['aws', 'sagemaker', 'nvidia', 'gpu', 'gnn', 'xgboost', 'fraud-detection', 'opentofu', 'terraform', 'ml-infrastructure', 'docker', 'ecr', 'mlops', 'graph-neural-networks', 'cuGraph', 'dgl', 'ieee-dataset'],
     updated_at: '2025-10-22T00:00:00Z',
+    icon: '🧠'
+  },
+  // Everything else
+  {
+    id: 'aws-langchain-web-and-database-search',
+    name: 'AWS LangChain Web and Database Search with Bedrock',
+    description: 'Serverless application combining web search and database retrieval with AWS Bedrock, Claude Haiku, and LangChain for AI-powered summarization. Deployed on AWS ECS Fargate using OpenTofu.',
+    html_url: 'https://github.com/rubencg195/aws-langchain-web-and-database-search',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['Python', 'Terraform', 'HCL'],
+    topics: ['aws', 'bedrock', 'claude', 'langchain', 'ecs-fargate', 'opentofu', 'terraform', 'dynamodb', 'serverless', 'ai', 'web-search', 'database-retrieval', 'mlops'],
+    updated_at: '2025-10-25T00:00:00Z',
     icon: '🧠'
   },
   {
@@ -102,42 +144,6 @@ export const PROJECTS_FALLBACK = [
     topics: ['aws', 'bedrock', 'claude', 'athena', 'bedrock-agents', 'sql', 'terraform', 'structured-data', 'nlp'],
     updated_at: '2024-03-12T16:45:00Z',
     icon: '🧠'
-  },
-  {
-    id: 'rl-training-quadruped-robot-pybullet-openai-gym',
-    name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
-    description: 'Reinforcement learning implementation training a 4-legged robot to walk using PPO algorithm, PyBullet physics simulation, and OpenAI Gym environment.',
-    html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
-    stargazers_count: 15,
-    forks_count: 5,
-    language: ['Python'],
-    topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
-    updated_at: '2025-10-26T00:00:00Z',
-    icon: '🕷️'
-  },
-  {
-    id: 'aws-pybullet-environment',
-    name: 'Remote GPU Workstation for PyBullet Simulation on AWS',
-    description: 'Remote GPU workstation on AWS for PyBullet robotics simulation. Packer bakes NVIDIA drivers, GNOME desktop, VS Code, NICE DCV, and PyBullet into a golden AMI; OpenTofu deploys a g5.xlarge EC2 instance you connect to via browser — no local GPU required.',
-    html_url: 'https://github.com/rubencg195/aws-pybullet-environment',
-    stargazers_count: 0,
-    forks_count: 0,
-    language: ['Shell', 'HCL', 'Python'],
-    topics: ['aws', 'pybullet', 'opentofu', 'packer', 'gpu', 'nvidia', 'nice-dcv', 'ec2', 'simulation', 'ubuntu', 'infrastructure-as-code', 'robotics'],
-    updated_at: '2026-05-09T00:00:00Z',
-    icon: '🖥️'
-  },
-  {
-    id: 'pybullet-robot-dog',
-    name: 'PyBullet Robot Dog (SpotMicro-style Quadruped)',
-    description: 'SpotMicro-style quadruped in PyBullet. V0 is a single leg on a test stand: joint sliders, foot path tracing, closed-form FK/IK, GIF/PNG capture, and shell scripts—stepping toward a full four-legged sim and hardware bridge.',
-    html_url: 'https://github.com/rubencg195/pybullet-robot-dog',
-    stargazers_count: 0,
-    forks_count: 0,
-    language: ['Python'],
-    topics: ['pybullet', 'robotics', 'quadruped', 'simulation', 'kinematics', 'inverse-kinematics', 'urdf', 'spotmicro', 'legged-robots'],
-    updated_at: '2026-05-10T00:00:00Z',
-    icon: '🐕'
   }
 ];
 
