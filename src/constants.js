@@ -6,9 +6,10 @@ export const ENABLE_FIREBASE_DEBUG = false; // Enable Firebase debugging tools i
 // GitHub repository URLs
 export const GITHUB_REPOS = [
   // RL & simulation
-  'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
   'https://github.com/rubencg195/pybullet-robot-dog',
   'https://github.com/rubencg195/aws-pybullet-environment',
+  'https://github.com/rubencg195/robot-dog-simulator',
+  'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
   // NVIDIA
   'https://github.com/rubencg195/aws-nvidia-dgl-gnn-xgboost',
   // Everything else
@@ -23,18 +24,6 @@ export const GITHUB_REPOS = [
 // Fallback project data for when GitHub API is unavailable
 export const PROJECTS_FALLBACK = [
   // RL & simulation
-  {
-    id: 'rl-training-quadruped-robot-pybullet-openai-gym',
-    name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
-    description: 'Reinforcement learning implementation training a 4-legged robot to walk using PPO algorithm, PyBullet physics simulation, and OpenAI Gym environment.',
-    html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
-    stargazers_count: 15,
-    forks_count: 5,
-    language: ['Python'],
-    topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
-    updated_at: '2025-10-26T00:00:00Z',
-    icon: '🕷️'
-  },
   {
     id: 'pybullet-robot-dog',
     name: 'PyBullet Robot Dog (SpotMicro-style Quadruped)',
@@ -58,6 +47,30 @@ export const PROJECTS_FALLBACK = [
     topics: ['aws', 'pybullet', 'opentofu', 'packer', 'gpu', 'nvidia', 'nice-dcv', 'ec2', 'simulation', 'ubuntu', 'infrastructure-as-code', 'robotics'],
     updated_at: '2026-05-09T00:00:00Z',
     icon: '🖥️'
+  },
+  {
+    id: 'robot-dog-simulator',
+    name: 'Robot Dog Simulator',
+    description: 'Interactive 2D/3D robot dog simulator with real-time inverse kinematics. Built with React, Three.js, and TypeScript. Live preview at robotdogsim.rubenchevez.com.',
+    html_url: 'https://github.com/rubencg195/robot-dog-simulator',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['TypeScript', 'CSS', 'HTML'],
+    topics: ['robotics', 'three-js', 'inverse-kinematics', 'simulation', 'react', 'vite', 'typescript', 'quadruped', 'legged-robots'],
+    updated_at: '2026-05-29T00:00:00Z',
+    icon: '🎮'
+  },
+  {
+    id: 'rl-training-quadruped-robot-pybullet-openai-gym',
+    name: 'RL Training for Quadruped Robot Locomotion with PyBullet and OpenAI Gym',
+    description: 'Reinforcement learning implementation training a 4-legged robot to walk using PPO algorithm, PyBullet physics simulation, and OpenAI Gym environment.',
+    html_url: 'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
+    stargazers_count: 15,
+    forks_count: 5,
+    language: ['Python'],
+    topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
+    updated_at: '2025-10-26T00:00:00Z',
+    icon: '🕷️'
   },
   // NVIDIA
   {
