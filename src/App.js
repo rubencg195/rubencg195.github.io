@@ -441,7 +441,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <SectionHeader 
                   title="Let's Connect"
                   icon="📬"
-                  description="Available for director-level opportunities in MLOps, platform engineering, and financial technology."
+                  description="Focused on product development at the intersection of MLOps, platform engineering, and regulated financial technology—welcome to connect on leadership, architecture, and enterprise delivery."
                 />
                 <ContactButtons />
               </div>
@@ -451,7 +451,7 @@ const AppContent = ({ mode, toggleTheme }) => {
             <footer className="py-8 sm:py-12 px-4 sm:px-6 border-t border-surface-200 dark:border-surface-700">
               <div className="max-w-6xl mx-auto text-center">
                 <p className="text-sm sm:text-base text-slate-900 dark:text-surface-400">
-                  © 2024 {PERSONAL_INFO.name}
+                  © 2026 {PERSONAL_INFO.name}
                 </p>
               </div>
             </footer>
