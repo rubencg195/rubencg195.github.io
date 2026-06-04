@@ -274,6 +274,24 @@ export const SKILLS_SUB_MATRICES = [
         ]
       }
     ]
+  },
+  {
+    title: 'Data, ML & AI',
+    icon: '🤖',
+    subgroups: [
+      {
+        skills: [
+          'MLOps',
+          'Fraud Detection',
+          'Feature Engineering',
+          'Model Monitoring',
+          'Apache Spark',
+          'PyTorch',
+          'LLMs / RAG',
+          'Threat Intelligence'
+        ]
+      }
+    ]
   }
 ];
 

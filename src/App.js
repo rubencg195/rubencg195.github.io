@@ -122,13 +122,14 @@ const SkillsSubMatrices = () => {
   const colorPalette = [
     'from-orange-500/20 to-orange-600/20 dark:from-orange-400/20 dark:to-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-700/50',
     'from-blue-500/20 to-blue-600/20 dark:from-blue-400/20 dark:to-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-700/50',
-    'from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 text-red-700 dark:text-red-300 border-red-200/50 dark:border-red-700/50'
+    'from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 text-red-700 dark:text-red-300 border-red-200/50 dark:border-red-700/50',
+    'from-violet-500/20 to-violet-600/20 dark:from-violet-400/20 dark:to-violet-500/20 text-violet-700 dark:text-violet-300 border-violet-200/50 dark:border-violet-700/50'
   ];
 
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto"
+      className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
     >
       {SKILLS_SUB_MATRICES.map((matrix, matrixIdx) => {
         const colorClass = colorPalette[matrixIdx % colorPalette.length];
@@ -137,7 +138,7 @@ const SkillsSubMatrices = () => {
         return (
           <div
             key={matrix.title}
-            className={`bg-slate-50 dark:bg-surface-800 p-6 sm:p-8 rounded-2xl shadow-material-2 border border-slate-100 dark:border-surface-700/50 hover:shadow-material-3 transition-all duration-700 ease-out ${
+            className={`min-w-0 bg-slate-50 dark:bg-surface-800 p-6 sm:p-8 rounded-2xl shadow-material-2 border border-slate-100 dark:border-surface-700/50 hover:shadow-material-3 transition-all duration-700 ease-out ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: isVisible ? cardDelay : '0s' }}
@@ -146,25 +147,23 @@ const SkillsSubMatrices = () => {
               <span>{matrix.icon}</span>
               {matrix.title}
             </h3>
-            <div className="space-y-5">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               {matrix.subgroups.map((subgroup, subgroupIdx) => (
-                <div key={subgroup.title || `subgroup-${subgroupIdx}`}>
+                <React.Fragment key={subgroup.title || `subgroup-${subgroupIdx}`}>
                   {subgroup.title && (
-                    <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide text-slate-600 dark:text-surface-400 mb-2.5">
+                    <h4 className="w-full basis-full text-xs sm:text-sm font-semibold uppercase tracking-wide text-slate-600 dark:text-surface-400 pt-1 first:pt-0">
                       {subgroup.title}
                     </h4>
                   )}
-                  <div className="flex flex-wrap gap-2.5">
-                    {subgroup.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className={`px-3 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r rounded-full text-xs sm:text-sm font-medium hover:scale-105 transition-all duration-300 cursor-default backdrop-blur-sm border ${colorClass}`}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                  {subgroup.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className={`inline-flex shrink-0 items-center justify-center px-2.5 py-1.5 sm:px-3 sm:py-1.5 bg-gradient-to-r rounded-lg text-xs sm:text-sm font-medium leading-snug text-center transition-colors duration-300 cursor-default backdrop-blur-sm border ${colorClass}`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </React.Fragment>
               ))}
             </div>
           </div>
@@ -404,7 +403,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <SectionHeader 
                   title="Technical Skills"
                   icon="🛠️"
-                  description="Cloud platforms, core engineering, and executive leadership—organized by domain."
+                  description="Cloud platforms, core engineering, executive leadership, and data/ML—organized in a four-domain grid."
                 />
 
                 <SkillsSubMatrices />
