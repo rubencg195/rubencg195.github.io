@@ -9,6 +9,7 @@ export const GITHUB_REPOS = [
   'https://github.com/rubencg195/pybullet-robot-dog',
   'https://github.com/rubencg195/aws-pybullet-environment',
   'https://github.com/rubencg195/rl-training-quadruped-robot-pybullet-openai-gym',
+  'https://github.com/rubencg195/robot-dog-simulator',
   // NVIDIA
   'https://github.com/rubencg195/aws-nvidia-dgl-gnn-xgboost',
   // Enterprise MLOps & Generative AI
@@ -57,6 +58,19 @@ export const PROJECTS_FALLBACK = [
     topics: ['reinforcement-learning', 'ppo', 'pybullet', 'openai-gym', 'robot-locomotion', 'quadruped', 'simulation', 'machine-learning'],
     updated_at: '2025-10-26T00:00:00Z',
     icon: '🕷️',
+    category: 'deep-tech'
+  },
+  {
+    id: 'robot-dog-simulator',
+    name: 'Robot Dog Simulator',
+    description: 'Interactive 2D/3D linkage mechanism builder with real-time inverse kinematics for quadruped locomotion. TypeScript/Vite web app—live at robotdogsim.rubenchevez.com with Google AI Studio deployment.',
+    html_url: 'https://github.com/rubencg195/robot-dog-simulator',
+    stargazers_count: 0,
+    forks_count: 0,
+    language: ['TypeScript'],
+    topics: ['typescript', 'vite', 'robotics', 'quadruped', 'inverse-kinematics', 'simulation', 'kinematics', 'linkage', '3d', 'web-app'],
+    updated_at: '2026-06-04T00:00:00Z',
+    icon: '🐕',
     category: 'deep-tech'
   },
   // NVIDIA
