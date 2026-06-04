@@ -33,14 +33,18 @@ const ProjectCard = ({ project, gradient, icon, index = 0 }) => {
 
           {/* Project Stats */}
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-slate-600 dark:text-surface-400 flex-wrap">
-            <div className="flex items-center gap-1">
-              <span className="text-warning-500">⭐</span>
-              <span>{project.stargazers_count}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="text-secondary-500">🍴</span>
-              <span>{project.forks_count}</span>
-            </div>
+            {project.stargazers_count > 0 && (
+              <div className="flex items-center gap-1">
+                <span className="text-warning-500">⭐</span>
+                <span>{project.stargazers_count}</span>
+              </div>
+            )}
+            {project.forks_count > 0 && (
+              <div className="flex items-center gap-1">
+                <span className="text-secondary-500">🍴</span>
+                <span>{project.forks_count}</span>
+              </div>
+            )}
             {project.language && (
               <div className="flex items-center gap-1">
                 <span className="text-primary-500 mr-1">💻</span>

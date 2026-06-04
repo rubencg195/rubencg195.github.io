@@ -26,7 +26,7 @@ Performance: Lighthouse optimized
 Accessibility: WCAG 2.1 AA compliant
 
 /* AVAILABLE FOR */
-Senior Full-Stack Developer positions
+Director | Onboarding Threat Intelligence / MLOps Engineering Leadership positions
 MLOps Engineering leadership roles  
 Technical Lead/Engineering Manager roles
 AWS Solutions Architect positions

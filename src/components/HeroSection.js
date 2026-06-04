@@ -81,7 +81,7 @@ const HeroSection = () => {
 
           {/* Description */}
           <p className="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-surface-600 dark:text-surface-400 leading-relaxed animate-fade-in px-2" style={{animationDelay: '0.9s'}} itemProp="description">
-            <strong>8+ years of leadership experience</strong> building new products from scratch and scaling engineering teams. Proven ability to take ambiguous problem spaces and deliver <em>production-grade platforms</em> — 
+            <strong>8+ years of leadership experience</strong> building new products from the ground up and scaling engineering teams. Proven ability to take ambiguous problem spaces and deliver <em>production-grade platforms</em> — 
             from founding MLOps infrastructure to creating a new KYC fraud product. 
             Currently directing Onboarding Threat Intelligence at <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Nasdaq</span></span> Verafin, 
             <strong>open to senior leadership opportunities</strong> in tech companies.
@@ -116,7 +116,7 @@ const HeroSection = () => {
                 🎯 <strong>Open to New Opportunities</strong>
               </p>
               <p className="text-xs sm:text-sm text-surface-600 dark:text-surface-400">
-                Seeking <strong>Senior/Director</strong> roles in <em>MLOps, Engineering Leadership, or Full-Stack Architecture</em> • 
+                Open to <strong>senior and director-level</strong> roles in <em>MLOps, ML infrastructure, and engineering leadership</em> • 
                 Remote-first or <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                   <span itemProp="addressLocality">Canada</span>/<span itemProp="addressCountry">US</span>
                 </span> locations preferred

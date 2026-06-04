@@ -10,7 +10,7 @@ import Timeline from './components/Timeline';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 // Import constants
-import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO } from './constants';
+import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO, HERO_SKILL_HIGHLIGHTS, SKILLS_MATRIX_GROUPS } from './constants';
 
 // Import hooks
 import { useScrollAnimation } from './hooks/useScrollAnimation';
@@ -34,13 +34,14 @@ const AboutCards = () => {
   const [ref, isVisible] = useScrollAnimation(0.2, '50px', true);
 
   const cards = [
-    { icon: '🚀', title: 'Performance', description: 'Optimized solutions that scale', delay: '0.1s' },
-    { icon: '☁️', title: 'Cloud Native', description: 'AWS serverless architectures', delay: '0.3s' },
-    { icon: '💡', title: 'Innovation', description: 'Cutting-edge solutions', delay: '0.5s' }
+    { icon: '🎯', title: 'Product Strategy', description: 'Enterprise roadmaps, stakeholder alignment, and go-to-market execution', delay: '0.1s' },
+    { icon: '🏗️', title: 'Product Development', description: 'End-to-end delivery of scalable platforms and customer-facing products', delay: '0.3s' },
+    { icon: '🏦', title: 'Enterprise FinTech', description: 'KYC fraud detection and financial threat intelligence', delay: '0.5s' },
+    { icon: '☁️', title: 'Technical Architecture', description: 'Cloud infrastructure, MLOps, and production-grade systems', delay: '0.7s' }
   ];
 
   return (
-    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       {cards.map((card, index) => (
         <div
           key={index}
@@ -57,6 +58,54 @@ const AboutCards = () => {
           </h3>
           <p className="text-sm sm:text-base text-slate-900 dark:text-surface-300 leading-relaxed">{card.description}</p>
         </div>
+      ))}
+    </div>
+  );
+};
+
+// Scroll-animated About narrative paragraphs
+const AboutNarrative = () => {
+  const [ref, isVisible] = useScrollAnimation(0.2, '50px', true);
+
+  const paragraphs = [
+    {
+      delay: '0.1s',
+      content: (
+        <>
+          Product-minded engineering leader with a background in mechatronics and computer science. Eight years building products and platforms for financial services—mostly from the ground up.
+        </>
+      )
+    },
+    {
+      delay: '0.25s',
+      content: (
+        <>
+          At <strong>Nasdaq Verafin</strong>, I built the company&apos;s first MLOps platform, then took over engineering for Onboarding Threat Intelligence—KYC fraud detection shipped to financial institutions.
+        </>
+      )
+    },
+    {
+      delay: '0.4s',
+      content: (
+        <>
+          Day to day that means roadmaps with stakeholders, tight MVPs, and systems that scale. My background in cloud architecture and fraud models keeps product calls tied to what actually ships.
+        </>
+      )
+    }
+  ];
+
+  return (
+    <div ref={ref} className="max-w-4xl mx-auto text-left mb-12 sm:mb-16 px-4 space-y-6">
+      {paragraphs.map((paragraph, index) => (
+        <p
+          key={index}
+          className={`text-base sm:text-lg lg:text-xl text-slate-900 dark:text-surface-300 leading-relaxed transition-all duration-700 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionDelay: isVisible ? paragraph.delay : '0s' }}
+        >
+          {paragraph.content}
+        </p>
       ))}
     </div>
   );
@@ -176,60 +225,30 @@ const AppContent = ({ mode, toggleTheme }) => {
 
                 {/* Description */}
                 <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-slate-900 dark:text-surface-400 leading-relaxed mb-8 sm:mb-12 animate-fade-in px-2 text-center" style={{animationDelay: '0.9s'}}>
-                  Product-minded engineering leader with 8+ years building new products and scalable systems from scratch. Currently creating a new Onboarding Threat Intelligence product for KYC fraud at Nasdaq Verafin, after founding the company's first MLOps infrastructure. Expert in cloud architecture, fraud detection, and leading cross-functional teams.
+                  {PERSONAL_INFO.bio}
                 </p>
 
-                {/* Tech Stack Pills - FAANG Ready Skills */}
+                {/* Hero skill highlights */}
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 animate-fade-in px-4" style={{animationDelay: '1.2s'}}>
-                  {/* Core Languages */}
-                  {['Python', 'Java', 'JavaScript', 'Scala'].map((skill, index) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-500/20 to-blue-600/20 dark:from-blue-400/20 dark:to-blue-500/20 rounded-full text-xs sm:text-sm font-medium text-blue-700 dark:text-blue-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  
-                  {/* Cloud & ML Platforms */}
-                  {['AWS', 'SageMaker', 'Bedrock', 'Databricks', 'Terraform'].map((skill, index) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-orange-500/20 to-orange-600/20 dark:from-orange-400/20 dark:to-orange-500/20 rounded-full text-xs sm:text-sm font-medium text-orange-700 dark:text-orange-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-orange-200/50 dark:border-orange-700/50"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  
-                  {/* MLOps & DevOps */}
-                  {['MLOps', 'DevOps', 'Docker', 'Jenkins', 'CI/CD'].map((skill, index) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-green-500/20 to-green-600/20 dark:from-green-400/20 dark:to-green-500/20 rounded-full text-xs sm:text-sm font-medium text-green-700 dark:text-green-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-green-200/50 dark:border-green-700/50"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  
-                  {/* Frameworks & Tools */}
-                  {['React', 'Node.js', 'Spring Boot', 'Git'].map((skill, index) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-500/20 to-purple-600/20 dark:from-purple-400/20 dark:to-purple-500/20 rounded-full text-xs sm:text-sm font-medium text-purple-700 dark:text-purple-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-purple-200/50 dark:border-purple-700/50"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  
-                  {/* Leadership & Practices */}
-                  {['Technical Strategy', 'Project Management'].map((skill, index) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 rounded-full text-xs sm:text-sm font-medium text-red-700 dark:text-red-300 hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border border-red-200/50 dark:border-red-700/50"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  {HERO_SKILL_HIGHLIGHTS.flatMap(({ skills, color }) => {
+                    const colorClasses = {
+                      red: 'from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 text-red-700 dark:text-red-300 border-red-200/50 dark:border-red-700/50',
+                      orange: 'from-orange-500/20 to-orange-600/20 dark:from-orange-400/20 dark:to-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-700/50',
+                      blue: 'from-blue-500/20 to-blue-600/20 dark:from-blue-400/20 dark:to-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-700/50',
+                      green: 'from-green-500/20 to-green-600/20 dark:from-green-400/20 dark:to-green-500/20 text-green-700 dark:text-green-300 border-green-200/50 dark:border-green-700/50',
+                      purple: 'from-purple-500/20 to-purple-600/20 dark:from-purple-400/20 dark:to-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-200/50 dark:border-purple-700/50'
+                    };
+                    const colorClass = colorClasses[color] || colorClasses.blue;
+
+                    return skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className={`px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r rounded-full text-xs sm:text-sm font-medium hover:scale-110 transition-transform duration-300 cursor-default backdrop-blur-sm border ${colorClass}`}
+                      >
+                        {skill}
+                      </span>
+                    ));
+                  })}
                 </div>
 
                 {/* CTA Buttons */}
@@ -253,7 +272,7 @@ const AppContent = ({ mode, toggleTheme }) => {
 
 
                 {/* Scroll Indicator */}
-                <div className="animate-fade-in mt-12 sm:mt-16" style={{animationDelay: '2s'}}>
+                <div className="animate-fade-in mt-12 sm:mt-16 pb-16 sm:pb-20 lg:pb-24" style={{animationDelay: '2s'}}>
                   <a
                     href="#about"
                     className="group flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300"
@@ -275,9 +294,60 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <SectionHeader 
                   title="About Me"
                   icon="👨‍💻"
-                  description="Passionate about creating scalable, high-performance applications that solve real-world problems."
+                  description="Engineering leadership across product strategy, enterprise fintech, and technical architecture."
                 />
+                
+                <AboutNarrative />
+
                 <AboutCards />
+              </div>
+            </section>
+
+            {/* Technical Skills Section */}
+            <section id="skills" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
+              <div className="max-w-6xl mx-auto">
+                <SectionHeader 
+                  title="Technical Skills"
+                  icon="🛠️"
+                  description="Core competencies in software engineering, cloud and ML platforms, and engineering leadership."
+                />
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
+                  {SKILLS_MATRIX_GROUPS.map((group, groupIdx) => {
+                    const skills = group.categories.flatMap(
+                      (category) => PERSONAL_INFO.skills[category] || []
+                    );
+                    const colorPalette = [
+                      'from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 text-red-700 dark:text-red-300 border-red-200/50 dark:border-red-700/50',
+                      'from-blue-500/20 to-blue-600/20 dark:from-blue-400/20 dark:to-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-700/50',
+                      'from-green-500/20 to-green-600/20 dark:from-green-400/20 dark:to-green-500/20 text-green-700 dark:text-green-300 border-green-200/50 dark:border-green-700/50',
+                      'from-orange-500/20 to-orange-600/20 dark:from-orange-400/20 dark:to-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-700/50'
+                    ];
+                    const colorClass = colorPalette[groupIdx % colorPalette.length];
+
+                    return (
+                      <div
+                        key={group.title}
+                        className="bg-slate-50 dark:bg-surface-800 p-6 sm:p-8 rounded-2xl shadow-material-2 border border-slate-100 dark:border-surface-700/50 hover:shadow-material-3 transition-all duration-300 transform hover:scale-[1.01]"
+                      >
+                        <h3 className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-4 flex items-center gap-2">
+                          <span>{group.icon}</span>
+                          {group.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-2.5">
+                          {skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className={`px-3 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r rounded-full text-xs sm:text-sm font-medium hover:scale-105 transition-all duration-300 cursor-default backdrop-blur-sm border ${colorClass}`}
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </section>
 
@@ -288,6 +358,7 @@ const AppContent = ({ mode, toggleTheme }) => {
             <section id="experience">
               <Timeline 
                 title="Professional Experience" 
+                description="Progression at Nasdaq Verafin—from ML pipelines and fraud detection to MLOps infrastructure and product leadership."
                 data={EXPERIENCE_FALLBACK}
                 icon="💼"
               />
@@ -296,7 +367,8 @@ const AppContent = ({ mode, toggleTheme }) => {
             {/* Education Timeline */}
             <section id="education">
               <Timeline 
-                title="Education & Certifications" 
+                title="Education & Awards" 
+                description="Academic foundation in mechatronics and computer science, with graduate-level recognition."
                 data={EDUCATION_FALLBACK}
                 icon="🎓"
               />
@@ -308,7 +380,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <SectionHeader 
                   title="Let's Connect"
                   icon="📬"
-                  description="Always open to connecting with fellow technologists and exploring innovative opportunities in machine learning and cloud architecture."
+                  description="Available for director-level opportunities in MLOps, platform engineering, and financial technology."
                 />
                 <ContactButtons />
               </div>

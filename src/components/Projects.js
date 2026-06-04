@@ -9,6 +9,7 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [activeTab, setActiveTab] = useState('enterprise-mlops');
   
   // Scroll animation for the CTA card - simplified
   const [ctaRef, ctaVisible] = useScrollAnimation(0.1, '100px', false);
@@ -41,12 +42,14 @@ const Projects = () => {
           const match = repoUrl.match(/github\.com\/[^/]+\/([^/]+)/);
           const repoName = match ? match[1] : repoInfo.name;
           
+          const fallbackProj = PROJECTS_FALLBACK.find(p => p.id === repoName);
           return {
             ...repoInfo,
             repoUrl,
             id: repoName,  // Use repository name as ID for URL routing
             // Normalize language to array (GitHub API returns a string, fallback uses array)
-            language: repoInfo.language ? [repoInfo.language] : []
+            language: repoInfo.language ? [repoInfo.language] : [],
+            category: fallbackProj ? fallbackProj.category : 'enterprise-mlops'
           };
         });
 
@@ -109,6 +112,11 @@ const Projects = () => {
     return '🚀';
   };
 
+  const filteredProjects = projects.filter(project => {
+    const category = project.category || 'enterprise-mlops';
+    return category === activeTab;
+  });
+
   if (loading) {
     return (
       <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6">
@@ -151,15 +159,43 @@ const Projects = () => {
           </h2>
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full mb-6 sm:mb-8 animate-scale-in" 
                style={{animationDelay: '0.3s'}}></div>
-          <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-slate-900 dark:text-surface-300 leading-relaxed animate-fade-in px-2"
+          <p className="max-w-4xl mx-auto text-base sm:text-lg lg:text-xl text-slate-900 dark:text-surface-300 leading-relaxed animate-fade-in px-2 mb-8 sm:mb-12"
              style={{animationDelay: '0.5s'}}>
-            A showcase of my recent work featuring modern web applications, cloud solutions, and AI-powered systems.
+            Selected work in enterprise MLOps, generative AI on AWS, and autonomous systems research.
           </p>
+        </div>
+
+        {/* Categorization Tabs */}
+        <div className="flex justify-center mb-10 sm:mb-12 animate-fade-in" style={{animationDelay: '0.6s'}}>
+          <div className="inline-flex p-1.5 bg-slate-100 dark:bg-surface-800 rounded-2xl border border-slate-200/50 dark:border-surface-700/50 shadow-material-1">
+            <button
+              onClick={() => setActiveTab('enterprise-mlops')}
+              className={`px-4 sm:px-6 py-3 rounded-xl text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 flex items-center gap-2 ${
+                activeTab === 'enterprise-mlops'
+                  ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-material-2 scale-105'
+                  : 'text-slate-600 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400'
+              }`}
+            >
+              <span>🤖</span>
+              <span>Enterprise MLOps & Generative AI</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('deep-tech')}
+              className={`px-4 sm:px-6 py-3 rounded-xl text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 flex items-center gap-2 ${
+                activeTab === 'deep-tech'
+                  ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-material-2 scale-105'
+                  : 'text-slate-600 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400'
+              }`}
+            >
+              <span>🐕</span>
+              <span>Deep Tech & Autonomous Simulation</span>
+            </button>
+          </div>
         </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <Link
               key={project.id}
               to={`/project/${project.id}`}
@@ -194,14 +230,18 @@ const Projects = () => {
 
                   {/* Project Stats */}
                   <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-slate-600 dark:text-surface-400 flex-wrap">
-                    <div className="flex items-center gap-1">
-                      <span className="text-warning-500">⭐</span>
-                      <span>{project.stargazers_count}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span className="text-secondary-500">🍴</span>
-                      <span>{project.forks_count}</span>
-                    </div>
+                    {project.stargazers_count > 0 && (
+                      <div className="flex items-center gap-1">
+                        <span className="text-warning-500">⭐</span>
+                        <span>{project.stargazers_count}</span>
+                      </div>
+                    )}
+                    {project.forks_count > 0 && (
+                      <div className="flex items-center gap-1">
+                        <span className="text-secondary-500">🍴</span>
+                        <span>{project.forks_count}</span>
+                      </div>
+                    )}
                     {project.language && Array.isArray(project.language) && (
                       <div className="flex items-center gap-1">
                         <span className="text-primary-500 mr-1">💻</span>
@@ -262,10 +302,10 @@ const Projects = () => {
         >
           <div className="glass-effect rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto">
             <h3 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-3 sm:mb-4">
-              Want to see more?
+              Additional Projects
             </h3>
             <p className="text-sm sm:text-base text-slate-900 dark:text-surface-300 mb-4 sm:mb-6 px-2">
-              Check out my GitHub profile for additional projects and open-source contributions.
+              Additional repositories and open-source contributions are available on GitHub.
             </p>
             <a
               href="https://github.com/rubencg195"

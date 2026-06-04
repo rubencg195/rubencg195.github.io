@@ -17,7 +17,7 @@ const Navbar = () => {
       setScrolled(isScrolled);
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'projects', 'experience', 'education', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -79,6 +79,7 @@ const Navbar = () => {
   const navItems = [
     { id: 'home', label: 'Home', icon: '🏠' },
     { id: 'about', label: 'About', icon: '👨‍💻' },
+    { id: 'skills', label: 'Skills', icon: '🛠️' },
     { id: 'projects', label: 'Projects', icon: '🚀' },
     { id: 'experience', label: 'Experience', icon: '💼' },
     { id: 'education', label: 'Education', icon: '🎓' },
@@ -119,7 +120,7 @@ const Navbar = () => {
                 {PERSONAL_INFO.name}
               </h1>
               <p className="text-sm text-surface-600 dark:text-surface-400">
-                Full-Stack Developer
+                {PERSONAL_INFO.title}
               </p>
             </div>
           </div>

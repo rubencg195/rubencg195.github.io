@@ -267,7 +267,7 @@ const ProjectDetail = () => {
                   {PERSONAL_INFO.name}
                 </h1>
                 <p className="text-sm text-surface-600 dark:text-surface-400">
-                  Full-Stack Developer
+                  {PERSONAL_INFO.title}
                 </p>
               </div>
             </div>
@@ -358,16 +358,20 @@ const ProjectDetail = () => {
 
               {/* Project Stats */}
               <div className="flex flex-wrap justify-center xs:justify-start gap-3 xs:gap-6 mb-4 xs:mb-6 animate-fade-in" style={{animationDelay: '0.6s'}}>
-                <div className="flex items-center gap-1 xs:gap-2">
-                  <span className="text-xl xs:text-2xl">⭐</span>
-                  <span className="font-semibold text-sm xs:text-base">{project.stargazers_count}</span>
-                  <span className="text-slate-600 dark:text-surface-400 text-sm xs:text-base">stars</span>
-                </div>
-                <div className="flex items-center gap-1 xs:gap-2">
-                  <span className="text-xl xs:text-2xl">🍴</span>
-                  <span className="font-semibold text-sm xs:text-base">{project.forks_count}</span>
-                  <span className="text-slate-600 dark:text-surface-400 text-sm xs:text-base">forks</span>
-                </div>
+                {project.stargazers_count > 0 && (
+                  <div className="flex items-center gap-1 xs:gap-2">
+                    <span className="text-xl xs:text-2xl">⭐</span>
+                    <span className="font-semibold text-sm xs:text-base">{project.stargazers_count}</span>
+                    <span className="text-slate-600 dark:text-surface-400 text-sm xs:text-base">stars</span>
+                  </div>
+                )}
+                {project.forks_count > 0 && (
+                  <div className="flex items-center gap-1 xs:gap-2">
+                    <span className="text-xl xs:text-2xl">🍴</span>
+                    <span className="font-semibold text-sm xs:text-base">{project.forks_count}</span>
+                    <span className="text-slate-600 dark:text-surface-400 text-sm xs:text-base">forks</span>
+                  </div>
+                )}
                 {project.language && (
                   <div className="flex items-center gap-1 xs:gap-2">
                     <span className="text-xl xs:text-2xl mr-1">💻</span>
@@ -565,10 +569,10 @@ const ProjectDetail = () => {
         <div className="mt-6 xs:mt-8 text-center animate-fade-in" style={{animationDelay: '1.2s'}}>
           <div className="glass-effect rounded-2xl xs:rounded-3xl p-4 xs:p-6 sm:p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-500 to-warning-500 mb-4">
-              Interested in this project?
+              Project Inquiry
             </h3>
             <p className="text-slate-900 dark:text-surface-300 mb-6">
-              Check out the live demo, explore the code, or get in touch to discuss similar projects.
+              Source code and documentation are available on GitHub. For questions regarding this project, please use the contact section.
             </p>
             <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
               <a

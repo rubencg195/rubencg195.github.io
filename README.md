@@ -502,6 +502,145 @@ To use a custom domain:
 2. **Configure DNS** with your domain provider
 3. **Update homepage** in `package.json`
 
+## 🏗️ AWS Architecture & Components
+
+This section outlines the comprehensive, production-grade AWS architecture designed to support the portfolio's advanced MLOps projects, serverless analytics, and AI-powered capabilities. It includes both a high-level conceptual overview and a highly detailed, multi-AZ VPC infrastructure diagram.
+
+### 1. High-Level Conceptual Overview
+
+The high-level architecture showcases the serverless flow of user interactions, analytics collection, and integration with AWS Bedrock for intelligent features.
+
+```mermaid
+graph TD
+    User([User / Browser]) -->|HTTPS| CF[Amazon CloudFront CDN]
+    CF -->|Static Assets| S3[Amazon S3 Bucket]
+    CF -->|API Requests| APIGW[Amazon API Gateway]
+    APIGW -->|Trigger| Lambda[AWS Lambda]
+    Lambda -->|Log Events| DDB[(Amazon DynamoDB)]
+    Lambda -->|Query / RAG| Bedrock[Amazon Bedrock]
+    
+    subgraph MLOps Platform [AWS MLOps Platform]
+        SM[Amazon SageMaker]
+        Athena[Amazon Athena]
+        RDS[(Amazon RDS pgvector)]
+    end
+    
+    Bedrock -.->|Interact| MLOps Platform
+```
+
+### 2. Detailed AWS Infrastructure Architecture
+
+This detailed diagram illustrates the multi-AZ VPC setup, secure networking, private endpoints, identity management, and MLOps components that power the end-to-end platform.
+
+```mermaid
+flowchart TB
+    subgraph Route53_Sub["DNS & Traffic Routing"]
+        R53[Amazon Route 53]
+        ACM[AWS Certificate Manager]
+    end
+
+    subgraph Edge_Sub["Edge Network (CDN)"]
+        CF[Amazon CloudFront Distribution]
+        WAF[AWS WAF]
+    end
+
+    subgraph Cognito_Sub["Identity & Access Management"]
+        Cognito[Amazon Cognito User Pool]
+    end
+
+    subgraph S3_Sub["Static Hosting & Storage"]
+        S3_Bucket[Amazon S3 Bucket<br/>portfolio-frontend-prod]
+        KMS[AWS KMS]
+    end
+
+    subgraph VPC["AWS VPC (Virtual Private Cloud) - 10.0.0.0/16"]
+        subgraph Public_Subnets["Public Subnets (Multi-AZ)"]
+            NAT[NAT Gateway]
+            ALB[Application Load Balancer]
+        end
+
+        subgraph Private_Subnets["Private App Subnets (Multi-AZ)"]
+            ECS[AWS ECS Fargate<br/>Portfolio API / MLOps App]
+            Lambda[AWS Lambda Functions<br/>Analytics & Bedrock Handler]
+        end
+
+        subgraph Isolated_Subnets["Private Data Subnets (Multi-AZ)"]
+            DDB[(Amazon DynamoDB<br/>Analytics Store)]
+            RDS[(Amazon RDS PostgreSQL<br/>pgvector Knowledge Base)]
+            Athena[(Amazon Athena<br/>Data Lake Query Engine)]
+        end
+
+        subgraph VPC_Endpoints["VPC Endpoints (PrivateLink)"]
+            S3_VPCE[S3 Endpoint]
+            SM_VPCE[SageMaker Endpoint]
+            Bedrock_VPCE[Bedrock Endpoint]
+        end
+    end
+
+    subgraph MLOps_Sub["AWS MLOps & AI Services"]
+        Bedrock[Amazon Bedrock<br/>Claude 3.7 / Haiku]
+        SM_Model[SageMaker Endpoint<br/>Fraud Detection Model]
+        SM_Pipelines[SageMaker Pipelines]
+        ECR[Amazon Elastic Container Registry]
+    end
+
+    %% Connections
+    User([User / Browser]) -->|1. DNS Query| R53
+    User -->|2. HTTPS Request| CF
+    R53 -.->|Alias Record| CF
+    ACM -->|SSL/TLS Certificate| CF
+    CF -->|3. Inspect Traffic| WAF
+    CF -->|4. Fetch Static Files| S3_Bucket
+    S3_Bucket -.->|Encrypts with| KMS
+    
+    User -->|5. Authenticate| Cognito
+    Cognito -->|JWT Token| User
+    
+    CF -->|6. API Requests with JWT| ALB
+    ALB -->|7. Route Traffic| ECS
+    ECS -->|8. Invoke Serverless| Lambda
+    
+    Lambda -->|9. Write Analytics| DDB
+    Lambda -->|10. Query Vector DB| RDS
+    Lambda -->|11. Query Data Lake| Athena
+    
+    Lambda -->|12. Private API Call| Bedrock_VPCE
+    Bedrock_VPCE --> Bedrock
+    
+    Lambda -->|13. Private Model Inference| SM_VPCE
+    SM_VPCE --> SM_Model
+    
+    SM_Pipelines -->|Deploy Model| SM_Model
+    ECR -->|Pull GPU Containers| SM_Pipelines
+    ECS -->|Pull App Images| ECR
+    
+    classDef aws fill:#FF9900,stroke:#333,stroke-width:2px,color:#fff;
+    classDef security fill:#CC0000,stroke:#333,stroke-width:2px,color:#fff;
+    classDef database fill:#1A5276,stroke:#333,stroke-width:2px,color:#fff;
+    classDef compute fill:#196F3D,stroke:#333,stroke-width:2px,color:#fff;
+    
+    class R53,CF,S3_Bucket,ALB,ECS,Lambda,SM_Pipelines,ECR aws;
+    class ACM,WAF,Cognito,KMS security;
+    class DDB,RDS,Athena,SM_Model,Bedrock database;
+```
+
+### 3. AWS Component Breakdown
+
+- **Amazon Route 53 & AWS Certificate Manager (ACM)**: Manages DNS routing and provisions SSL/TLS certificates for secure HTTPS communication.
+- **Amazon CloudFront & AWS WAF**: Global CDN that caches static assets at edge locations for ultra-low latency. AWS WAF protects the application from common web exploits and DDoS attacks.
+- **Amazon S3**: Hosts the static React build files securely, encrypted at rest using **AWS KMS** customer-managed keys.
+- **Amazon Cognito**: Provides secure user authentication, issuing JSON Web Tokens (JWT) to authorize API requests.
+- **AWS VPC (Virtual Private Cloud)**: Segmented into Public, Private App, and Isolated Data subnets across multiple Availability Zones (AZs) for high availability and fault tolerance.
+- **Application Load Balancer (ALB) & AWS ECS Fargate**: Distributes incoming API traffic to secure, auto-scaling containerized backend services running on serverless Fargate instances.
+- **AWS Lambda**: Executes lightweight serverless functions for analytics tracking and Bedrock orchestration.
+- **Amazon DynamoDB**: Low-latency NoSQL database used to store real-time user interaction analytics and portfolio metrics.
+- **Amazon RDS PostgreSQL with pgvector**: Relational database storing structured data and high-dimensional vector embeddings for Retrieval-Augmented Generation (RAG) applications.
+- **Amazon Bedrock**: Serverless API access to foundation models like Claude 3.7 and Claude Haiku for natural language search and AI agents.
+- **Amazon SageMaker**: Powers the model training, registry, and hosting pipelines (e.g., fraud detection models), integrated with **Amazon ECR** for GPU-optimized container management.
+- **Amazon Athena**: Serverless query engine used to analyze large-scale datasets directly in the S3 data lake.
+
+---
+
 ## 📊 Performance Optimization
 
 ### Current Build Stats

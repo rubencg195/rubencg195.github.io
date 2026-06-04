@@ -17,7 +17,7 @@ const TestimonialSection = () => {
       name: 'Marcus Chen',
       role: 'Product Manager',
       company: 'InnovateHub',
-      content: 'Working with Ruben was a game-changer. He built our React dashboard from scratch and implemented real-time features that our users absolutely love.',
+      content: 'Working with Ruben was a game-changer. He built our React dashboard from the ground up and implemented real-time features that our users absolutely love.',
       avatar: '👨‍💻',
       rating: 5,
       project: 'Dashboard Development'
