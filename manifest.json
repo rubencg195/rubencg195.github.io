@@ -1,6 +1,6 @@
 {
   "short_name": "Ruben Chevez",
-  "name": "Ruben Chevez - Full-Stack Developer Portfolio",
+  "name": "Ruben Chevez - Director, Onboarding Threat Intelligence",
   "icons": [
     {
       "src": "code-icon.svg",
@@ -22,5 +22,5 @@
   "display": "standalone",
   "theme_color": "#4285f4",
   "background_color": "#0f172a",
-  "description": "Professional portfolio showcasing full-stack development expertise and cloud solutions"
+  "description": "Ruben Chevez — Director, Onboarding Threat Intelligence at Nasdaq Verafin. MLOps, AWS, and KYC fraud detection."
 }

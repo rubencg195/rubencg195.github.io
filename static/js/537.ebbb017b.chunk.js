@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrubencg195_portfolio=self.webpackChunkrubencg195_portfolio||[]).push([[537],{8537(e,c,r){r.d(c,{createPacketServices:()=>o.$});var o=r(5564);r(7391)}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrubencg195_portfolio=self.webpackChunkrubencg195_portfolio||[]).push([[794],{794(e,r,c){c.d(r,{createEventModelingServices:()=>o.g});var o=c(6737);c(1855)}}]);
