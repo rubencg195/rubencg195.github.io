@@ -7,6 +7,7 @@ import mermaid from 'mermaid';
 import { fetchReadmeWithImages } from '../utils/githubUtils';
 import { useTheme } from '../contexts/ThemeContext';
 import { PERSONAL_INFO, PROJECTS_FALLBACK } from '../constants';
+import { logProjectView, logExternalLink, logNavigationClick, logProjectEngagement, logReadmeLinkClick } from '../utils/firebaseConfig';
 
 // Mermaid Component
 const MermaidDiagram = ({ chart, mode }) => {
@@ -124,6 +125,24 @@ const ProjectDetail = () => {
       loadProject();
     }
   }, [id]);
+
+  useEffect(() => {
+    if (project) {
+      logProjectView(project.id, project.name, project.category || '');
+    }
+  }, [project]);
+
+  useEffect(() => {
+    if (!project) return undefined;
+
+    const startedAt = Date.now();
+    return () => {
+      const seconds = Math.round((Date.now() - startedAt) / 1000);
+      if (seconds >= 3) {
+        logProjectEngagement(project.id, seconds, project.name);
+      }
+    };
+  }, [project]);
 
   useEffect(() => {
     // Scroll to top and apply theme
@@ -292,6 +311,7 @@ const ProjectDetail = () => {
                 href={project.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => logExternalLink(project.html_url, 'repo', { project_id: project.id, source: 'project_header' })}
                 className="group relative px-2 xs:px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 text-surface-700 dark:text-surface-300 hover:text-primary-600 dark:hover:text-primary-400"
               >
                 <span className="flex items-center gap-1 xs:gap-2">
@@ -445,12 +465,18 @@ const ProjectDetail = () => {
                     p: ({node, ...props}) => <p className="text-surface-700 dark:text-surface-300 mb-4 leading-relaxed" {...props} />,
                     
                     // Links with hover effects
-                    a: ({node, ...props}) => (
+                    a: ({node, href, ...props}) => (
                       // eslint-disable-next-line jsx-a11y/anchor-has-content
                       <a 
                         className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline hover:no-underline transition-colors duration-200 font-medium" 
                         target="_blank"
                         rel="noopener noreferrer"
+                        href={href}
+                        onClick={() => {
+                          if (href) {
+                            logReadmeLinkClick(href, id);
+                          }
+                        }}
                         {...props} 
                       />
                     ),
@@ -579,6 +605,7 @@ const ProjectDetail = () => {
                 href={project.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => logExternalLink(project.html_url, 'repo', { project_id: project.id, source: 'project_footer' })}
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-surface-900 to-surface-800 dark:from-white dark:to-surface-100 text-white dark:text-surface-900 px-6 py-3 rounded-2xl font-semibold shadow-material-3 hover:shadow-material-4 transition-all duration-300 hover:scale-105 group"
               >
                 <span className="text-xl group-hover:animate-bounce">🐙</span>
@@ -586,6 +613,7 @@ const ProjectDetail = () => {
               </a>
               <Link
                 to="/#contact"
+                onClick={() => logNavigationClick('contact', 'project_detail')}
                 className="inline-flex items-center gap-3 glass-effect text-surface-900 dark:text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-300 hover:scale-105 group"
               >
                 <span className="text-xl group-hover:animate-bounce">💬</span>

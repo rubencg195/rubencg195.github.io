@@ -698,12 +698,60 @@ npm run deploy
 
 ### Overview
 
-Firebase Analytics provides real-time and historical insights into how users interact with your portfolio. This integration tracks:
+Firebase Analytics provides real-time and historical insights into how users interact with your portfolio. The app is a **React SPA** (home is one long page; project detail is a separate route). Tracking combines **route-level** events with **section-level** observers so you can answer: which pages were visited, which home sections were seen, which projects were clicked, and which cards were hovered most.
 
-- **Page Views**: When users navigate to different sections
-- **Project Clicks**: When users click on portfolio projects
-- **External Links**: When users click external links (GitHub, LinkedIn, etc.)
-- **Custom Events**: Any other interactions you want to track
+Tracked today:
+
+| Question | Primary events | Key parameters |
+|----------|----------------|----------------|
+| Which **pages** were visited? | `page_view` | `page_location`, `page_type` (`home` \| `project` \| `other`) |
+| Which **sections** on the home page were seen? | `section_view` | `section_id`: `home`, `about`, `skills`, `projects`, `experience`, `education`, `contact` |
+| Did users **scroll** through the home page? | `scroll_depth` | `percent`: 25, 50, 75, 100 |
+| Which **projects** were clicked? | `project_click` | `project_id`, `project_name`, `project_category` |
+| Which **project pages** were opened? | `project_view`, `project_engagement` | `engagement_seconds` (≥3s on unmount) |
+| Which **nav** items were used? | `navigation_click` | `section_id`, `source` (`navbar`, `mobile`, `navbar_logo`, …) |
+| Which **cards** were hovered most? | `card_hover` | `card_type`, `card_id`, `card_label` |
+| CTAs, theme, menu, 404 | `cta_click`, `theme_change`, `mobile_menu`, `page_not_found`, `scroll_to_top` | see event catalog below |
+
+### Analytics architecture (SPA)
+
+High-level flow:
+
+```mermaid
+flowchart LR
+  User[Visitor] --> Router[React Router]
+  Router --> Home["/ home SPA"]
+  Router --> Project["/project/:id"]
+  Home --> Observer[IntersectionObserver + scroll listener]
+  Observer --> Firebase[Firebase Analytics / GA4]
+  Project --> Firebase
+  Router --> PageView[page_view on route change]
+  PageView --> Firebase
+```
+
+Detailed instrumentation on the home route:
+
+```mermaid
+flowchart TB
+  subgraph HomeRoute["pathname === '/'"]
+    PV[logPageView home]
+    SEC[section_view per section id]
+    DEP[scroll_depth 25/50/75/100]
+    NAV[navigation_click from Navbar]
+    HOVER[card_hover about / experience / education / project grid]
+    CTA[cta_click hero + contact]
+  end
+  subgraph ProjectRoute["pathname /project/:id"]
+    PV2[logPageView + project_view]
+    CLK[project_click from grid]
+    ENG[project_engagement on leave]
+    README[external_link_click type readme]
+  end
+  HomeRoute --> GA4[(GA4 via Firebase)]
+  ProjectRoute --> GA4
+```
+
+Implementation files: `src/utils/firebaseConfig.js`, `src/hooks/usePortfolioAnalytics.js`, `src/utils/analyticsDedupe.js`, `src/hooks/useCardHoverTracking.js`.
 
 ### Setup Instructions
 
@@ -753,50 +801,68 @@ To find these values, go to Firebase Console → Project Settings → Your apps 
 npm start
 ```
 
-### Available Tracking Functions
+### Event catalog (wired in app)
 
-#### `logPageView(pageName, pagePath)`
+| Event | When it fires | Where |
+|-------|----------------|-------|
+| `page_view` | Route change | `App.js` |
+| `section_view` | Section ≥35% visible (once per session per section) | `usePortfolioAnalytics.js` |
+| `scroll_depth` | Home scroll hits 25/50/75/100% (once each per session) | `usePortfolioAnalytics.js` |
+| `navigation_click` | Navbar / logo / hash nav | `Navbar.js`, `App.js`, `ProjectDetail.js` |
+| `project_click` | Project card click | `Projects.js` |
+| `project_view` | Project detail loaded | `ProjectDetail.js` |
+| `project_engagement` | Leave detail after ≥3s | `ProjectDetail.js` |
+| `project_tab_select` | MLOps vs deep-tech tab | `Projects.js` |
+| `card_hover` | Mouse enter on card (2s cooldown per card) | About, Timeline, Projects |
+| `cta_click` | Hero / contact CTAs | `App.js` |
+| `external_link_click` | GitHub, LinkedIn, README links | Multiple |
+| `theme_change` | Light/dark toggle | `App.js` |
+| `scroll_to_top` | Floating button | `ScrollToTopButton.js` |
+| `mobile_menu` | `open` / `close` | `Navbar.js` |
+| `page_not_found` | Unknown route | `App.js` |
 
-Logs when a user navigates to a new page. **Tracked automatically in App.js**
+### How to analyze in Firebase / GA4
+
+1. **Pages visited**: Analytics → **Events** → `page_view` → breakdown by `page_location` or `page_type`.
+2. **Sections visited (home)**: `section_view` → breakdown by `section_id`. Compare counts to `navigation_click` (intent) vs `section_view` (actually seen).
+3. **Scroll engagement**: `scroll_depth` → `percent`. Funnel: 25 → 100 indicates how far readers go.
+4. **Projects clicked**: `project_click` and `project_view` → `project_id` / `project_name`. Clicks without views may mean bounce; pair with `project_engagement`.
+5. **Most hovered cards**: `card_hover` → sort by `card_label` or `card_id`, filter `card_type` = `experience`, `education`, `about`, or `project`. This is the best proxy for “interest without click” on timeline and about cards.
+
+**SPA caveat**: Leaving `/` unmounts section observers and **resets session dedupe** (`analyticsDedupe.js`), so returning home can log `section_view` again in the same browser session. That is intentional for per-visit home analytics, not global lifetime uniqueness.
+
+**Hover caveat**: `card_hover` uses `mouseenter` (desktop). Touch users without hover generate fewer events; use `section_view` and `project_click` for mobile.
+
+### Post-implementation assessment
+
+| Area | Before | After | Notes |
+|------|--------|-------|-------|
+| Route / page tracking | Partial | **Strong** | `page_view` + `page_type` for home vs project |
+| Home section visibility | None | **Strong** | `section_view` for all seven sections |
+| Scroll depth | None | **Good** | Milestones only; not continuous |
+| Project funnel | Clicks only | **Strong** | click → view → engagement seconds |
+| Card interest (hover) | None | **Good** | Debounced; desktop-biased |
+| Nav vs scroll | Nav only | **Good** | Compare `navigation_click` vs `section_view` |
+| Skills matrix | None | **Gap** | No per-skill hover (optional future) |
+| Testimonials | None | **Gap** | Section not instrumented if present |
+
+**Estimated analytics maturity**: ~**85%** of stated goals (pages, sections, projects, hovers on experience/education/about/projects). Remaining 15%: touch/hover parity, skills/testimonial cards, and optional GA4 BigQuery dashboards.
+
+### API reference (main helpers)
 
 ```javascript
-import { logPageView } from './utils/firebaseConfig';
-
-logPageView('Home', '/');
-logPageView('Project Detail', '/project/aws-langchain');
-```
-
-#### `logProjectClick(projectId, projectName)`
-
-Logs when a user clicks on a project card. **Tracked automatically in Projects.js**
-
-```javascript
-import { logProjectClick } from './utils/firebaseConfig';
-
-logProjectClick('aws-langchain', 'AWS LangChain Project');
-```
-
-#### `logExternalLink(linkUrl, linkType)`
-
-Logs when a user clicks an external link.
-
-```javascript
-import { logExternalLink } from './utils/firebaseConfig';
-
-logExternalLink('https://github.com/rubencg195', 'github');
-logExternalLink('https://linkedin.com/in/rubenchevez', 'linkedin');
-```
-
-#### `logCustomEvent(eventName, eventParams)`
-
-Logs a custom event with any parameters.
-
-```javascript
-import { logCustomEvent } from './utils/firebaseConfig';
-
-logCustomEvent('download_resume', {
-  timestamp: new Date().toISOString()
-});
+import {
+  logPageView,
+  logSectionView,
+  logScrollDepth,
+  logProjectClick,
+  logProjectView,
+  logCardHover,
+  logNavigationClick,
+  logCtaClick,
+  logExternalLink,
+  logCustomEvent
+} from './utils/firebaseConfig';
 ```
 
 ### Viewing Analytics

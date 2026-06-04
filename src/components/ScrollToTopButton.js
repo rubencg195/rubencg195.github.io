@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { logScrollToTop } from '../utils/firebaseConfig';
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,6 +17,7 @@ const ScrollToTopButton = () => {
 
   // Scroll to top when button is clicked
   const scrollToTop = () => {
+    logScrollToTop('floating_button');
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

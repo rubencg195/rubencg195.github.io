@@ -3,13 +3,20 @@ import { Link } from 'react-router-dom';
 import { fetchRepoInfo } from '../utils/githubUtils';
 import { GITHUB_REPOS, PROJECTS_FALLBACK, ENABLE_GITHUB_API } from '../constants';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { logProjectClick } from '../utils/firebaseConfig';
+import { logProjectClick, logProjectTabSelect, logExternalLink } from '../utils/firebaseConfig';
+import { createCardHoverHandler } from '../hooks/useCardHoverTracking';
+import { slugifyCardId } from '../utils/analyticsDedupe';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeTab, setActiveTab] = useState('enterprise-mlops');
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    logProjectTabSelect(tabId);
+  };
   
   // Scroll animation for the CTA card - simplified
   const [ctaRef, ctaVisible] = useScrollAnimation(0.1, '100px', false);
@@ -169,7 +176,7 @@ const Projects = () => {
         <div className="flex justify-center mb-10 sm:mb-12 animate-fade-in" style={{animationDelay: '0.6s'}}>
           <div className="inline-flex p-1.5 bg-slate-100 dark:bg-surface-800 rounded-2xl border border-slate-200/50 dark:border-surface-700/50 shadow-material-1">
             <button
-              onClick={() => setActiveTab('enterprise-mlops')}
+              onClick={() => handleTabChange('enterprise-mlops')}
               className={`px-4 sm:px-6 py-3 rounded-xl text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 flex items-center gap-2 ${
                 activeTab === 'enterprise-mlops'
                   ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-material-2 scale-105'
@@ -180,7 +187,7 @@ const Projects = () => {
               <span>Enterprise MLOps & Generative AI</span>
             </button>
             <button
-              onClick={() => setActiveTab('deep-tech')}
+              onClick={() => handleTabChange('deep-tech')}
               className={`px-4 sm:px-6 py-3 rounded-xl text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 flex items-center gap-2 ${
                 activeTab === 'deep-tech'
                   ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-material-2 scale-105'
@@ -201,9 +208,16 @@ const Projects = () => {
               to={`/project/${project.id}`}
               className="group block animate-fade-in"
               style={{animationDelay: `${0.7 + index * 0.2}s`}}
-              onMouseEnter={() => setHoveredProject(project.id)}
+              onMouseEnter={() => {
+                setHoveredProject(project.id);
+                createCardHoverHandler(
+                  'project',
+                  project.name,
+                  `project-${slugifyCardId(project.id)}`
+                )();
+              }}
               onMouseLeave={() => setHoveredProject(null)}
-              onClick={() => logProjectClick(project.name)}
+              onClick={() => logProjectClick(project.id, project.name, project.category)}
             >
               <div className={`bg-slate-50 dark:bg-surface-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full transition-all duration-500 hover:shadow-material-4 hover:scale-105 relative overflow-hidden border border-slate-100 dark:border-surface-700 ${
                 hoveredProject === project.id ? 'shadow-material-4' : 'shadow-material-2'
@@ -311,6 +325,7 @@ const Projects = () => {
               href="https://github.com/rubencg195"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => logExternalLink('https://github.com/rubencg195', 'github', { source: 'projects_cta' })}
               className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-surface-900 to-surface-800 dark:from-white dark:to-surface-100 text-white dark:text-surface-900 px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold shadow-material-3 hover:shadow-material-4 transition-all duration-300 hover:scale-105 group"
             >
               <span className="text-lg sm:text-2xl group-hover:animate-bounce">🐙</span>

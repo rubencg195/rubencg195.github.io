@@ -2,9 +2,11 @@ import React from 'react';
 import SectionHeader from './SectionHeader';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { renderAchievementWithMetrics } from '../utils/highlightMetrics';
+import { createCardHoverHandler } from '../hooks/useCardHoverTracking';
+import { slugifyCardId } from '../utils/analyticsDedupe';
 
 // Scroll-animated Timeline Items component
-const TimelineItems = ({ data }) => {
+const TimelineItems = ({ data, sectionType = 'timeline' }) => {
   const [ref, isVisible] = useScrollAnimation(0.2, '50px', true);
 
   return (
@@ -30,6 +32,7 @@ const TimelineItems = ({ data }) => {
             {/* Mobile Timeline Card */}
             <div className="w-full">
               <MobileTimelineCard 
+                sectionType={sectionType}
                 title={item.title} 
                 subtitle={item.company || item.institution} 
                 subtitleNote={item.subtitle_note}
@@ -49,6 +52,7 @@ const TimelineItems = ({ data }) => {
               <div className="w-1/2 pr-8">
                 {idx % 2 === 0 && (
                   <TimelineCard 
+                    sectionType={sectionType}
                     title={item.title} 
                     subtitle={item.company || item.institution} 
                     subtitleNote={item.subtitle_note}
@@ -72,6 +76,7 @@ const TimelineItems = ({ data }) => {
               <div className="w-1/2 pl-8">
                 {idx % 2 === 1 && (
                   <TimelineCard 
+                    sectionType={sectionType}
                     title={item.title} 
                     subtitle={item.company || item.institution} 
                     subtitleNote={item.subtitle_note}
@@ -92,13 +97,23 @@ const TimelineItems = ({ data }) => {
   );
 };
 
-const TimelineCard = ({ title, subtitle, subtitleNote, footnote, description, achievements, technologies, isLeft, index = 0 }) => (
+const TimelineCard = ({ sectionType, title, subtitle, subtitleNote, footnote, description, achievements, technologies, isLeft, index = 0 }) => {
+  const handleCardHover = createCardHoverHandler(
+    sectionType,
+    title,
+    `${sectionType}-${slugifyCardId(title)}`
+  );
+
+  return (
   <div className={`group relative ${isLeft ? 'text-right' : 'text-left'} h-full`}>
     {/* Connection Line to Center */}
     <div className={`absolute top-6 ${isLeft ? '-right-8 translate-x-full' : '-left-8 -translate-x-full'} w-8 h-0.5 bg-gradient-to-r ${isLeft ? 'from-primary-300 to-transparent' : 'from-transparent to-primary-300'} dark:${isLeft ? 'from-primary-600 to-transparent' : 'from-transparent to-primary-600'}`}></div>
     
     {/* Card */}
-    <div className="bg-slate-50 dark:bg-surface-900 p-5 sm:p-6 rounded-2xl shadow-material-2 hover:shadow-material-4 border border-slate-200 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-[1.01] h-full flex flex-col justify-between">
+    <div
+      onMouseEnter={handleCardHover}
+      className="bg-slate-50 dark:bg-surface-900 p-5 sm:p-6 rounded-2xl shadow-material-2 hover:shadow-material-4 border border-slate-200 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-[1.01] h-full flex flex-col justify-between"
+    >
       <div>
         {/* Period Badge */}
         {footnote && (
@@ -166,15 +181,26 @@ const TimelineCard = ({ title, subtitle, subtitleNote, footnote, description, ac
       <div className={`absolute -top-1.5 ${isLeft ? '-left-1.5' : '-right-1.5'} w-3 h-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300`}></div>
     </div>
   </div>
-);
+  );
+};
 
-const MobileTimelineCard = ({ title, subtitle, subtitleNote, footnote, description, achievements, technologies, index = 0 }) => (
+const MobileTimelineCard = ({ sectionType, title, subtitle, subtitleNote, footnote, description, achievements, technologies, index = 0 }) => {
+  const handleCardHover = createCardHoverHandler(
+    sectionType,
+    title,
+    `${sectionType}-${slugifyCardId(title)}`
+  );
+
+  return (
   <div className="group relative">
     {/* Connection Line to Timeline */}
     <div className="absolute top-6 -left-12 sm:-left-16 w-6 sm:w-8 h-0.5 bg-gradient-to-r from-primary-300 to-transparent dark:from-primary-600 dark:to-transparent"></div>
     
     {/* Card */}
-    <div className="bg-white dark:bg-surface-900 p-4 sm:p-5 rounded-2xl shadow-material-2 hover:shadow-material-4 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-[1.01] active:scale-95">
+    <div
+      onMouseEnter={handleCardHover}
+      className="bg-white dark:bg-surface-900 p-4 sm:p-5 rounded-2xl shadow-material-2 hover:shadow-material-4 border border-surface-200/50 dark:border-surface-700/50 hover:border-primary-300/50 dark:hover:border-primary-600/50 transition-all duration-300 transform hover:scale-[1.01] active:scale-95"
+    >
       {/* Period Badge */}
       {footnote && (
         <div className="inline-flex items-center px-2 sm:px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 dark:from-primary-900/30 dark:to-secondary-900/30 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/50 mb-2 hover:scale-105 transition-transform duration-300">
@@ -236,9 +262,10 @@ const MobileTimelineCard = ({ title, subtitle, subtitleNote, footnote, descripti
       )}
     </div>
   </div>
-);
+  );
+};
 
-const Timeline = ({ data, title, description, icon }) => {
+const Timeline = ({ data, title, description, icon, sectionType = 'timeline' }) => {
   // Safety check for data
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
@@ -274,7 +301,7 @@ const Timeline = ({ data, title, description, icon }) => {
           <div className="md:hidden absolute left-4 sm:left-6 w-0.5 sm:w-1 bg-gradient-to-b from-primary-200 via-primary-300 to-secondary-300 dark:from-primary-800 dark:via-primary-700 dark:to-secondary-700 h-full rounded-full"></div>
           
           {/* Timeline Items */}
-          <TimelineItems data={data} />
+          <TimelineItems data={data} sectionType={sectionType} />
         </div>
       </div>
     </div>

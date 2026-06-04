@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { PERSONAL_INFO } from '../constants';
+import { logNavigationClick, logMobileMenu } from '../utils/firebaseConfig';
 
 const Navbar = () => {
   const { mode, toggleTheme } = useTheme();
@@ -49,10 +50,10 @@ const Navbar = () => {
     }
   }, [location]);
 
-  const scrollToSection = (sectionId) => {
-    // Close mobile menu when navigating
+  const scrollToSection = (sectionId, source = 'navbar') => {
+    logNavigationClick(sectionId, source);
     setMobileMenuOpen(false);
-    
+
     if (location.pathname !== '/') {
       // If we're on a project detail page, navigate to home first
       navigate(`/#${sectionId}`);
@@ -67,11 +68,10 @@ const Navbar = () => {
   };
 
   const handleHomeClick = () => {
+    logNavigationClick('home', 'navbar_logo');
     if (location.pathname === '/') {
-      // If we're on the home page, scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // If we're on a different page (like project detail), navigate to home
       navigate('/');
     }
   };
@@ -181,7 +181,11 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              const nextOpen = !mobileMenuOpen;
+              setMobileMenuOpen(nextOpen);
+              logMobileMenu(nextOpen ? 'open' : 'close');
+            }}
             className="nav:hidden p-2 rounded-lg glass-effect hover:shadow-material-2 transition-all duration-300 hover:scale-110"
             aria-label="Toggle mobile menu"
           >
@@ -215,7 +219,7 @@ const Navbar = () => {
               {navItems.map((item, index) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => scrollToSection(item.id, 'mobile')}
                   className={`flex items-center gap-2 xs:gap-3 px-3 xs:px-4 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 w-full ${
                     activeSection === item.id
                       ? 'bg-primary-500/20 text-primary-600 dark:text-primary-400 shadow-material-2'

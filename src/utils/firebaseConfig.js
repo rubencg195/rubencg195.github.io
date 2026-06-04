@@ -27,10 +27,13 @@ try {
   console.warn('Firebase Analytics initialization skipped:', error.message);
 }
 
+const withTimestamp = (params = {}) => ({
+  ...params,
+  timestamp: new Date().toISOString()
+});
+
 /**
  * Log a custom event to Firebase Analytics
- * @param {string} eventName - Name of the event
- * @param {object} eventParams - Event parameters
  */
 export const logCustomEvent = (eventName, eventParams = {}) => {
   if (analytics) {
@@ -44,41 +47,136 @@ export const logCustomEvent = (eventName, eventParams = {}) => {
 
 /**
  * Log page view event
- * @param {string} pageName - Name of the page
- * @param {string} pagePath - Path of the page
  */
 export const logPageView = (pageName, pagePath) => {
-  logCustomEvent('page_view', {
+  const pageType = pagePath.startsWith('/project/')
+    ? 'project'
+    : pagePath === '/'
+      ? 'home'
+      : 'other';
+
+  logCustomEvent('page_view', withTimestamp({
     page_title: pageName,
     page_location: pagePath,
-    timestamp: new Date().toISOString()
-  });
+    page_type: pageType
+  }));
 };
 
 /**
- * Log project click event
- * @param {string} projectId - ID of the project clicked
- * @param {string} projectName - Name of the project clicked
+ * Log project card click (list → detail)
  */
-export const logProjectClick = (projectId, projectName) => {
-  logCustomEvent('project_click', {
+export const logProjectClick = (projectId, projectName, category = '') => {
+  logCustomEvent('project_click', withTimestamp({
     project_id: projectId,
     project_name: projectName,
-    timestamp: new Date().toISOString()
-  });
+    project_category: category
+  }));
 };
 
 /**
- * Log external link click event
- * @param {string} linkUrl - URL of the external link
- * @param {string} linkType - Type of link (e.g., 'github', 'linkedin', 'email')
+ * Log project detail page view
  */
-export const logExternalLink = (linkUrl, linkType) => {
-  logCustomEvent('external_link_click', {
+export const logProjectView = (projectId, projectName, category = '') => {
+  logCustomEvent('project_view', withTimestamp({
+    project_id: projectId,
+    project_name: projectName,
+    project_category: category
+  }));
+};
+
+/**
+ * Log projects tab change
+ */
+export const logProjectTabSelect = (tabId) => {
+  logCustomEvent('project_tab_select', withTimestamp({
+    tab_id: tabId
+  }));
+};
+
+/**
+ * Log section / nav navigation
+ */
+export const logNavigationClick = (sectionId, source = 'unknown') => {
+  logCustomEvent('navigation_click', withTimestamp({
+    section_id: sectionId,
+    source
+  }));
+};
+
+/**
+ * Log hero or prominent CTA clicks
+ */
+export const logCtaClick = (ctaId, target = '') => {
+  logCustomEvent('cta_click', withTimestamp({
+    cta_id: ctaId,
+    target
+  }));
+};
+
+/**
+ * Log external link click
+ */
+export const logExternalLink = (linkUrl, linkType, extra = {}) => {
+  logCustomEvent('external_link_click', withTimestamp({
     url: linkUrl,
     link_type: linkType,
-    timestamp: new Date().toISOString()
-  });
+    ...extra
+  }));
+};
+
+/** Section entered viewport on home SPA (once per section per session) */
+export const logSectionView = (sectionId) => {
+  logCustomEvent('section_view', withTimestamp({
+    section_id: sectionId
+  }));
+};
+
+/** Scroll depth milestone on home page */
+export const logScrollDepth = (percent) => {
+  logCustomEvent('scroll_depth', withTimestamp({
+    percent
+  }));
+};
+
+/** Card hover — experience, education, about, project cards */
+export const logCardHover = (cardType, cardId, cardLabel = '') => {
+  logCustomEvent('card_hover', withTimestamp({
+    card_type: cardType,
+    card_id: cardId,
+    card_label: cardLabel
+  }));
+};
+
+export const logThemeChange = (theme) => {
+  logCustomEvent('theme_change', withTimestamp({ theme }));
+};
+
+export const logScrollToTop = (source = 'button') => {
+  logCustomEvent('scroll_to_top', withTimestamp({ source }));
+};
+
+export const logPageNotFound = (path) => {
+  logCustomEvent('page_not_found', withTimestamp({
+    attempted_path: path
+  }));
+};
+
+export const logMobileMenu = (action) => {
+  logCustomEvent('mobile_menu', withTimestamp({ action }));
+};
+
+/** Seconds spent on project detail before leaving */
+export const logProjectEngagement = (projectId, seconds, projectName = '') => {
+  logCustomEvent('project_engagement', withTimestamp({
+    project_id: projectId,
+    project_name: projectName,
+    engagement_seconds: seconds
+  }));
+};
+
+/** External link inside project README markdown */
+export const logReadmeLinkClick = (url, projectId) => {
+  logExternalLink(url, 'readme', { project_id: projectId, source: 'readme' });
 };
 
 export { app, analytics };

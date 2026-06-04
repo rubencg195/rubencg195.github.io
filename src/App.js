@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import ProjectDetail from './components/ProjectDetail';
 import Timeline from './components/Timeline';
 import ScrollToTopButton from './components/ScrollToTopButton';
+import ScrollProgress from './components/ScrollProgress';
 
 // Import constants
 import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO, HERO_SKILL_HIGHLIGHTS, SKILLS_SUB_MATRICES } from './constants';
@@ -16,7 +17,9 @@ import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO, HERO_SKILL_HIGH
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 // Import Firebase Analytics
-import { logPageView } from './utils/firebaseConfig';
+import { logPageView, logCtaClick, logNavigationClick, logExternalLink, logPageNotFound, logThemeChange } from './utils/firebaseConfig';
+import { usePortfolioAnalytics } from './hooks/usePortfolioAnalytics';
+import { createCardHoverHandler } from './hooks/useCardHoverTracking';
 
 // Import Firebase Debug Tools
 // Note: Debug tools are DISABLED by default. To enable them:
@@ -45,6 +48,7 @@ const AboutCards = () => {
       {cards.map((card, index) => (
         <div
           key={index}
+          onMouseEnter={createCardHoverHandler('about', card.title)}
           className={`bg-slate-50 dark:bg-surface-800 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-material-2 hover:shadow-material-3 transition-all duration-700 ease-out hover:scale-105 active:scale-95 border border-slate-100 dark:border-surface-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
@@ -178,6 +182,7 @@ const ContactButtons = () => {
     <div ref={ref} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
       <a
         href={`mailto:${PERSONAL_INFO.email}`}
+        onClick={() => logExternalLink(`mailto:${PERSONAL_INFO.email}`, 'email')}
         className={`group bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold shadow-material-2 hover:shadow-material-4 transition-all duration-700 ease-out hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
@@ -190,6 +195,7 @@ const ContactButtons = () => {
         href={PERSONAL_INFO.linkedin}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => logExternalLink(PERSONAL_INFO.linkedin, 'linkedin')}
         className={`group bg-slate-100 dark:bg-surface-800 text-slate-700 dark:text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-700 ease-out hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 border border-slate-200 dark:border-surface-700 w-full sm:w-auto justify-center hover:bg-slate-200 dark:hover:bg-surface-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
@@ -245,16 +251,43 @@ const RedirectHandler = () => {
   return null;
 };
 
-// Component to handle analytics and routing (inside Router context)
-const AppContent = ({ mode, toggleTheme }) => {
+const NotFoundPage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    logPageView(location.pathname, location.pathname);
+    logPageNotFound(location.pathname);
+  }, [location.pathname]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold text-surface-900 dark:text-white mb-4">404</h1>
+        <p className="text-surface-600 dark:text-surface-400 mb-8">Page not found</p>
+        <a href="/" className="bg-primary-500 text-white px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors">
+          Go Home
+        </a>
+      </div>
+    </div>
+  );
+};
+
+// Component to handle analytics and routing (inside Router context)
+const AppContent = ({ mode, toggleTheme }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  usePortfolioAnalytics(isHomePage);
+
+  useEffect(() => {
+    const pageTitle = location.pathname.startsWith('/project/')
+      ? `project:${location.pathname.split('/').pop()}`
+      : location.pathname || 'home';
+    logPageView(pageTitle, location.pathname);
   }, [location]);
 
   return (
     <>
+      {isHomePage && <ScrollProgress />}
       {/* Redirect Handler */}
       <RedirectHandler />
       
@@ -314,6 +347,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center animate-fade-in px-4" style={{animationDelay: '1.5s'}}>
                   <a
                     href="#projects"
+                    onClick={() => logCtaClick('view_work', 'projects')}
                     className="group bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold shadow-material-3 hover:shadow-material-4 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center"
                   >
                     <span className="text-lg sm:text-xl group-hover:animate-bounce">🚀</span>
@@ -322,6 +356,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                   
                   <a
                     href="#contact"
+                    onClick={() => logCtaClick('lets_talk', 'contact')}
                     className="group bg-slate-100 dark:bg-surface-800/80 text-slate-700 dark:text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:shadow-material-3 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 sm:gap-3 backdrop-blur-sm border border-slate-200 dark:border-surface-700/50 w-full sm:w-auto justify-center hover:bg-slate-200 dark:hover:bg-surface-700"
                   >
                     <span className="text-lg sm:text-xl group-hover:animate-bounce">💬</span>
@@ -334,6 +369,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <div className="animate-fade-in mt-12 sm:mt-16 pb-16 sm:pb-20 lg:pb-24" style={{animationDelay: '2s'}}>
                   <a
                     href="#about"
+                    onClick={() => logNavigationClick('about', 'hero_scroll')}
                     className="group flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300"
                   >
                     <span className="text-xs sm:text-sm text-slate-600 dark:text-surface-400 font-medium">
@@ -385,6 +421,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 description="Progression at Nasdaq Verafin—from ML pipelines and fraud detection to MLOps infrastructure and product leadership."
                 data={EXPERIENCE_FALLBACK}
                 icon="💼"
+                sectionType="experience"
               />
             </section>
             
@@ -395,6 +432,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 description="Academic foundation in mechatronics and computer science, with graduate-level recognition."
                 data={EDUCATION_FALLBACK}
                 icon="🎓"
+                sectionType="education"
               />
             </section>
             
@@ -420,17 +458,7 @@ const AppContent = ({ mode, toggleTheme }) => {
             </footer>
           </>
         } />
-        <Route path="*" element={
-          <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold text-surface-900 dark:text-white mb-4">404</h1>
-              <p className="text-surface-600 dark:text-surface-400 mb-8">Page not found</p>
-              <a href="/" className="bg-primary-500 text-white px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors">
-                Go Home
-              </a>
-            </div>
-          </div>
-        } />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ScrollToTopButton />
     </>
@@ -444,6 +472,7 @@ function App() {
     const newMode = mode === 'light' ? 'dark' : 'light';
     setMode(newMode);
     document.documentElement.classList.toggle('dark', newMode === 'dark');
+    logThemeChange(newMode);
   };
 
   useEffect(() => {
