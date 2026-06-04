@@ -10,7 +10,7 @@ import Timeline from './components/Timeline';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 // Import constants
-import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO, HERO_SKILL_HIGHLIGHTS, SKILLS_MATRIX_GROUPS } from './constants';
+import { EXPERIENCE_FALLBACK, EDUCATION_FALLBACK, PERSONAL_INFO, HERO_SKILL_HIGHLIGHTS, SKILLS_SUB_MATRICES } from './constants';
 
 // Import hooks
 import { useScrollAnimation } from './hooks/useScrollAnimation';
@@ -72,7 +72,7 @@ const AboutNarrative = () => {
       delay: '0.1s',
       content: (
         <>
-          Product-minded engineering leader with a background in mechatronics and computer science. Eight years building products and platforms for financial services—mostly from the ground up.
+          Product-minded engineering leader with formal training in mechatronics engineering and computer science. Eight years of experience delivering enterprise products and scalable platforms for financial services, with a consistent record of building capabilities from the ground up.
         </>
       )
     },
@@ -80,7 +80,7 @@ const AboutNarrative = () => {
       delay: '0.25s',
       content: (
         <>
-          At <strong>Nasdaq Verafin</strong>, I built the company&apos;s first MLOps platform, then took over engineering for Onboarding Threat Intelligence—KYC fraud detection shipped to financial institutions.
+          At <strong>Nasdaq Verafin</strong>, I established the company&apos;s first MLOps platform and currently lead engineering for Onboarding Threat Intelligence—delivering KYC fraud detection to regulated financial institutions.
         </>
       )
     },
@@ -88,7 +88,7 @@ const AboutNarrative = () => {
       delay: '0.4s',
       content: (
         <>
-          Day to day that means roadmaps with stakeholders, tight MVPs, and systems that scale. My background in cloud architecture and fraud models keeps product calls tied to what actually ships.
+          Scope of work includes stakeholder roadmaps, MVP definition, and platform engineering at enterprise scale. Expertise in cloud architecture and fraud detection supports aligned product strategy and technical execution.
         </>
       )
     }
@@ -107,6 +107,65 @@ const AboutNarrative = () => {
           {paragraph.content}
         </p>
       ))}
+    </div>
+  );
+};
+
+// Technical Skills — categorized sub-matrices
+const SkillsSubMatrices = () => {
+  const [ref, isVisible] = useScrollAnimation(0.2, '50px', true);
+
+  const colorPalette = [
+    'from-orange-500/20 to-orange-600/20 dark:from-orange-400/20 dark:to-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-700/50',
+    'from-blue-500/20 to-blue-600/20 dark:from-blue-400/20 dark:to-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-700/50',
+    'from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 text-red-700 dark:text-red-300 border-red-200/50 dark:border-red-700/50'
+  ];
+
+  return (
+    <div
+      ref={ref}
+      className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto"
+    >
+      {SKILLS_SUB_MATRICES.map((matrix, matrixIdx) => {
+        const colorClass = colorPalette[matrixIdx % colorPalette.length];
+        const cardDelay = `${0.1 + matrixIdx * 0.15}s`;
+
+        return (
+          <div
+            key={matrix.title}
+            className={`bg-slate-50 dark:bg-surface-800 p-6 sm:p-8 rounded-2xl shadow-material-2 border border-slate-100 dark:border-surface-700/50 hover:shadow-material-3 transition-all duration-700 ease-out ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: isVisible ? cardDelay : '0s' }}
+          >
+            <h3 className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-5 flex items-center gap-2">
+              <span>{matrix.icon}</span>
+              {matrix.title}
+            </h3>
+            <div className="space-y-5">
+              {matrix.subgroups.map((subgroup, subgroupIdx) => (
+                <div key={subgroup.title || `subgroup-${subgroupIdx}`}>
+                  {subgroup.title && (
+                    <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide text-slate-600 dark:text-surface-400 mb-2.5">
+                      {subgroup.title}
+                    </h4>
+                  )}
+                  <div className="flex flex-wrap gap-2.5">
+                    {subgroup.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className={`px-3 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r rounded-full text-xs sm:text-sm font-medium hover:scale-105 transition-all duration-300 cursor-default backdrop-blur-sm border ${colorClass}`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -294,7 +353,7 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <SectionHeader 
                   title="About Me"
                   icon="👨‍💻"
-                  description="Engineering leadership across product strategy, enterprise fintech, and technical architecture."
+                  description="Product strategy, enterprise fintech, and technical leadership at scale."
                 />
                 
                 <AboutNarrative />
@@ -309,45 +368,10 @@ const AppContent = ({ mode, toggleTheme }) => {
                 <SectionHeader 
                   title="Technical Skills"
                   icon="🛠️"
-                  description="Core competencies in software engineering, cloud and ML platforms, and engineering leadership."
+                  description="Cloud platforms, core engineering, and executive leadership—organized by domain."
                 />
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
-                  {SKILLS_MATRIX_GROUPS.map((group, groupIdx) => {
-                    const skills = group.categories.flatMap(
-                      (category) => PERSONAL_INFO.skills[category] || []
-                    );
-                    const colorPalette = [
-                      'from-red-500/20 to-red-600/20 dark:from-red-400/20 dark:to-red-500/20 text-red-700 dark:text-red-300 border-red-200/50 dark:border-red-700/50',
-                      'from-blue-500/20 to-blue-600/20 dark:from-blue-400/20 dark:to-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-700/50',
-                      'from-green-500/20 to-green-600/20 dark:from-green-400/20 dark:to-green-500/20 text-green-700 dark:text-green-300 border-green-200/50 dark:border-green-700/50',
-                      'from-orange-500/20 to-orange-600/20 dark:from-orange-400/20 dark:to-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-700/50'
-                    ];
-                    const colorClass = colorPalette[groupIdx % colorPalette.length];
 
-                    return (
-                      <div
-                        key={group.title}
-                        className="bg-slate-50 dark:bg-surface-800 p-6 sm:p-8 rounded-2xl shadow-material-2 border border-slate-100 dark:border-surface-700/50 hover:shadow-material-3 transition-all duration-300 transform hover:scale-[1.01]"
-                      >
-                        <h3 className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 mb-4 flex items-center gap-2">
-                          <span>{group.icon}</span>
-                          {group.title}
-                        </h3>
-                        <div className="flex flex-wrap gap-2.5">
-                          {skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className={`px-3 py-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r rounded-full text-xs sm:text-sm font-medium hover:scale-105 transition-all duration-300 cursor-default backdrop-blur-sm border ${colorClass}`}
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <SkillsSubMatrices />
               </div>
             </section>
 

@@ -204,27 +204,62 @@ export const HERO_SKILL_HIGHLIGHTS = [
   }
 ];
 
-// Grouped display layout for the Technical Skills section (2×2 matrix)
-export const SKILLS_MATRIX_GROUPS = [
+// Technical Skills section — categorized sub-matrices
+export const SKILLS_SUB_MATRICES = [
   {
-    title: 'Leadership & Strategy',
-    icon: '👔',
-    categories: ['Leadership']
-  },
-  {
-    title: 'Languages & Frameworks',
-    icon: '💻',
-    categories: ['Languages', 'Frameworks']
-  },
-  {
-    title: 'Cloud & Platform',
+    title: 'Cloud Platforms & Infrastructure',
     icon: '☁️',
-    categories: ['Cloud', 'Cloud Services', 'Tools & Platforms']
+    subgroups: [
+      {
+        title: 'AWS Ecosystem',
+        skills: [
+          'SageMaker',
+          'Bedrock',
+          'DataZone',
+          'EMR',
+          'Athena',
+          'Redshift',
+          'ECS',
+          'Lambda',
+          'Step Functions'
+        ]
+      },
+      {
+        skills: ['Databricks', 'Terraform', 'Docker']
+      }
+    ]
   },
   {
-    title: 'Engineering Practices',
-    icon: '🛠️',
-    categories: ['Practices']
+    title: 'Core Engineering',
+    icon: '💻',
+    subgroups: [
+      {
+        skills: [
+          'Python',
+          'Java',
+          'C++',
+          'JavaScript',
+          'Scala',
+          'Spring Boot',
+          'Microservices',
+          'CI/CD (Jenkins)'
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Executive Leadership',
+    icon: '👔',
+    subgroups: [
+      {
+        skills: [
+          'Technical & Product Strategy',
+          'Cross-functional Team Leadership',
+          'Architecture Governance',
+          'Risk & Regulatory Compliance'
+        ]
+      }
+    ]
   }
 ];
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionHeader from './SectionHeader';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { renderAchievementWithMetrics } from '../utils/highlightMetrics';
 
 // Scroll-animated Timeline Items component
 const TimelineItems = ({ data }) => {
@@ -140,7 +141,7 @@ const TimelineCard = ({ title, subtitle, subtitleNote, footnote, description, ac
           <ul className="list-disc pl-5 mb-4 text-sm text-slate-700 dark:text-surface-300 space-y-2 text-left">
             {achievements.map((achievement, aIdx) => (
               <li key={aIdx} className="leading-relaxed">
-                {achievement}
+                {renderAchievementWithMetrics(achievement)}
               </li>
             ))}
           </ul>
@@ -214,7 +215,7 @@ const MobileTimelineCard = ({ title, subtitle, subtitleNote, footnote, descripti
         <ul className="list-disc pl-4 mb-3 text-xs sm:text-sm text-slate-700 dark:text-surface-300 space-y-1.5 text-left">
           {achievements.map((achievement, aIdx) => (
             <li key={aIdx} className="leading-relaxed">
-              {achievement}
+              {renderAchievementWithMetrics(achievement)}
             </li>
           ))}
         </ul>
